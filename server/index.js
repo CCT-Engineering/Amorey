@@ -9,7 +9,7 @@ const app = express();
 
 // App-wide middleware
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: true}));
 
 // Static service of assets
 app.use(express.static(path.join(__dirname, '../client/dist')));
