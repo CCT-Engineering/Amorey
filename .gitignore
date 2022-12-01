@@ -22,5 +22,3 @@ node_modules
 .AppleDouble
 .LSOverride
 Icon
-
-client/dist/main.js
