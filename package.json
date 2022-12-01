@@ -4,7 +4,8 @@
   "description": "Online shopping portal",
   "main": "client/src/index.js",
   "scripts": {
-    "start": "npm run client-dev & npm run server-dev & open http://localhost:3300; fg",
+    "start": "npm run client-dev & npm run server-dev & live-server --open=./client/dist/index.html; fg",
+    "from-server": "npm run client-dev & npm run server-dev & open http://localhost:3300; fg",
     "client-dev": "webpack --config ./webpack.config.js  -w",
     "server-dev": "nodemon server/index.js"
   },
