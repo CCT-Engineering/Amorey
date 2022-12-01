@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 const OutfitCard = () => {
   return (
-    <div>OutfitCard goes here!</div>
+    <div>OutfitCard goes right here!</div>
   );
 };
 
