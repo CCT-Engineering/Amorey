@@ -23,3 +23,13 @@ const PORT = process.env.PORT || 3300;
 
 app.listen(PORT);
 console.log(`Server listening at http://localhost:${PORT}`);
+
+
+// *********
+// axios.get(Window.server + '/songs')
+// .then(res => {
+//   setSongs(res.data);
+// })
+// .catch(err => {
+//   console.log('ERROR IN AXIOS.GET:', err)
+// })
