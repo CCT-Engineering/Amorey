@@ -24,3 +24,5 @@ node_modules
 Icon
 
 .env
+
+crf_testing/

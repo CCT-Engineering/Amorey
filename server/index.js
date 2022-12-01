@@ -5,10 +5,14 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const axios = require('axios');
+const morgan = require('morgan');
+const cors = require('cors');
 
 const app = express();
 
 // APP-WIDE MIDDLEWARE
+app.use(morgan('dev'));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
