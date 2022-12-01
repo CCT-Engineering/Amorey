@@ -22,3 +22,5 @@ node_modules
 .AppleDouble
 .LSOverride
 Icon
+
+.env
