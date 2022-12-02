@@ -1,10 +1,17 @@
 import React from 'react';
 
-const ProductBreakdown = () => {
+const renderCharacteristic = (key, index, characteristics) => {
+  console.log('here');
+  return <div>Test</div>;
+};
 
+const ProductBreakdown = ({characteristics}) => {
+  console.log(characteristics);
   return (
     <div>
-      ProductBreakdown
+      {Object.keys(characteristics).map((key, index) => {
+        renderCharacteristic(key, index, characteristics)
+      })}
     </div>
   );
 };
