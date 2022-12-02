@@ -1,5 +1,4 @@
 import React from 'react';
-import WriteNewReview from './WriteNewReview.jsx';
 import ReviewsList from './ReviewsList.jsx';
 import Sorting from './Sorting.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
@@ -16,6 +15,63 @@ const reviewData = [{
       "summary": "I'm enjoying wearing these shades",
       "recommend": false,
       "response": null,
+      "body": "Comfortable and practical.",
+      "date": "2019-04-14T00:00:00.000Z",
+      "reviewer_name": "shortandsweeet",
+      "helpfulness": 5,
+      "photos": [{
+          "id": 1,
+          "url": "urlplaceholder/review_5_photo_number_1.jpg"
+        },
+        {
+          "id": 2,
+          "url": "urlplaceholder/review_5_photo_number_2.jpg"
+        },
+      ]
+    }, {
+      "review_id": 5,
+      "rating": 3,
+      "summary": "I'm enjoying wearing these shades",
+      "recommend": true,
+      "response":  'This is a response message',
+      "body": "Comfortable and practical.",
+      "date": "2019-04-14T00:00:00.000Z",
+      "reviewer_name": "shortandsweeet",
+      "helpfulness": 5,
+      "photos": [{
+          "id": 1,
+          "url": "urlplaceholder/review_5_photo_number_1.jpg"
+        },
+        {
+          "id": 2,
+          "url": "urlplaceholder/review_5_photo_number_2.jpg"
+        },
+      ]
+    }, {
+      "review_id": 5,
+      "rating": 3,
+      "summary": "I'm enjoying wearing these shades",
+      "recommend": true,
+      "response":  'This is a response message',
+      "body": "Comfortable and practical.",
+      "date": "2019-04-14T00:00:00.000Z",
+      "reviewer_name": "shortandsweeet",
+      "helpfulness": 5,
+      "photos": [{
+          "id": 1,
+          "url": "urlplaceholder/review_5_photo_number_1.jpg"
+        },
+        {
+          "id": 2,
+          "url": "urlplaceholder/review_5_photo_number_2.jpg"
+        },
+      ]
+    }, {
+      "review_id": 5,
+      "rating": 3,
+      "summary": "I'm enjoying wearing these shades",
+      "recommend": true,
+      "response":  'This is a response message',
       "body": "Comfortable and practical.",
       "date": "2019-04-14T00:00:00.000Z",
       "reviewer_name": "shortandsweeet",
@@ -68,9 +124,8 @@ const Index = () => {
       <h4>RATINGS & REVIEWS</h4>
       <div><RatingBreakdown ratings={meta.ratings} recommended={meta.recommended}/></div>
       <div><ProductBreakdown characteristics={meta.characteristics}/></div>
-      <div><Sorting numberOfReviews={reviews.results ? reviews.results : false}/></div>
-      <div><ReviewsList reviews={reviews.results}/></div>
-      <div><WriteNewReview/></div>
+      <div><Sorting reviews={reviews[0].results}/></div>
+      <div><ReviewsList reviews={reviews[0].results}/></div>
     </div>
   );
 };
