@@ -1,15 +1,15 @@
 import React from 'react';
 
-const Sorting = ({numberOfReviews}) => {
+const Sorting = ({reviews}) => {
 
   return (
     <div>
-      <h4>{numberOfReviews.length} reviews, sorted by
-        <ul>
-          <li>relevance</li>
-          <li>newest</li>
-          <li>helpful</li>
-        </ul>
+      <h4>{reviews.length} reviews, sorted by
+        <select>
+          <option>relevance</option>
+          <option>newest</option>
+          <option>helpful</option>
+        </select>
       </h4>
     </div>
   );
