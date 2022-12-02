@@ -1,0 +1,101 @@
+{
+    "id": 40347,
+    "campus": "hr-rfp",
+    "name": "Slacker's Slacks",
+    "slogan": "Comfortable for everything, or nothing",
+    "description": "I'll tell you how great they are after I nap for a bit.",
+    "category": "Pants",
+    "default_price": "65.00",
+    "created_at": "2021-08-13T14:38:44.509Z",
+    "updated_at": "2021-08-13T14:38:44.509Z",
+    "features": [
+        {
+            "feature": "Fabric",
+            "value": "99% Cotton 1% Elastic"
+        },
+        {
+            "feature": "Cut",
+            "value": "Loose"
+        }
+    ]
+}
+
+{
+    "product": "40347",
+    "page": 0,
+    "count": 5,
+    "results": [
+        {
+            "review_id": 1275426,
+            "rating": 3,
+            "summary": "xvxzvzxvxzvxzcvxzc",
+            "recommend": false,
+            "response": null,
+            "body": "fdsgd;kzo'dlkxzjcvlkjzxclv'jzxlcjv;zlxjvl;xzkjcvl;xzjclvjzxlc",
+            "date": "2022-07-15T00:00:00.000Z",
+            "reviewer_name": ".,kzxnv,.nxzc,",
+            "helpfulness": 2,
+            "photos": []
+        },
+        {
+            "review_id": 1275447,
+            "rating": 3,
+            "summary": "sdsd",
+            "recommend": false,
+            "response": null,
+            "body": "sds",
+            "date": "2022-07-15T00:00:00.000Z",
+            "reviewer_name": "sd",
+            "helpfulness": 0,
+            "photos": [
+                {
+                    "id": 2455346,
+                    "url": "Screen Shot 2022-07-09 at 1.39.08 PM.png"
+                }
+            ]
+        },
+        {
+            "review_id": 1275371,
+            "rating": 3,
+            "summary": "jklsdfg",
+            "recommend": true,
+            "response": null,
+            "body": "jkldsfgdsf",
+            "date": "2022-07-14T00:00:00.000Z",
+            "reviewer_name": "jkldfgsd",
+            "helpfulness": 0,
+            "photos": []
+        },
+        {
+            "review_id": 1275374,
+            "rating": 3,
+            "summary": "Review this product",
+            "recommend": true,
+            "response": null,
+            "body": "Review this product ghjghjghjghjghjghjghjghjghjghjghjghjghj",
+            "date": "2022-07-14T00:00:00.000Z",
+            "reviewer_name": "dondo",
+            "helpfulness": 0,
+            "photos": []
+        },
+        {
+            "review_id": 1275373,
+            "rating": 3,
+            "summary": "Does the post request work",
+            "recommend": true,
+            "response": null,
+            "body": "this is the body of the request and it should work",
+            "date": "2022-07-14T00:00:00.000Z",
+            "reviewer_name": "dondo",
+            "helpfulness": 0,
+            "photos": [
+                {
+                    "id": 2455265,
+                    "url": "364aeead3370e444c784c138fbd813e58acf1d13ed5cc5af82bc51331f4ac6ee.jpeg"
+                }
+            ]
+        }
+    ]
+}
+
+1275374
