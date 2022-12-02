@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import Overview from './Overview.jsx';
-import RelatedProducts from './RelatedProducts.jsx';
-import RatingsReviews from './RatingsReviews.jsx';
-
+import RelatedOutfit from './RelatedOutfit/Index.jsx';
+import RatingsReviews from './RatingsReviews/Index.jsx';
 
 const App = () => {
   //hooks
@@ -13,8 +12,10 @@ const App = () => {
     <div>
       <h1>Atelier</h1>
       <Overview/>
-      <RelatedProducts/>
-      <RatingsReviews/>
+      <RelatedOutfit/>
+      <div style={{backgroundColor: 'BlanchedAlmond'}}>
+        <RatingsReviews/>
+      </div>
     </div>
   );
 }

@@ -16,7 +16,7 @@
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Overview_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Overview.jsx */ \"./client/src/components/Overview.jsx\");\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './RelatedOutfit/Index.jsx'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\nObject(function webpackMissingModule() { var e = new Error(\"Cannot find module './RatingsReviews/Index.jsx'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\n\n\n\n\nvar App = function App() {\n  //hooks\n\n  //functions\n\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h1\", null, \"Atelier\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Overview_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Object(function webpackMissingModule() { var e = new Error(\"Cannot find module './RelatedOutfit/Index.jsx'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", {\n    style: {\n      backgroundColor: 'BlanchedAlmond'\n    }\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(Object(function webpackMissingModule() { var e = new Error(\"Cannot find module './RatingsReviews/Index.jsx'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }()), null)));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);\n\n//# sourceURL=webpack://atlier/./client/src/components/App.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Overview_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Overview.jsx */ \"./client/src/components/Overview.jsx\");\n/* harmony import */ var _RelatedOutfit_Index_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RelatedOutfit/Index.jsx */ \"./client/src/components/RelatedOutfit/Index.jsx\");\n/* harmony import */ var _RatingsReviews_Index_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./RatingsReviews/Index.jsx */ \"./client/src/components/RatingsReviews/Index.jsx\");\n\n\n\n\nvar App = function App() {\n  //hooks\n\n  //functions\n\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h1\", null, \"Atelier\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Overview_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_RelatedOutfit_Index_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", {\n    style: {\n      backgroundColor: 'BlanchedAlmond'\n    }\n  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_RatingsReviews_Index_jsx__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null)));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);\n\n//# sourceURL=webpack://atlier/./client/src/components/App.jsx?");
 
 /***/ }),
 
@@ -27,6 +27,126 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar Overview = function Overview() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"Overview goes here!\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Overview);\n\n//# sourceURL=webpack://atlier/./client/src/components/Overview.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/RatingsReviews/Index.jsx":
+/*!********************************************************!*\
+  !*** ./client/src/components/RatingsReviews/Index.jsx ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _WriteNewReview_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WriteNewReview.jsx */ \"./client/src/components/RatingsReviews/WriteNewReview.jsx\");\n/* harmony import */ var _ReviewsList_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ReviewsList.jsx */ \"./client/src/components/RatingsReviews/ReviewsList.jsx\");\n/* harmony import */ var _Sorting_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Sorting.jsx */ \"./client/src/components/RatingsReviews/Sorting.jsx\");\n/* harmony import */ var _RatingBreakdown_jsx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./RatingBreakdown.jsx */ \"./client/src/components/RatingsReviews/RatingBreakdown.jsx\");\n/* harmony import */ var _ProductBreakdown_jsx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./ProductBreakdown.jsx */ \"./client/src/components/RatingsReviews/ProductBreakdown.jsx\");\n\n\n\n\n\n\nvar Index = function Index() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h4\", null, \"RATINGS & REVIEWS\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_RatingBreakdown_jsx__WEBPACK_IMPORTED_MODULE_4__[\"default\"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ProductBreakdown_jsx__WEBPACK_IMPORTED_MODULE_5__[\"default\"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Sorting_jsx__WEBPACK_IMPORTED_MODULE_3__[\"default\"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ReviewsList_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_WriteNewReview_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null)));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Index);\n\n//# sourceURL=webpack://atlier/./client/src/components/RatingsReviews/Index.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/RatingsReviews/ProductBreakdown.jsx":
+/*!*******************************************************************!*\
+  !*** ./client/src/components/RatingsReviews/ProductBreakdown.jsx ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar ProductBreakdown = function ProductBreakdown() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"ProductBreakdown\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductBreakdown);\n\n//# sourceURL=webpack://atlier/./client/src/components/RatingsReviews/ProductBreakdown.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/RatingsReviews/RatingBreakdown.jsx":
+/*!******************************************************************!*\
+  !*** ./client/src/components/RatingsReviews/RatingBreakdown.jsx ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar RatingBreakdown = function RatingBreakdown() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"RatingBreakdown\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RatingBreakdown);\n\n//# sourceURL=webpack://atlier/./client/src/components/RatingsReviews/RatingBreakdown.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/RatingsReviews/ReviewsList.jsx":
+/*!**************************************************************!*\
+  !*** ./client/src/components/RatingsReviews/ReviewsList.jsx ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar ReviewsList = function ReviewsList() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"ReviewsList\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewsList);\n\n//# sourceURL=webpack://atlier/./client/src/components/RatingsReviews/ReviewsList.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/RatingsReviews/Sorting.jsx":
+/*!**********************************************************!*\
+  !*** ./client/src/components/RatingsReviews/Sorting.jsx ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar Sorting = function Sorting() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"Sorting\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Sorting);\n\n//# sourceURL=webpack://atlier/./client/src/components/RatingsReviews/Sorting.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/RatingsReviews/WriteNewReview.jsx":
+/*!*****************************************************************!*\
+  !*** ./client/src/components/RatingsReviews/WriteNewReview.jsx ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar WriteNewReview = function WriteNewReview() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"WriteNewReview\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WriteNewReview);\n\n//# sourceURL=webpack://atlier/./client/src/components/RatingsReviews/WriteNewReview.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/RelatedOutfit/CompareTable.jsx":
+/*!**************************************************************!*\
+  !*** ./client/src/components/RelatedOutfit/CompareTable.jsx ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar CompareTable = function CompareTable() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"CompareTable goes here!\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CompareTable);\n\n//# sourceURL=webpack://atlier/./client/src/components/RelatedOutfit/CompareTable.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/RelatedOutfit/Index.jsx":
+/*!*******************************************************!*\
+  !*** ./client/src/components/RelatedOutfit/Index.jsx ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _RelatedList_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RelatedList.jsx */ \"./client/src/components/RelatedOutfit/RelatedList.jsx\");\n/* harmony import */ var _OutfitList_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./OutfitList.jsx */ \"./client/src/components/RelatedOutfit/OutfitList.jsx\");\n\n\n\nvar Index = function Index() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_RelatedList_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_OutfitList_jsx__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Index);\n\n//# sourceURL=webpack://atlier/./client/src/components/RelatedOutfit/Index.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/RelatedOutfit/OutfitCard.jsx":
+/*!************************************************************!*\
+  !*** ./client/src/components/RelatedOutfit/OutfitCard.jsx ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\nvar OutfitCard = function OutfitCard() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"OutfitCard goes right here!\");\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OutfitCard);\n\n//# sourceURL=webpack://atlier/./client/src/components/RelatedOutfit/OutfitCard.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/RelatedOutfit/OutfitList.jsx":
+/*!************************************************************!*\
+  !*** ./client/src/components/RelatedOutfit/OutfitList.jsx ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _OutfitCard_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OutfitCard.jsx */ \"./client/src/components/RelatedOutfit/OutfitCard.jsx\");\n\n\nvar OutfitList = function OutfitList() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h4\", null, \"YOUR OUTFIT\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_OutfitCard_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OutfitList);\n\n//# sourceURL=webpack://atlier/./client/src/components/RelatedOutfit/OutfitList.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/RelatedOutfit/RelatedCard.jsx":
+/*!*************************************************************!*\
+  !*** ./client/src/components/RelatedOutfit/RelatedCard.jsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _CompareTable_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CompareTable.jsx */ \"./client/src/components/RelatedOutfit/CompareTable.jsx\");\n\n\nvar RelatedCard = function RelatedCard() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, \"RelatedCard\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_CompareTable_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RelatedCard);\n\n//# sourceURL=webpack://atlier/./client/src/components/RelatedOutfit/RelatedCard.jsx?");
+
+/***/ }),
+
+/***/ "./client/src/components/RelatedOutfit/RelatedList.jsx":
+/*!*************************************************************!*\
+  !*** ./client/src/components/RelatedOutfit/RelatedList.jsx ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _RelatedCard_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RelatedCard.jsx */ \"./client/src/components/RelatedOutfit/RelatedCard.jsx\");\n\n\nvar RelatedList = function RelatedList() {\n  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"div\", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(\"h4\", null, \"RELATED PRODUCTS\"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_RelatedCard_jsx__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null));\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RelatedList);\n\n//# sourceURL=webpack://atlier/./client/src/components/RelatedOutfit/RelatedList.jsx?");
 
 /***/ }),
 
