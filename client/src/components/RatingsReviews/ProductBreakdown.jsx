@@ -6,7 +6,7 @@ const renderCharacteristic = (key, index, characteristics) => {
 };
 
 const ProductBreakdown = ({characteristics}) => {
-  console.log(characteristics);
+
   return (
     <div>
       {Object.keys(characteristics).map((key, index) => {

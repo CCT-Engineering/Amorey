@@ -1,10 +1,13 @@
 import React from 'react';
+import WriteNewReview from './WriteNewReview.jsx';
 
-const ReviewsList = () => {
-
+const ReviewsList = ({reviews}) => {
+  console.log(reviews);
   return (
-    <div>
-      ReviewsList
+    <div>test
+      <div>{reviews}</div>
+      <button>MORE REVIEWS</button>
+      <button>ADD A REVIEW +</button>
     </div>
   );
 };

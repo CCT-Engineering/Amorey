@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Sorting = ({numberOfReviews}) => {
-  // numberOfReviews ? console.log(numberOfReviews) : console.log('none');
+
   return (
     <div>
-      <h4>{numberOfReviews ? numberOfReviews.length : 0} reviews, sorted by
+      <h4>{numberOfReviews.length} reviews, sorted by
         <ul>
           <li>relevance</li>
           <li>newest</li>

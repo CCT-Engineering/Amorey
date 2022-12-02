@@ -1,5 +1,4 @@
 import React from 'react';
-import WriteNewReview from './WriteNewReview.jsx';
 import ReviewsList from './ReviewsList.jsx';
 import Sorting from './Sorting.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
@@ -62,15 +61,15 @@ const metaData = {
 const Index = () => {
   const [meta, setMeta] = React.useState(metaData);
   const [reviews, setReviews] = React.useState(reviewData);
+  console.log(reviews[0].results);
 
   return (
     <div>
       <h4>RATINGS & REVIEWS</h4>
       <div><RatingBreakdown ratings={meta.ratings} recommended={meta.recommended}/></div>
       <div><ProductBreakdown characteristics={meta.characteristics}/></div>
-      <div><Sorting numberOfReviews={reviews.results ? reviews.results : false}/></div>
+      <div><Sorting numberOfReviews={reviews[0].results}/></div>
       <div><ReviewsList reviews={reviews.results}/></div>
-      <div><WriteNewReview/></div>
     </div>
   );
 };
