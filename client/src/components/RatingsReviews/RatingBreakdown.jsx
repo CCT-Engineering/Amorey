@@ -19,7 +19,7 @@ const RatingBreakdown = ({ratings, recommended}) => {
 
   return (
     <div>
-      <h2>{determineAverage(ratings)} *Display Stars*</h2>
+      <h2>{determineAverage(ratings)} ★★★★★</h2>
       <span>{recommended[0] * 10}% of reviews recommend this product</span>
       <div>5 stars {renderReviewGraph(ratings[5])}</div>
       <div>4 stars {renderReviewGraph(ratings[4])}</div>

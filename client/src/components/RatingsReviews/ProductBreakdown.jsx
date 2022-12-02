@@ -1,16 +1,20 @@
 import React from 'react';
 
-const renderCharacteristic = (characteristics) => {
-  Object.keys(characteristics).map((key, index) => {
-    return <div>{key}</div>
-  })
+const renderCharacteristic = (item, index) => {
+  return (
+    <div key={index}>
+      <div>{item}</div>
+      <div>*graph*</div>
+      <div>*conditional rating fields*</div>
+    </div>
+  );
 };
 
 const ProductBreakdown = ({characteristics}) => {
-  // console.log(characteristics)
+
   return (
     <div>
-      {renderCharacteristic(characteristics)}
+      {Object.keys(characteristics).map((item, index) => renderCharacteristic(item, index))}
     </div>
   );
 };
