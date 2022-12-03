@@ -21,9 +21,11 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // ROUTES
 app.all('/*', (req, res) => {
+  console.log('req.body:', req.body)
   axios({
     method: req.method,
     url: path.join(process.env.API_URL, req.url), // req.url will include query (?) and params (:)
+    data: req.body,
     headers: {
       'User-Agent': 'request', // this might not be necessary?
       'Authorization': process.env.AUTH
