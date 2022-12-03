@@ -1,9 +1,9 @@
 import React from 'react';
 
-const StyleEntry = () => {
+const StyleEntry = ({name}) => {
   return (
     <div>
-      Individual Style
+      Style Name: {name}
     </div>
   )
 }
