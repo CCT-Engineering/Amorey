@@ -4,7 +4,7 @@ import ProductInfo from './ProductInfo.jsx';
 import Styles from './Styles.jsx';
 import Cart from './Cart.jsx';
 import ProductDesc from './ProductDesc.jsx';
-import testData from '../testData.jsx';
+import testData from '../../testData.jsx';
 
 const Overview = () => {
 

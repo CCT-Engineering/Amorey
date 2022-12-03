@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Overview from './Overview/Overview.jsx';
 import RelatedOutfit from './RelatedOutfit/Index.jsx';
 import RatingsReviews from './RatingsReviews/Index.jsx';
-import testData from './testData.jsx';
+import testData from '../testData.jsx';
 
 const App = () => {
   //hooks

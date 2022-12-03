@@ -3,7 +3,7 @@ import ReviewsList from './ReviewsList.jsx';
 import Sorting from './Sorting.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
-import testData from '../testData.jsx';
+import testData from '../../testData.jsx';
 
 const Index = () => {
   const [meta, setMeta] = React.useState(testData.metaData);
