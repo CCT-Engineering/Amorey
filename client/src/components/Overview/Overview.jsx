@@ -1,8 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
+import Gallery from './Gallery.jsx';
+import ProductInfo from './ProductInfo.jsx';
+import Styles from './Styles.jsx';
 
 const Overview = () => {
   return (
-    <div>Overview goes here!</div>
+    <div style={{backgroundColor: 'azure'}}>
+      <Gallery />
+      <ProductInfo />
+      <Styles />
+    </div>
   )
 }
 
