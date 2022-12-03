@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import requests from '../requests.js';
-import Overview from './Overview.jsx';
+import Overview from './Overview/Overview.jsx';
 import RelatedOutfit from './RelatedOutfit/Index.jsx';
 import RatingsReviews from './RatingsReviews/Index.jsx';
+import requests from '../requests.js'
+import testData from '../testData.jsx';
 
 const App = () => {
   const [products, setProducts] = useState([]);
   const [current, setCurrent] = useState({});
   const [metadata, setMetadata] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     requests.getProducts((data) => {
@@ -28,9 +30,7 @@ const App = () => {
       <h1>Atelier</h1>
       <Overview/>
       <RelatedOutfit/>
-      <div style={{backgroundColor: 'BlanchedAlmond'}}>
-        <RatingsReviews/>
-      </div>
+      <RatingsReviews/>
     </div>
   );
 }
