@@ -5,6 +5,7 @@ import WriteNewReview from './WriteNewReview.jsx';
 
 
 const ReviewsList = ({reviews}) => {
+  console.log(reviews);
   const [renderLimit, setRenderLimit] = React.useState(2);
 
   const loadMoreEntries = () => {

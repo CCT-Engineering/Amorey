@@ -30,7 +30,7 @@ const App = () => {
       <h1>Atelier</h1>
       <Overview/>
       <RelatedOutfit/>
-      <RatingsReviews/>
+      {current.id ? <RatingsReviews currentId={current.id} metadata={metadata}/> : <div></div>}
     </div>
   );
 }

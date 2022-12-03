@@ -3,7 +3,7 @@ import axios from 'axios';
 const url = 'http://localhost:3300/'
 
 const requests = {
-  //pass in (product_id, callback)
+  //pass in (callback)
   getProducts: (callback) => {
     axios.get(`${url}products`)
     .then(({data}) => callback(data))
@@ -59,13 +59,12 @@ const requests = {
     .catch(err => console.error(err));
   },
 
-  //NOT WORKING -> NEED TO TWEAK MINI SERVER
   //pass in (new review object)
-  // postReview: (review) => {
-  //   axios.post(`${url}reviews`, review)
-  //   .then(() => console.log('Review added.'))
-  //   .catch(err => console.error(err))
-  // }
+  postReview: (review) => {
+    axios.post(`${url}reviews`, review)
+    .then(() => console.log('Review added.'))
+    .catch(err => console.error(err))
+  }
 };
 
 export default requests;
