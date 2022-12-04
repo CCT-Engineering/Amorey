@@ -3,7 +3,6 @@ import React from 'react';
 const Sorting = ({reviews, changeSort}) => {
 
   const handleClick = () => {
-    console.log(event.target.value);
     changeSort(event.target.value);
   };
 

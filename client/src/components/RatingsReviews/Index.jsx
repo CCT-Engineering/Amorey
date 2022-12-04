@@ -5,7 +5,7 @@ import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import requests from '../../requests.js';
 
-const Index = ({currentId, metadata}) => {
+const Index = ({currentId, metadata, stars}) => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => renderReviews(), []);
 
@@ -20,7 +20,7 @@ const Index = ({currentId, metadata}) => {
       <h4>RATINGS & REVIEWS</h4>
       {metadata.product_id ?
         <div>
-          <RatingBreakdown ratings={metadata.ratings} recommend={metadata.recommended}/>
+          <RatingBreakdown ratings={metadata.ratings} recommend={metadata.recommended} stars={stars}/>
           <ProductBreakdown characteristics={metadata.characteristics}/>
         </div>
         : <div>No Product Metadata available</div>}

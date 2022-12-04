@@ -24,10 +24,11 @@ const calculateRecommenedPercent = (recommend) => {
   return Math.floor(approve / (approve + reject) * 100);
 };
 
-const RatingBreakdown = ({ratings, recommend}) => {
+const RatingBreakdown = ({ratings, recommend, stars}) => {
+
   return (
     <div>
-      <h2>{calculateAverageStars(ratings)} ★★★★★</h2>
+      <h2>{calculateAverageStars(ratings)} *display {stars}*</h2>
       <span>{calculateRecommenedPercent(recommend)}% of reviews recommend this product</span>
       <div>5 stars {renderReviewGraph(ratings[5])}</div>
       <div>4 stars {renderReviewGraph(ratings[4])}</div>
