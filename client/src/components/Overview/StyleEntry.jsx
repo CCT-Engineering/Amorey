@@ -1,10 +1,18 @@
 import React from 'react';
 import local from '../../styles/Overview.css';
 
-const StyleEntry = ({name}) => {
+const StyleEntry = ({thumb, setPrice}) => {
+
+  const bgImgStr = `background-image: url('${thumb}')`
+
+  const divStyle = {
+    backgroundImage: `url(${thumb})`,
+    height: '50px'
+  }
+
   return (
-    <div>
-      Style Name: {name}
+    <div className={local.style} style={divStyle}>
+      {/* <img className={local.styleThumb} src={thumb} /> */}
     </div>
   )
 }

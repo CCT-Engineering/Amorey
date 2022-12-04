@@ -2,11 +2,6 @@
   background: #BFF;
 }
 
-.styles {
-  display: flex;
-  color: red;
-}
-
 .overviewMain {
   display: flex;
   width: 100%;
@@ -39,4 +34,21 @@
 
 .cart {
   display: block;
+}
+
+.styles {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.style {
+  border: 1px solid #111;
+  border-radius: 50%;
+  flex: 1 0 24%
+}
+
+.styleThumb {
+  border: 1px solid #111;
+  border-radius: 50%;
+  flex: 1 0 49%
 }

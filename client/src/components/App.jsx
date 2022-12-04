@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Overview from './Overview/Overview.jsx';
 import RelatedOutfit from './RelatedOutfit/Index.jsx';
 import RatingsReviews from './RatingsReviews/Index.jsx';
-import requests from '../requests.js'
+import requests from '../requests.js';
 import testData from '../testData.jsx';
 import global from '../styles/global.css'; // Applies global styles to entire App (not just App.jsx)
 
