@@ -1,0 +1,8 @@
+:global body {
+  background: white;
+  color: #111;
+  font-family: "Tahoma", sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  padding: 0;
+}
