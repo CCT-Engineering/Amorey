@@ -9,7 +9,7 @@ const Index = ({currentId, metadata}) => {
   const [reviews, setReviews] = useState([]);
   useEffect(() => renderReviews(), []);
 
-  const renderReviews = (sortMethod = 'relevance') => {
+  const renderReviews = (sortMethod = 'relevant') => {
     requests.getReviews(currentId, sortMethod, (data) => {
       setReviews(data.results);
     });
@@ -26,7 +26,7 @@ const Index = ({currentId, metadata}) => {
         : <div>No Product Metadata available</div>}
       {reviews.length ?
         <div>
-          <Sorting reviews={reviews}/>
+          <Sorting reviews={reviews} changeSort={renderReviews}/>
           <ReviewsList reviews={reviews}/>
         </div>
         : <div>No Review Data available</div>}

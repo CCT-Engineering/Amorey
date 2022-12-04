@@ -1,14 +1,19 @@
 import React from 'react';
 
-const Sorting = ({reviews}) => {
+const Sorting = ({reviews, changeSort}) => {
+
+  const handleClick = () => {
+    console.log(event.target.value);
+    changeSort(event.target.value);
+  };
 
   return (
     <div>
       <h4>{reviews.length} reviews, sorted by
-        <select>
-          <option>relevance</option>
-          <option>newest</option>
-          <option>helpful</option>
+        <select id='sortMethod' onChange={handleClick}>
+          <option value='relevant'>relevance</option>
+          <option value='newest'>newest</option>
+          <option value='helpful'>helpful</option>
         </select>
       </h4>
     </div>
