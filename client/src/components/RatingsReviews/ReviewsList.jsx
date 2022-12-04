@@ -4,9 +4,9 @@ import WriteNewReview from './WriteNewReview.jsx';
 
 
 
-const ReviewsList = ({reviews}) => {
-  // console.log(reviews);
+const ReviewsList = ({reviews, sort}) => {
   const [renderLimit, setRenderLimit] = useState(2);
+  let renderAmount = 0;
 
   const loadMoreEntries = () => {
     event.preventDefault();
@@ -20,8 +20,11 @@ const ReviewsList = ({reviews}) => {
   };
 
   const renderReviewEntries = (review, index) => {
-    if (index < renderLimit) {
-      return <ReviewEntry review={review} key={index}/>
+    if (renderAmount < renderLimit) {
+      if (sort[review.rating - 1]) {
+        renderAmount++;
+        return <ReviewEntry review={review} key={index}/>;
+      }
     }
   };
 

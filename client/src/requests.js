@@ -33,7 +33,7 @@ const requests = {
 
   //pass in (product_id, sort method, callback)
   getReviews: (id, sort, callback) => {
-    axios.get(`${url}reviews/?product_id=${id}&sort=${sort}`)
+    axios.get(`${url}reviews/?product_id=${id}&sort=${sort}&count=999`)
     .then(({data}) => callback(data))
     .catch(err => console.error(err));
   },
