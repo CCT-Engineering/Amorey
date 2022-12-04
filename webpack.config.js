@@ -5,7 +5,7 @@ module.exports = {
   mode: "development",
   entry: path.join(__dirname, "client/src", "index.js"),
   output: {
-    path:path.resolve(__dirname, "client/dist"),
+    path: path.resolve(__dirname, "client/dist"),
   },
   module: {
     rules: [
@@ -19,6 +19,19 @@ module.exports = {
           }
         }
       },
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+              modules: true,
+            },
+          },
+        ],
+      }
     ]
   },
   plugins: [
