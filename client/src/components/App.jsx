@@ -4,6 +4,7 @@ import RelatedOutfit from './RelatedOutfit/Index.jsx';
 import RatingsReviews from './RatingsReviews/Index.jsx';
 import requests from '../requests.js'
 import testData from '../testData.jsx';
+import global from '../styles/global.css'; // Applies global styles to entire App (not just App.jsx)
 
 const App = () => {
   const [products, setProducts] = useState([]);

@@ -5,13 +5,14 @@ import Styles from './Styles.jsx';
 import Cart from './Cart.jsx';
 import ProductDesc from './ProductDesc.jsx';
 import testData from '../../testData.jsx';
+import local from '../../styles/Overview.css';
 
 const Overview = () => {
 
   const [currentStyles, setCurrentStyles] = useState(testData.styleData.results);
 
   return (
-    <div style={{backgroundColor: 'azure'}}>
+    <div className={local.overview}>
       <h4>OVERVIEW</h4>
       <Gallery />
       <ProductInfo />
