@@ -21,7 +21,7 @@ const Index = ({currentId, metadata, stars}) => {
       <h4>RATINGS & REVIEWS</h4>
       {metadata.product_id ?
         <div>
-          <RatingBreakdown ratings={metadata.ratings} recommend={metadata.recommended} stars={stars}/>
+          <RatingBreakdown ratings={metadata.ratings} recommend={metadata.recommended} stars={stars} sort={setSort}/>
           <ProductBreakdown details={metadata.characteristics}/>
         </div>
         : <div>No Product Metadata available</div>}

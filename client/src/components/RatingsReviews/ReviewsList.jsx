@@ -23,7 +23,7 @@ const ReviewsList = ({reviews, sort}) => {
     if (renderAmount < renderLimit) {
       if (sort[review.rating - 1]) {
         renderAmount++;
-        return (<ReviewEntry review={review} key={index}/>);
+        return <ReviewEntry review={review} key={index}/>;
       }
     }
   };
