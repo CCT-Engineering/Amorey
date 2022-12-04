@@ -34,7 +34,7 @@ app.all('/*', (req, res) => {
   .then(resAPI => res.status(resAPI.status).send(resAPI.data))
   .catch(errAPI => {
     // console.log('errAPI:', errAPI)
-    res.status(errAPI.response.status).send(errAPI);
+    res.status(errAPI.status).send(errAPI);
   })
 });
 

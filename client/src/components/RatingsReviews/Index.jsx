@@ -21,7 +21,7 @@ const Index = ({currentId, metadata, stars}) => {
       {metadata.product_id ?
         <div>
           <RatingBreakdown ratings={metadata.ratings} recommend={metadata.recommended} stars={stars}/>
-          <ProductBreakdown characteristics={metadata.characteristics}/>
+          <ProductBreakdown details={metadata.characteristics}/>
         </div>
         : <div>No Product Metadata available</div>}
       {reviews.length ?
