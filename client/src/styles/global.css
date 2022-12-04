@@ -1,5 +1,6 @@
 :global body {
   background: white;
+  box-sizing: border-box;
   color: #111;
   font-family: "Tahoma", sans-serif;
   margin: 0;

@@ -3,7 +3,7 @@ import local from '../../styles/Overview.css';
 
 const Cart = () => {
   return (
-    <div className="cart">
+    <div className={local.cart}>
       This will be the cart
     </div>
   )
