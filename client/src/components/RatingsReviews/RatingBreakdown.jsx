@@ -1,6 +1,6 @@
 import React from 'react';
 
-const renderReviewGraph = (ratings, starCount) => {
+const reviewGraph = (ratings, starCount) => {
   const totalStars = Object.keys(ratings).reduce((total, key) => {
     return total + Number(ratings[key])
   }, 0)
@@ -19,11 +19,11 @@ const RatingBreakdown = ({ratings, recommend, stars}) => {
     <div style={{backgroundColor: 'lightgreen'}}>
       <h2>{(Math.round(stars * 4) / 4).toFixed(1)} *display {stars}*</h2>
       <span>{recommenedPercent(recommend)}% of reviews recommend this product</span>
-      <div>5 stars {renderReviewGraph(ratings, 5)}</div>
-      <div>4 stars {renderReviewGraph(ratings, 4)}</div>
-      <div>3 stars {renderReviewGraph(ratings, 3)}</div>
-      <div>2 stars {renderReviewGraph(ratings, 2)}</div>
-      <div>1 stars {renderReviewGraph(ratings, 1)}</div>
+      <div>5 stars <a>{reviewGraph(ratings, 5)}</a></div>
+      <div>4 stars <a>{reviewGraph(ratings, 4)}</a></div>
+      <div>3 stars <a>{reviewGraph(ratings, 3)}</a></div>
+      <div>2 stars <a>{reviewGraph(ratings, 2)}</a></div>
+      <div>1 stars <a>{reviewGraph(ratings, 1)}</a></div>
     </div>
   );
 };

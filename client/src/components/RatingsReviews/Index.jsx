@@ -7,6 +7,7 @@ import requests from '../../requests.js';
 
 const Index = ({currentId, metadata, stars}) => {
   const [reviews, setReviews] = useState([]);
+  const [sort, setSort] = useState([1, 1, 1, 1, 1]);
   useEffect(() => renderReviews(), []);
 
   const renderReviews = (sortMethod = 'relevant') => {
@@ -27,7 +28,7 @@ const Index = ({currentId, metadata, stars}) => {
       {reviews.length ?
         <div>
           <Sorting reviews={reviews} changeSort={renderReviews}/>
-          <ReviewsList reviews={reviews}/>
+          <ReviewsList reviews={reviews} sort={sort}/>
         </div>
         : <div>No Review Data available</div>}
     </div>
