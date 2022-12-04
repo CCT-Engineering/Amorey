@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReviewEntry from './ReviewEntry.jsx';
 import WriteNewReview from './WriteNewReview.jsx';
 
 
 
 const ReviewsList = ({reviews}) => {
-  const [renderLimit, setRenderLimit] = React.useState(2);
+  // console.log(reviews);
+  const [renderLimit, setRenderLimit] = useState(2);
 
   const loadMoreEntries = () => {
     event.preventDefault();
@@ -26,9 +27,9 @@ const ReviewsList = ({reviews}) => {
 
   return (
     <div>
-      {reviews.length
-      ? reviews.map((review, index) => renderReviewEntries(review, index))
-      : <div>No Reviews</div>}
+      {reviews ?
+        reviews.map((review, index) => renderReviewEntries(review, index))
+        : <div>No Reviews</div>}
       <button onClick={loadMoreEntries}>MORE REVIEWS</button>
       <button>ADD A REVIEW +</button>
     </div>
