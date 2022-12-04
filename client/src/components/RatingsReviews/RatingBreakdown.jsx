@@ -1,26 +1,34 @@
 import React from 'react';
 
-const renderReviewGraph = () => {
-  return "*Display Bar Output*";
+const renderReviewGraph = (starCount) => {
+  return starCount;
 };
 
-const determineAverage = (ratings) => {
+const calculateAverageStars = (ratings) => {
   let totalStars = 0
   let ratingsCount = 0;
 
   for (const key in ratings) {
     totalStars += key * ratings[key];
-    ratingsCount += ratings[key];
+    ratingsCount += Number(ratings[key]);
   }
-  return totalStars / ratingsCount;
+  const average = totalStars / ratingsCount;
+  //formula for star chart filled in to nearest quarter star
+  // Math.round(average * 4) / 4).toFixed(2)
+  return (Math.round(average * 4) / 4).toFixed(1);
 };
 
-const RatingBreakdown = ({ratings, recommended}) => {
+const calculateRecommenedPercent = (recommend) => {
+  const approve = Number(recommend.true);
+  const reject = Number(recommend.false);
+  return Math.floor(approve / (approve + reject) * 100);
+};
 
+const RatingBreakdown = ({ratings, recommend}) => {
   return (
     <div>
-      <h2>{determineAverage(ratings)} ★★★★★</h2>
-      <span>{recommended[0] * 10}% of reviews recommend this product</span>
+      <h2>{calculateAverageStars(ratings)} ★★★★★</h2>
+      <span>{calculateRecommenedPercent(recommend)}% of reviews recommend this product</span>
       <div>5 stars {renderReviewGraph(ratings[5])}</div>
       <div>4 stars {renderReviewGraph(ratings[4])}</div>
       <div>3 stars {renderReviewGraph(ratings[3])}</div>
