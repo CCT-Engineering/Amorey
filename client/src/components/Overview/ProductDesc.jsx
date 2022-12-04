@@ -3,7 +3,7 @@ import local from '../../styles/Overview.css';
 
 const ProductDesc = () => {
   return (
-    <div className="productDesc">
+    <div className={local.productDesc}>
       Product Desc goes here
     </div>
   )

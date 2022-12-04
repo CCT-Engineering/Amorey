@@ -3,11 +3,11 @@ import local from '../../styles/Overview.css';
 
 const Gallery = () => {
   return (
-    <div className="gallery">
-      <div className="galleryMain">
+    <div className={local.gallery}>
+      <div className={local.galleryMain}>
         Main Image goes here
       </div>
-      <div className="galleryThumbs">
+      <div className={local.galleryThumbs}>
         Thumbnails go here
       </div>
     </div>
