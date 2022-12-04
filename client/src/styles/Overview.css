@@ -20,3 +20,23 @@
 .gallery {
   width: 65%;
 }
+
+.galleryMain {
+  display: block;
+}
+
+.galleryThumbs {
+  display: block;
+}
+
+.productInfo {
+  display: block;
+}
+
+.productDesc {
+  display: block;
+}
+
+.cart {
+  display: block;
+}
