@@ -3,7 +3,7 @@ import local from '../../styles/Overview.css';
 
 const Gallery = () => {
   return (
-    <div className="gallery">
+    <div className={local.gallery}>
       <div className="galleryMain">
         Main Image goes here
       </div>
