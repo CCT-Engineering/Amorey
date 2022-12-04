@@ -16,7 +16,7 @@ const recommenedPercent = (recommend) => {
 const RatingBreakdown = ({ratings, recommend, stars}) => {
 
   return (
-    <div>
+    <div style={{backgroundColor: 'lightgreen'}}>
       <h2>{(Math.round(stars * 4) / 4).toFixed(1)} *display {stars}*</h2>
       <span>{recommenedPercent(recommend)}% of reviews recommend this product</span>
       <div>5 stars {renderReviewGraph(ratings, 5)}</div>

@@ -28,7 +28,7 @@ const renderGraphRatings = (item) => {
 
 const ProductBreakdown = ({details}) => {
   return (
-    <div>
+    <div style={{backgroundColor: 'green'}}>
       {Object.keys(details).map((item, index) => renderDetail(item, index, details[item]))}
     </div>
   );
