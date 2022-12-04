@@ -14,11 +14,15 @@ const Overview = () => {
   return (
     <div className={local.overview}>
       <h4>OVERVIEW</h4>
-      <Gallery />
-      <ProductInfo />
-      <Styles currentStyles={currentStyles}/>
-      <Cart />
-      <ProductDesc />
+      <div className={local.overviewMain}>
+        <Gallery />
+        <div className={local.infoStylesCart}>
+          <ProductInfo />
+          <Styles currentStyles={currentStyles}/>
+          <Cart />
+        </div>
+      </div>
+        <ProductDesc />
     </div>
   )
 }
