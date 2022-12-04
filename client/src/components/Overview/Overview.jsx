@@ -7,7 +7,7 @@ import ProductDesc from './ProductDesc.jsx';
 import testData from '../../testData.jsx';
 import local from '../../styles/Overview.css';
 
-const Overview = () => {
+const Overview = ({current}) => {
 
   const [currentStyles, setCurrentStyles] = useState(testData.styleData.results);
 
@@ -17,7 +17,7 @@ const Overview = () => {
       <div className={local.overviewMain}>
         <Gallery />
         <div className={local.infoStylesCart}>
-          <ProductInfo />
+          <ProductInfo current={current}/>
           <Styles currentStyles={currentStyles}/>
           <Cart />
         </div>

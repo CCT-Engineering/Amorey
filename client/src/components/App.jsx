@@ -43,7 +43,7 @@ const App = () => {
   return (
     <div>
       <h1>Atelier</h1>
-      <Overview/>
+      <Overview current={current} />
       <RelatedOutfit/>
       {current.id ? <RatingsReviews currentId={current.id} metadata={metadata} stars={stars}/> : <div></div>}
     </div>

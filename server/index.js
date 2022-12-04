@@ -33,7 +33,7 @@ app.all('/*', (req, res) => {
   })
   .then(resAPI => res.status(resAPI.status).send(resAPI.data))
   .catch(errAPI => {
-    // console.log('errAPI:', errAPI)
+    console.log('errAPI.response.status:', errAPI.response.status)
     res.status(errAPI.response.status).send(errAPI);
   })
 });
