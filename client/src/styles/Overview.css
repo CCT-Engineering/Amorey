@@ -6,3 +6,37 @@
   display: flex;
   color: red;
 }
+
+.overviewMain {
+  display: flex;
+  width: 100%;
+  margin: auto;
+}
+
+.infoStylesCart {
+  width: 35%;
+}
+
+.gallery {
+  width: 65%;
+}
+
+.galleryMain {
+  display: block;
+}
+
+.galleryThumbs {
+  display: block;
+}
+
+.productInfo {
+  display: block;
+}
+
+.productDesc {
+  display: block;
+}
+
+.cart {
+  display: block;
+}

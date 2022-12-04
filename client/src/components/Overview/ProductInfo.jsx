@@ -3,7 +3,7 @@ import local from '../../styles/Overview.css';
 
 const ProductInfo = () => {
   return (
-    <div className="productInfo">
+    <div className={local.productInfo}>
       Product Info goes here
     </div>
   )
