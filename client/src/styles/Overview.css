@@ -38,17 +38,31 @@
 
 .styles {
   display: flex;
+  max-width: 281px;
   flex-wrap: wrap;
 }
 
 .style {
+  display: inline-block;
   border: 1px solid #111;
   border-radius: 50%;
-  flex: 1 0 24%
+  min-width: max(22%, 35px);
+  max-width: 65px;
+  aspect-ratio: 1 / 1;
+  margin: 1.5px;
+  background-size: cover;
+  text-align: right;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #111;
+  text-shadow: 0px 0px 2.5px white;
+  -webkit-text-stroke: 1px whitesmoke;
 }
 
-.styleThumb {
-  border: 1px solid #111;
-  border-radius: 50%;
-  flex: 1 0 49%
+.styleHead {
+  text-transform: uppercase;
+}
+
+.styleTitle {
+  font-weight: bold;
 }

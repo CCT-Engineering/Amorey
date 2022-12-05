@@ -1,18 +1,20 @@
 import React from 'react';
 import local from '../../styles/Overview.css';
 
-const StyleEntry = ({thumb, setPrice}) => {
-
-  const bgImgStr = `background-image: url('${thumb}')`
+const StyleEntry = ({id, thumb, currentStyle, setStyle}) => {
 
   const divStyle = {
-    backgroundImage: `url(${thumb})`,
-    height: '50px'
+    backgroundImage: `url(${thumb})`
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setStyle(id);
   }
 
   return (
-    <div className={local.style} style={divStyle}>
-      {/* <img className={local.styleThumb} src={thumb} /> */}
+    <div className={local.style} style={divStyle} onClick={handleClick}>
+      {id === currentStyle.style_id ? '✓' : ''}
     </div>
   )
 }
