@@ -6,4 +6,58 @@
   margin: 0;
   overflow-x: hidden;
   padding: 0;
+  font-size: 0.8rem;
+}
+
+:global h1 {
+  font-weight: normal;
+  padding: 5px;
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+:global h2 {
+  font-weight: normal;
+  padding: 5px;
+  margin: 0;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+:global h3 {
+  font-weight: normal;
+  padding: 5px;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+:global h4 {
+  font-weight: normal;
+  padding: 5px;
+  margin: 0;
+  font-size: 1.0rem;
+}
+
+:global h5 {
+  font-weight: normal;
+  padding: 5px;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+:global h6 {
+  font-weight: normal;
+  padding: 5px;
+  margin: 0;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+:global p {
+  font-weight: normal;
+  padding: 5px;
+  margin: 0;
+  font-size: 0.8rem;
 }

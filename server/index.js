@@ -21,7 +21,6 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // ROUTES
 app.all('/*', (req, res) => {
-  console.log('req.body:', req.body)
   axios({
     method: req.method,
     url: path.join(process.env.API_URL, req.url), // req.url will include query (?) and params (:)
@@ -33,7 +32,6 @@ app.all('/*', (req, res) => {
   })
   .then(resAPI => res.status(resAPI.status).send(resAPI.data))
   .catch(errAPI => {
-    // console.log('errAPI:', errAPI)
     res.status(errAPI.response.status).send(errAPI);
   })
 });
