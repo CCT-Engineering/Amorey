@@ -122,8 +122,8 @@
 }
 
 .starCount {
-  background-color:yellowgreen;
-  margin-right: 10%;
+  font-size: smaller;
+  background-color:lawngreen;
 }
 
 .starDisplay {
@@ -131,19 +131,32 @@
   background-color:mediumseagreen;
 }
 
-.starChart {
-  background-color:springgreen;
-  margin-bottom: 2%;
+.starTable {
+  background-color: lightgreen;
 }
 
-.starListing {
+.graph {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  /* background-color: brown; */
+}
+
+.graphText {
+  display: inline-block;
   text-decoration: underline;
-  background-color:lawngreen;
-  margin-right: 5%;
 }
 
-.starGraph {
-  background-color:lightgreen;
+.barDimensions {
+  height: 15px;
+  width: 100%;
+  position: relative;
+}
+
+.barProgress {
+  height: 60%;
+  background: darkgreen;
 }
 
 .characteristicMain {
