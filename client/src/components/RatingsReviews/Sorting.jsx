@@ -1,4 +1,5 @@
 import React from 'react';
+import local from '../../styles/RatingsReviews.css';
 
 const Sorting = ({reviews, changeSort}) => {
 
@@ -8,8 +9,8 @@ const Sorting = ({reviews, changeSort}) => {
 
   return (
     <div>
-      <h4>{reviews.length} reviews, sorted by
-        <select id='sortMethod' onChange={handleClick}>
+      <h4 className={local.sortMain}>{reviews.length} reviews, sorted by
+        <select className={local.sortMethod} id='sortMethod' onChange={handleClick}>
           <option value='relevant'>relevance</option>
           <option value='newest'>newest</option>
           <option value='helpful'>helpful</option>
