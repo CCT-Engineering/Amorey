@@ -1,0 +1,166 @@
+.ratingsReviews {
+  background:lightslategray;
+}
+
+.header {
+  background-color:red;
+  margin-top: 50px;
+}
+
+.ratingsReviewsMain {
+  display: flex;
+  width: 100%;
+  margin: auto;
+}
+
+.ratings {
+  width: 30%;
+}
+
+.reviews {
+  width: 70%;
+}
+
+.reviewMain {
+  display: block;
+  margin-left: 5%;
+  background-color: orange;
+}
+
+.reviewList {
+  background-color: darkred;
+}
+
+.reviewEntry {
+  display: block;
+  background-color:coral;
+  border-bottom: solid 2px black;
+  margin-bottom: 2%;
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviewRating {
+  background-color: tomato;
+}
+
+.reviewUser {
+  background-color: indianred;
+}
+
+.reviewSummary {
+  background-color:lightcoral;
+}
+
+.reviewBody {
+  background-color:pink;
+}
+
+.reviewRecommend {
+  background-color: hotpink;
+}
+
+.reviewResponse {
+  background-color: orangered;
+}
+
+.reviewOptions {
+  background-color:sandybrown;
+}
+
+.reviewHelpful {
+  background-color: gold;
+  text-decoration: underline;
+   margin-left: 2%;
+   margin-right: 1%;
+}
+
+.reviewReport {
+  background-color: goldenrod;
+  text-decoration: underline;
+  margin-left: 2%;
+}
+
+.reviewButton1 {
+  background-color: red;
+  margin-top: 2%;
+  margin-right: 2%;
+  padding: 10px;
+}
+
+.reviewButton2 {
+  background-color:mediumvioletred;
+  margin-top: 2%;
+  padding: 10px;
+}
+
+.sortMain {
+  background-color:palevioletred;
+}
+
+.sortMethod {
+  font-family: "Tahoma", sans-serif;
+  font-weight: 800;
+  font-size: medium;
+  text-decoration: underline;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.ratingMain {
+  font-size: small;
+  margin-bottom: 5%;
+  background-color: darkgreen;
+}
+
+.ratingPercent {
+  margin-bottom: 5%;
+  background-color: green;
+}
+
+.starCount {
+  background-color:yellowgreen;
+  margin-right: 10%;
+}
+
+.starDisplay {
+  font-size: smaller;
+  background-color:mediumseagreen;
+}
+
+.starChart {
+  background-color:springgreen;
+  margin-bottom: 2%;
+}
+
+.starListing {
+  text-decoration: underline;
+  background-color:lawngreen;
+  margin-right: 5%;
+}
+
+.starGraph {
+  background-color:lightgreen;
+}
+
+.characteristicMain {
+  background-color: darkblue;
+}
+
+.characteristicName{
+  background-color: deepskyblue;
+  margin-bottom: 2%;
+}
+
+.characteristicGraph {
+  background-color: aqua;
+  margin-bottom: 2%;
+}
+
+.characteristicDetail {
+  background-color: lightseagreen;
+  margin-bottom: 6%;
+}

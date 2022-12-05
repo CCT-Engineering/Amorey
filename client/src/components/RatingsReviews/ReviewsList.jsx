@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import ReviewEntry from './ReviewEntry.jsx';
 import WriteNewReview from './WriteNewReview.jsx';
-
-
+import local from '../../styles/RatingsReviews.css';
 
 const ReviewsList = ({reviews, sort}) => {
   const [renderLimit, setRenderLimit] = useState(2);
@@ -29,12 +28,12 @@ const ReviewsList = ({reviews, sort}) => {
   };
 
   return (
-    <div>
+    <div className={local.reviewList}>
       {reviews ?
         reviews.map((review, index) => renderReviewEntries(review, index))
         : <div>No Reviews</div>}
-      <button onClick={loadMoreEntries}>MORE REVIEWS</button>
-      <button>ADD A REVIEW +</button>
+      <button className={local.reviewButton1} onClick={loadMoreEntries}>MORE REVIEWS</button>
+      <button className={local.reviewButton2}>ADD A REVIEW +</button>
     </div>
   );
 };
