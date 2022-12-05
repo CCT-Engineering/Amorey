@@ -1,7 +1,7 @@
 import React from 'react';
 import local from '../../styles/Overview.css';
 
-const ProductDesc = () => {
+function ProductDesc() {
   return (
     <div className={local.productDesc}>
       Product Desc goes here

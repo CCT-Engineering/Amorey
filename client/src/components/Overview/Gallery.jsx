@@ -1,7 +1,7 @@
 import React from 'react';
 import local from '../../styles/Overview.css';
 
-const Gallery = () => {
+function Gallery() {
   return (
     <div className={local.gallery}>
       <div className={local.galleryMain}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import local from '../../styles/Overview.css';
 
-const ProductInfo = ({current, price, origPrice, onSale}) => {
+function ProductInfo({current, price, origPrice, onSale}) {
 
   const priceStyle = {
     color: `${onSale ? 'red' : 'inherit'}`
