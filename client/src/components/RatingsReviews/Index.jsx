@@ -4,7 +4,7 @@ import Sorting from './Sorting.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import requests from '../../requests.js';
-import local from '../../styles/RatingsReviews.css';
+import local from '../../styles/RatingsReviews/index.css';
 
 const Index = ({ currentId, metadata, stars }) => {
   const [reviews, setReviews] = useState([]);

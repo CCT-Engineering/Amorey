@@ -1,0 +1,42 @@
+.main {
+  display: block;
+  background-color:coral;
+  border-bottom: solid 2px black;
+  margin-bottom: 2%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.rating {
+  background-color: indianred;
+}
+
+.user {
+  background-color: indianred;
+}
+
+.summary {
+  font-weight: 600;
+}
+
+.response {
+  background-color: orangered;
+}
+
+.footer {
+  margin-top: 2%;
+}
+
+.helpful {
+  text-decoration: underline;
+   margin-left: 2%;
+   margin-right: 1%;
+}
+
+.report {
+  text-decoration: underline;
+  margin-left: 2%;
+}

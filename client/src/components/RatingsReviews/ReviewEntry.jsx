@@ -1,5 +1,5 @@
 import React from 'react';
-import local from '../../styles/RatingsReviews.css';
+import local from '../../styles/RatingsReviews/ReviewEntry.css';
 
 const formatDate = (date) => {
   const year = date.substring(0, 4);
@@ -41,32 +41,32 @@ const ReviewEntry = ({ review }) => {
   };
 
   return (
-    <div className={local.reviewEntry}>
-      <div className={local.reviewHeader}>
-        <span className={local.reviewRating}>
+    <div className={local.main}>
+      <div className={local.header}>
+        <span className={local.rating}>
           {review.rating}
           ★★★★★
         </span>
-        <span className={local.reviewUser}>
+        <span className={local.user}>
           {review.reviewer_name}
           ,
           {formatDate(review.date)}
         </span>
       </div>
-      <h4 className={local.reviewSummary}>{review.summary}</h4>
-      <p className={local.reviewBody}>{review.body}</p>
-      <div className={local.reviewRecommend}>
+      <h4 className={local.summary}>{review.summary}</h4>
+      <p>{review.body}</p>
+      <div>
         {review.recommend && '✓ I recommend this product'}
       </div>
-      <div className={local.reviewRecommend}>
+      <div className={local.response}>
         {review.response && 'Response:\n' + review.response}
       </div>
-      <div className={local.reviewOptions}>
+      <div className={local.footer}>
         Helpful?
-        <a className={local.reviewHelpful} onClick={handleClick}>YES</a>
-        {review.helpfulness}
+        <a className={local.helpful} onClick={handleClick}>YES</a>
+        ({review.helpfulness})
         |
-        <a className={local.reviewReport} onClick={handleClick}>Report</a>
+        <a className={local.report} onClick={handleClick}>Report</a>
       </div>
     </div>
   );
