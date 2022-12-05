@@ -1,11 +1,16 @@
 import React from 'react';
+import local from '../../styles/RatingsReviews.css';
 
 const renderDetail = (item, index, detail) => {
   return (
     <div key={index}>
-      <div>{item}</div>
-      <div>{Number(detail.value).toFixed(1)} out of 5</div>
-      <div>{renderGraphRatings(item)}</div>
+      <div className={local.characteristicName}>{item}</div>
+      <div className={local.characteristicGraph}>{
+        Number(detail.value).toFixed(1)} out of 5
+      </div>
+      <div className={local.characteristicDetail}>
+        {renderGraphRatings(item)}
+      </div>
     </div>
   );
 };
@@ -26,9 +31,13 @@ const renderGraphRatings = (item) => {
   }
 };
 
+// const renderGraphRatings = (item) => {
+//   return item === 'Size' ? 'A size too small     Perfect     A size too wide' : item === 'Width' ? 'Too narrow     Perfect     Too wide' : item === 'Comfort' ? 'Uncomfortable          Perfect' : item === 'Quality' ? 'Poor          Perfect' : item === 'Length' ? 'Runs short     Perfect     Runs long' : item === 'Fit' ? 'Runs tight     Perfect     Runs loose' : '';
+// };
+
 const ProductBreakdown = ({details}) => {
   return (
-    <div style={{backgroundColor: 'indianred'}}>
+    <div className={local.characteristicMain}>
       {Object.keys(details).map((item, index) => renderDetail(item, index, details[item]))}
     </div>
   );

@@ -38,8 +38,12 @@ app.all('/*', (req, res) => {
     res.status(errAPI.response.status).send(errAPI);
 =======
     // console.log('errAPI:', errAPI)
+<<<<<<< HEAD
     res.status(errAPI.status).send(errAPI);
 >>>>>>> 1c9e128b7fd623192e7edad08528a33c7e3e1a32
+=======
+    res.status(errAPI.response.status).send(errAPI);
+>>>>>>> 950135418fab937f7a70defaf30cdf68a4117551
   })
 });
 
