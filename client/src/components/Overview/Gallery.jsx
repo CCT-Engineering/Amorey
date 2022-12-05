@@ -11,7 +11,7 @@ function Gallery() {
         Thumbnails go here
       </div>
     </div>
-  )
+  );
 }
 
 export default Gallery;

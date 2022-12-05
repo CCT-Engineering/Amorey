@@ -15,16 +15,19 @@ function Styles({
       </h5>
       <div className={local.styles}>
         {currentStyles.map(
-          style => <StyleEntry
-            key={style.style_id}
-            id={style.style_id}
-            thumb={style.photos[0].thumbnail_url}
-            currentStyle={currentStyle}
-            setStyle={setStyle}/>
-          )}
+          (style) => (
+            <StyleEntry
+              key={style.style_id}
+              id={style.style_id}
+              thumb={style.photos[0].thumbnail_url}
+              currentStyle={currentStyle}
+              setStyle={setStyle}
+            />
+          ),
+        )}
       </div>
     </>
-  )
+  );
 }
 
 export default Styles;

@@ -20,7 +20,7 @@ module.exports = {
     // allow .js .jsx for file imports
     'import/extensions': 'off',
 
-    // allow props
+    // allow props-types to not be defined
     'react/prop-types': 'off',
 
     // allow global variables, specifically for event

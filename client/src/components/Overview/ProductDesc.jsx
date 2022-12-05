@@ -6,7 +6,7 @@ function ProductDesc() {
     <div className={local.productDesc}>
       Product Desc goes here
     </div>
-  )
+  );
 }
 
 export default ProductDesc;

@@ -21,7 +21,8 @@ function StyleEntry({
       className={local.style}
       style={divStyle}
       onClick={handleClick}
-      onKeyPress={buildHandleEnterKeyPress(handleClick)}>
+      onKeyPress={buildHandleEnterKeyPress(handleClick)}
+    >
       {id === currentStyle.style_id ? '✓' : ''}
     </div>
   );
