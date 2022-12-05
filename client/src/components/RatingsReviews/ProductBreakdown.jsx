@@ -1,7 +1,7 @@
 import React from 'react';
 import local from '../../styles/RatingsReviews.css';
 
-function renderGraphRatings(item) {
+const renderGraphRatings = (item) => {
   let string = '';
   if (item === 'Size') {
     string = 'A size too small     Perfect     A size too wide';
@@ -17,9 +17,9 @@ function renderGraphRatings(item) {
     string = 'Runs tight     Perfect     Runs long';
   }
   return string;
-}
+};
 
-function renderDetail(item, index, detail) {
+const renderDetail = (item, index, detail) => {
   return (
     <div key={index}>
       <div className={local.characteristicName}>{item}</div>
@@ -32,14 +32,14 @@ function renderDetail(item, index, detail) {
       </div>
     </div>
   );
-}
+};
 
-function ProductBreakdown({ details }) {
+const ProductBreakdown = ({ details }) => {
   return (
     <div className={local.characteristicMain}>
       {Object.keys(details).map((item, index) => renderDetail(item, index, details[item]))}
     </div>
   );
-}
+};
 
 export default ProductBreakdown;

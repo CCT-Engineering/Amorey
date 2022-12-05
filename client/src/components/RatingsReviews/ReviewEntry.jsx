@@ -2,56 +2,70 @@ import React from 'react';
 import local from '../../styles/RatingsReviews.css';
 
 const formatDate = (date) => {
-  const year = date.substring(0,4);
-  const month = date.substring(5,7);
-  const day = date[8] === '0' ? date.substring(9,10) : date.substring(8,10);
+  const year = date.substring(0, 4);
+  const month = date.substring(5, 7);
+  const day = date[8] === '0' ? date.substring(9, 10) : date.substring(8, 10);
+  let string = '';
   if (month === '01') {
-    return `January ${day}, ${year}`;
+    string = `January ${day}, ${year}`;
   } else if (month === '02') {
-    return `Feburary ${day}, ${year}`;
+    string = `Feburary ${day}, ${year}`;
   } else if (month === '03') {
-    return `March ${day}, ${year}`;
+    string = `March ${day}, ${year}`;
   } else if (month === '04') {
-    return `April ${day}, ${year}`;
+    string = `April ${day}, ${year}`;
   } else if (month === '05') {
-    return `May ${day}, ${year}`;
+    string = `May ${day}, ${year}`;
   } else if (month === '06') {
-    return `June ${day}, ${year}`;
+    string = `June ${day}, ${year}`;
   } else if (month === '07') {
-    return `July ${day}, ${year}`;
+    string = `July ${day}, ${year}`;
   } else if (month === '08') {
-    return `August ${day}, ${year}`;
+    string = `August ${day}, ${year}`;
   } else if (month === '09') {
-    return `September ${day}, ${year}`;
+    string = `September ${day}, ${year}`;
   } else if (month === '10') {
-    return `October ${day}, ${year}`;
+    string = `October ${day}, ${year}`;
   } else if (month === '11') {
-    return `November ${day}, ${year}`;
+    string = `November ${day}, ${year}`;
   } else {
-    return `December ${day}, ${year}`;
+    string = `December ${day}, ${year}`;
   }
+  return string;
 };
 
-const ReviewEntry = ({review}) => {
-
+const ReviewEntry = ({ review }) => {
   const handleClick = () => {
-    event.preventDefault()
+    event.preventDefault();
     console.log('hi Jake');
   };
 
   return (
     <div className={local.reviewEntry}>
       <div className={local.reviewHeader}>
-        <span className={local.reviewRating}>{review.rating} ★★★★★</span>
-        <span className={local.reviewUser}>{review.reviewer_name}, {formatDate(review.date)}</span>
+        <span className={local.reviewRating}>
+          {review.rating}
+          ★★★★★
+        </span>
+        <span className={local.reviewUser}>
+          {review.reviewer_name}
+          ,
+          {formatDate(review.date)}
+        </span>
       </div>
       <h4 className={local.reviewSummary}>{review.summary}</h4>
       <p className={local.reviewBody}>{review.body}</p>
-      <div className={local.reviewRecommend}>{review.recommend && '✓ I recommend this product'}</div>
-      <div className={local.reviewRecommend}>{review.response && 'Response:\n' + review.response}</div>
-      <div className={local.reviewOptions}>Helpful?
+      <div className={local.reviewRecommend}>
+        {review.recommend && '✓ I recommend this product'}
+      </div>
+      <div className={local.reviewRecommend}>
+        {review.response && 'Response:\n' + review.response}
+      </div>
+      <div className={local.reviewOptions}>
+        Helpful?
         <a className={local.reviewHelpful} onClick={handleClick}>YES</a>
-        ({review.helpfulness})  |
+        {review.helpfulness}
+        |
         <a className={local.reviewReport} onClick={handleClick}>Report</a>
       </div>
     </div>
