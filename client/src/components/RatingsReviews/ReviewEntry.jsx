@@ -64,7 +64,8 @@ const ReviewEntry = ({ review }) => {
       <div className={local.reviewOptions}>
         Helpful?
         <a className={local.reviewHelpful} onClick={handleClick}>YES</a>
-        ({review.helpfulness})  |
+        {review.helpfulness}
+        |
         <a className={local.reviewReport} onClick={handleClick}>Report</a>
       </div>
     </div>

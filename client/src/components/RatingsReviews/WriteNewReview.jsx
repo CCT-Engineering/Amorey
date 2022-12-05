@@ -1,7 +1,6 @@
 import React from 'react';
 
 const WriteNewReview = () => {
-
   return (
     <div>
       WriteNewReview

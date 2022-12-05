@@ -5,7 +5,8 @@ import local from '../../styles/Overview.css';
 const Styles = ({ currentStyles }) => {
   return (
     <div className={local.styles}>
-     {currentStyles.map(currentStyle => <StyleEntry key={currentStyle.style_id} name={currentStyle.name}/>)}
+      {currentStyles.map((currentStyle) =>
+      <StyleEntry key={currentStyle.style_id} name={currentStyle.name} />)}
     </div>
   );
 };
