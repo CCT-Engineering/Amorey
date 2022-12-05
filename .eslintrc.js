@@ -17,7 +17,7 @@ module.exports = {
     'react',
   ],
   rules: {
-    // allow .jsx .jsx for file imports
+    // allow .js .jsx for file imports
     'import/extensions': 'off',
     // allow props
     'react/prop-types': 'off',
