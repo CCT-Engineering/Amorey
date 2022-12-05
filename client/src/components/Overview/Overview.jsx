@@ -8,7 +8,7 @@ import testData from '../../testData.jsx';
 import local from '../../styles/Overview.css';
 import requests from '../../requests.js';
 
-const Overview = ({current}) => {
+function Overview({current}) {
 
   const [currentStyles, setCurrentStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
@@ -29,11 +29,11 @@ const Overview = ({current}) => {
     }
   }, [current]);
 
-  const setStyle = (style_id) => {
-    currentStyles.forEach(style => {
-      if (style.style_id === style_id) {
+  const setStyle = (styleId) => {
+    currentStyles.forEach((style) => {
+      if (style.style_id === styleId) {
         setCurrentStyle(style);
-        setOnSale(style.sale_price ? true : false);
+        setOnSale(!!style.sale_price);
         setPrice(style.sale_price ? style.sale_price : style.original_price);
       }
     })
