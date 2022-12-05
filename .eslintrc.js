@@ -17,10 +17,15 @@ module.exports = {
     'react',
   ],
   rules: {
+    // allow .jsx .jsx for file imports
     'import/extensions': 'off',
+    // allow props
     'react/prop-types': 'off',
+    // allow global variables, specifically for event
     'no-restricted-globals': 'off',
+    // allow arrow functions
     'arrow-body-style': 'off',
+    // allow react compnent as return for function
     'react/function-component-definition': 'off',
   },
 };

@@ -1,12 +1,13 @@
 import React from 'react';
 import local from '../../styles/Overview.css';
 
-const StyleEntry = ({name}) => {
+const StyleEntry = ({ name }) => {
   return (
     <div>
-      Style Name: {name}
+      Style Name:
+      {name}
     </div>
-  )
-}
+  );
+};
 
 export default StyleEntry;
