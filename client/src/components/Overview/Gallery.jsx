@@ -1,5 +1,5 @@
 import React from 'react';
-import local from '../../styles/Overview.css';
+import local from '../../styles/Overview/Gallery.css';
 
 function Gallery() {
   return (

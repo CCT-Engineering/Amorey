@@ -1,0 +1,13 @@
+.overview {
+  background: #BFF;
+}
+
+.overviewMain {
+  display: flex;
+  width: 100%;
+  margin: auto;
+}
+
+.infoStylesCart {
+  width: 35%;
+}

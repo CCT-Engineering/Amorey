@@ -1,6 +1,6 @@
 import React from 'react';
 import StyleEntry from './StyleEntry.jsx';
-import local from '../../styles/Overview.css';
+import local from '../../styles/Overview/Styles.css';
 
 function Styles({
   currentStyles, currentStyle, setStyle,

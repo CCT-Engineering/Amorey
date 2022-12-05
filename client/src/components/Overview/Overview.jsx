@@ -5,7 +5,7 @@ import Styles from './Styles.jsx';
 import Cart from './Cart.jsx';
 import ProductDesc from './ProductDesc.jsx';
 // import testData from '../../testData.jsx';
-import local from '../../styles/Overview.css';
+import local from '../../styles/Overview/Overview.css';
 import requests from '../../requests.js';
 
 function Overview({ current }) {
