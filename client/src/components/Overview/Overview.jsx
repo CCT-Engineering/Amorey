@@ -11,8 +11,8 @@ import requests from '../../requests.js';
 const Overview = ({current}) => {
 
   const [currentStyles, setCurrentStyles] = useState([]);
-  const [currentStyle, setCurrentStyle] = useState();
-  const [price, setPrice] = useState(1);
+  const [currentStyle, setCurrentStyle] = useState({});
+  const [price, setPrice] = useState(current.default_price);
   const [onSale, setOnSale] = useState(false);
 
   useEffect(() => {
@@ -20,7 +20,11 @@ const Overview = ({current}) => {
     if (current && current.id) {
       requests.getStyles(current.id, (data) => {
         setCurrentStyles(data.results);
+        let style = data.results[0];
         setCurrentStyle(data.results[0]);
+        let styleOnSale = !!style.sale_price;
+        setOnSale(styleOnSale);
+        setPrice(styleOnSale ? style.sale_price : style.original_price);
       });
     }
   }, [current]);
@@ -29,7 +33,8 @@ const Overview = ({current}) => {
     currentStyles.forEach(style => {
       if (style.style_id === style_id) {
         setCurrentStyle(style);
-        setPrice(style.original_price)
+        setOnSale(style.sale_price ? true : false);
+        setPrice(style.sale_price ? style.sale_price : style.original_price);
       }
     })
   }
@@ -39,7 +44,11 @@ const Overview = ({current}) => {
       <div className={local.overviewMain}>
         <Gallery />
         <div className={local.infoStylesCart}>
-          <ProductInfo current={current} />
+          <ProductInfo
+            current={current}
+            price={price}
+            origPrice={currentStyle.original_price}
+            onSale={onSale} />
           <Styles
             currentStyles={currentStyles}
             currentStyle={currentStyle}

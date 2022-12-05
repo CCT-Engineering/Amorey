@@ -14,7 +14,7 @@ const App = () => {
 
   useEffect(() => {
     requests.getProducts((data) => {
-      getData(data[0].id)
+      getData(data[0].id);
     });
   }, []);
 
