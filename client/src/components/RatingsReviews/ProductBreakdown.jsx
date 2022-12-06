@@ -24,10 +24,6 @@ const renderDetail = (item, index, detail) => {
   return (
     <div key={index}>
       <div className={local.characteristic}>{item}</div>
-      {/* <div className={local.characteristicGraph}>
-        {Number(detail.value).toFixed(1)}
-        out of 5
-      </div> */}
       <div className={local.graph}>
         <div className={local.barDimensions}>
           <div className={local.barDisplay} style={{ width: `${Number(detail.value) * 20}%` }} />

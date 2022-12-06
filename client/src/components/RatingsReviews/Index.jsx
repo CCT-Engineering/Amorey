@@ -4,16 +4,23 @@ import Sorting from './Sorting.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import requests from '../../requests.js';
-import local from '../../styles/RatingsReviews/index.css';
+import local from '../../styles/RatingsReviews/Index.css';
 
 const Index = ({ currentId, metadata, stars }) => {
   const [reviews, setReviews] = useState([]);
-  const [sort, setSort] = useState([1, 1, 1, 1, 1]);
+  // const [filter, setFilter] = useState(false);
+  const [sort, setSort] = useState([0, 0, 0, 0, 0]);
 
   const renderReviews = (sortMethod = 'relevant') => {
     requests.getReviews(currentId, sortMethod, (data) => {
       setReviews(data.results);
     });
+  };
+
+  const filterSearch = (starCount) => {
+    const temp = sort.slice();
+    temp[starCount - 1] = !temp[starCount - 1];
+    setSort(temp);
   };
 
   useEffect(() => renderReviews(), []);
@@ -24,7 +31,7 @@ const Index = ({ currentId, metadata, stars }) => {
       <div className={local.ratingsReviewsMain}>
         <div className={local.ratings}>
           {metadata.product_id && <div>
-          <RatingBreakdown ratings={metadata.ratings} recommend={metadata.recommended} stars={stars} sort={setSort}/>
+          <RatingBreakdown ratings={metadata.ratings} recommend={metadata.recommended} stars={stars} filter={filterSearch} sort={sort}/>
           <ProductBreakdown details={metadata.characteristics}/>
           </div>}
         </div>
