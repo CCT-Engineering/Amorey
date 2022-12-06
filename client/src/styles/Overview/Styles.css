@@ -1,0 +1,13 @@
+.styles {
+  display: flex;
+  max-width: 281px;
+  flex-wrap: wrap;
+}
+
+.styleHead {
+  text-transform: uppercase;
+}
+
+.styleTitle {
+  font-weight: bold;
+}

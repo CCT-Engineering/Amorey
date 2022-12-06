@@ -4,6 +4,14 @@ const buildHandleEnterKeyPress = (onClick) => (e) => {
   }
 };
 
-const placeholderFunc = () => {};
+// Arrow key presses cannot be detected by onKeyPress.
+// Instead, they are detected by onKeyDown.
+const buildHandleKeyDown = (onClick, keys = []) => (e) => {
+  keys.forEach((key) => {
+    if (e.key === key) {
+      onClick(e);
+    }
+  });
+};
 
-export { buildHandleEnterKeyPress, placeholderFunc };
+export { buildHandleEnterKeyPress, buildHandleKeyDown };

@@ -1,0 +1,13 @@
+.overview {
+  display: block;
+}
+
+.overviewMain {
+  justify-content: center;
+  display: flex;
+  margin: auto;
+}
+
+.infoStylesCart {
+  /* width: 35%; */
+}
