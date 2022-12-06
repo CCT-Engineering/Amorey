@@ -1,8 +1,10 @@
 import React from 'react';
-import local from '../../styles/RatingsReviews/RatingBreakdown.css';
 import { buildHandleEnterKeyPress } from '../../util';
+import local from '../../styles/RatingsReviews/RatingBreakdown.css';
 
-const RatingBreakdown = ({ ratings, recommend, stars, filter, sort }) => {
+const RatingBreakdown = ({
+  ratings, recommend, stars, filter, sort,
+}) => {
   const handleClick = (index) => {
     event.preventDefault();
     filter(index);

@@ -20,7 +20,6 @@ const renderGraphRatings = (item) => {
 };
 
 const renderDetail = (item, index, detail) => {
-  console.log(Number(detail.value).toFixed(1));
   return (
     <div key={index}>
       <div className={local.characteristic}>{item}</div>

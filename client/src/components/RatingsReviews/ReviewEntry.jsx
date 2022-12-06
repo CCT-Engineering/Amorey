@@ -1,4 +1,5 @@
 import React from 'react';
+import { buildHandleEnterKeyPress } from '../../util';
 import local from '../../styles/RatingsReviews/ReviewEntry.css';
 
 const formatDate = (date) => {
@@ -59,14 +60,36 @@ const ReviewEntry = ({ review }) => {
         {review.recommend && '✓ I recommend this product'}
       </div>
       <div className={local.response}>
-        {review.response && 'Response:\n' + review.response}
+        {review.response && (
+          <div>
+            Response:
+            <div>{review.response}</div>
+          </div>
+        )}
       </div>
       <div className={local.footer}>
         Helpful?
-        <a className={local.helpful} onClick={handleClick}>YES</a>
-        ({review.helpfulness})
-        |
-        <a className={local.report} onClick={handleClick}>Report</a>
+        <a
+          role="button"
+          tabIndex={0}
+          className={local.helpful}
+          onClick={handleClick}
+          onKeyPress={buildHandleEnterKeyPress(handleClick)}
+        >
+          YES
+        </a>
+        (
+        {review.helpfulness}
+        )|
+        <a
+          role="button"
+          tabIndex={0}
+          className={local.report}
+          onClick={handleClick}
+          onKeyPress={buildHandleEnterKeyPress(handleClick)}
+        >
+          Report
+        </a>
       </div>
     </div>
   );

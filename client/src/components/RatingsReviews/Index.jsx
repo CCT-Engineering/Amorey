@@ -8,8 +8,8 @@ import local from '../../styles/RatingsReviews/Index.css';
 
 const Index = ({ currentId, metadata, stars }) => {
   const [reviews, setReviews] = useState([]);
-  // const [filter, setFilter] = useState(false);
-  const [sort, setSort] = useState([0, 0, 0, 0, 0]);
+
+  const [sort, setSort] = useState([1, 1, 1, 1, 1]);
 
   const renderReviews = (sortMethod = 'relevant') => {
     requests.getReviews(currentId, sortMethod, (data) => {
@@ -30,16 +30,26 @@ const Index = ({ currentId, metadata, stars }) => {
       <h5 className={local.header}>RATINGS & REVIEWS</h5>
       <div className={local.ratingsReviewsMain}>
         <div className={local.ratings}>
-          {metadata.product_id && <div>
-          <RatingBreakdown ratings={metadata.ratings} recommend={metadata.recommended} stars={stars} filter={filterSearch} sort={sort}/>
-          <ProductBreakdown details={metadata.characteristics}/>
-          </div>}
+          {metadata.product_id && (
+            <div>
+              <RatingBreakdown
+                ratings={metadata.ratings}
+                recommend={metadata.recommended}
+                stars={stars}
+                filter={filterSearch}
+                sort={sort}
+              />
+              <ProductBreakdown details={metadata.characteristics} />
+            </div>
+          )}
         </div>
         <div className={local.reviews}>
-          {reviews.length && <div className={local.reviewMain}>
-            <Sorting reviews={reviews} changeSort={renderReviews}/>
-            <ReviewsList reviews={reviews} sort={sort}/>
-          </div>}
+          {reviews.length && (
+            <div className={local.reviewMain}>
+              <Sorting reviews={reviews} changeSort={renderReviews} />
+              <ReviewsList reviews={reviews} sort={sort} />
+            </div>
+          )}
         </div>
       </div>
     </div>
