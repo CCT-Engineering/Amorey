@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { buildHandleEnterKeyPress } from '../../util';
 import local from '../../styles/RatingsReviews/ReviewEntry.css';
 
@@ -36,9 +36,16 @@ const formatDate = (date) => {
 };
 
 const ReviewEntry = ({ review, update }) => {
+  const [expand, setExpand] = useState(false);
+
   const handleClick = (helpful) => {
     event.preventDefault();
     update(review.review_id, helpful);
+  };
+
+  const handleExpand = () => {
+    event.preventDefault();
+    setExpand(true);
   };
 
   return (
@@ -55,7 +62,25 @@ const ReviewEntry = ({ review, update }) => {
         </span>
       </div>
       <h4 className={local.summary}>{review.summary}</h4>
-      <p>{review.body}</p>
+      {review.body.length < 250 || expand
+        ? <p className={local.body}>{review.body}</p>
+        : (
+          <div>
+            <p className={local.body}>
+              {review.body.substring(0, 250)}
+              ...
+            </p>
+            <a
+              role="button"
+              tabIndex={0}
+              className={local.expand}
+              onClick={handleExpand}
+              onKeyPress={buildHandleEnterKeyPress(handleExpand)}
+            >
+              Show more
+            </a>
+          </div>
+        )}
       <div>
         {review.recommend && '✓ I recommend this product'}
       </div>

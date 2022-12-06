@@ -22,12 +22,29 @@
   font-weight: 600;
 }
 
+.body {
+  word-wrap: break-word;
+}
+
+.expand {
+  font-weight: 600;
+  text-decoration: underline;
+  background-color: transparent;
+  border-color: transparent;
+  margin-bottom: 2%;
+}
+
+/* .expandedBody {
+  word-wrap: break-word;
+} */
+
 .response {
   background-color: orangered;
 }
 
 .footer {
   margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .helpful {
