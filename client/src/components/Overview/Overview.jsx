@@ -13,6 +13,7 @@ function Overview({ current }) {
   const [currentStyle, setCurrentStyle] = useState({});
   const [price, setPrice] = useState(current.default_price);
   const [onSale, setOnSale] = useState(false);
+  const [photoIndex, setPhotoIndex] = useState(0);
 
   useEffect(() => {
     if (current && current.id) {
@@ -31,8 +32,12 @@ function Overview({ current }) {
     currentStyles.forEach((style) => {
       if (style.style_id === styleId) {
         setCurrentStyle(style);
-        setOnSale(!!style.sale_price);
-        setPrice(style.sale_price ? style.sale_price : style.original_price);
+        const styleOnSale = !!style.sale_price;
+        setOnSale(styleOnSale);
+        setPrice(styleOnSale ? style.sale_price : style.original_price);
+        setPhotoIndex(
+          style.photos[photoIndex] ? photoIndex : 0,
+        );
       }
     });
   };
@@ -40,7 +45,10 @@ function Overview({ current }) {
   return (
     <div className={local.overview}>
       <div className={local.overviewMain}>
-        <Gallery />
+        <Gallery
+          photoIndex={photoIndex}
+          setPhotoIndex={setPhotoIndex}
+        />
         <div className={local.infoStylesCart}>
           <ProductInfo
             current={current}
