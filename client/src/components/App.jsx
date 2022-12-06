@@ -48,6 +48,6 @@ function App() {
       {current.id && <RatingsReviews currentId={current.id} metadata={metadata} stars={stars} />}
     </div>
   );
-};
+}
 
 export default App;

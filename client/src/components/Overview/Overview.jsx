@@ -10,7 +10,7 @@ import requests from '../../requests.js';
 
 function Overview({ current }) {
   const [currentStyles, setCurrentStyles] = useState([]);
-  const [currentStyle, setCurrentStyle] = useState({});
+  const [currentStyle, setCurrentStyle] = useState({ photos: [] });
   const [price, setPrice] = useState(current.default_price);
   const [onSale, setOnSale] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
@@ -46,6 +46,8 @@ function Overview({ current }) {
     <div className={local.overview}>
       <div className={local.overviewMain}>
         <Gallery
+          name={currentStyle.name}
+          photos={currentStyle.photos}
           photoIndex={photoIndex}
           setPhotoIndex={setPhotoIndex}
         />

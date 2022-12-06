@@ -28,8 +28,9 @@ module.exports = {
 
     // allow arrow functions
     'arrow-body-style': 'off',
+
     // allow react component as return for function
-    'react/function-component-definition': 'off',
+    // 'react/function-component-definition': 'off', // CHAD TO UNCOMMENT BEFORE PUSHING
 
     // related to button click on non-button html element
     // 'jsx-a11y/no-static-element-interactions': 'off',
