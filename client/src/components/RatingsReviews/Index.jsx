@@ -8,7 +8,6 @@ import local from '../../styles/RatingsReviews/Index.css';
 
 const Index = ({ currentId, metadata, stars }) => {
   const [reviews, setReviews] = useState([]);
-
   const [sort, setSort] = useState([1, 1, 1, 1, 1]);
 
   const renderReviews = (sortMethod = 'relevant') => {
@@ -21,6 +20,18 @@ const Index = ({ currentId, metadata, stars }) => {
     const temp = sort.slice();
     temp[starCount - 1] = !temp[starCount - 1];
     setSort(temp);
+  };
+
+  const updateReview = (review, helpful) => {
+    if (helpful) {
+      requests.putHelpful(review, () => {
+        renderReviews();
+      });
+    } else {
+      requests.putReport(review, () => {
+        renderReviews();
+      });
+    }
   };
 
   useEffect(() => renderReviews(), []);
@@ -47,7 +58,7 @@ const Index = ({ currentId, metadata, stars }) => {
           {reviews.length && (
             <div className={local.reviewMain}>
               <Sorting reviews={reviews} changeSort={renderReviews} />
-              <ReviewsList reviews={reviews} sort={sort} />
+              <ReviewsList reviews={reviews} sort={sort} update={updateReview} />
             </div>
           )}
         </div>

@@ -35,10 +35,10 @@ const formatDate = (date) => {
   return string;
 };
 
-const ReviewEntry = ({ review }) => {
-  const handleClick = () => {
+const ReviewEntry = ({ review, update }) => {
+  const handleClick = (helpful) => {
     event.preventDefault();
-    console.log('hi Jake');
+    update(review.review_id, helpful);
   };
 
   return (
@@ -73,8 +73,8 @@ const ReviewEntry = ({ review }) => {
           role="button"
           tabIndex={0}
           className={local.helpful}
-          onClick={handleClick}
-          onKeyPress={buildHandleEnterKeyPress(handleClick)}
+          onClick={() => handleClick(true)}
+          onKeyPress={buildHandleEnterKeyPress(() => handleClick(true))}
         >
           YES
         </a>
@@ -85,8 +85,8 @@ const ReviewEntry = ({ review }) => {
           role="button"
           tabIndex={0}
           className={local.report}
-          onClick={handleClick}
-          onKeyPress={buildHandleEnterKeyPress(handleClick)}
+          onClick={() => handleClick(false)}
+          onKeyPress={buildHandleEnterKeyPress(() => handleClick(false))}
         >
           Report
         </a>
