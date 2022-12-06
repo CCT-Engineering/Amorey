@@ -1,0 +1,14 @@
+.loadReviews {
+  background-color: red;
+  font-weight: 600;
+  margin-top: 2%;
+  margin-right: 2%;
+  padding: 15px;
+}
+
+.addReview {
+  background-color:red;
+  font-weight: 600;
+  margin-top: 2%;
+  padding: 15px;
+}

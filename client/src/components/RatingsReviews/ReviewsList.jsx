@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import ReviewEntry from './ReviewEntry.jsx';
-import WriteNewReview from './WriteNewReview.jsx';
-import local from '../../styles/RatingsReviews.css';
+// import WriteNewReview from './WriteNewReview.jsx';
+import local from '../../styles/RatingsReviews/ReviewList.css';
 
-const ReviewsList = ({ reviews, sort }) => {
+const ReviewsList = ({ reviews, sort, update }) => {
   const [renderLimit, setRenderLimit] = useState(2);
   let renderAmount = 0;
 
@@ -21,18 +21,18 @@ const ReviewsList = ({ reviews, sort }) => {
   const renderReviewEntries = (review, index) => {
     if (renderAmount < renderLimit) {
       if (sort[review.rating - 1]) {
-        renderAmount++;
-        return <ReviewEntry review={review} key={index} />;
+        renderAmount += 1;
+        return <ReviewEntry review={review} key={index} update={update} />;
       }
     }
     return null;
   };
 
   return (
-    <div className={local.reviewList}>
+    <div>
       {reviews && reviews.map((review, index) => renderReviewEntries(review, index))}
-      <button className={local.reviewButton1} type="button" onClick={loadMoreEntries}>MORE REVIEWS</button>
-      <button className={local.reviewButton2} type="button">ADD A REVIEW +</button>
+      <button className={local.loadReviews} type="button" onClick={loadMoreEntries}>MORE REVIEWS</button>
+      <button className={local.addReview} type="button">ADD A REVIEW +</button>
     </div>
   );
 };

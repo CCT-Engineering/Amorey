@@ -1,5 +1,5 @@
 import React from 'react';
-import local from '../../styles/RatingsReviews.css';
+import local from '../../styles/RatingsReviews/Sorting.css';
 
 const Sorting = ({ reviews, changeSort }) => {
   const handleClick = () => {

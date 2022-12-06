@@ -1,5 +1,5 @@
 import React from 'react';
-import local from '../../styles/RatingsReviews.css';
+import local from '../../styles/RatingsReviews/ProductBreakdown.css';
 
 const renderGraphRatings = (item) => {
   let string = '';
@@ -22,12 +22,13 @@ const renderGraphRatings = (item) => {
 const renderDetail = (item, index, detail) => {
   return (
     <div key={index}>
-      <div className={local.characteristicName}>{item}</div>
-      <div className={local.characteristicGraph}>
-        {Number(detail.value).toFixed(1)}
-        out of 5
+      <div className={local.characteristic}>{item}</div>
+      <div className={local.graph}>
+        <div className={local.barDimensions}>
+          <div className={local.barDisplay} style={{ width: `${Number(detail.value) * 20}%` }} />
+        </div>
       </div>
-      <div className={local.characteristicDetail}>
+      <div className={local.ratings}>
         {renderGraphRatings(item)}
       </div>
     </div>
@@ -36,7 +37,7 @@ const renderDetail = (item, index, detail) => {
 
 const ProductBreakdown = ({ details }) => {
   return (
-    <div className={local.characteristicMain}>
+    <div className={local.main}>
       {Object.keys(details).map((item, index) => renderDetail(item, index, details[item]))}
     </div>
   );

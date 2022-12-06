@@ -16,20 +16,20 @@ function App() {
     let totalStars = 0;
     let ratingsCount = 0;
 
-    for (const key in ratings) {
+    Object.keys(ratings).forEach((key) => {
       totalStars += key * ratings[key];
       ratingsCount += Number(ratings[key]);
-    }
+    });
     const average = totalStars / ratingsCount;
-    return (Math.round(average * 4) / 4).toFixed(2)
+    return (Math.round(average * 4) / 4).toFixed(2);
   };
 
   const getData = (id) => {
     requests.getProductInfo(id, (data) => {
       setCurrent(data);
-      requests.getMetadata(id, (data) => {
-        setMetadata(data);
-        setStars(calculateAverageStars(data.ratings))
+      requests.getMetadata(id, (metrics) => {
+        setMetadata(metrics);
+        setStars(calculateAverageStars(metrics.ratings));
       });
     });
   };
@@ -45,9 +45,9 @@ function App() {
       <h1 className={global.h1}>Atelier</h1>
       <Overview current={current} />
       <RelatedOutfit />
-      {current.id ? <RatingsReviews currentId={current.id} metadata={metadata} stars={stars}/> : <div></div>}
+      {current.id && <RatingsReviews currentId={current.id} metadata={metadata} stars={stars} />}
     </div>
   );
-}
+};
 
 export default App;
