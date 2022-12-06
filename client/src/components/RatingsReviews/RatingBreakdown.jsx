@@ -26,7 +26,7 @@ const RatingBreakdown = ({
       >
         <div
           className={local.graphDisplay}
-          style={{ width: `${percent}%`, border: sort[starCount - 1] ? 'solid 1px red' : '' }}
+          style={{ width: `${percent}%`, border: sort[starCount - 1] ? 'solid 1px gold' : '' }}
         />
       </div>
     );

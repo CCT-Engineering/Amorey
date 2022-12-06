@@ -15,14 +15,14 @@
 }
 
 .starDimensions {
-  background-color: mediumaquamarine;
+  background-color: lightgray;
   height: 15px;
   width: 100%;
 }
 
 .starDisplay {
   height: 15px;
-  background: yellow;
+  background: gold;
 }
 
 .recommend {
@@ -43,12 +43,16 @@
 }
 
 .graphDimensions {
-  background-color: mediumaquamarine;
+  background-color: lightgray;
   height: 10px;
   width: 100%;
 }
 
 .graphDisplay {
   height: 100%;
-  background: darkgreen;
+  background: green;
+}
+
+.graphDisplay:hover {
+  background-color:red;
 }
