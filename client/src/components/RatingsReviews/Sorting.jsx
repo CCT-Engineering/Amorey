@@ -9,8 +9,7 @@ const Sorting = ({ reviews, changeSort }) => {
   return (
     <div>
       <h4 className={local.sortMain}>
-        {reviews.length}
-        <span className={local.sortText}>reviews, sorted by</span>
+        {`${reviews.length} reviews, sorted by`}
         <select className={local.sortMethod} id="sortMethod" onChange={handleClick}>
           <option value="relevant">relevance</option>
           <option value="newest">newest</option>

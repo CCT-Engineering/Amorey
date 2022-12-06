@@ -51,25 +51,15 @@ const ReviewEntry = ({ review, update }) => {
   return (
     <div className={local.main}>
       <div className={local.header}>
-        <span className={local.rating}>
-          {review.rating}
-          ★★★★★
-        </span>
-        <span className={local.user}>
-          {review.reviewer_name}
-          ,
-          {formatDate(review.date)}
-        </span>
+        <div className={local.rating}>{`${review.rating}★★★★★`}</div>
+        <div className={local.user}>{`${review.reviewer_name}, ${formatDate(review.date)}`}</div>
       </div>
       <h4 className={local.summary}>{review.summary}</h4>
       {review.body.length < 250 || expand
         ? <p className={local.body}>{review.body}</p>
         : (
           <div>
-            <p className={local.body}>
-              {review.body.substring(0, 250)}
-              ...
-            </p>
+            <p className={local.body}>{`${review.body.substring(0, 250)}...`}</p>
             <a
               role="button"
               tabIndex={0}
@@ -103,9 +93,7 @@ const ReviewEntry = ({ review, update }) => {
         >
           YES
         </a>
-        (
-        {review.helpfulness}
-        )|
+        {`(${review.helpfulness}) | `}
         <a
           role="button"
           tabIndex={0}

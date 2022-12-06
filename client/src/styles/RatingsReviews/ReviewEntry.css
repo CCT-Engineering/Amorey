@@ -34,10 +34,6 @@
   margin-bottom: 2%;
 }
 
-/* .expandedBody {
-  word-wrap: break-word;
-} */
-
 .response {
   background-color: orangered;
 }
@@ -55,5 +51,4 @@
 
 .report {
   text-decoration: underline;
-  margin-left: 2%;
 }
