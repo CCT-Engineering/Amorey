@@ -1,5 +1,6 @@
 import React from 'react';
-import local from '../../styles/RatingsReviews.css';
+import { buildHandleEnterKeyPress } from '../../util';
+import local from '../../styles/RatingsReviews/ReviewEntry.css';
 
 const formatDate = (date) => {
   const year = date.substring(0, 4);
@@ -34,39 +35,61 @@ const formatDate = (date) => {
   return string;
 };
 
-const ReviewEntry = ({ review }) => {
-  const handleClick = () => {
+const ReviewEntry = ({ review, update }) => {
+  const handleClick = (helpful) => {
     event.preventDefault();
-    console.log('hi Jake');
+    update(review.review_id, helpful);
   };
 
   return (
-    <div className={local.reviewEntry}>
-      <div className={local.reviewHeader}>
-        <span className={local.reviewRating}>
+    <div className={local.main}>
+      <div className={local.header}>
+        <span className={local.rating}>
           {review.rating}
           ★★★★★
         </span>
-        <span className={local.reviewUser}>
+        <span className={local.user}>
           {review.reviewer_name}
           ,
           {formatDate(review.date)}
         </span>
       </div>
-      <h4 className={local.reviewSummary}>{review.summary}</h4>
-      <p className={local.reviewBody}>{review.body}</p>
-      <div className={local.reviewRecommend}>
+      <h4 className={local.summary}>{review.summary}</h4>
+      <p>{review.body}</p>
+      <div>
         {review.recommend && '✓ I recommend this product'}
       </div>
-      <div className={local.reviewRecommend}>
-        {review.response && 'Response:\n' + review.response}
+      <div className={local.response}>
+        {review.response && (
+          <div>
+            Response:
+            <div>{review.response}</div>
+          </div>
+        )}
       </div>
-      <div className={local.reviewOptions}>
+      <div className={local.footer}>
         Helpful?
-        <a className={local.reviewHelpful} onClick={handleClick}>YES</a>
+        <a
+          role="button"
+          tabIndex={0}
+          className={local.helpful}
+          onClick={() => handleClick(true)}
+          onKeyPress={buildHandleEnterKeyPress(() => handleClick(true))}
+        >
+          YES
+        </a>
+        (
         {review.helpfulness}
-        |
-        <a className={local.reviewReport} onClick={handleClick}>Report</a>
+        )|
+        <a
+          role="button"
+          tabIndex={0}
+          className={local.report}
+          onClick={() => handleClick(false)}
+          onKeyPress={buildHandleEnterKeyPress(() => handleClick(false))}
+        >
+          Report
+        </a>
       </div>
     </div>
   );

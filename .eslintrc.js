@@ -28,8 +28,7 @@ module.exports = {
 
     // allow arrow functions
     'arrow-body-style': 'off',
-
-    // allow react compnent as return for function
+    // allow react component as return for function
     'react/function-component-definition': 'off',
 
     // related to button click on non-button html element

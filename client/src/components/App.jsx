@@ -12,42 +12,42 @@ const App = () => {
   const [favorites, setFavorites] = useState([]);
   const [stars, setStars] = useState(5);
 
+  const calculateAverageStars = (ratings) => {
+    let totalStars = 0;
+    let ratingsCount = 0;
+
+    Object.keys(ratings).forEach((key) => {
+      totalStars += key * ratings[key];
+      ratingsCount += Number(ratings[key]);
+    });
+    const average = totalStars / ratingsCount;
+    return (Math.round(average * 4) / 4).toFixed(2);
+  };
+
+  const getData = (id) => {
+    requests.getProductInfo(id, (data) => {
+      setCurrent(data);
+      requests.getMetadata(id, (metrics) => {
+        setMetadata(metrics);
+        setStars(calculateAverageStars(metrics.ratings));
+      });
+    });
+  };
+
   useEffect(() => {
     requests.getProducts((data) => {
       getData(data[0].id);
     });
   }, []);
 
-  const getData = (id) => {
-    requests.getProductInfo(id, (data) => {
-      setCurrent(data);
-      requests.getMetadata(id, (data) => {
-        setMetadata(data);
-        setStars(calculateAverageStars(data.ratings))
-      });
-    });
-  };
-
-  const calculateAverageStars = (ratings) => {
-    let totalStars = 0
-    let ratingsCount = 0;
-
-    for (const key in ratings) {
-      totalStars += key * ratings[key];
-      ratingsCount += Number(ratings[key]);
-    }
-    const average = totalStars / ratingsCount;
-    return (Math.round(average * 4) / 4).toFixed(2)
-  };
-
   return (
     <div>
       <h1>Atelier</h1>
       <Overview current={current} />
-      <RelatedOutfit/>
-      {current.id ? <RatingsReviews currentId={current.id} metadata={metadata} stars={stars}/> : <div></div>}
+      <RelatedOutfit />
+      {current.id && <RatingsReviews currentId={current.id} metadata={metadata} stars={stars} />}
     </div>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,39 @@
+.main {
+  background-color: deepskyblue;
+}
+
+.characteristic{
+  margin-bottom: 2%;
+}
+
+.ratings {
+  font-size: smaller;
+  margin-bottom: 6%;
+}
+
+.graph {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+.graphText {
+  display: inline-block;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.barDimensions {
+  background-color: cadetblue;
+  height: 10px;
+  width: 100%;
+  position: relative;
+}
+
+.barDisplay {
+  align-self: center;
+  height: 100%;
+  background: darkcyan;
+}

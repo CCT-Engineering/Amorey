@@ -1,0 +1,27 @@
+.ratingsReviews {
+  background:lightblue;
+}
+
+.header {
+  margin-top: 50px;
+}
+
+.ratingsReviewsMain {
+  display: flex;
+  width: 100%;
+  margin: auto;
+}
+
+.ratings {
+  width: 30%;
+}
+
+.reviews {
+  width: 70%;
+}
+
+.reviewMain {
+  display: block;
+  margin-left: 5%;
+  background-color:lightsalmon;
+}

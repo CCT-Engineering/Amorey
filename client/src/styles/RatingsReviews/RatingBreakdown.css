@@ -1,0 +1,54 @@
+.ratingMain {
+  margin-bottom: 5%;
+  background-color: lightgreen;
+}
+
+.starHeader {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.starRating {
+  font-size: xx-large;
+  width: 40%;
+}
+
+.starDimensions {
+  background-color: mediumaquamarine;
+  height: 15px;
+  width: 100%;
+}
+
+.starDisplay {
+  height: 15px;
+  background: yellow;
+}
+
+.recommend {
+  font-size: smaller;
+  margin-bottom: 5%;
+}
+
+.graph {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.graphText {
+  display: inline-block;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+
+.graphDimensions {
+  background-color: mediumaquamarine;
+  height: 10px;
+  width: 100%;
+}
+
+.graphDisplay {
+  height: 100%;
+  background: darkgreen;
+}
