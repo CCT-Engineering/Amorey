@@ -1,0 +1,7 @@
+.productInfo {
+  display: block;
+}
+
+.oldPrice {
+  text-decoration: line-through;
+}
