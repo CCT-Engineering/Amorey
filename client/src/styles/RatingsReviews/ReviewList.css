@@ -1,3 +1,13 @@
+.reviewList {
+  background-color: red;
+  font-weight: 600;
+  margin-top: 2%;
+  margin-right: 2%;
+  padding: 15px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
 .loadReviews {
   background-color: red;
   font-weight: 600;

@@ -30,7 +30,9 @@ const ReviewsList = ({ reviews, sort, update }) => {
 
   return (
     <div>
-      {reviews && reviews.map((review, index) => renderReviewEntries(review, index))}
+      <div className={local.reviewList}>
+        {reviews && reviews.map((review, index) => renderReviewEntries(review, index))}
+      </div>
       {reviews.length > 2 && renderAmount < reviews.length && (
         <button className={local.loadReviews} type="button" onClick={loadMoreEntries}>MORE REVIEWS</button>)}
       <button className={local.addReview} type="button">ADD A REVIEW +</button>
