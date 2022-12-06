@@ -13,8 +13,6 @@ const ReviewsList = ({ reviews, sort, update }) => {
       setRenderLimit(renderLimit + 2);
     } else if (renderLimit < reviews.length) {
       setRenderLimit(reviews.length);
-    } else {
-      console.log('Showing All Reviews');
     }
   };
 
@@ -35,7 +33,7 @@ const ReviewsList = ({ reviews, sort, update }) => {
         {!reviews.length && <div>Be the first to review this product!</div>}
       </div>
       {reviews.length > 2 && renderAmount < reviews.length && (
-        <button className={local.loadReviews} type="button" onClick={loadMoreEntries}>MORE REVIEWS</button>)}
+        <button className={local.moreReviews} type="button" onClick={loadMoreEntries}>MORE REVIEWS</button>)}
       <button className={local.addReview} type="button">ADD A REVIEW +</button>
     </div>
   );

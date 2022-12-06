@@ -1,5 +1,12 @@
 .sortMain {
   background-color: tomato;
+  font-family: "Tahoma", sans-serif;
+  font-weight: 800;
+  font-size: medium;
+}
+
+.sortText {
+  margin-left: .5%;
 }
 
 .sortMethod {
