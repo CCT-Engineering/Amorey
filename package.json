@@ -7,7 +7,8 @@
     "start": "npm run client-dev & npm run server-dev & live-server --open=./client/dist/index.html; fg",
     "from-server": "npm run client-dev & npm run server-dev & open http://localhost:3300; fg",
     "client-dev": "webpack --config ./webpack.config.js  -w",
-    "server-dev": "nodemon server/index.js"
+    "server-dev": "nodemon server/index.js",
+    "test": "react-scripts test"
   },
   "repository": {
     "type": "git",
@@ -20,12 +21,16 @@
   },
   "homepage": "https://github.com/CCT-Engineering/Atelier#readme",
   "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "axios": "^1.2.0",
     "dotenv": "^16.0.3",
     "live-server": "^1.2.2",
     "morgan": "^1.10.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
