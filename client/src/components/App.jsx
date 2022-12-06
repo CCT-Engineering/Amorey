@@ -36,7 +36,7 @@ const App = () => {
 
   useEffect(() => {
     requests.getProducts((data) => {
-      getData(data[0].id);
+      getData(data[4].id);
     });
   }, []);
 
@@ -44,7 +44,7 @@ const App = () => {
     <div>
       <h1>Atelier</h1>
       <Overview current={current} />
-      <RelatedOutfit />
+      {/* <RelatedOutfit /> */}
       {current.id && <RatingsReviews currentId={current.id} metadata={metadata} stars={stars} />}
     </div>
   );
