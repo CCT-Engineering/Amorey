@@ -1,4 +1,11 @@
-.loadReviews {
+.reviewList {
+  margin-top: 2%;
+  padding: 15px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.moreReviews {
   background-color: red;
   font-weight: 600;
   margin-top: 2%;

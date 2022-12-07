@@ -1,15 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Overview from './Overview/Overview.jsx';
 import RelatedOutfit from './RelatedOutfit/Index.jsx';
 import RatingsReviews from './RatingsReviews/Index.jsx';
 import requests from '../requests.js';
-import testData from '../testData.jsx';
+// import testData from '../testData.jsx'; // uncomment if needed
 import global from '../styles/global.css'; // Applies global styles to entire App (not just App.jsx)
 
-const App = () => {
-  const [current, setCurrent] = useState({});
+function App() {
+  const [current, setCurrent] = useState({ features: [] });
   const [metadata, setMetadata] = useState([]);
-  const [favorites, setFavorites] = useState([]);
+  // const [favorites, setFavorites] = useState([]); // uncomment once used
   const [stars, setStars] = useState(5);
 
   const calculateAverageStars = (ratings) => {
@@ -41,15 +41,15 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Atelier</h1>
+    <>
+      <h1 className={global.h1}>Atelier</h1>
       <Overview current={current} />
       {current && (
       <RelatedOutfit current={current} favorites={favorites} setFavorites={setFavorites} />
       )}
       {current.id && <RatingsReviews currentId={current.id} metadata={metadata} stars={stars} />}
-    </div>
+    </>
   );
-};
+}
 
 export default App;

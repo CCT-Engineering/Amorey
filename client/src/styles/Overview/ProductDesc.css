@@ -1,0 +1,57 @@
+.productDesc {
+  display: flex;
+  padding-top: 20px;
+  width: 90%;
+  margin: auto;
+}
+
+.sloganDesc {
+  display: block;
+  width: 65%;
+  padding-right: 10px;
+}
+
+.desc {
+  margin-top: 10px;
+}
+
+.dividerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 2px;
+}
+
+.divider {
+  background: #666;
+  height: 75%;
+}
+
+.features {
+  margin: auto;
+  display: block;
+  width: calc(35% - 3px);
+}
+
+.featuresContainer {
+  display: flex;
+  min-width: fit-content;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 1.0px;
+  width: 100%;
+}
+
+.featureName {
+  font-style: italic;
+  font-weight: 600;
+  text-align: right;
+}
+
+.featureVal {
+  display: block;
+}
+
+.featureDivider {
+  display: block;
+}

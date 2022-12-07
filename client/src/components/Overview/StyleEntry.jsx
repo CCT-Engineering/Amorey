@@ -1,5 +1,5 @@
 import React from 'react';
-import local from '../../styles/Overview.css';
+import local from '../../styles/Overview/StyleEntry.css';
 import { buildHandleEnterKeyPress } from '../../util';
 
 function StyleEntry({
@@ -21,7 +21,8 @@ function StyleEntry({
       className={local.style}
       style={divStyle}
       onClick={handleClick}
-      onKeyPress={buildHandleEnterKeyPress(handleClick)}>
+      onKeyPress={buildHandleEnterKeyPress(handleClick)}
+    >
       {id === currentStyle.style_id ? '✓' : ''}
     </div>
   );
