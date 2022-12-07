@@ -3,6 +3,8 @@ import local from '../../styles/Overview/Gallery.css';
 import Thumb from './Thumb.jsx';
 import { buildHandleEnterKeyPress, buildHandleKeyDown } from '../../util';
 
+// photoIndex prop is the index of the photo currently shown in main view.
+
 function Gallery({
   name, photos, photoIndex, setPhotoIndex,
 }) {
@@ -62,7 +64,5 @@ function Gallery({
     </div>
   );
 }
-
-// https://images.unsplash.com/photo-1534011546717-407bced4d25c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80
 
 export default Gallery;

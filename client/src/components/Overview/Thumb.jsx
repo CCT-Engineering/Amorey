@@ -2,6 +2,8 @@ import React from 'react';
 import local from '../../styles/Overview/Thumb.css';
 import { buildHandleEnterKeyPress } from '../../util';
 
+// photoIndex prop is the index of the photo currently shown in main view.
+
 function Thumb({
   name, id, thumbUrl, setPhotoIndex,
 }) {
@@ -12,7 +14,6 @@ function Thumb({
 
   const handleClick = (e) => {
     e.preventDefault();
-    // fix below - needs to switch to different index
     setPhotoIndex(id);
   };
 

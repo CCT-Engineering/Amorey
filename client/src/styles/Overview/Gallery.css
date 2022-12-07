@@ -17,13 +17,19 @@
 
 .galleryThumbs {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: column;
   position: absolute;
   top: 5px;
   left: 5px;
-  width: 45px;
-  height: 400px;
+  height: 200px;
+  overflow: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.galleryThumbs::-webkit-scrollbar {
+  display: none;
 }
 
 .left {
