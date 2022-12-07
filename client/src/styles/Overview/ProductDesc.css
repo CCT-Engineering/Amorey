@@ -6,3 +6,7 @@
 .sloganDesc {
   display: block;
 }
+
+.desc {
+  margin: 10px 0;
+}

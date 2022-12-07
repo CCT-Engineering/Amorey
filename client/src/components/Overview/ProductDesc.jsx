@@ -6,6 +6,7 @@ function ProductDesc({ current }) {
     <div className={local.productDesc}>
       <div className={local.sloganDesc}>
         <h4>{current.slogan}</h4>
+        <p className={local.desc}>{current.description}</p>
       </div>
     </div>
   );
