@@ -1,22 +1,11 @@
 import React from 'react';
-// import photo from '/Users/thomas/HackReactor/FEC/Atelier/client/assets/star.png';
-// /Users/thomas/HackReactor/FEC/Atelier/client/assets/star.png
+import StarDisplay from '../SharedComponents/starDisplay.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 import local from '../../styles/RatingsReviews/RatingBreakdown.css';
 
 const RatingBreakdown = ({
   ratings, recommend, stars, filter, sort,
 }) => {
-  const renderStars = () => {
-    return (
-      <div className={local.starContainer}>
-        <div className={local.starFill} style={{ width: `${stars * 20}%` }}>
-          <div className={local.starOutline}>★★★★★</div>
-        </div>
-      </div>
-    );
-  };
-
   const handleClick = (index) => {
     event.preventDefault();
     filter(index);
@@ -56,7 +45,7 @@ const RatingBreakdown = ({
         <div className={local.starRating}>
           {(Math.round(stars * 4) / 4).toFixed(1)}
         </div>
-        {renderStars()}
+        <StarDisplay stars={stars} />
       </h1>
       <div className={local.recommend}>
         {recommenedPercent()}
