@@ -37,7 +37,6 @@ const RatingBreakdown = ({
     const reject = Number(recommend.false);
     return Math.floor((approve / (approve + reject)) * 100);
   };
-
   return (
     <div className={local.ratingMain}>
       <h1 className={local.starHeader}>

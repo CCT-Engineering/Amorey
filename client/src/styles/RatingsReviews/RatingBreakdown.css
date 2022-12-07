@@ -11,13 +11,13 @@
 
 .starRating {
   font-size: xx-large;
-  width: 40%;
+  margin-right: 5%;
 }
 
 .starDimensions {
   background-color: lightgray;
   height: 15px;
-  width: 100%;
+  width: 80%;
 }
 
 .starDisplay {
@@ -56,3 +56,29 @@
 .graphDisplay:hover {
   background-color:red;
 }
+
+/* .Stars {
+  --percent: calc(var(--rating) / 5 * 100%);
+
+  display: inline-block;
+  font-size: var(--star-size);
+  font-family: Times;
+  line-height: 1;
+}
+
+.Stars:before {
+  content: '★★★★★';
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.on {
+  color: #000;
+}
+
+.off {
+  color: #ccc;
+} */
