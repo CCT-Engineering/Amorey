@@ -14,7 +14,7 @@
   margin-right: 5%;
 }
 
-.starDimensions {
+/* .starDimensions {
   background-color: lightgray;
   height: 15px;
   width: 80%;
@@ -23,7 +23,7 @@
 .starDisplay {
   height: 15px;
   background: gold;
-}
+} */
 
 .recommend {
   font-size: smaller;
@@ -57,28 +57,21 @@
   background-color:red;
 }
 
-/* .Stars {
-  --percent: calc(var(--rating) / 5 * 100%);
-
-  display: inline-block;
-  font-size: var(--star-size);
-  font-family: Times;
-  line-height: 1;
+.starOutline {
+  height: 36px;
 }
 
-.Stars:before {
-  content: '★★★★★';
-  letter-spacing: 1px;
-  background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+.starFill {
+  position: relative;
+  display: inline-block;
+  height: 36px;
+  background-color: gold;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.on {
-  color: #000;
+.starContainer {
+  height: 36px;
+  display: inline-block;
 }
-
-.off {
-  color: #ccc;
-} */
