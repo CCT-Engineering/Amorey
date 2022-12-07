@@ -16,6 +16,29 @@ const ReviewEntry = ({ review, update }) => {
     setExpand(true);
   };
 
+  const renderReviewBody = () => {
+    let body = '';
+    if (review.body.length < 250 || expand) {
+      body = <p className={local.body}>{review.body}</p>;
+    } else {
+      body = (
+        <div>
+          <p className={local.body}>{`${review.body.substring(0, 250)}...`}</p>
+          <a
+            role="button"
+            tabIndex={0}
+            className={local.expand}
+            onClick={handleExpand}
+            onKeyPress={buildHandleEnterKeyPress(handleExpand)}
+          >
+            Show more
+          </a>
+        </div>
+      );
+    }
+    return body;
+  };
+
   return (
     <div className={local.main}>
       <div className={local.header}>
@@ -23,22 +46,7 @@ const ReviewEntry = ({ review, update }) => {
         <div className={local.user}>{`${review.reviewer_name}, ${date(review.date)}`}</div>
       </div>
       <h4 className={local.summary}>{review.summary}</h4>
-      {review.body.length < 250 || expand
-        ? <p className={local.body}>{review.body}</p>
-        : (
-          <div>
-            <p className={local.body}>{`${review.body.substring(0, 250)}...`}</p>
-            <a
-              role="button"
-              tabIndex={0}
-              className={local.expand}
-              onClick={handleExpand}
-              onKeyPress={buildHandleEnterKeyPress(handleExpand)}
-            >
-              Show more
-            </a>
-          </div>
-        )}
+      {renderReviewBody}
       <div>
         {review.recommend && '✓ I recommend this product'}
       </div>
