@@ -43,7 +43,7 @@ function Overview({ current }) {
   };
 
   return (
-    <div className={local.overview}>
+    <>
       <div className={local.overviewMain}>
         <Gallery
           name={currentStyle.name}
@@ -67,7 +67,7 @@ function Overview({ current }) {
         </div>
       </div>
       <ProductDesc current={current} />
-    </div>
+    </>
   );
 }
 
