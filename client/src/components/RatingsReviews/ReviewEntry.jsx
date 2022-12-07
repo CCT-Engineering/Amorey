@@ -39,10 +39,18 @@ const ReviewEntry = ({ review, update }) => {
     return body;
   };
 
+  const renderReviewStars = () => {
+    let stars = '';
+    while (stars.length < review.rating) {
+      stars += '★';
+    }
+    return stars;
+  };
+
   return (
     <div className={local.main}>
       <div className={local.header}>
-        <div className={local.rating}>{`${review.rating}★★★★★`}</div>
+        <div className={local.rating}>{`${review.rating} ${renderReviewStars()}`}</div>
         <div className={local.user}>{`${review.reviewer_name}, ${date(review.date)}`}</div>
       </div>
       <h4 className={local.summary}>{review.summary}</h4>
