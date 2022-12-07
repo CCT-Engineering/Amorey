@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import local from '../../styles/RelatedOutfit.css';
 
-const OutfitCard = ({outfitPiece, outfitArr, setOutfitArr}) => {
+const OutfitCard = ({ outfitPiece, outfitArr, setOutfitArr }) => {
   const addOutfit = (curId) => {
-    event.preventDefault()
-    let copy = outfitArr.slice()
-    curId.push(copy)
-    setOutfitArr(copy)
+    event.preventDefault();
+    let copy = outfitArr.slice();
+    curId.push(copy);
+    setOutfitArr(copy);
   }
   // axios.get('prod info by id GET /products/:product_id')
   // .then((response)=>{
@@ -21,27 +22,36 @@ const OutfitCard = ({outfitPiece, outfitArr, setOutfitArr}) => {
       {
         "feature": "Sole",
         "value": "Rubber"
-        },
+      },
       {
         "feature": "Material",
         "value": "FullControlSkin"
       },
     ],
- }
-  let info = exRC
+  }
+  let info = exRC;
   return (
-    <div>
+    <div className={local.outfitCard}>
       <div>-----Outfit Card -----</div>
       <div>click nav to detailed product page somehow</div>
-      <div>category: {info.category}</div>
-      <div>name: {info.name}</div>
-      <div>price: {info.default_price}</div>
+      <div>
+        category:
+        {info.category}
+      </div>
+      <div>
+        name:
+        {info.name}
+      </div>
+      <div>
+        price:
+        {info.default_price}
+      </div>
       <div>Star Rating: get from Thomas state</div>
       <div>img: figure out image here</div>
       <button>Delete From Outfit</button>
     </div>
   );
-// })
+  // })
 
 };
 

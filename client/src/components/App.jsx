@@ -44,7 +44,9 @@ const App = () => {
     <div>
       <h1>Atelier</h1>
       <Overview current={current} />
-      <RelatedOutfit />
+      {current && (
+      <RelatedOutfit current={current} favorites={favorites} setFavorites={setFavorites} />
+      )}
       {current.id && <RatingsReviews currentId={current.id} metadata={metadata} stars={stars} />}
     </div>
   );
