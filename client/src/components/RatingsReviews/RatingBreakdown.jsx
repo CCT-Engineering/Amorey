@@ -1,5 +1,5 @@
 import React from 'react';
-import StarDisplay from '../SharedComponents/starDisplay.jsx';
+import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 import local from '../../styles/RatingsReviews/RatingBreakdown.css';
 
