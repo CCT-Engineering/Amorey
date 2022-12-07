@@ -8,12 +8,14 @@ import { buildHandleEnterKeyPress } from '../../util';
 
 const Thumb = forwardRef((props, ref) => {
   const {
-    name, id, thumbUrl, setPhotoIndex,
+    name, id, thumbUrl, photoIndex, setPhotoIndex,
   } = props;
 
   const thumbDesc = `Thumbnail ${id} of ${name} style`;
   const divStyle = {
     backgroundImage: `url(${thumbUrl})`,
+    border: id === photoIndex ? '1px solid blue' : '1px solid #111',
+    opacity: id === photoIndex ? '1.0' : '0.7',
   };
 
   const handleClick = (e) => {

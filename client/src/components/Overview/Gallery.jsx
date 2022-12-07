@@ -22,7 +22,8 @@ function Gallery({
 
   const handleClick = (e) => {
     e.preventDefault();
-    const newPhotoIndex = photoIndex + (e.target.name === 'left' ? -1 : 1);
+    const decrButtons = ['left', 'thumbUp'];
+    const newPhotoIndex = photoIndex + (decrButtons.includes(e.target.name) ? -1 : 1);
     setPhotoIndex(newPhotoIndex);
     // scroll matching (w/ main image) thumb into view
     thumbRefs.current[newPhotoIndex].current.scrollIntoView({
@@ -30,6 +31,9 @@ function Gallery({
       block: 'nearest',
       inline: 'center',
     });
+    if (photoIndex === photoQty - 1) {
+      //
+    }
   };
 
   function buildBtn(className, btnName, onKeyDownBindings, content) {
@@ -53,22 +57,31 @@ function Gallery({
   return (
     <div className={local.gallery} style={divStyle}>
       <span role="img" aria-label={photoDesc} />
-      <div className={local.galleryThumbs}>
-        {photos.map(
-          (photo) => {
-            photoId += 1;
-            return (
-              <Thumb
-                key={photo.thumbnail_url.match(/(?<=photo-)(.+)(?=\?)/g)}
-                ref={thumbRefs.current[photoId]}
-                name={name}
-                id={photoId}
-                thumbUrl={photo.thumbnail_url}
-                setPhotoIndex={setPhotoIndex}
-              />
-            );
-          },
-        )}
+      <div className={local.gallerySide}>
+        {photoIndex > 0
+          ? buildBtn(local.thbArrow, 'thumbUp', ['ArrowUp'], '˄')
+          : <button type="button" tabIndex={0} className={local.thbArrow}>-</button>}
+        <div className={local.galleryThumbs}>
+          {photos.map(
+            (photo) => {
+              photoId += 1;
+              return (
+                <Thumb
+                  key={photo.thumbnail_url?.match(/(?<=photo-)(.+)(?=\?)/g)}
+                  ref={thumbRefs.current[photoId]}
+                  name={name}
+                  id={photoId}
+                  thumbUrl={photo.thumbnail_url}
+                  photoIndex={photoIndex}
+                  setPhotoIndex={setPhotoIndex}
+                />
+              );
+            },
+          )}
+        </div>
+        {photoIndex < photoQty - 1
+          ? buildBtn(local.thbArrow, 'thumbDn', ['ArrowDown'], '˅')
+          : <button type="button" tabIndex={0} className={local.thbArrow}>-</button>}
       </div>
       {photoIndex === 0 ? '' : buildBtn(local.left, 'left', ['ArrowLeft'], '⬅')}
       {photoIndex === photoQty - 1 ? '' : buildBtn(local.right, 'right', ['ArrowRight'], '⮕')}
