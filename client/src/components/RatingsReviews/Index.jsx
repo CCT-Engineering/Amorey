@@ -41,7 +41,7 @@ const Index = ({ currentId, metadata, stars }) => {
       <h5 className={local.header}>RATINGS & REVIEWS</h5>
       <div className={local.ratingsReviewsMain}>
         <div className={local.ratings}>
-          {metadata.product_id && (
+          {metadata?.product_id && (
             <div>
               <RatingBreakdown
                 ratings={metadata.ratings}
