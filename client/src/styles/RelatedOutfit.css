@@ -1,0 +1,97 @@
+.RelatedOutfit {
+  background: #BFF;
+  box-sizing: border-box;
+  color: #111;
+  font-family: "Tahoma", sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  padding: 0;
+  font-size: 0.8rem;
+}
+.related {
+  display: flex;
+  width: 100%;
+  margin: auto;
+  /* white-space: nowrap; */
+  /* transition: transform 0.3s; */
+}
+.relatedCard {
+  /* display: block; */
+  border: solid 1px black;
+  margin: 1%;
+  box-shadow: 10px 5px 5px grey;
+  /* transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1); */
+  /* transform: translateX(-0%) */
+  /* display: inline-flex; */
+}
+
+.outfit {
+  display: flex;
+  width: 100%;
+  margin: auto;
+}
+
+.outfitCard {
+  display: block;
+  border: solid 1px black;
+  margin: 1%;
+  box-shadow: 10px 5px 5px grey;
+}
+
+.cardpic {
+  width: 175;
+  height: 192;
+}
+
+.carousel {
+  overflow: hidden;
+}
+
+.compareTable {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tableContent {
+  width: 500px;
+  background-color: white;
+}
+
+.tableHead {
+  padding:10px
+}
+
+.tableBody {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.tableProd {
+  columns: 2;
+}
+
+.tableBody {
+  columns: 3;
+}
+
+.prev {
+  position: absolute;
+  top: 120%;
+  left: 20px;
+  font-size: 2rem;
+}
+
+.next {
+  position: absolute;
+  top: 120%;
+  right: 20px;
+  font-size: 2rem;
+}

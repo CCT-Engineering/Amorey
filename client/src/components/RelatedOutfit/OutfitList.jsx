@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import local from '../../styles/RelatedOutfit.css';
 import OutfitCard from './OutfitCard.jsx';
+import requests from '../../requests.js';
 
-const OutfitList = () => {
-  const [outfitArr, setOutfitArr] = useState([1,2])
+const OutfitList = ({ favorites, setFavorites }) => {
+  const [outfitArr, setOutfitArr] = useState([1,2]);
   const addOutfit = (curId) => {
-    event.preventDefault()
-    let copy = outfitArr.slice()
-    curId.push(copy)
-    setOutfitArr(copy)
-  }
+    event.preventDefault();
+    let copy = outfitArr.slice();
+    curId.push(copy);
+    setOutfitArr(copy);
+  };
   return (
-    <div>
-      <h4>YOUR OUTFIT</h4>
-      <div>carousel-fashion scroll horizontal somehow</div>
+    <div className={local.outfit}>
       <button>Add Current To Outfit</button>
       {
         outfitArr.map((outfitPiece, index)=>
