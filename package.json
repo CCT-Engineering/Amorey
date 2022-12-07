@@ -8,7 +8,7 @@
     "from-server": "npm run client-dev & npm run server-dev & open http://localhost:3300; fg",
     "client-dev": "webpack --config ./webpack.config.js  -w",
     "server-dev": "nodemon server/index.js",
-    "test": "react-scripts test"
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\""
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
     "axios": "^1.2.0",
+    "babel-jest": "^29.3.1",
     "dotenv": "^16.0.3",
     "live-server": "^1.2.2",
     "morgan": "^1.10.0",
@@ -45,6 +46,7 @@
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^27.5.1",
     "style-loader": "^3.3.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0",

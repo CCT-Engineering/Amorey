@@ -44,7 +44,7 @@ function App() {
     <div>
       <h1 className={global.h1}>Atelier</h1>
       <Overview current={current} />
-      {/* <RelatedOutfit /> */}
+      <RelatedOutfit />
       {current.id && <RatingsReviews currentId={current.id} metadata={metadata} stars={stars} />}
     </div>
   );
