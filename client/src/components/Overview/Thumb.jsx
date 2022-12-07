@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import local from '../../styles/Overview/Thumb.css';
 import { buildHandleEnterKeyPress } from '../../util';
 
+// { name, id, thumbUrl, setPhotoIndex }
+
 // photoIndex prop is the index of the photo currently shown in main view.
 
-function Thumb({
-  name, id, thumbUrl, setPhotoIndex,
-}) {
-  const thumbDesc = `Thumbnail of ${name} style`;
+const Thumb = forwardRef((props, ref) => {
+  const {
+    name, id, thumbUrl, setPhotoIndex,
+  } = props;
+
+  const thumbDesc = `Thumbnail ${id} of ${name} style`;
   const divStyle = {
     backgroundImage: `url(${thumbUrl})`,
   };
@@ -20,6 +24,7 @@ function Thumb({
   return (
     <div
       role="button"
+      ref={ref}
       aria-label={thumbDesc}
       tabIndex={0}
       className={local.thumb}
@@ -28,6 +33,6 @@ function Thumb({
       onKeyPress={buildHandleEnterKeyPress(handleClick)}
     />
   );
-}
+});
 
 export default Thumb;

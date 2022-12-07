@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, createRef } from 'react';
 import local from '../../styles/Overview/Gallery.css';
 import Thumb from './Thumb.jsx';
 import { buildHandleEnterKeyPress, buildHandleKeyDown } from '../../util';
@@ -8,10 +8,13 @@ import { buildHandleEnterKeyPress, buildHandleKeyDown } from '../../util';
 function Gallery({
   name, photos, photoIndex, setPhotoIndex,
 }) {
-  console.log('photos inside Gallery:', photos);
+  // console.log('photos inside Gallery:', photos);
   const photoUrl = photos[photoIndex] ? photos[photoIndex].url : '';
   const photoDesc = `Photo ${photoIndex} of ${name} style`;
   const photoQty = photos.length || 0;
+
+  const thumbRefs = useRef([]);
+  thumbRefs.current = photos.map((photo, i) => thumbRefs.current[i] ?? createRef());
 
   const divStyle = {
     backgroundImage: `url(${photoUrl})`,
@@ -19,7 +22,14 @@ function Gallery({
 
   const handleClick = (e) => {
     e.preventDefault();
-    setPhotoIndex((prevIndex) => prevIndex + (e.target.name === 'left' ? -1 : 1));
+    const newPhotoIndex = photoIndex + (e.target.name === 'left' ? -1 : 1);
+    setPhotoIndex(newPhotoIndex);
+    // scroll matching (w/ main image) thumb into view
+    thumbRefs.current[newPhotoIndex].current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'center',
+    });
   };
 
   function buildBtn(className, btnName, onKeyDownBindings, content) {
@@ -50,6 +60,7 @@ function Gallery({
             return (
               <Thumb
                 key={photo.thumbnail_url.match(/(?<=photo-)(.+)(?=\?)/g)}
+                ref={thumbRefs.current[photoId]}
                 name={name}
                 id={photoId}
                 thumbUrl={photo.thumbnail_url}
