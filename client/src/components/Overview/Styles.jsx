@@ -5,13 +5,11 @@ import local from '../../styles/Overview/Styles.css';
 function Styles({
   currentStyles, currentStyle, setStyle,
 }) {
-  const name = currentStyle && currentStyle.name ? currentStyle.name : '';
-
   return (
     <>
       <h5 className={local.styleHead}>
         <span className={local.styleTitle}>Style&nbsp; &gt; &nbsp;</span>
-        {name}
+        {currentStyle.name}
       </h5>
       <div className={local.styles}>
         {currentStyles.map(
