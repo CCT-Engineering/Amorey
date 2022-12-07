@@ -12,7 +12,7 @@
 }
 
 .desc {
-  margin: 10px 0;
+  margin-top: 10px;
 }
 
 .dividerContainer {
@@ -28,27 +28,30 @@
 }
 
 .features {
+  margin: auto;
+  display: block;
   width: calc(35% - 3px);
 }
 
-.feature {
-  display: block;
+.featuresContainer {
+  display: flex;
+  min-width: fit-content;
+  align-items: center;
+  justify-content: center;
   letter-spacing: 1.0px;
   width: 100%;
 }
 
-
-
 .featureName {
-  display: inline-block;
   font-style: italic;
   font-weight: 600;
+  text-align: right;
 }
 
 .featureVal {
-  display: inline-block;
+  display: block;
 }
 
-.divider {
-  display: inline-block;
+.featureDivider {
+  display: block;
 }

@@ -1,10 +1,7 @@
 import React from 'react';
 import local from '../../styles/Overview/ProductDesc.css';
-import FeatureEntry from './FeatureEntry.jsx';
 
 function ProductDesc({ current }) {
-  let featureId = -1;
-
   return (
     <div className={local.productDesc}>
       <div className={local.sloganDesc}>
@@ -15,18 +12,17 @@ function ProductDesc({ current }) {
         <div className={local.divider} />
       </div>
       <div className={local.features}>
-        {current.features.map(
-          (feature) => {
-            featureId += 1;
-            return (
-              <FeatureEntry
-                key={featureId}
-                featureName={feature.feature}
-                featureVal={feature.value}
-              />
-            );
-          },
-        )}
+        <div className={local.featuresContainer}>
+          <div className={local.featureName}>
+            {current.features.map((feature) => (<p>{feature.feature}</p>))}
+          </div>
+          <div className={local.featureDivider}>
+            {current.features.map(() => (<p>•</p>))}
+          </div>
+          <div className={local.featureVal}>
+            {current.features.map((feature) => (<p>{feature.value}</p>))}
+          </div>
+        </div>
       </div>
     </div>
   );
