@@ -84,14 +84,14 @@
 
 .prev {
   position: absolute;
-  top: 75%;
+  top: 120%;
   left: 20px;
   font-size: 2rem;
 }
 
 .next {
   position: absolute;
-  top: 75%;
+  top: 120%;
   right: 20px;
   font-size: 2rem;
 }

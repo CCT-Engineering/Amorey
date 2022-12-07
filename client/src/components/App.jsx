@@ -9,7 +9,7 @@ import global from '../styles/global.css'; // Applies global styles to entire Ap
 function App() {
   const [current, setCurrent] = useState({ features: [] });
   const [metadata, setMetadata] = useState([]);
-  // const [favorites, setFavorites] = useState([]); // uncomment once used
+  const [favorites, setFavorites] = useState([]); // uncomment once used
   const [stars, setStars] = useState(5);
 
   const calculateAverageStars = (ratings) => {
