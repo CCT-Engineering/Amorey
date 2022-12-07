@@ -17,7 +17,7 @@ const ReviewEntry = ({ review, update }) => {
   };
 
   const renderReviewBody = () => {
-    let body = '';
+    let body;
     if (review.body.length < 250 || expand) {
       body = <p className={local.body}>{review.body}</p>;
     } else {
@@ -54,7 +54,7 @@ const ReviewEntry = ({ review, update }) => {
         <div className={local.user}>{`${review.reviewer_name}, ${date(review.date)}`}</div>
       </div>
       <h4 className={local.summary}>{review.summary}</h4>
-      {renderReviewBody}
+      {renderReviewBody()}
       <div>
         {review.recommend && '✓ I recommend this product'}
       </div>
