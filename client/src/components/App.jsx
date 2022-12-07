@@ -7,7 +7,7 @@ import requests from '../requests.js';
 import global from '../styles/global.css'; // Applies global styles to entire App (not just App.jsx)
 
 function App() {
-  const [current, setCurrent] = useState({});
+  const [current, setCurrent] = useState({ features: [] });
   const [metadata, setMetadata] = useState([]);
   // const [favorites, setFavorites] = useState([]); // uncomment once used
   const [stars, setStars] = useState(5);
@@ -41,12 +41,12 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <>
       <h1 className={global.h1}>Atelier</h1>
       <Overview current={current} />
       <RelatedOutfit />
       {current.id && <RatingsReviews currentId={current.id} metadata={metadata} stars={stars} />}
-    </div>
+    </>
   );
 }
 

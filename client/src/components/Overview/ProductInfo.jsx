@@ -10,7 +10,7 @@ function ProductInfo({
 
   return (
     <div className={local.productInfo}>
-      <h6>{current.category}</h6>
+      <h5>{current.category}</h5>
       <h2>{current.name}</h2>
       <h6>
         <span style={priceStyle}>
