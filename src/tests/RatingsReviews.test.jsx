@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
 import RatingsReviews from '../../client/src/components/RatingsReviews/Index.jsx';
 
-describe('Render App Page', () => {
+describe('Render RatingsReviews Page', () => {
   it('Should render page with Title header', () => {
     render(<RatingsReviews />);
 

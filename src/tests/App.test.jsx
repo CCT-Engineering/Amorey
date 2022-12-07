@@ -15,11 +15,11 @@ describe('Render App Page', () => {
   });
 });
 
-// recommened query type -> getByRole
+// docs recommened query type -> getByRole
 // getByRole Options: name, level, hidden, selected, checked, pressed
 // other 'getBy' queries -> getByLabelText, getByPlaceholderText, getByText, getByDisplayValue
-// Other quries -> queryBy... findBy... (Intended for single element, error if multiple results)
-// Multiple element queries -> getAllBy... queryAllBy... findAllBy...
+// other quries -> queryBy... findBy... (Intended for single element, error if multiple results)
+// multiple element queries -> getAllBy... queryAllBy... findAllBy...
 // https://testing-library.com/docs/queries/about/#byrole
 
 // SOME ASSERTION TESTS - JEST
