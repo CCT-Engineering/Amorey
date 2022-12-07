@@ -66,7 +66,7 @@ function Overview({ current }) {
           <Cart />
         </div>
       </div>
-      <ProductDesc />
+      <ProductDesc current={current} />
     </div>
   );
 }

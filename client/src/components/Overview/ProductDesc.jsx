@@ -1,10 +1,12 @@
 import React from 'react';
 import local from '../../styles/Overview/ProductDesc.css';
 
-function ProductDesc() {
+function ProductDesc({ current }) {
   return (
     <div className={local.productDesc}>
-      Product Desc goes here
+      <div className={local.sloganDesc}>
+        <h4>{current.slogan}</h4>
+      </div>
     </div>
   );
 }

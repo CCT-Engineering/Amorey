@@ -1,3 +1,8 @@
 .productDesc {
   display: block;
+  padding: 20px 30px;
+}
+
+.sloganDesc {
+  display: block;
 }
