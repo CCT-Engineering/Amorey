@@ -9,9 +9,9 @@ function Gallery({
   name, photos, photoIndex, setPhotoIndex,
 }) {
   console.log('photos inside Gallery:', photos);
-  const photoUrl = photos && photos[photoIndex] ? photos[photoIndex].url : '';
+  const photoUrl = photos[photoIndex] ? photos[photoIndex].url : '';
   const photoDesc = `Photo ${photoIndex} of ${name} style`;
-  const photoQty = photos?.length || 0;
+  const photoQty = photos.length || 0;
 
   const divStyle = {
     backgroundImage: `url(${photoUrl})`,
