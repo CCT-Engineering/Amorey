@@ -39,8 +39,8 @@
 }
 
 .cardpic {
-  width: 175;
-  height: 192;
+  width: 175px;
+  height: 192px;
 }
 
 .carousel {
@@ -94,4 +94,14 @@
   top: 120%;
   right: 20px;
   font-size: 2rem;
+}
+
+.action {
+  /* position: relative;
+  top: 0;
+  right: 0; */
+  float: right;
+  /* display: inline-block;
+  vertical-align: top; */
+  /* object-position: 5px, 10%; */
 }

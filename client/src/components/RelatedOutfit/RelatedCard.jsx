@@ -3,7 +3,7 @@ import local from '../../styles/RelatedOutfit.css';
 import requests from '../../requests.js';
 import CompareTable from './CompareTable.jsx';
 
-const RelatedCard = ({ relateOneId, current }) => {
+const RelatedCard = ({ relateOneId, current, CurMeta }) => {
   const [info, setInfo] = useState({});
   const [style, setStyle] = useState({});
   const [pic, setPic] = useState(null);
@@ -11,6 +11,7 @@ const RelatedCard = ({ relateOneId, current }) => {
   const [discount, setDiscount] = useState(null);
   const [rating, setRating] = useState(null);
   const [toggleTable, setToggleTable] = useState(false);
+  const [rel1Meta, setRel1Meta] = useState(0);
 
   useEffect(() => {
     if (relateOneId) {
@@ -26,6 +27,10 @@ const RelatedCard = ({ relateOneId, current }) => {
         // console.log('discount example all null', styleData.results[0].sale_price);
         setDiscount(styleData.results[0].sale_price);
       });
+      requests.getMetadata(relateOneId, (metaData) => {
+        // console.log('related meta', metaData);
+        setRel1Meta(metaData);
+      });
     }
   }, [relateOneId]);
   const handleToggle = () => {
@@ -33,10 +38,13 @@ const RelatedCard = ({ relateOneId, current }) => {
   };
   return (
     <div className={local.relatedCard}>
-      <div>-----Related Card -----</div>
-      <div>click nav to detailed product page somehow</div>
-      <img src={pic} width="175" height="192"></img>
-      {/* <img src={pic} alt="card pic" className={local.cardpic}></img> */}
+      {/* <div onClick={handleToggle} className={local.action}>☆</div> */}
+      <button type="button" onClick={handleToggle} className={local.action}>☆</button>
+      {/* <div>-----Related Card -----</div>
+      <div>click nav to detailed product page somehow</div> */}
+      <center>
+        <img src={pic} alt="card pic" className={local.cardpic}></img>
+      </center>
       <div>
         category:
         {info.category}
@@ -50,12 +58,11 @@ const RelatedCard = ({ relateOneId, current }) => {
         {info.default_price}
       </div>
       <div>Star Rating: get from Thomas state</div>
-      <button type="button" onClick={handleToggle}>Compare w/Current Table</button>
       {/* <div className="popup" onClick={()=>{return(<div>Show something</div>)}}>Click Me!
       <span className="popupText">popupText</span>
       </div> */}
       {toggleTable ? (
-        <CompareTable handleToggle={handleToggle} current={current} info={info} style={style} />
+        <CompareTable handleToggle={handleToggle} current={current} rel1Info={info} rel1style={style} CurMeta={CurMeta} rel1Meta={rel1Meta} />
       ) : <div></div>}
       {/* <CompareTable/> */}
     </div>

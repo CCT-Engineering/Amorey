@@ -1,4 +1,5 @@
 import React from 'react';
+import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 import local from '../../styles/RatingsReviews/RatingBreakdown.css';
 
@@ -9,7 +10,6 @@ const RatingBreakdown = ({
     event.preventDefault();
     filter(index);
   };
-
   const reviewGraph = (starCount) => {
     const totalStars = Object.keys(ratings).reduce((total, key) => {
       return total + Number(ratings[key]);
@@ -44,9 +44,7 @@ const RatingBreakdown = ({
         <div className={local.starRating}>
           {(Math.round(stars * 4) / 4).toFixed(1)}
         </div>
-        <div className={local.starDimensions}>
-          <div className={local.starDisplay} style={{ width: `${stars * 20}%` }} />
-        </div>
+        <StarDisplay stars={stars} />
       </h1>
       <div className={local.recommend}>
         {recommenedPercent()}

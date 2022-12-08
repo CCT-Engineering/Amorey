@@ -25,6 +25,7 @@ Icon
 
 .env
 
+
 client/dist/
 /coverage
 

@@ -65,3 +65,22 @@
   margin: 0;
   font-size: 0.8rem;
 }
+
+.starOutline {
+  height: 36px;
+}
+
+.starFill {
+  position: relative;
+  display: inline-block;
+  height: 36px;
+  background-color: gold;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.starContainer {
+  height: 36px;
+  display: inline-block;
+}
