@@ -23,7 +23,21 @@
   "jest": {
     "moduleNameMapper": {
       "\\.css$": "identity-obj-proxy"
-    }
+    },
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/backup/",
+      "/client/dist/",
+      "/client/src/testData.jsx/",
+      "/coverage/",
+      "/src/tests/",
+      "/src/setupTests.js/",
+      "/package-lock.json/",
+      "/package.json/",
+      "/README.md/",
+      "/webpack.config.js/",
+      "/client/"
+    ]
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
