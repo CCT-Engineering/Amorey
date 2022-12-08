@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import local from '../../styles/RelatedOutfit.css';
+import requests from '../../requests.js';
 
 const CompareTable = ({
-  handleToggle, current, info, style
+  handleToggle, current, rel1Info, rel1style, CurMeta, rel1Meta
 }) => {
-  // console.log('current in compare table', current);
+  const calcRec = (meta) => {
+    let rec = (
+      100 * Number(meta.recommended.true) / (
+        Number(meta.recommended.true) + Number(meta.recommended.false))
+    ).toString().slice(0, 2);
+    return rec;
+  };
   return (
     <div className={local.compareTable}>
       <div className={local.tableContent}>
@@ -17,7 +24,7 @@ const CompareTable = ({
             </div>
             <div>
               Related:
-              {info.name}
+              {rel1Info.name}
             </div>
           </div>
           <div className={local.tableBody}>
@@ -28,7 +35,7 @@ const CompareTable = ({
             <div>Original Price</div>
             <div>
               $
-              {info.default_price}
+              {rel1Info.default_price}
             </div>
           </div>
           <div className={local.tableBody}>
@@ -37,7 +44,7 @@ const CompareTable = ({
             </div>
             <div>Release</div>
             <div>
-              {info.created_at.slice(0, 10)}
+              {rel1Info.created_at.slice(0, 10)}
             </div>
           </div>
           <div className={local.tableBody}>
@@ -46,7 +53,49 @@ const CompareTable = ({
             </div>
             <div>Category</div>
             <div>
-              {info.category}
+              {rel1Info.category}
+            </div>
+          </div>
+          <div className={local.tableBody}>
+            <div>
+              {CurMeta.characteristics.Comfort.value.slice(0, 3)}
+              /5.0
+            </div>
+            <div>Comfort</div>
+            <div>
+              {rel1Meta.characteristics.Comfort.value.slice(0, 3)}
+              /5.0
+            </div>
+          </div>
+          <div className={local.tableBody}>
+            <div>
+              {CurMeta.characteristics.Quality.value.slice(0, 3)}
+              /5.0
+            </div>
+            <div>Quality</div>
+            <div>
+              {rel1Meta.characteristics.Quality.value.slice(0, 3)}
+              /5.0
+            </div>
+          </div>
+          {/* <div className={local.tableBody}>
+            <div>
+              {CurMeta.ratings}
+            </div>
+            <div>Ratings</div>
+            <div>
+              {rel1Meta.ratings}
+            </div>
+          </div> */}
+          <div className={local.tableBody}>
+            <div>
+              {calcRec(CurMeta)}
+              %
+            </div>
+            <div>Recommended</div>
+            <div>
+              {calcRec(rel1Meta)}
+              %
             </div>
           </div>
           <button type="button" onClick={handleToggle}>

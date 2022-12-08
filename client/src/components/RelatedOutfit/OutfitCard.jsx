@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import local from '../../styles/RelatedOutfit.css';
 
-const OutfitCard = ({ outfitPiece, outfitArr, setOutfitArr }) => {
+const OutfitCard = ({ outfitPiece, outfitArr, setOutfitArrm, index, handleDelete }) => {
   const addOutfit = (curId) => {
     event.preventDefault();
     let copy = outfitArr.slice();
@@ -32,6 +32,7 @@ const OutfitCard = ({ outfitPiece, outfitArr, setOutfitArr }) => {
   let info = exRC;
   return (
     <div className={local.outfitCard}>
+      <button type="button" className={local.action}>X</button>
       <div>-----Outfit Card -----</div>
       <div>click nav to detailed product page somehow</div>
       <div>
@@ -48,7 +49,6 @@ const OutfitCard = ({ outfitPiece, outfitArr, setOutfitArr }) => {
       </div>
       <div>Star Rating: get from Thomas state</div>
       <div>img: figure out image here</div>
-      <button>Delete From Outfit</button>
     </div>
   );
   // })
