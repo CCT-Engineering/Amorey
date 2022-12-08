@@ -5,7 +5,6 @@ import date from '../../util/formatDate.js';
 
 const ReviewEntry = ({ review, update }) => {
   const [expand, setExpand] = useState(false);
-
   const handleClick = (helpful) => {
     event.preventDefault();
     update(review.review_id, helpful);
@@ -50,7 +49,7 @@ const ReviewEntry = ({ review, update }) => {
   return (
     <div className={local.main}>
       <div className={local.header}>
-        <div className={local.rating}>{`${review.rating} ${renderReviewStars()}`}</div>
+        <div className={local.rating}>{renderReviewStars()}</div>
         <div className={local.user}>{`${review.reviewer_name}, ${date(review.date)}`}</div>
       </div>
       <h4 className={local.summary}>{review.summary}</h4>
@@ -66,6 +65,7 @@ const ReviewEntry = ({ review, update }) => {
           </div>
         )}
       </div>
+      {review.photos?.map((image, index) => <img key={`${review.review_id + index}`} src={image.url} alt={index} height="48px" width="48px" />)}
       <div className={local.footer}>
         Helpful?
         <a

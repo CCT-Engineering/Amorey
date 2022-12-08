@@ -1,22 +1,15 @@
 import React from 'react';
+import characteristic from '../../util/characteristics.js';
 import local from '../../styles/RatingsReviews/ProductBreakdown.css';
 
 const renderGraphRatings = (item) => {
-  let string = '';
-  if (item === 'Size') {
-    string = 'A size too small     Perfect     A size too wide';
-  } else if (item === 'Width') {
-    string = 'Too narrow     Perfect     Too wide';
-  } else if (item === 'Comfort') {
-    string = 'Uncomfortable          Perfect';
-  } else if (item === 'Quality') {
-    string = 'Poor          Perfect';
-  } else if (item === 'Length') {
-    string = 'Runs Short     Perfect     Runs Long';
-  } else if (item === 'Fit') {
-    string = 'Runs tight     Perfect     Runs long';
-  }
-  return string;
+  return (
+    <>
+      <div>{characteristic[item][1]}</div>
+      <div>{characteristic[item][3]}</div>
+      <div>{characteristic[item][5]}</div>
+    </>
+  );
 };
 
 const renderDetail = (item, index, detail) => {

@@ -11,7 +11,7 @@ describe('Render Overview Module', () => {
     const user = userEvent.setup();
     render(<Overview current={testData.productData} />);
     return user;
-  }
+  };
 
   it('Should render the product slogan', () => {
     setup();
@@ -47,7 +47,7 @@ describe('Render Overview Module', () => {
     expect(screen.getByRole('heading', { name: /camo onesie/i })).toBeVisible();
   });
 
-  // it('Should display name of style when its corresponding style thumbnail is clicked (1)', () => {
+  // it('Should display name of style when its corresponding style thumb is clicked (1)', () => {
   //   const user = setup();
   //   screen.findAllByRole('button', { name: /Main Thumbnail Desert Brown/i })
   //     .then((elements) => {

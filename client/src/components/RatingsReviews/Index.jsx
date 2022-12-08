@@ -6,7 +6,9 @@ import ProductBreakdown from './ProductBreakdown.jsx';
 import requests from '../../requests.js';
 import local from '../../styles/RatingsReviews/Index.css';
 
-const Index = ({ currentId, metadata, stars }) => {
+const Index = ({
+  currentId, metadata, stars, current,
+}) => {
   const [reviews, setReviews] = useState([]);
   const [sort, setSort] = useState([1, 1, 1, 1, 1]);
 
@@ -58,7 +60,13 @@ const Index = ({ currentId, metadata, stars }) => {
           {reviews.length && (
             <div className={local.reviewMain}>
               <Sorting reviews={reviews} changeSort={renderReviews} />
-              <ReviewsList reviews={reviews} sort={sort} update={updateReview} />
+              <ReviewsList
+                reviews={reviews}
+                sort={sort}
+                update={updateReview}
+                current={current}
+                details={metadata.characteristics}
+              />
             </div>
           )}
         </div>
