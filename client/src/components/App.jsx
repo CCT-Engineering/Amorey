@@ -12,7 +12,6 @@ function App() {
   const [favorites, setFavorites] = useState([]); // uncomment once used
 
   const [stars, setStars] = useState(5);
-
   const calculateAverageStars = (ratings) => {
     let totalStars = 0;
     let ratingsCount = 0;
@@ -48,7 +47,14 @@ function App() {
       {current && (
       <RelatedOutfit current={current} favorites={favorites} setFavorites={setFavorites} CurMeta={metadata} />
       )}
-      {current.id && <RatingsReviews currentId={current.id} metadata={metadata} stars={stars} />}
+      {current.id && (
+        <RatingsReviews
+          currentId={current.id}
+          metadata={metadata}
+          stars={stars}
+          current={current.name}
+        />
+      )}
     </>
   );
 }

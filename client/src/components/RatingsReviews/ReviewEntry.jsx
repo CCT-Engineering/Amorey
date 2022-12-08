@@ -50,7 +50,7 @@ const ReviewEntry = ({ review, update }) => {
   return (
     <div className={local.main}>
       <div className={local.header}>
-        <div className={local.rating}>{`${review.rating} ${renderReviewStars()}`}</div>
+        <div className={local.rating}>{renderReviewStars()}</div>
         <div className={local.user}>{`${review.reviewer_name}, ${date(review.date)}`}</div>
       </div>
       <h4 className={local.summary}>{review.summary}</h4>
