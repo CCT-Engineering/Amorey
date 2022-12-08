@@ -1,7 +1,9 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
 import App from '../../client/src/components/App.jsx';
+import '@testing-library/jest-dom';
 
 describe('Render App Page', () => {
   it('Should render page with Title header', () => {

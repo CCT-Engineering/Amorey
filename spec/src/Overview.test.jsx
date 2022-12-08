@@ -4,6 +4,7 @@ import { render, screen } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
 import Overview from '../../client/src/components/Overview/Overview.jsx';
 import testData from '../../client/src/testData.jsx';
+import '@testing-library/jest-dom';
 
 describe('Render Overview Module', () => {
   beforeAll(() => {
@@ -23,7 +24,7 @@ describe('Render Overview Module', () => {
 
   it('Should render the product name', () => {
     // const productName = screen.getByRole('heading', { name: '/Camo Onesie/i' });
-    screen.findAllByRole('heading')
+    screen.findAllByRole('heading', { name: '/Csdkkfmoismig;ajgo/i' })
       .then((productName) => expect(productName).toBeVisible());
     // console.log('productName:', productName)
   });

@@ -1,9 +1,9 @@
-/* eslint-disable no-undef */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
 import RatingsReviews from '../../client/src/components/RatingsReviews/Index.jsx';
 import testData from '../../client/src/testData.jsx';
+import '@testing-library/jest-dom';
 
 describe('Render RatingsReviews Page', () => {
   it('Should render page with Title header', () => {
