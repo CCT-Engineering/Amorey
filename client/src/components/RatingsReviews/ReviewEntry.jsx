@@ -65,7 +65,7 @@ const ReviewEntry = ({ review, update }) => {
           </div>
         )}
       </div>
-      {review.photos?.map((image, index) => <img key={index} src={image.url} alt={index} height="48px" width="48px" />)}
+      {review.photos?.map((image, index) => <img key={`${review.review_id + index}`} src={image.url} alt={index} height="48px" width="48px" />)}
       <div className={local.footer}>
         Helpful?
         <a
