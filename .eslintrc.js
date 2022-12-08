@@ -6,7 +6,10 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    // REACT TESTING LIBRARY LINTER: https://github.com/testing-library/eslint-plugin-testing-library
     'plugin:testing-library/react',
+    // JEST DOM LINTER: https://github.com/testing-library/eslint-plugin-jest-dom
+    'plugin:jest-dom/recommended',
   ],
   overrides: [
   ],
@@ -17,6 +20,7 @@ module.exports = {
   plugins: [
     'react',
     'testing-library',
+    'jest-dom',
   ],
   rules: {
     // allow .js .jsx for file imports
@@ -36,11 +40,5 @@ module.exports = {
 
     // related to button click on non-button html element
     'jsx-a11y/anchor-is-valid': 'off',
-
-    // REACT TESTING LIBRARY LINTER RULES: https://github.com/testing-library/eslint-plugin-testing-library
-    'testing-library/await-async-query': 'error',
-    'testing-library/no-await-sync-query': 'error',
-    'testing-library/no-debugging-utils': 'warn',
-    'testing-library/no-dom-import': 'off',
   },
 };
