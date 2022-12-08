@@ -5,7 +5,6 @@ import date from '../../util/formatDate.js';
 
 const ReviewEntry = ({ review, update }) => {
   const [expand, setExpand] = useState(false);
-
   const handleClick = (helpful) => {
     event.preventDefault();
     update(review.review_id, helpful);
@@ -66,6 +65,7 @@ const ReviewEntry = ({ review, update }) => {
           </div>
         )}
       </div>
+      {review.photos?.map((image, index) => <img key={index} src={image.url} alt={index} height="48px" width="48px" />)}
       <div className={local.footer}>
         Helpful?
         <a
