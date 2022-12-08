@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
@@ -21,9 +22,10 @@ describe('Render Overview Module', () => {
   });
 
   it('Should render the product name', () => {
-    const productName = screen.getByRole('heading');
     // const productName = screen.getByRole('heading', { name: '/Camo Onesie/i' });
-    expect(productName).toBeVisible();
+    screen.findAllByRole('heading')
+      .then((productName) => expect(productName).toBeVisible());
+    // console.log('productName:', productName)
   });
 });
 
