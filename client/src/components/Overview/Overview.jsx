@@ -8,40 +8,52 @@ import ProductDesc from './ProductDesc.jsx';
 import local from '../../styles/Overview/Overview.css';
 import requests from '../../requests.js';
 
-function Overview({ current, currentStyles, setCurrentStyles }) {
+function Overview({ current, currentStyles }) {
   const [currentStyle, setCurrentStyle] = useState({ photos: [] });
   const [price, setPrice] = useState(current.default_price);
   const [onSale, setOnSale] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
 
-  useEffect(() => {
-    if (current && current.id) {
-      requests.getStyles(current.id, (data) => {
-        setCurrentStyles(data.results);
-        const style = data.results[0];
-        setCurrentStyle(data.results[0]);
-        const styleOnSale = !!style.sale_price;
-        setOnSale(styleOnSale);
-        setPrice(styleOnSale ? style.sale_price : style.original_price);
-      });
-    }
-  }, [current]);
+  // useEffect(() => {
+  //   if (current && current.id) {
+  //     requests.getStyles(current.id, (data) => {
+  //       setCurrentStyles(data.results);
+  //       const style = data.results[0];
+  //       setCurrentStyle(style);
+  //       const styleOnSale = !!style.sale_price;
+  //       setOnSale(styleOnSale);
+  //       setPrice(styleOnSale ? style.sale_price : style.original_price);
+  //     });
+  //   }
+  // }, [current]);
 
-  // console.log('currentStyle inside Overview:', currentStyle);
+  const setStylePriceSale = (style) => {
+    const styleOnSale = !!style.sale_price;
+    setOnSale(styleOnSale);
+    setPrice(styleOnSale ? style.sale_price : style.original_price);
+  };
 
   const setStyle = (styleId) => {
     currentStyles.forEach((style) => {
       if (style.style_id === styleId) {
         setCurrentStyle(style);
-        const styleOnSale = !!style.sale_price;
-        setOnSale(styleOnSale);
-        setPrice(styleOnSale ? style.sale_price : style.original_price);
+        setStylePriceSale(style);
         setPhotoIndex(
           style.photos[photoIndex] ? photoIndex : 0,
         );
       }
     });
   };
+
+  useEffect(() => {
+    if (currentStyles.length > 0) {
+      const style = currentStyles[0];
+      setCurrentStyle(style);
+      setStylePriceSale(style);
+    }
+  }, [currentStyles]);
+
+  // console.log('currentStyle inside Overview:', currentStyle);
 
   return (
     <>
@@ -68,7 +80,6 @@ function Overview({ current, currentStyles, setCurrentStyles }) {
         </div>
       </div>
       <ProductDesc current={current} />
-      <div className="hello" />
     </>
   );
 }
