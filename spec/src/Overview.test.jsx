@@ -23,10 +23,17 @@ describe('Render Overview Module', () => {
   });
 
   it('Should render the product name', () => {
-    // const productName = screen.getByRole('heading', { name: '/Camo Onesie/i' });
-    screen.findAllByRole('heading', { name: '/Csdkkfmoismig;ajgo/i' })
-      .then((productName) => expect(productName).toBeVisible());
-    // console.log('productName:', productName)
+    screen.findByRole('heading', { name: '/Csdkkfmoismig;ajg/i' })
+      .then((productName) => {
+        console.log('productName:', productName);
+        expect(productName).toBeVisible();
+      })
+      .catch((err) => console.log('ERROR!:', err));
+  });
+
+  it('Should render the product name', () => {
+    const slogan = screen.getByRole('heading', { level: 4 });
+    expect(slogan).toHaveTextContent('Blend in to your crowd');
   });
 });
 
