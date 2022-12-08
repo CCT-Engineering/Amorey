@@ -18,10 +18,14 @@ const WriteNewReview = ({ current, details }) => {
           <h4>{`About the ${current}`}</h4>
           <StarRating />
           <h6>Do You recommend this product?</h6>
-          <label htmlFor="recYes">Yes</label>
-          <input type="radio" name="recommend" id="recYes" required />
-          <label htmlFor="recNo">No</label>
-          <input type="radio" name="recommend" id="recNo" />
+          <label htmlFor="recYes">
+            Yes
+            <input type="radio" name="recommend" id="recYes" required />
+          </label>
+          <label htmlFor="recNo">
+            No
+            <input type="radio" name="recommend" id="recNo" />
+          </label>
           {details && (
             Object.keys(details).map((detail, index) => {
               return <Characteristic detail={detail} index={index} />;

@@ -34,7 +34,5 @@ module.exports = {
 
     // related to button click on non-button html element
     'jsx-a11y/anchor-is-valid': 'off',
-
-    'jsx-a11y/label-has-associated-control': 'off',
   },
 };
