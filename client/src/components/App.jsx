@@ -10,7 +10,7 @@ function App() {
   const [current, setCurrent] = useState({ features: [] });
   const [metadata, setMetadata] = useState([]);
   const [favorites, setFavorites] = useState([]); // uncomment once used
-  console.log('favorites', favorites);
+
   const [stars, setStars] = useState(5);
 
   const calculateAverageStars = (ratings) => {
@@ -28,7 +28,6 @@ function App() {
   const getData = (id) => {
     requests.getProductInfo(id, (data) => {
       setCurrent(data);
-      console.log('current product:', data);
       requests.getMetadata(id, (metrics) => {
         setMetadata(metrics);
         setStars(calculateAverageStars(metrics.ratings));
