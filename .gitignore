@@ -28,4 +28,8 @@ Icon
 
 client/dist/
 /coverage
+/spec/coverage
+
 .eslintrc.js
+
+/backup

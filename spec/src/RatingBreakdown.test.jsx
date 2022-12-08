@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
 import RatingsBreakdown from '../../client/src/components/RatingsReviews/RatingBreakdown.jsx';
 import testData from '../../client/src/testData.jsx';
+import '@testing-library/jest-dom';
 
 describe('Render RatingsBreakdown Page', () => {
   const filterSearch = () => {

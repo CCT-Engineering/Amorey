@@ -8,7 +8,7 @@
     "from-server": "npm run client-dev & npm run server-dev & open http://localhost:3300; fg",
     "client-dev": "webpack --config ./webpack.config.js  -w",
     "server-dev": "nodemon server/index.js",
-    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\" --coverage"
+    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!axios)/\" --rootDir spec --coverage"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,21 @@
   "jest": {
     "moduleNameMapper": {
       "\\.css$": "identity-obj-proxy"
-    }
+    },
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/backup/",
+      "/client/dist/",
+      "/client/src/testData.jsx/",
+      "/coverage/",
+      "/src/tests/",
+      "/src/setupTests.js/",
+      "/package-lock.json/",
+      "/package.json/",
+      "/README.md/",
+      "/webpack.config.js/",
+      "/client/"
+    ]
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
@@ -48,9 +62,11 @@
     "eslint": "^8.29.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest-dom": "^4.0.3",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-testing-library": "^5.9.1",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^27.5.1",
     "style-loader": "^3.3.1",
