@@ -1,17 +1,20 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-// import userEvent from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 import Overview from '../../client/src/components/Overview/Overview.jsx';
 import testData from '../../client/src/testData.jsx';
 import '@testing-library/jest-dom';
 
 describe('Render Overview Module', () => {
-  beforeAll(() => {
+  const setup = () => {
+    const user = userEvent.setup();
     render(<Overview current={testData.productData} />);
-  });
+    return user;
+  }
 
   it('Should render the product slogan', () => {
+    setup();
     const slogan = screen.getByRole('heading', { level: 4 });
     expect(slogan).toHaveTextContent('Blend in to your crowd');
   });
@@ -22,18 +25,48 @@ describe('Render Overview Module', () => {
     expect(overviewMain).toBeVisible();
   });
 
-  it('Should render the product name', () => {
-    screen.findByRole('heading', { name: '/Csdkkfmoismig;ajg/i' })
-      .then((productName) => {
-        console.log('productName:', productName);
-        expect(productName).toBeVisible();
-      })
-      .catch((err) => console.log('ERROR!:', err));
+  // QUESTIONABLE TEST BELOW - KEEPING FOR REFERENCE
+  // it('Should render the product name', () => {
+  //   setup();
+  //   screen.findByRole('heading', { name: '/Camo Onesie/i' })
+  //     .then((productName) => {
+  //       console.log('productName:', productName);
+  //       expect(productName).toBeVisible();
+  //     })
+  // });
+
+  // BAD WAY to check that some text is visible (case sensitive)
+  it('Should render the product name (2)', () => {
+    setup();
+    expect(screen.getByRole('heading', { name: 'Camo Onesie' })).toBeVisible();
   });
 
-  it('Should render the product name', () => {
-    const slogan = screen.getByRole('heading', { level: 4 });
-    expect(slogan).toHaveTextContent('Blend in to your crowd');
+  // GOOD WAY to check that some text is visible (case insensitive, more flexibility with regex)
+  it('Should render the product name (1)', () => {
+    setup();
+    expect(screen.getByRole('heading', { name: /camo onesie/i })).toBeVisible();
+  });
+
+  // it('Should display name of style when its corresponding style thumbnail is clicked (1)', () => {
+  //   const user = setup();
+  //   screen.findAllByRole('button', { name: /Main Thumbnail Desert Brown/i })
+  //     .then((elements) => {
+  //       user.click(elements[0]);
+  //     })
+  //     .then(() => screen.getByRole('heading', { level: 5, name: /style/i }))
+  //     .then((styleName) => {
+  //       expect(styleName).toHaveTextContent('DESERT BROWN & TAN');
+  //     });
+  //   // expect(screen.getByRole('heading', { name: /camo onesie/i })).toBeVisible();
+  //   // const styleName = screen.getByRole('heading', { level: 5, name: /style/i });
+  //   // expect(styleName).toHaveTextContent('DESERT BROWN & TAN');
+  // });
+
+  it('Should display name of style when its corresponding style thumbnail is clicked (2)', async () => {
+    const user = setup();
+    await user.click(await screen.findByRole('button', { name: /Main Thumbnail Desert Brown/i }));
+    await screen.findByRole('heading', { level: 5, name: /style/i });
+    expect(screen.getByRole('heading', { level: 5, name: /style/i })).toHaveTextContent(/DESERT BROWN & TAN/i);
   });
 });
 
