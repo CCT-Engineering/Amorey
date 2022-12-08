@@ -1,19 +1,19 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
-import Overview from '../../client/src/components/Overview/Overview.jsx';
-import testData from '../../client/src/testData.jsx';
+import App from '../../client/src/components/App.jsx';
+import '@testing-library/jest-dom';
 
-describe('Render Overview Module', () => {
+describe('Render App Page', () => {
   it('Should render page with Title header', () => {
-    const {container} = render(<Overview current={testData.productData} />);
+    render(<App />);
 
-    const slogan = screen.getByRole('heading', { level: 4 });
-    expect(slogan).toHaveTextContent('Blend in to your crowd');
+    const title = screen.getByText('Atelier');
+    expect(title).toHaveTextContent('Atelier');
 
-    const [overviewMain] = container.getElementsByClassName('overviewMain');
-
-    expect(overviewMain).toBeVisible();
+    const heading = screen.getByRole('heading', { level: 1 });
+    expect(heading).toBeInTheDocument();
   });
 });
 

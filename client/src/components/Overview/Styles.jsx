@@ -16,8 +16,7 @@ function Styles({
           (style) => (
             <StyleEntry
               key={style.style_id}
-              id={style.style_id}
-              thumb={style.photos[0].thumbnail_url}
+              style={style}
               currentStyle={currentStyle}
               setStyle={setStyle}
             />
