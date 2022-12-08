@@ -3,7 +3,7 @@ import local from '../../styles/RelatedOutfit.css';
 import requests from '../../requests.js';
 import CompareTable from './CompareTable.jsx';
 
-const RelatedCard = ({ relateOneId, current, CurMeta }) => {
+const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent }) => {
   const [info, setInfo] = useState({});
   const [style, setStyle] = useState({});
   const [pic, setPic] = useState(null);
@@ -12,20 +12,39 @@ const RelatedCard = ({ relateOneId, current, CurMeta }) => {
   const [rating, setRating] = useState(null);
   const [toggleTable, setToggleTable] = useState(false);
   const [rel1Meta, setRel1Meta] = useState(0);
+  const [onSale, setOnSale] = useState(false);
+
+//   const priceStyle = {
+//     color: `${onSale ? 'red' : 'inherit'}`,
+//   };
+//   <h6>
+//   <span style={priceStyle}>
+//     $
+//     {price}
+//     &nbsp;
+//   </span>
+//   <span className={local.oldPrice}>{onSale ? `$${origPrice}` : ''}</span>
+// </h6>
+
+// .oldPrice {
+//   text-decoration: line-through;
+// }
 
   useEffect(() => {
     if (relateOneId) {
       requests.getProductInfo(relateOneId, (infoData) => {
-        // console.log('infoData from rel 1 Id', infoData);
         setInfo(infoData);
       });
       requests.getStyles(relateOneId, (styleData) => {
-        // console.log('styleData from rel 1 Id', styleData);
         setStyle(styleData);
-        // console.log('pic?', styleData.results[0].photos[0].thumbnail_url);
         setPic(styleData.results[0].photos[0].thumbnail_url);
-        // console.log('discount example all null', styleData.results[0].sale_price);
-        setDiscount(styleData.results[0].sale_price);
+        // setDiscount(styleData.results[0].sale_price);
+        const saleCheck = !!styleData.results[0].sale_price;
+        // console.log('saleCheck', saleCheck);
+        // console.log('sale price', styleData.results[0].sale_price);
+        // console.log('styleData', styleData);
+        setOnSale(saleCheck);
+        setPrice(saleCheck ? styleData.results[0].sale_price : styleData.results[0].original_price);
       });
       requests.getMetadata(relateOneId, (metaData) => {
         // console.log('related meta', metaData);
@@ -36,35 +55,32 @@ const RelatedCard = ({ relateOneId, current, CurMeta }) => {
   const handleToggle = () => {
     setToggleTable(!toggleTable);
   };
+  const handleChangeCurrent = () => {
+    event.preventDefault();
+    setCurrent(info);
+  };
   return (
     <div className={local.relatedCard}>
-      {/* <div onClick={handleToggle} className={local.action}>☆</div> */}
       <button type="button" onClick={handleToggle} className={local.action}>☆</button>
-      {/* <div>-----Related Card -----</div>
-      <div>click nav to detailed product page somehow</div> */}
       <center>
-        <img src={pic} alt="card pic" className={local.cardpic}></img>
+        <img src={pic} alt="card pic" className={local.cardpic}onClick={handleChangeCurrent}></img>
       </center>
       <div>
-        category:
+        Category:
         {info.category}
       </div>
       <div>
-        name:
+        Name:
         {info.name}
       </div>
       <div>
-        price:
-        {info.default_price}
+        Price: $
+        {price}
       </div>
       <div>Star Rating: get from Thomas state</div>
-      {/* <div className="popup" onClick={()=>{return(<div>Show something</div>)}}>Click Me!
-      <span className="popupText">popupText</span>
-      </div> */}
       {toggleTable ? (
         <CompareTable handleToggle={handleToggle} current={current} rel1Info={info} rel1style={style} CurMeta={CurMeta} rel1Meta={rel1Meta} />
       ) : <div></div>}
-      {/* <CompareTable/> */}
     </div>
   );
 };
