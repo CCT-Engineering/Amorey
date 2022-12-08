@@ -11,19 +11,19 @@
 
 .starRating {
   font-size: xx-large;
-  width: 40%;
+  margin-right: 5%;
 }
 
-.starDimensions {
+/* .starDimensions {
   background-color: lightgray;
   height: 15px;
-  width: 100%;
+  width: 80%;
 }
 
 .starDisplay {
   height: 15px;
   background: gold;
-}
+} */
 
 .recommend {
   font-size: smaller;
