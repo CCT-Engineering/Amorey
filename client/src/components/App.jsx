@@ -45,11 +45,26 @@ function App() {
   return (
     <>
       <h1 className={global.h1}>Atelier</h1>
-      <Overview current={current} currentStyles={currentStyles} setCurrentStyles={setCurrentStyles}/>
+      <Overview
+        current={current}
+        currentStyles={currentStyles}
+        setCurrentStyles={setCurrentStyles}
+      />
       {current && (
-      <RelatedOutfit current={current} favorites={favorites} setFavorites={setFavorites} CurMeta={metadata} />
+      <RelatedOutfit
+        current={current}
+        favorites={favorites}
+        setFavorites={setFavorites}
+        CurMeta={metadata}
+      />
       )}
-      {current.id && <RatingsReviews currentId={current.id} metadata={metadata} stars={stars} />}
+      {current.id && (
+      <RatingsReviews
+        currentId={current.id}
+        metadata={metadata}
+        stars={stars}
+      />
+      )}
     </>
   );
 }
