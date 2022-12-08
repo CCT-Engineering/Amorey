@@ -13,7 +13,6 @@ function App() {
   const [favorites, setFavorites] = useState([]);
 
   const [stars, setStars] = useState(5);
-
   const calculateAverageStars = (ratings) => {
     let totalStars = 0;
     let ratingsCount = 0;

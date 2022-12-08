@@ -66,21 +66,23 @@
   font-size: 0.8rem;
 }
 
-.starOutline {
-  height: 36px;
+.Stars {
+  --percent: calc(var(--rating) * 20%);
+  --star-size: 1.5em;
+  --star-color: rgba(173, 173, 173, 0.685);
+  --star-background: gold;
+
+  display: inline-block;
+  font-size: var(--star-size);
+  font-family: Times;
+  line-height: 1;
 }
 
-.starFill {
-  position: relative;
-  display: inline-block;
-  height: 36px;
-  background-color: gold;
+.Stars:before {
+  content: '★★★★★';
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.starContainer {
-  height: 36px;
-  display: inline-block;
 }
