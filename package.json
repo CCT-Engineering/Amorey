@@ -20,6 +20,11 @@
     "url": "https://github.com/CCT-Engineering/Atelier/issues"
   },
   "homepage": "https://github.com/CCT-Engineering/Atelier#readme",
+  "jest": {
+    "moduleNameMapper": {
+      "\\.css$": "identity-obj-proxy"
+    }
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -27,7 +32,12 @@
     "axios": "^1.2.0",
     "babel-jest": "^29.3.1",
     "dotenv": "^16.0.3",
+<<<<<<< HEAD
     "live-server": "^1.1.0",
+=======
+    "identity-obj-proxy": "^3.0.0",
+    "live-server": "^1.2.2",
+>>>>>>> master
     "morgan": "^1.10.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

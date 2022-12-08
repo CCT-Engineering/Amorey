@@ -33,8 +33,6 @@ module.exports = {
     'react/function-component-definition': 'off', // CHAD TO UNCOMMENT BEFORE PUSHING
 
     // related to button click on non-button html element
-    // 'jsx-a11y/no-static-element-interactions': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
-    // 'jsx-a11y/click-events-have-key-events': 'off',
   },
 };

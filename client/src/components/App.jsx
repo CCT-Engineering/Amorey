@@ -28,6 +28,7 @@ function App() {
   const getData = (id) => {
     requests.getProductInfo(id, (data) => {
       setCurrent(data);
+      console.log('current product:', data);
       requests.getMetadata(id, (metrics) => {
         setMetadata(metrics);
         setStars(calculateAverageStars(metrics.ratings));

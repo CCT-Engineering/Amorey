@@ -14,13 +14,13 @@ function ProductDesc({ current }) {
       <div className={local.features}>
         <div className={local.featuresContainer}>
           <div className={local.featureName}>
-            {current.features.map((feature) => (<p>{feature.feature}</p>))}
+            {current.features.map((feat) => (<p key={feat.feature}>{feat.feature}</p>))}
           </div>
           <div className={local.featureDivider}>
-            {current.features.map(() => (<p>•</p>))}
+            {current.features.map((feat) => (<p key={feat.feature}>•</p>))}
           </div>
           <div className={local.featureVal}>
-            {current.features.map((feature) => (<p>{feature.value}</p>))}
+            {current.features.map((feat) => (<p key={feat.feature}>{feat.value ?? 'none'}</p>))}
           </div>
         </div>
       </div>

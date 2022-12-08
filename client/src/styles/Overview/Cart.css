@@ -1,3 +1,4 @@
 .cart {
   display: block;
+  visibility: hidden;
 }
