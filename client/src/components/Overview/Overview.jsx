@@ -8,8 +8,7 @@ import ProductDesc from './ProductDesc.jsx';
 import local from '../../styles/Overview/Overview.css';
 import requests from '../../requests.js';
 
-function Overview({ current }) {
-  const [currentStyles, setCurrentStyles] = useState([]);
+function Overview({ current, currentStyles, setCurrentStyles }) {
   const [currentStyle, setCurrentStyle] = useState({ photos: [] });
   const [price, setPrice] = useState(current.default_price);
   const [onSale, setOnSale] = useState(false);
