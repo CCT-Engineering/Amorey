@@ -20,6 +20,11 @@
     "url": "https://github.com/CCT-Engineering/Atelier/issues"
   },
   "homepage": "https://github.com/CCT-Engineering/Atelier#readme",
+  "jest": {
+    "moduleNameMapper": {
+      "\\.css$": "identity-obj-proxy"
+    }
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

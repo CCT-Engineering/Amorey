@@ -6,10 +6,14 @@ import testData from '../../client/src/testData.jsx';
 
 describe('Render Overview Module', () => {
   it('Should render page with Title header', () => {
-    render(<Overview current={testData.productData} />);
+    const {container} = render(<Overview current={testData.productData} />);
 
     const slogan = screen.getByRole('heading', { level: 4 });
     expect(slogan).toHaveTextContent('Blend in to your crowd');
+
+    const [overviewMain] = container.getElementsByClassName('overviewMain');
+
+    expect(overviewMain).toBeVisible();
   });
 });
 
