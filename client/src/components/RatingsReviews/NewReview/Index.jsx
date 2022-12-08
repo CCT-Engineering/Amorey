@@ -10,6 +10,13 @@ const WriteNewReview = ({ current, details }) => {
     setLetterCount(50 - input.length);
   };
 
+  const numberOfPhotots = () => {
+    if (event.target.files.length > 5) {
+      document.getElementById('uploadPhoto').value = [];
+      alert('Maximum of 5 photo uploads is allowed');
+    }
+  };
+
   return (
     <div className={local.modal}>
       <div className={local.reviewForm}>
@@ -50,9 +57,9 @@ const WriteNewReview = ({ current, details }) => {
             {' Email Address'}
           </h6>
           <p>For authentication reasons, you will not be emailed</p>
-          <label>
+          <label htmlFor="uploadPhoto">
             Upload Images (Optional)
-            <input type="file" accept="image/*" multiple maxLength="5" />
+            <input id="uploadPhoto" type="file" name="uploadPhoto" accept="image/*" onChange={numberOfPhotots} multiple />
           </label>
           <button type="submit">Submit Review!</button>
         </form>
