@@ -5,15 +5,25 @@ import Overview from '../../client/src/components/Overview/Overview.jsx';
 import testData from '../../client/src/testData.jsx';
 
 describe('Render Overview Module', () => {
-  it('Should render page with Title header', () => {
-    const {container} = render(<Overview current={testData.productData} />);
+  beforeAll(() => {
+    render(<Overview current={testData.productData} />);
+  });
 
+  it('Should render the product slogan', () => {
     const slogan = screen.getByRole('heading', { level: 4 });
     expect(slogan).toHaveTextContent('Blend in to your crowd');
+  });
 
+  it('Should have an "overviewMain" section', () => {
+    const { container } = render(<Overview current={testData.productData} />);
     const [overviewMain] = container.getElementsByClassName('overviewMain');
-
     expect(overviewMain).toBeVisible();
+  });
+
+  it('Should render the product name', () => {
+    const productName = screen.getByRole('heading');
+    // const productName = screen.getByRole('heading', { name: '/Camo Onesie/i' });
+    expect(productName).toBeVisible();
   });
 });
 

@@ -29,3 +29,5 @@ client/dist/
 /coverage
 
 .eslintrc.js
+
+/backup
