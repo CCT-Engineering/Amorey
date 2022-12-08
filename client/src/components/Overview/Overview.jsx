@@ -28,7 +28,7 @@ function Overview({ current }) {
     }
   }, [current]);
 
-  console.log('currentStyle inside Overview:', currentStyle);
+  // console.log('currentStyle inside Overview:', currentStyle);
 
   const setStyle = (styleId) => {
     currentStyles.forEach((style) => {
@@ -69,6 +69,7 @@ function Overview({ current }) {
         </div>
       </div>
       <ProductDesc current={current} />
+      <div className="hello" />
     </>
   );
 }

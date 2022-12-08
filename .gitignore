@@ -27,4 +27,5 @@ Icon
 
 
 client/dist/
-coverage
+/coverage
+.eslintrc.js
