@@ -10,6 +10,7 @@ function App() {
   const [current, setCurrent] = useState({ features: [] });
   const [metadata, setMetadata] = useState([]);
   const [favorites, setFavorites] = useState([]); // uncomment once used
+  console.log('favorites', favorites);
   const [stars, setStars] = useState(5);
 
   const calculateAverageStars = (ratings) => {
@@ -45,7 +46,7 @@ function App() {
       <h1 className={global.h1}>Atelier</h1>
       <Overview current={current} />
       {current && (
-      <RelatedOutfit current={current} favorites={favorites} setFavorites={setFavorites} />
+      <RelatedOutfit current={current} favorites={favorites} setFavorites={setFavorites} CurMeta={metadata} />
       )}
       {current.id && <RatingsReviews currentId={current.id} metadata={metadata} stars={stars} />}
     </>
