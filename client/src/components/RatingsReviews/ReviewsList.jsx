@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReviewEntry from './ReviewEntry.jsx';
-import WriteNewReview from './WriteNewReview.jsx';
+import NewReview from './NewReview/Index.jsx';
 import local from '../../styles/RatingsReviews/ReviewList.css';
 
 const ReviewsList = ({
@@ -43,7 +43,7 @@ const ReviewsList = ({
       {reviews.length > 2 && renderAmount < reviews.length && (
         <button className={local.moreReviews} type="button" onClick={loadMoreEntries}>MORE REVIEWS</button>)}
       <button className={local.addReview} type="button" onClick={handleClick}>ADD A REVIEW +</button>
-      {modal && <WriteNewReview current={current} details={details} />}
+      {modal && <NewReview current={current} details={details} />}
     </div>
   );
 };

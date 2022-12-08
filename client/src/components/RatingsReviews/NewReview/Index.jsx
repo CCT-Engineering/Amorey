@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import characteristic from '../../util/characteristics.js';
-import local from '../../styles/RatingsReviews/WriteNewReview.css';
+// import StarDisplay from '../SharedComponents/StarDisplay.jsx';
+import Characteristic from './Characteristic.jsx';
+import local from '../../../styles/RatingsReviews/WriteNewReview.css';
 
 const WriteNewReview = ({ current, details }) => {
   const starText = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
@@ -9,35 +10,6 @@ const WriteNewReview = ({ current, details }) => {
 
   const updateLetterCount = (input) => {
     setLetterCount(50 - input.length);
-  };
-
-  const renderDetails = (detail, index) => {
-    const [rating, setRating] = useState(0);
-
-    const updateRating = (value) => {
-      setRating(value);
-    };
-
-    return (
-      <div>
-        <h6 key={index}>
-          {`${detail}*`}
-          {rating
-            ? `:  "${characteristic[`${detail}`](rating)}"`
-            : null }
-        </h6>
-        <label htmlFor={detail}>1</label>
-        <input type="radio" name={`${detail}`} onClick={() => updateRating(1)} />
-        <label htmlFor={detail}>2</label>
-        <input type="radio" name={`${detail}`} onClick={() => updateRating(2)} />
-        <label htmlFor={detail}>3</label>
-        <input type="radio" name={`${detail}`} onClick={() => updateRating(3)} />
-        <label htmlFor={detail}>4</label>
-        <input type="radio" name={`${detail}`} onClick={() => updateRating(4)} />
-        <label htmlFor={detail}>5</label>
-        <input type="radio" name={`${detail}`} onClick={() => updateRating(5)} />
-      </div>
-    );
   };
 
   return (
@@ -59,7 +31,7 @@ const WriteNewReview = ({ current, details }) => {
             <input type="radio" name="recommend" id="radioNo" />
             Do You recommend this product?
           </h6>
-          {details && Object.keys(details).map((detail, index) => renderDetails(detail, index))}
+          {details && Object.keys(details).map((detail, index) => <Characteristic detail={detail} index={index} />)}
           <h6>
             <input placeholder="Example: Best purchase ever!" />
             {' Summary'}
@@ -75,7 +47,7 @@ const WriteNewReview = ({ current, details }) => {
           </h6>
           <p>For privacy reasons, do not use your full name or email address</p>
           <h6>
-            <input placeholder="jackson11@email.com" maxLength="60" required />
+            <input type="email" placeholder="jackson11@email.com" maxLength="60" required />
             {' Email Address*'}
           </h6>
           <p>For authentication reasons, you will not be emailed</p>
