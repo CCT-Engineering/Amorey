@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { buildHandleEnterKeyPress } from '../../../util';
-// import global from '../../../styles/global.css';
 
 const StarRating = () => {
   const starText = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
@@ -24,7 +23,7 @@ const StarRating = () => {
         className="star1"
         onClick={() => updateStars(1)}
         onKeyPress={buildHandleEnterKeyPress(() => updateStars(1))}
-        style={{ backgroundColor: currentStar > 0 ? 'red' : null }}
+        style={{ color: currentStar > 0 ? 'gold' : null }}
         required
       >
         ★
@@ -35,7 +34,7 @@ const StarRating = () => {
         className="star2"
         onClick={() => updateStars(2)}
         onKeyPress={buildHandleEnterKeyPress(() => updateStars(2))}
-        style={{ backgroundColor: currentStar > 1 ? 'red' : null }}
+        style={{ color: currentStar > 1 ? 'gold' : null }}
       >
         ★
       </a>
@@ -45,7 +44,7 @@ const StarRating = () => {
         className="star3"
         onClick={() => updateStars(3)}
         onKeyPress={buildHandleEnterKeyPress(() => updateStars(3))}
-        style={{ backgroundColor: currentStar > 2 ? 'red' : null }}
+        style={{ color: currentStar > 2 ? 'gold' : null }}
       >
         ★
       </a>
@@ -55,7 +54,7 @@ const StarRating = () => {
         className="star4"
         onClick={() => updateStars(4)}
         onKeyPress={buildHandleEnterKeyPress(() => updateStars(4))}
-        style={{ backgroundColor: currentStar > 3 ? 'red' : null }}
+        style={{ color: currentStar > 3 ? 'gold' : null }}
       >
         ★
       </a>
@@ -65,7 +64,7 @@ const StarRating = () => {
         className="star5"
         onClick={() => updateStars(5)}
         onKeyPress={buildHandleEnterKeyPress(() => updateStars(5))}
-        style={{ backgroundColor: currentStar > 4 ? 'red' : null }}
+        style={{ color: currentStar > 4 ? 'gold' : null }}
       >
         ★
       </a>

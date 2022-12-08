@@ -13,7 +13,7 @@ const Characteristic = ({ detail, index }) => {
       <h6>
         {`${detail}`}
         {rating
-          ? `:  "${characteristic[`${detail}`](rating)}"`
+          ? `:  "${characteristic[detail][rating]}"`
           : null }
       </h6>
       <label htmlFor={detail}>

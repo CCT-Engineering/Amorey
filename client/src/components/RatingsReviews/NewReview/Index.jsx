@@ -50,7 +50,10 @@ const WriteNewReview = ({ current, details }) => {
             {' Email Address'}
           </h6>
           <p>For authentication reasons, you will not be emailed</p>
-          <button type="button">Upload Images (Optional)</button>
+          <label>
+            Upload Images (Optional)
+            <input type="file" accept="image/*" multiple maxLength="5" />
+          </label>
           <button type="submit">Submit Review!</button>
         </form>
       </div>
