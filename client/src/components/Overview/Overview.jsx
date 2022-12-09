@@ -7,7 +7,7 @@ import ProductDesc from './ProductDesc.jsx';
 // import testData from '../../testData.jsx';
 import local from '../../styles/Overview/Overview.css';
 
-function Overview({ current, currentStyles }) {
+function Overview({ current, currentStyles, stars }) {
   const [currentStyle, setCurrentStyle] = useState({ photos: [] });
   const [price, setPrice] = useState(current.default_price);
   const [onSale, setOnSale] = useState(false);
@@ -56,6 +56,7 @@ function Overview({ current, currentStyles }) {
             price={price}
             origPrice={currentStyle.original_price}
             onSale={onSale}
+            stars={stars}
           />
           <Styles
             currentStyles={currentStyles}

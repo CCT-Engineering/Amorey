@@ -1,8 +1,9 @@
 import React from 'react';
 import local from '../../styles/Overview/ProductInfo.css';
+import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 
 function ProductInfo({
-  current, price, origPrice, onSale,
+  current, price, origPrice, onSale, stars,
 }) {
   const priceStyle = {
     color: `${onSale ? 'red' : 'inherit'}`,
@@ -10,6 +11,7 @@ function ProductInfo({
 
   return (
     <div className={local.productInfo}>
+      <StarDisplay stars={stars} />
       <h5>{current.category}</h5>
       <h2>{current.name}</h2>
       <h6>

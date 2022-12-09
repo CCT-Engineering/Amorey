@@ -57,10 +57,12 @@ describe('Render Overview Module', () => {
   //     });
   // });
 
-  it('Should display name of style when its corresponding style thumbnail is clicked (2)', async () => {
+  it('Should display name of style when its corresponding style thumb is clicked', async () => {
     const user = setup(testData.product40344Data, testData.product40344Styles.results);
-    await user.click(await screen.findByRole('button', { name: /Main Thumbnail Desert Brown/i }));
-    expect(screen.getByRole('heading', { level: 5, name: /style/i })).toHaveTextContent(/DESERT BROWN & TAN/i);
+    await user.click(await screen
+      .findByRole('button', { name: /Main Thumbnail Desert Brown/i }));
+    expect(screen.getByRole('heading', { level: 5, name: /style/i }))
+      .toHaveTextContent(/DESERT BROWN & TAN/i);
   });
 
   it('Should display "photo unavailable" when photo url is null', async () => {
@@ -77,7 +79,8 @@ describe('Render Overview Module', () => {
     });
     const user = setup(testData.product40344Data, testData.product40344Styles.results);
     await user.click(await screen.findByRole('img', { name: /Photo 0 of Forest Green & Black/i }));
-    expect(screen.getByRole('img', { name: /Photo 0 of Forest Green & Black/i })).toHaveTextContent(/photo unavailable/i);
+    expect(screen.getByRole('img', { name: /Photo 0 of Forest Green & Black/i }))
+      .toHaveTextContent(/photo unavailable/i);
   });
 });
 

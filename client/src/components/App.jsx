@@ -11,7 +11,7 @@ function App() {
   const [currentStyles, setCurrentStyles] = useState([]);
   const [metadata, setMetadata] = useState([]);
   const [favorites, setFavorites] = useState([]);
-
+  // Below state is the stars for the CURRENT product
   const [stars, setStars] = useState(5);
   const calculateAverageStars = (ratings) => {
     let totalStars = 0;
@@ -63,6 +63,7 @@ function App() {
       <Overview
         current={current}
         currentStyles={currentStyles}
+        stars={stars}
       />
       {currentStyles.length && (
       <RelatedOutfit
