@@ -9,7 +9,13 @@ import '@testing-library/jest-dom';
 describe('Render Overview Module', () => {
   const setup = () => {
     const user = userEvent.setup();
-    render(<Overview current={testData.productData} />);
+    // requests.getStyles(id, (styleData) => {
+    //   setCurrentStyles(styleData.results);
+    // });
+    render(<Overview
+      current={testData.product40344Data}
+      currentStyles={testData.product40344Styles.results}
+    />);
     return user;
   };
 
@@ -20,20 +26,13 @@ describe('Render Overview Module', () => {
   });
 
   it('Should have an "overviewMain" section', () => {
-    const { container } = render(<Overview current={testData.productData} />);
+    const { container } = render(<Overview
+      current={testData.product40344Data}
+      currentStyles={testData.product40344Styles.results}
+    />);
     const [overviewMain] = container.getElementsByClassName('overviewMain');
     expect(overviewMain).toBeVisible();
   });
-
-  // QUESTIONABLE TEST BELOW - KEEPING FOR REFERENCE
-  // it('Should render the product name', () => {
-  //   setup();
-  //   screen.findByRole('heading', { name: '/Camo Onesie/i' })
-  //     .then((productName) => {
-  //       console.log('productName:', productName);
-  //       expect(productName).toBeVisible();
-  //     })
-  // });
 
   // BAD WAY to check that some text is visible (case sensitive)
   it('Should render the product name (2)', () => {
@@ -47,25 +46,22 @@ describe('Render Overview Module', () => {
     expect(screen.getByRole('heading', { name: /camo onesie/i })).toBeVisible();
   });
 
+  // PROMISE PATTERN NOT WORKING FOR SOME REASON
   // it('Should display name of style when its corresponding style thumb is clicked (1)', () => {
   //   const user = setup();
-  //   screen.findAllByRole('button', { name: /Main Thumbnail Desert Brown/i })
-  //     .then((elements) => {
-  //       user.click(elements[0]);
+  //   screen.findByRole('button', { name: /Main Thumbnail Desert Brown/i })
+  //     .then((element) => {
+  //       user.click(element);
   //     })
-  //     .then(() => screen.getByRole('heading', { level: 5, name: /style/i }))
+  //     .then(() => screen.findByRole('heading', { level: 5, name: /style/i }))
   //     .then((styleName) => {
-  //       expect(styleName).toHaveTextContent('DESERT BROWN & TAN');
+  //       expect(styleName).toHaveTextContent(/DESERT BROWN & TAN/i);
   //     });
-  //   // expect(screen.getByRole('heading', { name: /camo onesie/i })).toBeVisible();
-  //   // const styleName = screen.getByRole('heading', { level: 5, name: /style/i });
-  //   // expect(styleName).toHaveTextContent('DESERT BROWN & TAN');
   // });
 
   it('Should display name of style when its corresponding style thumbnail is clicked (2)', async () => {
     const user = setup();
     await user.click(await screen.findByRole('button', { name: /Main Thumbnail Desert Brown/i }));
-    await screen.findByRole('heading', { level: 5, name: /style/i });
     expect(screen.getByRole('heading', { level: 5, name: /style/i })).toHaveTextContent(/DESERT BROWN & TAN/i);
   });
 });
