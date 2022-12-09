@@ -35,7 +35,7 @@ const WriteNewReview = ({ current, details }) => {
           </label>
           {details && (
             Object.keys(details).map((detail, index) => {
-              return <Characteristic detail={detail} index={index} />;
+              return <Characteristic detail={detail} key={`${detail + index}`} />;
             })
           )}
           <h6>
