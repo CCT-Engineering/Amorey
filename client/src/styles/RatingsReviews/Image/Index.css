@@ -13,4 +13,5 @@
 
 .photo {
   z-index: 2;
+  align-self: center;
 }

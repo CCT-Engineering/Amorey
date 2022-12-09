@@ -36,7 +36,7 @@ const Index = ({
     }
   };
 
-  useEffect(() => renderReviews(), []);
+  useEffect(() => renderReviews(), [metadata]);
 
   return (
     <div className={local.ratingsReviews}>
