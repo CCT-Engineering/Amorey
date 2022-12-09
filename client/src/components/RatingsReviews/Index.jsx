@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReviewsList from './ReviewsList.jsx';
-import Sorting from './Sorting.jsx';
+
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import requests from '../../requests.js';
@@ -36,7 +36,9 @@ const Index = ({
     }
   };
 
-  useEffect(() => renderReviews(), [metadata]);
+  useEffect(() => {
+    renderReviews();
+  }, [metadata]);
 
   return (
     <div className={local.ratingsReviews}>
@@ -59,10 +61,10 @@ const Index = ({
         <div className={local.reviews}>
           {reviews.length && (
             <div className={local.reviewMain}>
-              <Sorting reviews={reviews} changeSort={renderReviews} />
               <ReviewsList
                 reviews={reviews}
                 sort={sort}
+                changeSort={renderReviews}
                 update={updateReview}
                 current={current}
                 details={metadata.characteristics}
