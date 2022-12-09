@@ -7,24 +7,22 @@ import testData from '../../client/src/testData.jsx';
 import '@testing-library/jest-dom';
 
 describe('Render Overview Module', () => {
-  const setup = () => {
+  const setup = (current, currentStyles) => {
     const user = userEvent.setup();
-    // requests.getStyles(id, (styleData) => {
-    //   setCurrentStyles(styleData.results);
-    // });
     render(<Overview
-      current={testData.product40344Data}
-      currentStyles={testData.product40344Styles.results}
+      current={current}
+      currentStyles={currentStyles}
     />);
     return user;
   };
 
   it('Should render the product slogan', () => {
-    setup();
+    setup(testData.product40344Data, testData.product40344Styles.results);
     const slogan = screen.getByRole('heading', { level: 4 });
     expect(slogan).toHaveTextContent('Blend in to your crowd');
   });
 
+  // Below test is for demonstration purposes only. Better to not select by class name.
   it('Should have an "overviewMain" section', () => {
     const { container } = render(<Overview
       current={testData.product40344Data}
@@ -36,13 +34,13 @@ describe('Render Overview Module', () => {
 
   // BAD WAY to check that some text is visible (case sensitive)
   it('Should render the product name (2)', () => {
-    setup();
+    setup(testData.product40344Data, testData.product40344Styles.results);
     expect(screen.getByRole('heading', { name: 'Camo Onesie' })).toBeVisible();
   });
 
   // GOOD WAY to check that some text is visible (case insensitive, more flexibility with regex)
   it('Should render the product name (1)', () => {
-    setup();
+    setup(testData.product40344Data, testData.product40344Styles.results);
     expect(screen.getByRole('heading', { name: /camo onesie/i })).toBeVisible();
   });
 
@@ -60,9 +58,26 @@ describe('Render Overview Module', () => {
   // });
 
   it('Should display name of style when its corresponding style thumbnail is clicked (2)', async () => {
-    const user = setup();
+    const user = setup(testData.product40344Data, testData.product40344Styles.results);
     await user.click(await screen.findByRole('button', { name: /Main Thumbnail Desert Brown/i }));
     expect(screen.getByRole('heading', { level: 5, name: /style/i })).toHaveTextContent(/DESERT BROWN & TAN/i);
+  });
+
+  it('Should display "photo unavailable" when photo url is null', async () => {
+    testData.product40344Styles.results.map((style) => {
+      const photos = style.photos.map((photo) => {
+        const singlePhoto = photo;
+        singlePhoto.url = null;
+        singlePhoto.thumbnail_url = null;
+        return singlePhoto;
+      });
+      const newStyle = style;
+      newStyle.photos = photos;
+      return newStyle;
+    });
+    const user = setup(testData.product40344Data, testData.product40344Styles.results);
+    await user.click(await screen.findByRole('img', { name: /Photo 0 of Forest Green & Black/i }));
+    expect(screen.getByRole('img', { name: /Photo 0 of Forest Green & Black/i })).toHaveTextContent(/photo unavailable/i);
   });
 });
 
