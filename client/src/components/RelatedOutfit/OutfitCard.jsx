@@ -1,54 +1,34 @@
 import React, { useState } from 'react';
 import local from '../../styles/RelatedOutfit.css';
 
-const OutfitCard = ({ outfitPiece, outfitArr, setOutfitArrm, index, handleDelete }) => {
-  const addOutfit = (curId) => {
+const OutfitCard = ({ outfitPiece, index, favorites, setFavorites }) => {
+  // console.log('index', index);
+  const handleDelete = () => {
     event.preventDefault();
-    let copy = outfitArr.slice();
-    curId.push(copy);
-    setOutfitArr(copy);
-  }
-  // axios.get('prod info by id GET /products/:product_id')
-  // .then((response)=>{
-  //   let info = response.data
-  const exRC = {
-    "id": 11,
-    "name": "Air Minis 250",
-    "slogan": "Full court support",
-    "description": "This optimized air cushion pocket reduces impact but keeps a perfect balance underfoot.",
-    "category": "Basketball Shoes",
-    "default_price": "0",
-    "features": [
-      {
-        "feature": "Sole",
-        "value": "Rubber"
-      },
-      {
-        "feature": "Material",
-        "value": "FullControlSkin"
-      },
-    ],
-  }
-  let info = exRC;
+    let copy = favorites.slice();
+    copy.splice(index, 1);
+    // console.log('deleting', copy);
+    setFavorites(copy);
+  };
   return (
     <div className={local.outfitCard}>
-      <button type="button" className={local.action}>X</button>
-      <div>-----Outfit Card -----</div>
-      <div>click nav to detailed product page somehow</div>
+      <button type="button" className={local.action} onClick={handleDelete}>X</button>
+      {/* <button type="button" className={local.action}>X</button> */}
+      <div>{outfitPiece.pic}</div>
       <div>
-        category:
-        {info.category}
+        Category:
+        {outfitPiece.category}
       </div>
       <div>
-        name:
-        {info.name}
+        Name:
+        {outfitPiece.name}
       </div>
       <div>
-        price:
-        {info.default_price}
+        Price:
+        {outfitPiece.default_price}
       </div>
       <div>Star Rating: get from Thomas state</div>
-      <div>img: figure out image here</div>
+
     </div>
   );
   // })
