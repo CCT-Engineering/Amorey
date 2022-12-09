@@ -39,9 +39,6 @@ function Gallery({
       block: 'nearest',
       inline: 'center',
     });
-    if (photoIndex === photoQty - 1) {
-      //
-    }
   };
 
   function buildBtn(className, btnName, onKeyDownBindings, content) {
