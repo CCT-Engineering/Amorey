@@ -1,21 +1,20 @@
 .main {
   display: block;
-  background-color:coral;
+  background-color:#52d1bc;
   border-bottom: solid 2px black;
   margin-bottom: 2%;
 }
 
 .header {
+  background-color: #4ea697;
   display: flex;
   justify-content: space-between;
 }
 
 .rating {
-  background-color: indianred;
 }
 
 .user {
-  background-color: indianred;
 }
 
 .summary {
@@ -35,7 +34,7 @@
 }
 
 .response {
-  background-color: orangered;
+  background-color: #aae3d9;
 }
 
 .footer {
