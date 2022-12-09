@@ -16,9 +16,17 @@ function Gallery({
   const thumbRefs = useRef([]);
   thumbRefs.current = photos.map((photo, i) => thumbRefs.current[i] ?? createRef());
 
-  const divStyle = {
-    backgroundImage: `url(${photoUrl})`,
-  };
+  let mainPhotoDivStyle;
+  if (photoUrl) {
+    mainPhotoDivStyle = {
+      backgroundImage: `url(${photoUrl})`,
+    };
+  } else {
+    mainPhotoDivStyle = {
+      background: 'whitesmoke',
+      border: '1px solid #111',
+    };
+  }
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -54,8 +62,8 @@ function Gallery({
 
   let photoId = -1;
 
-  return (
-    <div className={local.gallery} style={divStyle}>
+  const gallerySide = !photoUrl ? '' : (
+    <>
       <span role="img" aria-label={photoDesc} />
       <div className={local.gallerySide}>
         {photoIndex > 0
@@ -83,6 +91,12 @@ function Gallery({
           ? buildBtn(local.thbArrow, 'thumbDn', ['ArrowDown'], '˅')
           : <button type="button" tabIndex={0} className={local.thbArrow}>-</button>}
       </div>
+    </>
+  );
+
+  return (
+    <div className={local.gallery} style={mainPhotoDivStyle}>
+      {photoUrl ? gallerySide : <p className={local.noPhoto}>Photo Unavailable</p>}
       {photoIndex === 0 ? '' : buildBtn(local.left, 'left', ['ArrowLeft'], '⬅')}
       {photoIndex === photoQty - 1 ? '' : buildBtn(local.right, 'right', ['ArrowRight'], '⮕')}
     </div>

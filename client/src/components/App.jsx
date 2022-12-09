@@ -59,7 +59,7 @@ function App() {
 
   return (
     <>
-      <h1 className={global.h1}>Atelier</h1>
+      <h1 className={global.h1}>Amorey</h1>
       <Overview
         current={current}
         currentStyles={currentStyles}
