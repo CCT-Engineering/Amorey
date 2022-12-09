@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Sorting from './Sorting.jsx';
 import ReviewEntry from './ReviewEntry.jsx';
 import NewReview from './NewReview/Index.jsx';
 import local from '../../styles/RatingsReviews/ReviewList.css';
 
 const ReviewsList = ({
-  reviews, sort, update, current, details,
+  reviews, sort, newSort, changeSearch, update, current, details, renderReviews,
 }) => {
   const [renderLimit, setRenderLimit] = useState(2);
+  const [filters, setFilters] = useState([]);
   const [modal, showModal] = useState(false);
-
   let renderAmount = 0;
 
-  const handleClick = () => {
-    showModal(!modal);
+  const filterReviews = (filtered = []) => {
+    reviews.forEach((review) => sort[review.rating - 1] && filtered.push(review));
+    setFilters(filtered);
   };
 
   const loadMoreEntries = () => {
@@ -26,25 +28,33 @@ const ReviewsList = ({
 
   const renderReviewEntries = (review, index) => {
     if (renderAmount < renderLimit) {
-      if (sort[review.rating - 1]) {
-        renderAmount += 1;
-        return <ReviewEntry review={review} key={index} update={update} />;
-      }
+      renderAmount += 1;
+      return <ReviewEntry review={review} key={index} update={update} />;
     }
     return null;
   };
 
+  useEffect(() => filterReviews(), [reviews, sort]);
+
   return (
-    <div>
+    <>
+      <Sorting sort={sort} newSort={newSort} reviews={filters} changeSearch={changeSearch} />
       <div className={local.reviewList}>
-        {reviews && reviews.map((review, index) => renderReviewEntries(review, index))}
-        {!reviews.length && <div>Be the first to review this product!</div>}
+        {filters && filters.map((review, index) => renderReviewEntries(review, index))}
+        {!filters.length && <div>Currently No Reviews To Display</div>}
       </div>
-      {reviews.length > 2 && renderAmount < reviews.length && (
+      {filters.length > 2 && renderAmount < filters.length && (
         <button className={local.moreReviews} type="button" onClick={loadMoreEntries}>MORE REVIEWS</button>)}
-      <button className={local.addReview} type="button" onClick={handleClick}>ADD A REVIEW +</button>
-      {modal && <NewReview current={current} details={details} />}
-    </div>
+      <button className={local.addReview} type="button" onClick={() => showModal(true)}>ADD A REVIEW +</button>
+      {modal && (
+        <NewReview
+          current={current}
+          details={details}
+          renderReviews={renderReviews}
+          showModal={showModal}
+        />
+      )}
+    </>
   );
 };
 

@@ -5,3 +5,16 @@
 .oldPrice {
   text-decoration: line-through;
 }
+
+.reviewsLink {
+  padding-left: 10px;
+  padding-bottom: 10px;
+  display: inline-block;
+  font-size: 10px;
+  text-decoration: underline;
+}
+
+.reviewsLink:active {
+  color: blue;
+  text-shadow: 0px 0px 1px black;
+}

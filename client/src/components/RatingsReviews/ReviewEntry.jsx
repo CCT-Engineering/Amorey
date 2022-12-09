@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
+import Photos from './Images/Photos.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 import local from '../../styles/RatingsReviews/ReviewEntry.css';
 import date from '../../util/formatDate.js';
 
 const ReviewEntry = ({ review, update }) => {
   const [expand, setExpand] = useState(false);
+  const [canRateReview, setRateReview] = useState(true);
+
   const handleClick = (helpful) => {
     event.preventDefault();
-    update(review.review_id, helpful);
+    if (canRateReview) {
+      setRateReview(false);
+      update(review.review_id, helpful);
+    }
   };
 
-  const handleExpand = () => {
+  const expandBody = () => {
     event.preventDefault();
     setExpand(true);
   };
@@ -27,8 +33,8 @@ const ReviewEntry = ({ review, update }) => {
             role="button"
             tabIndex={0}
             className={local.expand}
-            onClick={handleExpand}
-            onKeyPress={buildHandleEnterKeyPress(handleExpand)}
+            onClick={expandBody}
+            onKeyPress={buildHandleEnterKeyPress(expandBody)}
           >
             Show more
           </a>
@@ -65,7 +71,9 @@ const ReviewEntry = ({ review, update }) => {
           </div>
         )}
       </div>
-      {review.photos?.map((image, index) => <img key={`${review.review_id + index}`} src={image.url} alt={index} height="48px" width="48px" />)}
+      {review.photos ? review.photos.map((photo, index) => (
+        <Photos photo={photo} key={`${photo.url + index}`} />
+      )) : null}
       <div className={local.footer}>
         Helpful?
         <a

@@ -1,5 +1,4 @@
 .ratingsReviews {
-  background:lightblue;
 }
 
 .header {
@@ -21,7 +20,7 @@
 }
 
 .reviewMain {
-  background-color:darksalmon;
+  background-color: #62b3a5;
   display: block;
   margin-left: 5%;
 }

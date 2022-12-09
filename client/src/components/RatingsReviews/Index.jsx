@@ -1,27 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import ReviewsList from './ReviewsList.jsx';
-import Sorting from './Sorting.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import requests from '../../requests.js';
 import local from '../../styles/RatingsReviews/Index.css';
 
-const Index = ({
-  currentId, metadata, stars, current,
-}) => {
+const Index = forwardRef(({ current, metadata, stars }, ref) => {
   const [reviews, setReviews] = useState([]);
   const [sort, setSort] = useState([1, 1, 1, 1, 1]);
 
   const renderReviews = (sortMethod = 'relevant') => {
-    requests.getReviews(currentId, sortMethod, (data) => {
+    requests.getReviews(current.id, sortMethod, (data) => {
       setReviews(data.results);
+      setSort([1, 1, 1, 1, 1]);
     });
   };
 
-  const filterSearch = (starCount) => {
-    const temp = sort.slice();
-    temp[starCount - 1] = !temp[starCount - 1];
-    setSort(temp);
+  const changeSearch = (star) => {
+    const starSorting = sort.slice();
+    starSorting[star - 1] = !starSorting[star - 1];
+    setSort(starSorting);
   };
 
   const updateReview = (review, helpful) => {
@@ -36,10 +34,10 @@ const Index = ({
     }
   };
 
-  useEffect(() => renderReviews(), []);
+  useEffect(() => renderReviews(), [metadata]);
 
   return (
-    <div className={local.ratingsReviews}>
+    <div ref={ref} className={local.ratingsReviews}>
       <h5 className={local.header}>RATINGS & REVIEWS</h5>
       <div className={local.ratingsReviewsMain}>
         <div className={local.ratings}>
@@ -49,7 +47,7 @@ const Index = ({
                 ratings={metadata.ratings}
                 recommend={metadata.recommended}
                 stars={stars}
-                filter={filterSearch}
+                filter={changeSearch}
                 sort={sort}
               />
               <ProductBreakdown details={metadata.characteristics} />
@@ -59,10 +57,12 @@ const Index = ({
         <div className={local.reviews}>
           {reviews.length && (
             <div className={local.reviewMain}>
-              <Sorting reviews={reviews} changeSort={renderReviews} />
               <ReviewsList
                 reviews={reviews}
+                renderReviews={renderReviews}
                 sort={sort}
+                newSort={setSort}
+                changeSearch={renderReviews}
                 update={updateReview}
                 current={current}
                 details={metadata.characteristics}
@@ -73,6 +73,6 @@ const Index = ({
       </div>
     </div>
   );
-};
+});
 
 export default Index;

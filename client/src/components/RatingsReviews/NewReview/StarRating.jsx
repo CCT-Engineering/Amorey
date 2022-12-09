@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { buildHandleEnterKeyPress } from '../../../util';
 
-const StarRating = () => {
+const StarRating = ({ setRating }) => {
   const starText = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
   const [currentStar, setCurrentStar] = useState(0);
   const [currentStarText, setCurrentStarText] = useState('');
 
   const updateStars = (starCount) => {
+    setRating(starCount);
     setCurrentStar(starCount);
     setCurrentStarText(starText[starCount - 1]);
   };
@@ -40,6 +41,8 @@ const StarRating = () => {
       </a>
       <a
         role="button"
+        name="rating"
+        value={3}
         tabIndex={0}
         className="star3"
         onClick={() => updateStars(3)}

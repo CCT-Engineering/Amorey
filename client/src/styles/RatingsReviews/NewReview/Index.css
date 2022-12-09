@@ -13,6 +13,7 @@
 
 .reviewForm {
   position: fixed;
+  border: 2px white solid;
   display: flex;
   justify-content: center;
   z-index: 2;
@@ -20,7 +21,7 @@
   width: 50%;
   height: 50%;
   overflow: auto;
-  background-color: lightgreen;
+  background: linear-gradient(#bee8d7, #7ebfb1);
 }
 
 .form {
