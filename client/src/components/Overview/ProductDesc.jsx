@@ -1,5 +1,6 @@
 import React from 'react';
 import local from '../../styles/Overview/ProductDesc.css';
+import FeatureEntry from './FeatureEntry.jsx';
 
 function ProductDesc({ current }) {
   return (
@@ -12,17 +13,7 @@ function ProductDesc({ current }) {
         <div className={local.divider} />
       </div>
       <div className={local.features}>
-        <div className={local.featuresContainer}>
-          <div className={local.featureName} aria-label="feature names">
-            {current.features.map((feat) => (<p key={feat.feature}>{feat.feature}</p>))}
-          </div>
-          <div className={local.featureDivider}>
-            {current.features.map((feat) => (<p key={feat.feature}>•</p>))}
-          </div>
-          <div className={local.featureVal} aria-label="feature values">
-            {current.features.map((feat) => (<p key={feat.feature}>{feat.value ?? 'none'}</p>))}
-          </div>
-        </div>
+        {current.features.map((feat) => (<FeatureEntry key={feat.feature} feat={feat} />))}
       </div>
     </div>
   );
