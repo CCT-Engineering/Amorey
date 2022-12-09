@@ -14,6 +14,7 @@ const Index = ({
   const renderReviews = (sortMethod = 'relevant') => {
     requests.getReviews(currentId, sortMethod, (data) => {
       setReviews(data.results);
+      setSort([1, 1, 1, 1, 1]);
     });
   };
 
