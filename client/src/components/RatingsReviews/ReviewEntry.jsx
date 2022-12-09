@@ -5,6 +5,7 @@ import local from '../../styles/RatingsReviews/ReviewEntry.css';
 import date from '../../util/formatDate.js';
 
 const ReviewEntry = ({ review, update }) => {
+  console.log(review.response);
   const [expand, setExpand] = useState(false);
   const handleClick = (helpful) => {
     event.preventDefault();

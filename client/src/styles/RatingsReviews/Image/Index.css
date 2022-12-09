@@ -10,3 +10,7 @@
   overflow: auto;
   background-color: rgba(0, 0, 0, .75);
 }
+
+.photo {
+  z-index: 2;
+}

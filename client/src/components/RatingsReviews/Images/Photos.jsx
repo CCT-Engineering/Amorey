@@ -1,28 +1,26 @@
 import React, { useState } from 'react';
-import PopUp from './PopUpPhoto.jsx';
+import local from '../../../styles/RatingsReviews/Image/Index.css';
 import { buildHandleEnterKeyPress } from '../../../util';
 
 const Photos = ({ photo }) => {
   const [expandImage, setExpandImage] = useState(false);
 
-  const fullSizeImage = () => {
-    setExpandImage(true);
-  };
-
   return (
-    <>
+    <div
+      role="button"
+      className={expandImage ? local.modal : null}
+      tabIndex={0}
+      onClick={() => setExpandImage(!expandImage)}
+      onKeyPress={buildHandleEnterKeyPress(() => setExpandImage(!expandImage))}
+    >
       <img
-        role="button"
+        className={expandImage ? local.photo : null}
         src={photo.url}
-        tabIndex={0}
         alt="text"
-        height="48px"
-        width="48px"
-        onClick={fullSizeImage}
-        onKeyPress={buildHandleEnterKeyPress(fullSizeImage)}
+        height={expandImage ? 'auto' : '48px'}
+        width={expandImage ? 'auto' : '48px'}
       />
-      {expandImage && <PopUp url={photo.url} close={setExpandImage} />}
-    </>
+    </div>
   );
 };
 
