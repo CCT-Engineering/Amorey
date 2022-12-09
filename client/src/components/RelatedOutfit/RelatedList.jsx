@@ -4,7 +4,7 @@ import RelatedCard from './RelatedCard.jsx';
 import requests from '../../requests.js';
 // import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 
-const RelatedList = ({ currentId, current, CurMeta, setCurrent }) => {
+const RelatedList = ({ currentId, current, CurMeta, setCurrent, setStars, calculateAverageStars, setMetadata }) => {
   const [relateArr, setRelatedArr] = useState([]);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const RelatedList = ({ currentId, current, CurMeta, setCurrent }) => {
         {/* <div className={local.prev}>Previous</div>
         <div className={local.next}>Next</div> */}
         {relateArr.map((relateOneId, index) =>
-          <RelatedCard key={index.toString()} relateOneId={relateOneId} current={current} CurMeta={CurMeta} setCurrent={setCurrent}/>)}
+          <RelatedCard key={index.toString()} relateOneId={relateOneId} current={current} CurMeta={CurMeta} setCurrent={setCurrent} setStars={setStars} calculateAverageStars={calculateAverageStars} setMetadata={setMetadata}/>)}
       </div>
     </div>
   );

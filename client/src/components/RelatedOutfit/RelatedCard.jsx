@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import local from '../../styles/RelatedOutfit.css';
 import requests from '../../requests.js';
 import CompareTable from './CompareTable.jsx';
+import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 
-const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent }) => {
+const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent, setStars, calculateAverageStars, setMetadata }) => {
   const [info, setInfo] = useState({});
   const [style, setStyle] = useState({});
   const [pic, setPic] = useState(null);
@@ -13,6 +14,7 @@ const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent }) => {
   const [toggleTable, setToggleTable] = useState(false);
   const [rel1Meta, setRel1Meta] = useState(0);
   const [onSale, setOnSale] = useState(false);
+  const [relStar, setRelStar] = useState(5);
 
 //   const priceStyle = {
 //     color: `${onSale ? 'red' : 'inherit'}`,
@@ -47,7 +49,7 @@ const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent }) => {
         setPrice(saleCheck ? styleData.results[0].sale_price : styleData.results[0].original_price);
       });
       requests.getMetadata(relateOneId, (metaData) => {
-        // console.log('related meta', metaData);
+        setRelStar(calculateAverageStars(metaData.ratings))
         setRel1Meta(metaData);
       });
     }
@@ -58,6 +60,7 @@ const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent }) => {
   const handleChangeCurrent = () => {
     event.preventDefault();
     setCurrent(info);
+    setMetadata(rel1Meta);
   };
   return (
     <div className={local.relatedCard}>
@@ -66,18 +69,19 @@ const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent }) => {
         <img src={pic} alt="card pic" className={local.cardpic}onClick={handleChangeCurrent}></img>
       </center>
       <div>
-        Category:
+        {/* Category: */}
         {info.category}
       </div>
       <div>
-        Name:
+        {/* Name: */}
         {info.name}
       </div>
       <div>
-        Price: $
+        {/* Price: $ */}
+        $
         {price}
       </div>
-      <div>Star Rating: get from Thomas state</div>
+      <StarDisplay stars={relStar} />
       {toggleTable ? (
         <CompareTable handleToggle={handleToggle} current={current} rel1Info={info} rel1style={style} CurMeta={CurMeta} rel1Meta={rel1Meta} />
       ) : <div></div>}
