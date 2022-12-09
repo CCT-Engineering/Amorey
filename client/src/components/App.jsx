@@ -64,7 +64,7 @@ function App() {
         current={current}
         currentStyles={currentStyles}
       />
-      {current && (
+      {currentStyles.length && (
       <RelatedOutfit
         current={current}
         favorites={favorites}
@@ -72,6 +72,10 @@ function App() {
         CurMeta={metadata}
         setCurrent={setCurrent}
         currentStyles={currentStyles}
+        stars={stars}
+        setStars={setStars}
+        calculateAverageStars={calculateAverageStars}
+        setMetadata={setMetadata}
       />
       )}
       {current.id && (
