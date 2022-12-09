@@ -4,25 +4,21 @@ import OutfitCard from './OutfitCard.jsx';
 import requests from '../../requests.js';
 
 const OutfitList = ({ favorites, setFavorites, current }) => {
-  const [outfitArr, setOutfitArr] = useState([1,2]);
-  const addOutfit = (curId) => {
+  const addOutfit = () => {
     event.preventDefault();
-    let copy = outfitArr.slice();
-    curId.push(copy);
-    setOutfitArr(copy);
+    const copy = favorites.slice();
+    const currentWPic = current;
+    currentWPic.pic = 'pic from styles';
+    copy.push(currentWPic);
+    // console.log('copy before set', copy);
+    setFavorites(copy);
   };
-  const handleDelete = (index) => {
-    event.preventDefault();
-    let copy = outfitArr.slice();
-    copy.splice(index, 1);
-    setOutfitArr(copy);
-  }
   return (
     <div className={local.outfit}>
-      <button>Add Current To Outfit</button>
+      <button onClick={addOutfit}>Add Current To Outfit</button>
       {
-        outfitArr.map((outfitPiece, index)=>
-              <OutfitCard key={index.toString()} outfitPiece={outfitPiece} outfitArr={outfitArr} setOutfitArr={setOutfitArr} index={index} handleDelete={handleDelete}/>
+        favorites.map((outfitPiece, index)=>
+              <OutfitCard key={index.toString()} outfitPiece={outfitPiece} index={index} favorites={favorites} setFavorites={setFavorites}/>
         )
       }
     </div>

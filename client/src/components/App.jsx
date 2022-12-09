@@ -70,6 +70,8 @@ function App() {
         favorites={favorites}
         setFavorites={setFavorites}
         CurMeta={metadata}
+        setCurrent={setCurrent}
+        currentStyles={currentStyles}
       />
       )}
       {current.id && (
