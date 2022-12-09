@@ -1,19 +1,34 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-// import userEvent from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 import App from '../../client/src/components/App.jsx';
+import testData from '../../client/src/testData.jsx';
 import '@testing-library/jest-dom';
 
 describe('Render App Page', () => {
+  const setup = () => {
+    const user = userEvent.setup();
+    render(<App />);
+    return user;
+  };
+
   it('Should render page with Title header', () => {
     render(<App />);
 
-    const title = screen.getByText('Atelier');
-    expect(title).toHaveTextContent('Atelier');
+    const title = screen.getByText('Amorey');
+    expect(title).toHaveTextContent('Amorey');
 
     const heading = screen.getByRole('heading', { level: 1 });
     expect(heading).toBeInTheDocument();
+  });
+
+  it('Should scroll so that reviews are visible when "Read All Reviews" is clicked', async () => {
+    const user = setup(testData.product40344Data, testData.product40344Styles.results);
+    await user.click(await screen
+      .findByRole('button', { name: /Read All Reviews/i }));
+    expect(await screen.findByRole('heading', { name: /RATINGS & REVIEWS/i }))
+      .toBeVisible();
   });
 });
 
