@@ -84,6 +84,14 @@ describe('Render Overview Module', () => {
   });
 });
 
+it('Should scroll so that reviews are visible when "Read All Reviews" is clicked', async () => {
+  const user = setup(testData.product40344Data, testData.product40344Styles.results);
+  await user.click(await screen
+    .findByRole('button', { name: /Read All Reviews/i }));
+  expect(screen.getByRole('heading', { name: /RATINGS & REVIEWS/i }))
+    .toHaveTextContent(/DESERT BROWN & TAN/i);
+});
+
 // docs recommened query type -> getByRole
 // getByRole Options: name, level, hidden, selected, checked, pressed
 // other 'getBy' queries -> getByLabelText, getByPlaceholderText, getByText, getByDisplayValue

@@ -1,13 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import ReviewsList from './ReviewsList.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import requests from '../../requests.js';
 import local from '../../styles/RatingsReviews/Index.css';
 
-const Index = ({
-  current, metadata, stars,
-}) => {
+const Index = forwardRef(({ current, metadata, stars }, ref) => {
   const [reviews, setReviews] = useState([]);
   const [sort, setSort] = useState([1, 1, 1, 1, 1]);
 
@@ -39,7 +37,7 @@ const Index = ({
   useEffect(() => renderReviews(), [metadata]);
 
   return (
-    <div className={local.ratingsReviews}>
+    <div ref={ref} className={local.ratingsReviews}>
       <h5 className={local.header}>RATINGS & REVIEWS</h5>
       <div className={local.ratingsReviewsMain}>
         <div className={local.ratings}>
@@ -75,6 +73,6 @@ const Index = ({
       </div>
     </div>
   );
-};
+});
 
 export default Index;

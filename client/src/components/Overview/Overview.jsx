@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import Gallery from './Gallery.jsx';
 import ProductInfo from './ProductInfo.jsx';
 import Styles from './Styles.jsx';
@@ -7,7 +7,7 @@ import ProductDesc from './ProductDesc.jsx';
 // import testData from '../../testData.jsx';
 import local from '../../styles/Overview/Overview.css';
 
-function Overview({ current, currentStyles, stars }) {
+const Overview = forwardRef(({ current, currentStyles, stars }, ref) => {
   const [currentStyle, setCurrentStyle] = useState({ photos: [] });
   const [price, setPrice] = useState(current.default_price);
   const [onSale, setOnSale] = useState(false);
@@ -57,6 +57,7 @@ function Overview({ current, currentStyles, stars }) {
             origPrice={currentStyle.original_price}
             onSale={onSale}
             stars={stars}
+            ref={ref}
           />
           <Styles
             currentStyles={currentStyles}
@@ -69,6 +70,6 @@ function Overview({ current, currentStyles, stars }) {
       <ProductDesc current={current} />
     </>
   );
-}
+});
 
 export default Overview;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Overview from './Overview/Overview.jsx';
 import RelatedOutfit from './RelatedOutfit/Index.jsx';
 import RatingsReviews from './RatingsReviews/Index.jsx';
@@ -13,6 +13,9 @@ function App() {
   const [favorites, setFavorites] = useState([]);
   // Below state is the stars for the CURRENT product
   const [stars, setStars] = useState(5);
+
+  const ratingsReviewsRef = useRef(null);
+
   const calculateAverageStars = (ratings) => {
     let totalStars = 0;
     let ratingsCount = 0;
@@ -64,6 +67,7 @@ function App() {
         current={current}
         currentStyles={currentStyles}
         stars={stars}
+        ref={ratingsReviewsRef}
       />
       {currentStyles.length && (
       <RelatedOutfit
@@ -84,6 +88,7 @@ function App() {
         current={current}
         metadata={metadata}
         stars={stars}
+        ref={ratingsReviewsRef}
       />
       )}
     </>
