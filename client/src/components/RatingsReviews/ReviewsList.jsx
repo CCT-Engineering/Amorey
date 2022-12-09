@@ -5,20 +5,16 @@ import NewReview from './NewReview/Index.jsx';
 import local from '../../styles/RatingsReviews/ReviewList.css';
 
 const ReviewsList = ({
-  reviews, sort, changeSort, update, current, details,
+  reviews, sort, newSort, changeSearch, update, current, details,
 }) => {
   const [renderLimit, setRenderLimit] = useState(2);
-  const [filtered, setFiltered] = useState([]);
+  const [filters, setFilters] = useState([]);
   const [modal, showModal] = useState(false);
   let renderAmount = 0;
 
-  const generateFilter = (temp = []) => {
-    reviews.forEach((review) => {
-      if (sort[review.rating - 1]) {
-        temp.push(review);
-      }
-    });
-    setFiltered(temp);
+  const filterReviews = (filtered = []) => {
+    reviews.forEach((review) => sort[review.rating - 1] && filtered.push(review));
+    setFilters(filtered);
   };
 
   const loadMoreEntries = () => {
@@ -38,20 +34,20 @@ const ReviewsList = ({
     return null;
   };
 
-  useEffect(() => generateFilter(), [sort]);
+  useEffect(() => filterReviews(), [reviews, sort]);
 
   return (
-    <div>
-      <Sorting reviews={filtered} changeSort={changeSort} />
+    <>
+      <Sorting sort={sort} newSort={newSort} reviews={filters} changeSearch={changeSearch} />
       <div className={local.reviewList}>
-        {filtered && filtered.map((review, index) => renderReviewEntries(review, index))}
-        {!filtered.length && <div>Currently No Reviews To Display</div>}
+        {filters && filters.map((review, index) => renderReviewEntries(review, index))}
+        {!filters.length && <div>Currently No Reviews To Display</div>}
       </div>
-      {filtered.length > 2 && renderAmount < filtered.length && (
+      {filters.length > 2 && renderAmount < filters.length && (
         <button className={local.moreReviews} type="button" onClick={loadMoreEntries}>MORE REVIEWS</button>)}
       <button className={local.addReview} type="button" onClick={() => showModal(!modal)}>ADD A REVIEW +</button>
       {modal && <NewReview current={current} details={details} />}
-    </div>
+    </>
   );
 };
 

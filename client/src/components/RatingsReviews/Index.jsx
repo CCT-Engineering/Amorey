@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import ReviewsList from './ReviewsList.jsx';
-
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import requests from '../../requests.js';
@@ -18,10 +17,10 @@ const Index = ({
     });
   };
 
-  const filterSearch = (starCount) => {
-    const temp = sort.slice();
-    temp[starCount - 1] = !temp[starCount - 1];
-    setSort(temp);
+  const changeSearch = (star) => {
+    const starSorting = sort.slice();
+    starSorting[star - 1] = !starSorting[star - 1];
+    setSort(starSorting);
   };
 
   const updateReview = (review, helpful) => {
@@ -36,9 +35,7 @@ const Index = ({
     }
   };
 
-  useEffect(() => {
-    renderReviews();
-  }, [metadata]);
+  useEffect(() => renderReviews(), [metadata]);
 
   return (
     <div className={local.ratingsReviews}>
@@ -51,7 +48,7 @@ const Index = ({
                 ratings={metadata.ratings}
                 recommend={metadata.recommended}
                 stars={stars}
-                filter={filterSearch}
+                filter={changeSearch}
                 sort={sort}
               />
               <ProductBreakdown details={metadata.characteristics} />
@@ -64,7 +61,8 @@ const Index = ({
               <ReviewsList
                 reviews={reviews}
                 sort={sort}
-                changeSort={renderReviews}
+                newSort={setSort}
+                changeSearch={renderReviews}
                 update={updateReview}
                 current={current}
                 details={metadata.characteristics}
