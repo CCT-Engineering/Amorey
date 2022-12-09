@@ -6,9 +6,14 @@ import date from '../../util/formatDate.js';
 
 const ReviewEntry = ({ review, update }) => {
   const [expand, setExpand] = useState(false);
+  const [canRateReview, setRateReview] = useState(true);
+
   const handleClick = (helpful) => {
     event.preventDefault();
-    update(review.review_id, helpful);
+    if (canRateReview) {
+      setRateReview(false);
+      update(review.review_id, helpful);
+    }
   };
 
   const expandBody = () => {
