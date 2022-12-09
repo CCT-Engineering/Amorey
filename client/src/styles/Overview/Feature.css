@@ -1,0 +1,21 @@
+.feature {
+  display: flex;
+  width: 100%;
+  padding: 4px 0;
+}
+
+.featureName {
+  width: calc(50% - 12px);
+  font-style: italic;
+  /* font-weight: 600; */
+  text-align: right;
+}
+
+.featureVal {
+  width: calc(50% - 11px);
+}
+
+.featureDivider {
+  width: 22px;
+  text-align: center;
+}
