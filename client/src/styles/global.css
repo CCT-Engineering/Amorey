@@ -1,7 +1,7 @@
 :global body {
-  background: linear-gradient(#e66465, #9198e5);
+  background: linear-gradient(#bee8d7, #7ebfb1);
   box-sizing: border-box;
-  color: #111;
+  color: #0a362e;
   font-family: "Tahoma", sans-serif;
   margin: 0;
   overflow-x: hidden;
@@ -68,12 +68,8 @@
 
 .Stars {
   --percent: calc(var(--rating) * 20%);
-  --star-size: 1.5em;
-  --star-color: rgba(173, 173, 173, 0.685);
-  --star-background: gold;
-
   display: inline-block;
-  font-size: var(--star-size);
+  font-size: 1.5em;
   font-family: Times;
   line-height: 1;
 }
@@ -81,7 +77,7 @@
 .Stars:before {
   content: '★★★★★';
   letter-spacing: 1px;
-  background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+  background: linear-gradient(90deg, gold var(--percent), #96e3d7 var(--percent));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

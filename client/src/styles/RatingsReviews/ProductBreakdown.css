@@ -1,5 +1,5 @@
 .main {
-  background-color: deepskyblue;
+  background-color: #62b3a5;
 }
 
 .characteristic{
@@ -26,7 +26,7 @@
 }
 
 .barDimensions {
-  background-color: cadetblue;
+  background-color: #aae3d9;
   height: 10px;
   width: 100%;
   position: relative;
@@ -35,5 +35,5 @@
 .barDisplay {
   align-self: center;
   height: 100%;
-  background: darkcyan;
+  background: #52d1bc;
 }
