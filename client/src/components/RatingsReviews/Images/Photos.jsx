@@ -17,8 +17,8 @@ const Photos = ({ photo }) => {
         className={expandImage ? local.photo : null}
         src={photo.url}
         alt="text"
-        height={expandImage ? 'auto' : '48px'}
-        width={expandImage ? 'auto' : '48px'}
+        height={expandImage ? 'default' : '48px'}
+        width={expandImage ? 'default' : '48px'}
       />
     </div>
   );

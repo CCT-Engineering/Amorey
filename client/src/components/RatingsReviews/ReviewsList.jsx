@@ -6,7 +6,7 @@ import local from '../../styles/RatingsReviews/ReviewList.css';
 const ReviewsList = ({
   reviews, sort, update, current, details,
 }) => {
-  const [renderLimit, setRenderLimit] = useState(999);
+  const [renderLimit, setRenderLimit] = useState(2);
   const [modal, showModal] = useState(false);
 
   let renderAmount = 0;
