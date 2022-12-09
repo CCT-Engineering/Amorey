@@ -76,7 +76,7 @@ function App() {
       )}
       {current.id && (
       <RatingsReviews
-        currentId={current.id}
+        current={current}
         metadata={metadata}
         stars={stars}
       />

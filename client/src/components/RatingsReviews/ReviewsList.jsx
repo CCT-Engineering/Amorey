@@ -5,7 +5,7 @@ import NewReview from './NewReview/Index.jsx';
 import local from '../../styles/RatingsReviews/ReviewList.css';
 
 const ReviewsList = ({
-  reviews, sort, newSort, changeSearch, update, current, details,
+  reviews, sort, newSort, changeSearch, update, current, details, renderReviews,
 }) => {
   const [renderLimit, setRenderLimit] = useState(2);
   const [filters, setFilters] = useState([]);
@@ -46,7 +46,7 @@ const ReviewsList = ({
       {filters.length > 2 && renderAmount < filters.length && (
         <button className={local.moreReviews} type="button" onClick={loadMoreEntries}>MORE REVIEWS</button>)}
       <button className={local.addReview} type="button" onClick={() => showModal(!modal)}>ADD A REVIEW +</button>
-      {modal && <NewReview current={current} details={details} />}
+      {modal && <NewReview current={current} details={details} renderReviews={renderReviews} />}
     </>
   );
 };

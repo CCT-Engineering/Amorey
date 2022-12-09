@@ -29,6 +29,7 @@ const renderDetail = (item, index, detail) => {
 };
 
 const ProductBreakdown = ({ details }) => {
+  console.log(details);
   return (
     <div className={local.main}>
       {Object.keys(details).map((item, index) => renderDetail(item, index, details[item]))}

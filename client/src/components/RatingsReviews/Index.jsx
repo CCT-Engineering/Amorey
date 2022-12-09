@@ -6,13 +6,13 @@ import requests from '../../requests.js';
 import local from '../../styles/RatingsReviews/Index.css';
 
 const Index = ({
-  currentId, metadata, stars, current,
+  current, metadata, stars,
 }) => {
   const [reviews, setReviews] = useState([]);
   const [sort, setSort] = useState([1, 1, 1, 1, 1]);
 
   const renderReviews = (sortMethod = 'relevant') => {
-    requests.getReviews(currentId, sortMethod, (data) => {
+    requests.getReviews(current.id, sortMethod, (data) => {
       setReviews(data.results);
       setSort([1, 1, 1, 1, 1]);
     });
@@ -61,6 +61,7 @@ const Index = ({
             <div className={local.reviewMain}>
               <ReviewsList
                 reviews={reviews}
+                renderReviews={renderReviews}
                 sort={sort}
                 newSort={setSort}
                 changeSearch={renderReviews}
