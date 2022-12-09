@@ -6,7 +6,7 @@ import Cart from './Cart.jsx';
 import ProductDesc from './ProductDesc.jsx';
 // import testData from '../../testData.jsx';
 import local from '../../styles/Overview/Overview.css';
-import requests from '../../requests.js';
+// import requests from '../../requests.js';
 
 function Overview({ current, currentStyles }) {
   const [currentStyle, setCurrentStyle] = useState({ photos: [] });
