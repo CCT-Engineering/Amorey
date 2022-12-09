@@ -6,26 +6,12 @@ import Cart from './Cart.jsx';
 import ProductDesc from './ProductDesc.jsx';
 // import testData from '../../testData.jsx';
 import local from '../../styles/Overview/Overview.css';
-import requests from '../../requests.js';
 
 function Overview({ current, currentStyles }) {
   const [currentStyle, setCurrentStyle] = useState({ photos: [] });
   const [price, setPrice] = useState(current.default_price);
   const [onSale, setOnSale] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
-
-  // useEffect(() => {
-  //   if (current && current.id) {
-  //     requests.getStyles(current.id, (data) => {
-  //       setCurrentStyles(data.results);
-  //       const style = data.results[0];
-  //       setCurrentStyle(style);
-  //       const styleOnSale = !!style.sale_price;
-  //       setOnSale(styleOnSale);
-  //       setPrice(styleOnSale ? style.sale_price : style.original_price);
-  //     });
-  //   }
-  // }, [current]);
 
   const setStylePriceSale = (style) => {
     const styleOnSale = !!style.sale_price;
