@@ -4,7 +4,9 @@ import Characteristic from './Characteristic.jsx';
 import requests from '../../../requests.js';
 import local from '../../../styles/RatingsReviews/NewReview/Index.css';
 
-const WriteNewReview = ({ current, details, renderReviews }) => {
+const NewReview = ({
+  current, details, renderReviews, showModal,
+}) => {
   const [rating, setRating] = useState(0);
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
@@ -14,6 +16,7 @@ const WriteNewReview = ({ current, details, renderReviews }) => {
   const [photos, setPhotos] = useState([]);
   const [characteristics, setCharacteristics] = useState({});
   const [letterCount, setLetterCount] = useState(50);
+  // const [showImgs, setShowImgs] = useState(false);
 
   const updateLetterCount = (input) => {
     setLetterCount(50 - input.length);
@@ -25,13 +28,30 @@ const WriteNewReview = ({ current, details, renderReviews }) => {
       document.getElementById('uploadPhoto').value = [];
       alert('Maximum of 5 photo uploads is allowed');
     } else {
+      console.log(event.target.files);
+      // setShowImgs(true);
       setPhotos(event.target.files);
     }
   };
 
+  // function previewFile() {
+  //   const preview = document.querySelector('img');
+  //   const file = document.querySelector('input[type=file]').files[0];
+  //   const reader = new FileReader();
+  //   reader.onloadend = function () {
+  //     preview.src = reader.result;
+  //   };
+  //   if (file) {
+  //     reader.readAsDataURL(file);
+  //   } else {
+  //     preview.src = '';
+  //   }
+  // }
+
   const updateCharacteristic = (key, value) => {
     const temp = characteristics;
-    temp[key] = value;
+    const { id } = details[key];
+    temp[id] = value;
     setCharacteristics(temp);
   };
 
@@ -45,12 +65,13 @@ const WriteNewReview = ({ current, details, renderReviews }) => {
       recommend,
       name,
       email,
-      photos,
-      characteristics: {},
+      photos: ['https://www.shutterstock.com/image-photo/man-on-white-studio-background-260nw-1820135141.jpg'],
+      characteristics,
     };
     console.log(newReview);
+    showModal(false);
     requests.postReview(newReview, () => {
-      console.log("I DID IT!!!!");
+      console.log('WE DID IT!!!!');
       renderReviews();
     });
   };
@@ -138,6 +159,7 @@ const WriteNewReview = ({ current, details, renderReviews }) => {
               multiple
             />
           </label>
+          {/* {showImgs ? previewFile() : null} */}
           <button type="submit">Submit Review!</button>
         </form>
       </div>
@@ -145,4 +167,4 @@ const WriteNewReview = ({ current, details, renderReviews }) => {
   );
 };
 
-export default WriteNewReview;
+export default NewReview;

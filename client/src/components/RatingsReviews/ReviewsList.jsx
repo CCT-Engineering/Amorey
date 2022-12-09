@@ -45,8 +45,15 @@ const ReviewsList = ({
       </div>
       {filters.length > 2 && renderAmount < filters.length && (
         <button className={local.moreReviews} type="button" onClick={loadMoreEntries}>MORE REVIEWS</button>)}
-      <button className={local.addReview} type="button" onClick={() => showModal(!modal)}>ADD A REVIEW +</button>
-      {modal && <NewReview current={current} details={details} renderReviews={renderReviews} />}
+      <button className={local.addReview} type="button" onClick={() => showModal(true)}>ADD A REVIEW +</button>
+      {modal && (
+        <NewReview
+          current={current}
+          details={details}
+          renderReviews={renderReviews}
+          showModal={showModal}
+        />
+      )}
     </>
   );
 };

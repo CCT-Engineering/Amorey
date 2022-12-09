@@ -60,24 +60,11 @@ const requests = {
   },
 
   // pass in (new review object)
-  postReview: (review) => {
+  postReview: (review, callback) => {
     axios.post(`${url}reviews`, review)
-      .then(() => console.log('Review added.'))
+      .then(() => callback())
       .catch((err) => console.error(err));
   },
 };
 
 export default requests;
-
-// TEST FOR postReview
-// const test = {
-//   product_id: 40347,
-//   rating: 3,
-//   summary: "dsgsd",
-//   body: "ds",
-//   recommend: true,
-//   name: "test",
-//   email: "test@email.com",
-//   photos: [],
-//   characteristics: {}
-// };
