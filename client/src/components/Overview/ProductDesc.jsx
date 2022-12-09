@@ -13,13 +13,13 @@ function ProductDesc({ current }) {
       </div>
       <div className={local.features}>
         <div className={local.featuresContainer}>
-          <div className={local.featureName} aria-label="feature name">
+          <div className={local.featureName} aria-label="feature names">
             {current.features.map((feat) => (<p key={feat.feature}>{feat.feature}</p>))}
           </div>
           <div className={local.featureDivider}>
             {current.features.map((feat) => (<p key={feat.feature}>•</p>))}
           </div>
-          <div className={local.featureVal} aria-label="feature value">
+          <div className={local.featureVal} aria-label="feature values">
             {current.features.map((feat) => (<p key={feat.feature}>{feat.value ?? 'none'}</p>))}
           </div>
         </div>

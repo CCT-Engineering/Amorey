@@ -43,15 +43,22 @@
 }
 
 .featureName {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   font-style: italic;
   font-weight: 600;
   text-align: right;
 }
 
 .featureVal {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .featureDivider {
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
