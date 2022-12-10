@@ -28,30 +28,11 @@
 }
 
 .features {
-  margin: auto;
-  display: block;
-  width: calc(35% - 3px);
-}
-
-.featuresContainer {
   display: flex;
-  min-width: fit-content;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  width: calc(35% - 3px);
   letter-spacing: 1.0px;
-  width: 100%;
-}
-
-.featureName {
-  font-style: italic;
-  font-weight: 600;
-  text-align: right;
-}
-
-.featureVal {
-  display: block;
-}
-
-.featureDivider {
-  display: block;
+  padding-left: 10px;
 }

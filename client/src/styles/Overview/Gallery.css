@@ -1,7 +1,10 @@
 .gallery {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border: 0;
   position: relative;
-  text-align: right;
+  text-align: center;
   width: 370px;
   height: 510px;
   background-size: cover;
@@ -89,4 +92,12 @@
   font-size: inherit;
   opacity: 0.7;
   height: 100%;
+}
+
+.noPhoto {
+  color: #333;
+  font-style: italic;
+  letter-spacing: 3px;
+  text-shadow: none;
+  -webkit-text-stroke: 0;
 }

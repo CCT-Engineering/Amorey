@@ -1,6 +1,6 @@
 .ratingMain {
   margin-bottom: 5%;
-  background-color: lightgreen;
+  background-color: #62b3a5;
 }
 
 .starHeader {
@@ -32,16 +32,16 @@
 }
 
 .graphDimensions {
-  background-color: lightgray;
+  background-color: #aae3d9;
   height: 10px;
   width: 100%;
 }
 
 .graphDisplay {
   height: 100%;
-  background: green;
+  background: #52d1bc;
 }
 
 .graphDisplay:hover {
-  background-color:red;
+  background-color: gold;
 }

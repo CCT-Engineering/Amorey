@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import characteristic from '../../../util/characteristics.js';
 
-const Characteristic = ({ detail, index }) => {
+const Characteristic = ({ detail, index, update }) => {
   const [rating, setRating] = useState(0);
 
   const updateRating = (value) => {
     setRating(value);
+    update(detail, value);
   };
 
   return (

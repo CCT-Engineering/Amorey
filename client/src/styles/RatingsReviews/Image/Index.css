@@ -11,22 +11,7 @@
   background-color: rgba(0, 0, 0, .75);
 }
 
-.reviewForm {
-  position: fixed;
-  display: flex;
-  justify-content: center;
+.photo {
   z-index: 2;
   align-self: center;
-  width: 50%;
-  height: 50%;
-  overflow: auto;
-  background-color: lightgreen;
-}
-
-.form {
-
-}
-
-.rating {
-  display: center;
 }

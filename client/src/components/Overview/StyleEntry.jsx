@@ -2,12 +2,19 @@ import React from 'react';
 import local from '../../styles/Overview/StyleEntry.css';
 import { buildHandleEnterKeyPress } from '../../util';
 
-function StyleEntry({
-  style, currentStyle, setStyle,
-}) {
-  const divStyle = {
-    backgroundImage: `url(${style.photos[0].thumbnail_url})`,
-  };
+function StyleEntry({ style, currentStyle, setStyle }) {
+  const styleThumbUrl = style.photos[0].thumbnail_url;
+  let divStyle;
+  if (styleThumbUrl) {
+    divStyle = {
+      backgroundImage: `url(${styleThumbUrl})`,
+    };
+  } else {
+    divStyle = {
+      background: 'whitesmoke',
+      textAlign: 'center',
+    };
+  }
 
   const styleThumbDesc = `Main Thumbnail ${style.name} style`;
 
@@ -26,6 +33,7 @@ function StyleEntry({
       onClick={handleClick}
       onKeyPress={buildHandleEnterKeyPress(handleClick)}
     >
+      {styleThumbUrl ? '' : <div className={local.noThumb}>{style.name}</div>}
       {style.style_id === currentStyle.style_id ? '✓' : ''}
     </div>
   );
