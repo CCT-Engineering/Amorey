@@ -25,38 +25,36 @@ const setCookie = ((cName, cValue, expDays = 365) => {
   const date = new Date();
   date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
   const expires = `expires=${date.toUTCString()}`;
-  document.cookie = `${cName}=${cValueJSON}; ${expires}; path=/amorey"`;
+  document.cookie = `${cName}=${cValueJSON}; ${expires}; path=/"`;
 });
 
 const deleteCookie = ((cName) => {
   const date = new Date();
   date.setTime(date.getTime() - 1000);
   const expires = `expires=${date.toUTCString()}`;
-  document.cookie = `${cName}=; ${expires}; path=/amorey"`;
+  document.cookie = `${cName}=; ${expires}; path=/"`;
 });
 
 const getCookie = ((cName) => {
-  const cookieArr = cookies;
-  if (cookie.length) {
-    const index = cookie.indexOf('=');
-    const key = cookie.slice(0, index);
-    const token = cookie.slice(index + 1);
-    cookieArr[key] = token;
-  }
-  return cookieArr;
-});
+  const parsedCookies = document.cookie.split(';').reduce((cookies, cookie) => {
+    const cookieObj = cookies;
+    if (cookie.length) {
+      const index = cookie.indexOf('=');
+      const name = cookie.slice(0, index).trim();
+      const value = cookie.slice(index + 1).trim();
+      cookieObj[name] = value;
+    }
+    return cookieObj;
+  }, {});
 
-// PRIVATE FUNCTION
-const parsedCookies = document.cookie.split('; ').reduce((cookies, cookie) => {
-  const cookieArr = cookies;
-  if (cookie.length) {
-    const index = cookie.indexOf('=');
-    const key = cookie.slice(0, index);
-    const token = cookie.slice(index + 1);
-    cookieArr[key] = token;
+  if (parsedCookies[cName]) {
+    if (typeof parsedCookies[cName] === 'string') {
+      return parsedCookies[cName];
+    }
+    return JSON.parse(parsedCookies[cName]);
   }
-  return cookieArr;
-}, {});
+  return `named cookie [${cName}] does not exist`;
+});
 
 export {
   buildHandleEnterKeyPress,
