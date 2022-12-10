@@ -8,10 +8,20 @@
   padding: 0;
   font-size: 0.8rem;
 }
+.carousel {
+  width: 900px;
+  /* left: 300px; */
+  /* right: 300px; */
+}
+
 .related {
   display: flex;
   width: 100%;
+  /* width: 100px; */
   margin: auto;
+  position: relative;
+  overflow: hidden;
+  left: 50px;
   /* white-space: nowrap; */
   /* transition: transform 0.3s; */
 }
@@ -20,15 +30,22 @@
   border: solid 1px black;
   margin: 1%;
   box-shadow: 10px 5px 5px grey;
+  position: relative;
+  width: 177px;
+  height: 266.23px;
+  /* right: 200px; */
+  /* overflow: hidden; */
   /* transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1); */
   /* transform: translateX(-0%) */
   /* display: inline-flex; */
+  /* z-index: 2; */
 }
 
 .outfit {
   display: flex;
   width: 100%;
   margin: auto;
+  /* left: 50px; */
 }
 
 .outfitCard {
@@ -36,6 +53,9 @@
   border: solid 1px black;
   margin: 1%;
   box-shadow: 10px 5px 5px grey;
+  position: relative;
+  width: 177px;
+  height: 266.23px;
 }
 
 .cardpic {
@@ -43,9 +63,7 @@
   height: 192px;
 }
 
-.carousel {
-  overflow: hidden;
-}
+
 
 .compareTable {
   position: fixed;
@@ -57,51 +75,74 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 4;
 }
 
 .tableContent {
   width: 500px;
   background-color: white;
+  /* z-index: 4; */
 }
 
 .tableHead {
-  padding:10px
+  padding:10px;
+  /* z-index: 4; */
 }
 
 .tableBody {
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
+  /* z-index: 4; */
 }
 
 .tableProd {
   columns: 2;
+  /* z-index: 4; */
 }
 
 .tableBody {
   columns: 3;
+  /* z-index: 4; */
 }
 
 .prev {
+  display: flex;
   position: absolute;
-  top: 120%;
+  flex-direction: row;
+  /* justify-content: center; */
+  /* centers verically */
+  align-items: center;
+  height: 100%;
   left: 20px;
   font-size: 2rem;
+  z-index: 1;
 }
 
 .next {
+  display: flex;
   position: absolute;
-  top: 120%;
+  flex-direction: row;
+  align-items: center;
+  /* position of div itself relative to container it is inside. flex position of stuff inside the div; */
+  height: 100%;
   right: 20px;
   font-size: 2rem;
+  /* z-index: 1; */
+  z-index: 1;
 }
 
 .action {
   /* position: relative;
   top: 0;
   right: 0; */
-  float: right;
+  /* float: right; */
   /* display: inline-block;
   vertical-align: top; */
   /* object-position: 5px, 10%; */
+  /* display: flex; */
+  position: absolute;
+  /* background: transparent; */
+  top: 0px;
+  right: 0px;
 }

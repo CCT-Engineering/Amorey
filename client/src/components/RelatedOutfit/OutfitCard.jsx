@@ -28,7 +28,7 @@ const OutfitCard = ({ outfitPiece, index, favorites, setFavorites, stars }) => {
         $
         {outfitPiece.default_price}
       </div>
-      <StarDisplay stars={stars} />
+      <StarDisplay stars={outfitPiece.stars} />
     </div>
   );
 };
