@@ -4,7 +4,7 @@ import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 
 const ProductInfo = forwardRef(({
-  current, price, origPrice, onSale, stars, setFavorites, currentStyles, favorites,
+  current, price, origPrice, onSale, stars, setFavorites, currentStyles, favorites, reviewsQty,
 }, ref) => {
   const [currentIsFav, setCurrentIsFav] = useState(false);
   const priceStyle = {
@@ -64,7 +64,7 @@ const ProductInfo = forwardRef(({
 
   return (
     <div className={local.productInfo}>
-      <StarDisplay stars={stars} />
+      {reviewsQty ? <StarDisplay stars={stars} /> : ''}
       <div
         role="button"
         tabIndex={0}
@@ -72,7 +72,7 @@ const ProductInfo = forwardRef(({
         onClick={scrollToReviews}
         onKeyPress={buildHandleEnterKeyPress(scrollToReviews)}
       >
-        Read All Reviews
+        {reviewsQty ? `Read All ${reviewsQty} Reviews` : ''}
       </div>
       <h5>{current.category}</h5>
       <div className={local.productName}>

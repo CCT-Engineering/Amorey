@@ -74,9 +74,10 @@ function App() {
         current={current}
         currentStyles={currentStyles}
         stars={stars}
-        ref={ratingsReviewsRef}
         favorites={favorites}
         setFavorites={setFavorites}
+        reviewsQty={reviews.length}
+        ref={ratingsReviewsRef}
       />
       {currentStyles.length && (
       <RelatedOutfit
