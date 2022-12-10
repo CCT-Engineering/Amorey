@@ -7,10 +7,38 @@ const OutfitList = ({ favorites, setFavorites, current, currentStyles, stars}) =
   const addOutfit = () => {
     event.preventDefault();
     const copy = favorites.slice();
-    const currentWPic = current;
-    currentWPic.pic = currentStyles[0].photos[0].thumbnail_url;
-    copy.push(currentWPic);
-    setFavorites(copy);
+    // const currentWPic = current
+    // currentWPic.pic = currentStyles[0].photos[0].thumbnail_url;
+    const currentWPic = {
+      id: current.id,
+      name: current.name,
+      category: current.category,
+      default_price: current.default_price,
+      pic: currentStyles[0].photos[0].thumbnail_url,
+      stars: stars,
+    }
+
+    console.log('current', current)
+    let dupCheck = false
+    favorites.forEach((favorite)=>{
+      if (favorite.id === currentWPic.id) {
+        dupCheck=true
+        console.log('was dup')
+      }
+    })
+    if (dupCheck === false) {
+      copy.push(currentWPic);
+      setFavorites(copy);
+      }
+    // if (favorites.includes(currentWPic)) {
+    //   console.log('already got dup')
+    // } else {
+    //   copy.push(currentWPic);
+    //   setFavorites(copy);
+    // }
+    // console.log('current', current)
+    // console.log('favs', favorites)
+
   };
   return (
     <div className={local.outfit}>
