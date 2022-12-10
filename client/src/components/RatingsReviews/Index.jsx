@@ -18,8 +18,8 @@ const Index = forwardRef(({ current, metadata, stars }, ref) => {
 
   const changeSearch = (star) => {
     const starSorting = sort.slice();
-    starSorting[star - 1] = !starSorting[star - 1];
-    if (starSorting[0] && starSorting[1] && starSorting[2] && starSorting[3] && starSorting[4]) {
+    starSorting[star - 1] = Number(!starSorting[star - 1]);
+    if (!starSorting.includes(0)) {
       setSort([0, 0, 0, 0, 0]);
     } else {
       setSort(starSorting);

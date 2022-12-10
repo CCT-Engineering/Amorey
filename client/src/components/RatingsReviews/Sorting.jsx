@@ -13,7 +13,7 @@ const Sorting = ({
   };
 
   const displayfilters = () => {
-    if (!sort.includes(true)) {
+    if (!sort.includes(1)) {
       return null;
     }
     return (

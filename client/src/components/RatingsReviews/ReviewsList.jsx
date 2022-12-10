@@ -13,7 +13,7 @@ const ReviewsList = ({
   let renderAmount = 0;
 
   const filterReviews = (filtered = []) => {
-    if (!sort.includes(true)) {
+    if (!sort.includes(1)) {
       setFilters(reviews);
     } else {
       reviews.forEach((review) => sort[review.rating - 1] && filtered.push(review));
