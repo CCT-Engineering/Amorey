@@ -65,12 +65,12 @@ const NewReview = ({
       recommend,
       name,
       email,
-      photos: ['https://www.shutterstock.com/image-photo/man-on-white-studio-background-260nw-1820135141.jpg'],
+      photos,
       characteristics,
     };
     showModal(false);
     requests.postReview(newReview, () => {
-      console.log('WE DID IT!!!!');
+      console.log('REVIEW SUCCESSFULLY  SUBMITTED');
       renderReviews('newest');
     });
   };
@@ -142,8 +142,8 @@ const NewReview = ({
               type="email"
               placeholder="jackson11@email.com"
               maxLength="60"
-              // attempt at regex pattern to further validate email
-              // pattern=".*\(?:org|com)\.?/"
+              // General Email Regex (RFC 5322 Official Standard)
+              pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
               onChange={() => updateInput(setEmail, event.target.value)}
               required
             />
