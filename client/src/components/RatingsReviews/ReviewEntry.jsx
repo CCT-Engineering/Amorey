@@ -17,10 +17,7 @@ const ReviewEntry = ({ review, updateReview }) => {
     }
   };
 
-  const expandBody = () => {
-    event.preventDefault();
-    setExpand(true);
-  };
+  const expandBody = () => setExpand(!expand);
 
   const renderReviewBody = () => {
     let body;
@@ -46,7 +43,7 @@ const ReviewEntry = ({ review, updateReview }) => {
   };
 
   return (
-    <div className={local.main}>
+    <div className={local.mainBody}>
       <div className={local.header}>
         <div className={local.rating}><StarDisplay stars={review.rating} /></div>
         <div className={local.user}>{`${review.reviewer_name}, ${date(review.date)}`}</div>

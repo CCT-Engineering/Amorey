@@ -16,7 +16,7 @@ const ReviewsList = ({
 
   const filterReviews = (searched = [], filtered = []) => {
     reviews.forEach((review) => {
-      if (query.length >= 3) {
+      if (query.length > 2) {
         if (review.reviewer_name.toLowerCase().includes(query.toLowerCase())
         || date(review.date).toLowerCase().includes(query.toLowerCase())
         || review.summary.toLowerCase().includes(query.toLowerCase())
@@ -39,7 +39,6 @@ const ReviewsList = ({
   };
 
   const loadMoreEntries = () => {
-    event.preventDefault();
     if (renderLimit + 2 <= reviews.length) {
       setRenderLimit(renderLimit + 2);
     } else if (renderLimit < reviews.length) {

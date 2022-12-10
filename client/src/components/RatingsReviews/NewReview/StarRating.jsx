@@ -4,19 +4,17 @@ import { buildHandleEnterKeyPress } from '../../../util';
 const StarRating = ({ setRating }) => {
   const starText = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
   const [currentStar, setCurrentStar] = useState(0);
-  const [currentStarText, setCurrentStarText] = useState('');
 
   const updateStars = (starCount) => {
     setRating(starCount);
     setCurrentStar(starCount);
-    setCurrentStarText(starText[starCount - 1]);
   };
 
   return (
     <>
       <h6 className="rating">
         Overall Rating
-        {currentStarText ? `:  "${currentStarText}"` : null}
+        {currentStar ? `:  "${starText[currentStar - 1]}"` : null}
       </h6>
       <a
         role="button"

@@ -3,9 +3,9 @@ import ReviewsList from './ReviewsList.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
 import requests from '../../requests.js';
-import local from '../../styles/RatingsReviews/Index.css';
+import local from '../../styles/RatingsReviews/RatingsReviews.css';
 
-const Index = forwardRef(({
+const RatingsReviews = forwardRef(({
   current, metadata, reviews, getReviews, stars,
 }, ref) => {
   const [sort, setSort] = useState([0, 0, 0, 0, 0]);
@@ -35,20 +35,18 @@ const Index = forwardRef(({
   };
 
   return (
-    <div ref={ref} className={local.ratingsReviews}>
+    <>
       <h5 className={local.header}>RATINGS & REVIEWS</h5>
-      <div className={local.ratingsReviewsMain}>
+      <div ref={ref} className={local.mainBody}>
         <div className={local.ratings}>
-          <div>
-            <RatingBreakdown
-              ratings={metadata.ratings}
-              recommend={metadata.recommended}
-              stars={stars}
-              changeSearch={changeSearch}
-              sort={sort}
-            />
-            <ProductBreakdown traits={metadata.characteristics} />
-          </div>
+          <RatingBreakdown
+            ratings={metadata.ratings}
+            recommend={metadata.recommended}
+            stars={stars}
+            changeSearch={changeSearch}
+            sort={sort}
+          />
+          <ProductBreakdown traits={metadata.characteristics} />
         </div>
         <div className={local.reviews}>
           <div className={local.reviewMain}>
@@ -64,8 +62,8 @@ const Index = forwardRef(({
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 });
 
-export default Index;
+export default RatingsReviews;

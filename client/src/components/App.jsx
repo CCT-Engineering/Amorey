@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Overview from './Overview/Overview.jsx';
 import RelatedOutfit from './RelatedOutfit/Index.jsx';
-import RatingsReviews from './RatingsReviews/Index.jsx';
+import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import requests from '../requests.js';
 import calculateAverageStars from '../util/calculateStarAverage.js';
 // import testData from '../testData.jsx'; // uncomment if needed
