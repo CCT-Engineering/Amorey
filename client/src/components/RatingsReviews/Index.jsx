@@ -5,15 +5,14 @@ import ProductBreakdown from './ProductBreakdown.jsx';
 import requests from '../../requests.js';
 import local from '../../styles/RatingsReviews/Index.css';
 
-const Index = forwardRef(({ current, metadata, stars }, ref) => {
-  const [reviews, setReviews] = useState([]);
+const Index = forwardRef(({
+  current, metadata, reviews, getReviews, stars,
+}, ref) => {
   const [sort, setSort] = useState([0, 0, 0, 0, 0]);
 
   const renderReviews = (sortMethod = 'relevant') => {
-    requests.getReviews(current.id, sortMethod, (data) => {
-      setReviews(data.results);
-      setSort([0, 0, 0, 0, 0]);
-    });
+    getReviews(sortMethod);
+    setSort([0, 0, 0, 0, 0]);
   };
 
   const changeSearch = (star) => {
