@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Sorting from './Sorting.jsx';
 import ReviewEntry from './ReviewEntry.jsx';
 import NewReview from './NewReview/NewReview.jsx';
+import date from '../../util/formatDate.js';
 import local from '../../styles/RatingsReviews/ReviewList.css';
 
 const ReviewsList = ({
@@ -11,19 +12,18 @@ const ReviewsList = ({
   const [filters, setFilters] = useState([]);
   const [query, setQuery] = useState('');
   const [modal, showModal] = useState(false);
-  // const test = { recommend: '✓ I recommend this product' };
   let renderAmount = 0;
 
   const filterReviews = (searched = [], filtered = []) => {
     reviews.forEach((review) => {
       if (query.length >= 3) {
-        if ((review.reviewer_name.toLowerCase()
-        || review.date.toLowerCase()
-        || review.summary.toLowerCase()
-        || review.body.toLowerCase()
-        // || test.recommend.toLowerCase()
-        || review.response.toLowerCase()
-        || String(review.helpfulness)).includes(query.toLowerCase())) {
+        if (review.reviewer_name.toLowerCase().includes(query.toLowerCase())
+        || date(review.date).toLowerCase().includes(query.toLowerCase())
+        || review.summary.toLowerCase().includes(query.toLowerCase())
+        || review.body.toLowerCase().includes(query.toLowerCase())
+        || (review.recommend && '✓ i recommend this product'.includes(query.toLowerCase()))
+        || (review.response && review.response.toLowerCase().includes(query.toLowerCase()))
+        || String(review.helpfulness).includes(query.toLowerCase())) {
           searched.push(review);
         }
       } else {
