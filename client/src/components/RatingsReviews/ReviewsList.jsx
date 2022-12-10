@@ -13,8 +13,12 @@ const ReviewsList = ({
   let renderAmount = 0;
 
   const filterReviews = (filtered = []) => {
-    reviews.forEach((review) => sort[review.rating - 1] && filtered.push(review));
-    setFilters(filtered);
+    if (!sort.includes(true)) {
+      setFilters(reviews);
+    } else {
+      reviews.forEach((review) => sort[review.rating - 1] && filtered.push(review));
+      setFilters(filtered);
+    }
   };
 
   const loadMoreEntries = () => {

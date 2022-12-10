@@ -7,19 +7,23 @@ import local from '../../styles/RatingsReviews/Index.css';
 
 const Index = forwardRef(({ current, metadata, stars }, ref) => {
   const [reviews, setReviews] = useState([]);
-  const [sort, setSort] = useState([1, 1, 1, 1, 1]);
+  const [sort, setSort] = useState([0, 0, 0, 0, 0]);
 
   const renderReviews = (sortMethod = 'relevant') => {
     requests.getReviews(current.id, sortMethod, (data) => {
       setReviews(data.results);
-      setSort([1, 1, 1, 1, 1]);
+      setSort([0, 0, 0, 0, 0]);
     });
   };
 
   const changeSearch = (star) => {
     const starSorting = sort.slice();
     starSorting[star - 1] = !starSorting[star - 1];
-    setSort(starSorting);
+    if (starSorting[0] && starSorting[1] && starSorting[2] && starSorting[3] && starSorting[4]) {
+      setSort([0, 0, 0, 0, 0]);
+    } else {
+      setSort(starSorting);
+    }
   };
 
   const updateReview = (review, helpful) => {

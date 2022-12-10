@@ -8,12 +8,12 @@ const Sorting = ({
     if (search) {
       changeSearch(event.target.value);
     } else {
-      newSort([1, 1, 1, 1, 1]);
+      newSort([0, 0, 0, 0, 0]);
     }
   };
 
   const displayfilters = () => {
-    if (sort[0] && sort[1] && sort[2] && sort[3] && sort[4]) {
+    if (!sort.includes(true)) {
       return null;
     }
     return (
@@ -24,7 +24,6 @@ const Sorting = ({
         {sort[2] ? ' 3' : null}
         {sort[3] ? ' 4' : null}
         {sort[4] ? ' 5' : null}
-        {!sort[0] && !sort[1] && !sort[3] && !sort[4] && !sort[4] ? ' No' : null}
         {' Stars'}
         <button type="button" onClick={() => handleClick(false)}>Clear Filters</button>
       </p>
