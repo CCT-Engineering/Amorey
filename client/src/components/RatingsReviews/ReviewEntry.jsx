@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Photos from './Images/Photos.jsx';
+import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 import local from '../../styles/RatingsReviews/ReviewEntry.css';
 import date from '../../util/formatDate.js';
@@ -44,18 +45,10 @@ const ReviewEntry = ({ review, update }) => {
     return body;
   };
 
-  const renderReviewStars = () => {
-    let stars = '';
-    while (stars.length < review.rating) {
-      stars += '★';
-    }
-    return stars;
-  };
-
   return (
     <div className={local.main}>
       <div className={local.header}>
-        <div className={local.rating}>{renderReviewStars()}</div>
+        <div className={local.rating}><StarDisplay stars={review.rating} /></div>
         <div className={local.user}>{`${review.reviewer_name}, ${date(review.date)}`}</div>
       </div>
       <h4 className={local.summary}>{review.summary}</h4>
