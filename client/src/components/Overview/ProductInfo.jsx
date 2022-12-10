@@ -4,19 +4,32 @@ import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 
 const ProductInfo = forwardRef(({
-  current, price, origPrice, onSale, stars,
+  current, price, origPrice, onSale, stars, setFavorites, currentStyles,
 }, ref) => {
   const priceStyle = {
     color: `${onSale ? 'red' : 'inherit'}`,
   };
 
-  const handleClick = (e) => {
+  const scrollToReviews = (e) => {
     e.preventDefault();
     ref.current.scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
       inline: 'center',
     });
+  };
+
+  const addToOutfit = (e) => {
+    e.preventDefault();
+    const newFav = {
+      id: current.id,
+      name: current.name,
+      category: current.category,
+      default_price: current.default_price,
+      pic: currentStyles[0].photos[0].thumbnail_url,
+      stars,
+    };
+    setFavorites((prevFavs) => [...prevFavs, newFav]);
   };
 
   return (
@@ -26,13 +39,23 @@ const ProductInfo = forwardRef(({
         role="button"
         tabIndex={0}
         className={local.reviewsLink}
-        onClick={handleClick}
-        onKeyPress={buildHandleEnterKeyPress(handleClick)}
+        onClick={scrollToReviews}
+        onKeyPress={buildHandleEnterKeyPress(scrollToReviews)}
       >
         Read All Reviews
       </div>
       <h5>{current.category}</h5>
-      <h2>{current.name}</h2>
+      <div className={local.productName}>
+        <h2>{current.name}</h2>
+        <button
+          type="button"
+          className={local.addToOutfit}
+          onClick={addToOutfit}
+          onKeyPress={buildHandleEnterKeyPress(addToOutfit)}
+        >
+          ♡
+        </button>
+      </div>
       <h6>
         <span style={priceStyle}>
           $

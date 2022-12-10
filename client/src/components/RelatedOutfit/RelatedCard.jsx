@@ -66,7 +66,7 @@ const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent, setStars, calc
     <div className={local.relatedCard}>
       <button type="button" onClick={handleToggle} className={local.action}>☆</button>
       <center>
-        <img src={pic} alt="card pic" className={local.cardpic}onClick={handleChangeCurrent}></img>
+        <img src={pic} alt="card pic" className={local.cardpic} onClick={handleChangeCurrent}></img>
       </center>
       <div>
         {/* Category: */}
