@@ -21,15 +21,23 @@ const ProductInfo = forwardRef(({
 
   const addToOutfit = (e) => {
     e.preventDefault();
-    const newFav = {
-      id: current.id,
-      name: current.name,
-      category: current.category,
-      default_price: current.default_price,
-      pic: currentStyles[0].photos[0].thumbnail_url,
-      stars,
-    };
-    setFavorites((prevFavs) => [...prevFavs, newFav]);
+    setFavorites((prevFavs) => {
+      let favAlreadyInFavs = false;
+      prevFavs.forEach((fav) => {
+        if (fav.id === current.id) {
+          favAlreadyInFavs = true;
+        }
+      });
+      return favAlreadyInFavs ? prevFavs : [...prevFavs,
+        {
+          id: current.id,
+          name: current.name,
+          category: current.category,
+          default_price: current.default_price,
+          pic: currentStyles[0].photos[0].thumbnail_url,
+          stars,
+        }];
+    });
   };
 
   return (
