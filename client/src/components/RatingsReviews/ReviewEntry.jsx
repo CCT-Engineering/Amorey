@@ -9,22 +9,19 @@ const ReviewEntry = ({ review, updateReview }) => {
   const [expand, setExpand] = useState(false);
   const [canRateReview, setRateReview] = useState(true);
 
-  const handleClick = (helpful) => {
-    event.preventDefault();
+  const rateReview = (rating) => {
     if (canRateReview) {
       setRateReview(false);
-      updateReview(review.review_id, helpful);
+      updateReview(review.review_id, rating);
     }
   };
 
   const expandBody = () => setExpand(!expand);
 
   const renderReviewBody = () => {
-    let body;
-    if (review.body.length < 250 || expand) {
-      body = <p className={local.body}>{review.body}</p>;
-    } else {
-      body = (
+    return review.body.length < 250 || expand
+      ? <p className={local.body}>{review.body}</p>
+      : (
         <div>
           <p className={local.body}>{`${review.body.substring(0, 250)}...`}</p>
           <a
@@ -38,8 +35,6 @@ const ReviewEntry = ({ review, updateReview }) => {
           </a>
         </div>
       );
-    }
-    return body;
   };
 
   return (
@@ -70,8 +65,8 @@ const ReviewEntry = ({ review, updateReview }) => {
           role="button"
           tabIndex={0}
           className={local.helpful}
-          onClick={() => handleClick(true)}
-          onKeyPress={buildHandleEnterKeyPress(() => handleClick(true))}
+          onClick={() => rateReview('putHelpful')}
+          onKeyPress={buildHandleEnterKeyPress(() => rateReview('putHelpful'))}
         >
           YES
         </a>
@@ -80,8 +75,8 @@ const ReviewEntry = ({ review, updateReview }) => {
           role="button"
           tabIndex={0}
           className={local.report}
-          onClick={() => handleClick(false)}
-          onKeyPress={buildHandleEnterKeyPress(() => handleClick(false))}
+          onClick={() => rateReview('putReport')}
+          onKeyPress={buildHandleEnterKeyPress(() => rateReview('putReport'))}
         >
           Report
         </a>

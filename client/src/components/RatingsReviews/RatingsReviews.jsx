@@ -20,18 +20,11 @@ const RatingsReviews = forwardRef(({
     }
   };
 
-  const updateReview = (review, helpful) => {
-    if (helpful) {
-      requests.putHelpful(review, () => {
-        getReviews('newest');
-        setSort([0, 0, 0, 0, 0]);
-      });
-    } else {
-      requests.putReport(review, () => {
-        getReviews('newest');
-        setSort([0, 0, 0, 0, 0]);
-      });
-    }
+  const updateReview = (review, rating) => {
+    requests[rating](review, () => {
+      getReviews('newest');
+      setSort([0, 0, 0, 0, 0]);
+    });
   };
 
   return (

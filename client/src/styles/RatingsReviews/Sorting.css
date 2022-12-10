@@ -1,5 +1,10 @@
-.sortMain {
+.mainBody {
   background-color: 2e8f7f;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .sortMethod {
@@ -11,25 +16,15 @@
   border-color: transparent;
 }
 
-.sortHeader {
-  display: flex;
-  justify-content: space-between;
-}
-
-.searchFilters {
-  display: flex;
-  justify-content: space-between;
-}
-
 .starQuery {
-  margin-left: -1.5%;
-}
-
-.wordQuery {
   margin-left: -1.5%;
 }
 
 .clearButton {
   background-color:#2e8f7f;
   font-weight: 600;
+}
+
+.wordQuery {
+  margin-left: -1.5%;
 }

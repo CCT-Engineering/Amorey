@@ -27,9 +27,9 @@ const Sorting = ({
   };
 
   return (
-    <h4 className={local.sortMain}>
-      <div className={local.sortHeader}>
-        <div className={local.queryInput}>
+    <h4 className={local.mainBody}>
+      <div className={local.header}>
+        <div>
           {`${filters.length} reviews, sorted by`}
           <select className={local.sortMethod} id="sortMethod" onChange={(changeSort)}>
             <option value="relevant">relevance</option>
@@ -41,17 +41,15 @@ const Sorting = ({
         <label htmlFor="searchQuery">
           {' Enter a search query '}
           <input name="searchQuery" placeholder="Narrow your search" onChange={updateQuery} />
-          <div className={local.searchFilters}>
-            {query.length > 2
-              ? (
-                <p className={local.wordQuery}>
-                  {`Current search query: ${query.length < 20
-                    ? query
-                    : (`${query.substring(0, 20)}...`)}`}
-                </p>
-              )
-              : null}
-          </div>
+          {query.length > 2
+            ? (
+              <p className={local.wordQuery}>
+                {`Current search query: ${query.length < 20
+                  ? query
+                  : (`${query.substring(0, 20)}...`)}`}
+              </p>
+            )
+            : null}
         </label>
       </div>
     </h4>
