@@ -7,8 +7,10 @@ import requests from '../requests.js';
 import global from '../styles/global.css'; // Applies global styles to entire App (not just App.jsx)
 import { setCookie, getCookie } from '../util';
 
+const FAVS_COOKIE = 'amorey_favs';
+
 function App() {
-  const [favorites, setFavorites] = useState(getCookie('amorey_favs') || []);
+  const [favorites, setFavorites] = useState(getCookie(FAVS_COOKIE) || []);
   // All states below are for the CURRENT product (the one displayed in Overview)
   const [current, setCurrent] = useState({ features: [] });
   const [currentStyles, setCurrentStyles] = useState([]);
@@ -63,7 +65,7 @@ function App() {
 
   // if favorites change, save favorites to cookie on client
   useEffect(() => {
-    setCookie('amorey_favs', favorites);
+    setCookie(FAVS_COOKIE, favorites);
   }, [favorites]);
 
   return (
