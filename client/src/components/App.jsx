@@ -14,7 +14,7 @@ function App() {
   const [current, setCurrent] = useState({ features: [] });
   const [currentStyles, setCurrentStyles] = useState([]);
   const [metadata, setMetadata] = useState([]);
-  const [stars, setStars] = useState(5);
+  const [stars, setStars] = useState(0);
   const [reviews, setReviews] = useState([]);
   const ratingsReviewsRef = useRef(null);
 
@@ -87,7 +87,6 @@ function App() {
         setMetadata={setMetadata}
       />
       )}
-      {current.id && (
       <RatingsReviews
         current={current}
         metadata={metadata}
@@ -96,7 +95,6 @@ function App() {
         stars={stars}
         ref={ratingsReviewsRef}
       />
-      )}
     </>
   );
 }

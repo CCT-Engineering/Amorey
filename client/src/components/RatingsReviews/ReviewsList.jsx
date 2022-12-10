@@ -68,7 +68,7 @@ const ReviewsList = ({
         setQuery={setQuery}
       />
       <div className={local.reviewList}>
-        {filters && filters.map((review, index) => renderReviewEntries(review, index))}
+        {filters.map((review, index) => renderReviewEntries(review, index))}
         {!filters.length && <div>Currently No Reviews To Display</div>}
       </div>
       {filters.length > 2 && renderAmount < filters.length && (

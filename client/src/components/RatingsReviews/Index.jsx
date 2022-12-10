@@ -44,34 +44,30 @@ const Index = forwardRef(({
       <h5 className={local.header}>RATINGS & REVIEWS</h5>
       <div className={local.ratingsReviewsMain}>
         <div className={local.ratings}>
-          {metadata?.product_id && (
-            <div>
-              <RatingBreakdown
-                ratings={metadata.ratings}
-                recommend={metadata.recommended}
-                stars={stars}
-                filter={changeSearch}
-                sort={sort}
-              />
-              <ProductBreakdown details={metadata.characteristics} />
-            </div>
-          )}
+          <div>
+            <RatingBreakdown
+              ratings={metadata.ratings}
+              recommend={metadata.recommended}
+              stars={stars}
+              filter={changeSearch}
+              sort={sort}
+            />
+            <ProductBreakdown details={metadata.characteristics} />
+          </div>
         </div>
         <div className={local.reviews}>
-          {reviews.length && (
-            <div className={local.reviewMain}>
-              <ReviewsList
-                reviews={reviews}
-                renderReviews={renderReviews}
-                sort={sort}
-                newSort={setSort}
-                changeSearch={renderReviews}
-                update={updateReview}
-                current={current}
-                details={metadata.characteristics}
-              />
-            </div>
-          )}
+          <div className={local.reviewMain}>
+            <ReviewsList
+              reviews={reviews}
+              renderReviews={renderReviews}
+              sort={sort}
+              newSort={setSort}
+              changeSearch={renderReviews}
+              update={updateReview}
+              current={current}
+              details={metadata.characteristics}
+            />
+          </div>
         </div>
       </div>
     </div>
