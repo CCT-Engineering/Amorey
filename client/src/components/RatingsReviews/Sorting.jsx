@@ -2,7 +2,7 @@ import React from 'react';
 import local from '../../styles/RatingsReviews/Sorting.css';
 
 const Sorting = ({
-  sort, newSort, reviews, changeSearch,
+  sort, newSort, reviews, changeSearch, query, setQuery,
 }) => {
   const handleClick = (search) => {
     if (search) {
@@ -10,6 +10,10 @@ const Sorting = ({
     } else {
       newSort([0, 0, 0, 0, 0]);
     }
+  };
+
+  const updateQuery = () => {
+    setQuery(event.target.value);
   };
 
   const displayfilters = () => {
@@ -38,7 +42,14 @@ const Sorting = ({
         <option value="newest">newest</option>
         <option value="helpful">helpful</option>
       </select>
-      {displayfilters()}
+      <label htmlFor="searchQuery">
+        {' Enter a search query'}
+        <input name="searchQuery" placeholder="Narrow your search" onChange={updateQuery} />
+      </label>
+      <div>
+        {displayfilters()}
+        {query.length > 2 ? <p>{`Current search query: ${query}`}</p> : null}
+      </div>
     </h4>
   );
 };

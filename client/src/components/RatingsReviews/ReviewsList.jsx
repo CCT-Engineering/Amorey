@@ -9,14 +9,31 @@ const ReviewsList = ({
 }) => {
   const [renderLimit, setRenderLimit] = useState(2);
   const [filters, setFilters] = useState([]);
+  const [query, setQuery] = useState('');
   const [modal, showModal] = useState(false);
+  // const test = { recommend: '✓ I recommend this product' };
   let renderAmount = 0;
 
-  const filterReviews = (filtered = []) => {
+  const filterReviews = (searched = [], filtered = []) => {
+    reviews.forEach((review) => {
+      if (query.length >= 3) {
+        if ((review.reviewer_name.toLowerCase()
+        || review.date.toLowerCase()
+        || review.summary.toLowerCase()
+        || review.body.toLowerCase()
+        // || test.recommend.toLowerCase()
+        || review.response.toLowerCase()
+        || String(review.helpfulness)).includes(query.toLowerCase())) {
+          searched.push(review);
+        }
+      } else {
+        searched.push(review);
+      }
+    });
     if (!sort.includes(1)) {
-      setFilters(reviews);
+      setFilters(searched);
     } else {
-      reviews.forEach((review) => sort[review.rating - 1] && filtered.push(review));
+      searched.forEach((review) => sort[review.rating - 1] && filtered.push(review));
       setFilters(filtered);
     }
   };
@@ -38,11 +55,18 @@ const ReviewsList = ({
     return null;
   };
 
-  useEffect(() => filterReviews(), [reviews, sort]);
+  useEffect(() => filterReviews(), [reviews, sort, query]);
 
   return (
     <>
-      <Sorting sort={sort} newSort={newSort} reviews={filters} changeSearch={changeSearch} />
+      <Sorting
+        sort={sort}
+        newSort={newSort}
+        reviews={filters}
+        changeSearch={changeSearch}
+        query={query}
+        setQuery={setQuery}
+      />
       <div className={local.reviewList}>
         {filters && filters.map((review, index) => renderReviewEntries(review, index))}
         {!filters.length && <div>Currently No Reviews To Display</div>}
