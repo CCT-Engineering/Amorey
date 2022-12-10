@@ -22,3 +22,15 @@
 .reviewsLink:hover {
   cursor: pointer;
 }
+
+.productName {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.addToOutfit {
+  margin-left: 15px;
+  height: fit-content;
+  font-size: 11px;
+}
