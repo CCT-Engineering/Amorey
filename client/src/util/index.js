@@ -25,14 +25,15 @@ const setCookie = ((cName, cValue, expDays = 365) => {
   const date = new Date();
   date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
   const expires = `expires=${date.toUTCString()}`;
-  document.cookie = `${cName}=${cValueJSON}; ${expires}; path=/"`;
+  // console.log('trying to set cookie to:', `${cName}=${cValueJSON}; ${expires}; path=/`);
+  document.cookie = `${cName}=${cValueJSON}; ${expires}; path=/`;
 });
 
 const deleteCookie = ((cName) => {
   const date = new Date();
   date.setTime(date.getTime() - 1000);
   const expires = `expires=${date.toUTCString()}`;
-  document.cookie = `${cName}=; ${expires}; path=/"`;
+  document.cookie = `${cName}=; ${expires}; path=/`;
 });
 
 const getCookie = ((cName) => {
@@ -48,12 +49,15 @@ const getCookie = ((cName) => {
   }, {});
 
   if (parsedCookies[cName]) {
-    if (typeof parsedCookies[cName] === 'string') {
+    try {
+      // try block intended to catch case where value would parse to a string.
+      return JSON.parse(parsedCookies[cName]);
+    } catch {
+      // if error, value should be a string, so return a string.
       return parsedCookies[cName];
     }
-    return JSON.parse(parsedCookies[cName]);
   }
-  return `named cookie [${cName}] does not exist`;
+  return undefined;
 });
 
 export {

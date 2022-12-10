@@ -5,13 +5,14 @@ import RatingsReviews from './RatingsReviews/Index.jsx';
 import requests from '../requests.js';
 // import testData from '../testData.jsx'; // uncomment if needed
 import global from '../styles/global.css'; // Applies global styles to entire App (not just App.jsx)
+import { setCookie, getCookie } from '../util';
 
 function App() {
+  const [favorites, setFavorites] = useState(getCookie('amorey_favs') || []);
+  // All states below are for the CURRENT product (the one displayed in Overview)
   const [current, setCurrent] = useState({ features: [] });
   const [currentStyles, setCurrentStyles] = useState([]);
   const [metadata, setMetadata] = useState([]);
-  const [favorites, setFavorites] = useState([]);
-  // Below state is the stars for the CURRENT product
   const [stars, setStars] = useState(5);
 
   const ratingsReviewsRef = useRef(null);
@@ -59,6 +60,11 @@ function App() {
       setCurrentStylesMeta(current.id);
     }
   }, [current]);
+
+  // if favorites change, save favorites to cookie on client
+  useEffect(() => {
+    setCookie('amorey_favs', favorites);
+  }, [favorites]);
 
   return (
     <>
