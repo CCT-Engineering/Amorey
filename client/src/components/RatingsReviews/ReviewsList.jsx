@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sorting from './Sorting.jsx';
 import ReviewEntry from './ReviewEntry.jsx';
-import NewReview from './NewReview/Index.jsx';
+import NewReview from './NewReview/NewReview.jsx';
 import local from '../../styles/RatingsReviews/ReviewList.css';
 
 const ReviewsList = ({

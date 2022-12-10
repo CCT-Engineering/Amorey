@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import StarRating from './StarRating.jsx';
 import Characteristic from './Characteristic.jsx';
 import requests from '../../../requests.js';
-import local from '../../../styles/RatingsReviews/NewReview/Index.css';
+import local from '../../../styles/RatingsReviews/NewReview/NewReview.css';
 
 const NewReview = ({
   current, details, renderReviews, showModal,
@@ -68,11 +68,10 @@ const NewReview = ({
       photos: ['https://www.shutterstock.com/image-photo/man-on-white-studio-background-260nw-1820135141.jpg'],
       characteristics,
     };
-    console.log(newReview);
     showModal(false);
     requests.postReview(newReview, () => {
       console.log('WE DID IT!!!!');
-      renderReviews();
+      renderReviews('newest');
     });
   };
 
@@ -143,6 +142,8 @@ const NewReview = ({
               type="email"
               placeholder="jackson11@email.com"
               maxLength="60"
+              // attempt at regex pattern to further validate email
+              // pattern=".*\(?:org|com)\.?/"
               onChange={() => updateInput(setEmail, event.target.value)}
               required
             />
