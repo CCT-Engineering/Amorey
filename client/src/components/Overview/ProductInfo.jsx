@@ -23,28 +23,18 @@ const ProductInfo = forwardRef(({
   const isCurrentFav = (favs) => {
     let favAlreadyInFavs = false;
     favs.forEach((fav) => {
-      // console.log('current.id:', current.id, 'fav.id', fav.id);
       if (fav.id === current.id) {
         favAlreadyInFavs = true;
       }
     });
-    // console.log('favAlreadyInFavs:', favAlreadyInFavs)
     return favAlreadyInFavs;
   };
 
-  // isCurrentFav(favorites);
-
   useEffect(() => {
-    console.log('isCurrentFav(favorites):', isCurrentFav(favorites))
-    const newState = isCurrentFav(favorites)
-    console.log('newState:', newState)
-    setCurrentIsFav(newState);
-    console.log('useEffect currentIsFav:', currentIsFav);
+    setCurrentIsFav(isCurrentFav(favorites));
   }, [current, favorites]);
 
-  const addToOutfit = (e) => {
-    e.preventDefault();
-    setCurrentIsFav(true);
+  const addToOutfit = () => {
     setFavorites((prevFavs) => {
       const favAlreadyInFavs = isCurrentFav(prevFavs);
       return favAlreadyInFavs ? prevFavs : [...prevFavs,
@@ -57,6 +47,19 @@ const ProductInfo = forwardRef(({
           stars,
         }];
     });
+  };
+
+  const removeFromOutfit = () => {
+    setFavorites((prevFavs) => {
+      return prevFavs.filter((prevFav) => prevFav.id !== current.id);
+    });
+  };
+
+  const addRemoveToOutfit = (e) => {
+    e.preventDefault();
+    const nothing = currentIsFav ? removeFromOutfit() : addToOutfit();
+    setCurrentIsFav(!currentIsFav);
+    return nothing;
   };
 
   return (
@@ -76,10 +79,10 @@ const ProductInfo = forwardRef(({
         <h2>{current.name}</h2>
         <button
           type="button"
-          aria-label="add to your outfit"
+          aria-label="add or remove to outfit"
           className={currentIsFav ? local.addToOutfitFav : local.addToOutfit}
-          onClick={addToOutfit}
-          onKeyPress={buildHandleEnterKeyPress(addToOutfit)}
+          onClick={addRemoveToOutfit}
+          onKeyPress={buildHandleEnterKeyPress(addRemoveToOutfit)}
         />
       </div>
       <h6>
