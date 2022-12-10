@@ -1,4 +1,4 @@
-const { v4: uuidv4 } = require("uuid");
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = (req, res, next) => {
   /**
@@ -7,9 +7,10 @@ module.exports = (req, res, next) => {
    *
    */
 
-  let cookieString = req.get("Cookie") || "";
+  // req.get('Cookie') looks at Cookie header rcvd from the client.
+  const cookieString = req.get('Cookie') || '';
 
-  parsedCookies = cookieString.split("; ").reduce((cookies, cookie) => {
+  const parsedCookies = cookieString.split("; ").reduce((cookies, cookie) => {
     if (cookie.length) {
       let index = cookie.indexOf("=");
       let key = cookie.slice(0, index);
