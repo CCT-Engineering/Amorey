@@ -6,19 +6,6 @@
   margin-bottom: 2%;
 }
 
-.ratings {
-  font-size: smaller;
-  margin-bottom: 6%;
-}
-
-.graph {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 2%;
-}
-
 .graphText {
   display: inline-block;
   text-decoration: underline;
@@ -27,13 +14,30 @@
 
 .barDimensions {
   background-color: #aae3d9;
-  height: 10px;
+  position: relative;
+  height: 15px;
   width: 100%;
   position: relative;
 }
 
+.barMarker {
+  display: inline-block;
+  position: relative;
+  background-color: #62b3a5;
+  color: #62b3a5;
+}
+
 .barDisplay {
-  align-self: center;
-  height: 100%;
-  background: #52d1bc;
+  z-index: 1;
+  display: inline-block;
+  position: relative;
+}
+
+.ratings {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6%;
+}
+
+.ratingName {
 }

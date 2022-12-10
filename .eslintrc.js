@@ -30,7 +30,7 @@ module.exports = {
     'react/prop-types': 'off',
 
     // allow global variables, specifically for event
-    // 'no-restricted-globals': 'off', // CHAD TO UNCOMMENT BEFORE PUSHING
+    'no-restricted-globals': 'off', // CHAD TO UNCOMMENT BEFORE PUSHING
 
     // allow arrow functions
     'arrow-body-style': 'off',

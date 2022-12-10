@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import StarRating from './StarRating.jsx';
 import Characteristic from './Characteristic.jsx';
 import requests from '../../../requests.js';
-import local from '../../../styles/RatingsReviews/NewReview/Index.css';
+import local from '../../../styles/RatingsReviews/NewReview/NewReview.css';
 
 const NewReview = ({
   current, details, renderReviews, showModal,
@@ -65,14 +65,13 @@ const NewReview = ({
       recommend,
       name,
       email,
-      photos: ['https://www.shutterstock.com/image-photo/man-on-white-studio-background-260nw-1820135141.jpg'],
+      photos,
       characteristics,
     };
-    console.log(newReview);
     showModal(false);
     requests.postReview(newReview, () => {
-      console.log('WE DID IT!!!!');
-      renderReviews();
+      console.log('REVIEW SUCCESSFULLY  SUBMITTED');
+      renderReviews('newest');
     });
   };
 
@@ -88,20 +87,20 @@ const NewReview = ({
           <h4>{`About the ${current.name}`}</h4>
           <StarRating setRating={setRating} />
           <h6>Do You recommend this product?</h6>
-          <label htmlFor="recYes">
+          <label htmlFor="recommend">
             Yes
             <input
               type="radio"
-              id="recYes"
+              name="recommend"
               onChange={() => updateInput(setRecommend, true)}
               required
             />
           </label>
-          <label htmlFor="recNo">
+          <label htmlFor="recommend">
             No
             <input
               type="radio"
-              id="recNo"
+              name="recommend"
               onChange={() => updateInput(setRecommend, false)}
             />
           </label>
@@ -143,6 +142,8 @@ const NewReview = ({
               type="email"
               placeholder="jackson11@email.com"
               maxLength="60"
+              // General Email Regex (RFC 5322 Official Standard)
+              pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
               onChange={() => updateInput(setEmail, event.target.value)}
               required
             />
