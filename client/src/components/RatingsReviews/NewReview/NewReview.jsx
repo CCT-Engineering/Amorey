@@ -5,7 +5,7 @@ import requests from '../../../requests.js';
 import local from '../../../styles/RatingsReviews/NewReview/NewReview.css';
 
 const NewReview = ({
-  current, details, renderReviews, showModal,
+  current, traits, getReviews, showModal,
 }) => {
   const [rating, setRating] = useState(0);
   const [summary, setSummary] = useState('');
@@ -50,7 +50,7 @@ const NewReview = ({
 
   const updateCharacteristic = (key, value) => {
     const temp = characteristics;
-    const { id } = details[key];
+    const { id } = traits[key];
     temp[id] = value;
     setCharacteristics(temp);
   };
@@ -69,9 +69,10 @@ const NewReview = ({
       characteristics,
     };
     showModal(false);
+    console.log(newReview);
     requests.postReview(newReview, () => {
       console.log('REVIEW SUCCESSFULLY  SUBMITTED');
-      renderReviews('newest');
+      getReviews('newest');
     });
   };
 
@@ -104,9 +105,9 @@ const NewReview = ({
               onChange={() => updateInput(setRecommend, false)}
             />
           </label>
-          {details && (
-            Object.keys(details).map((detail, index) => {
-              return <Characteristic detail={detail} key={`${detail + index}`} update={updateCharacteristic} />;
+          {traits && (
+            Object.keys(traits).map((trait, index) => {
+              return <Characteristic trait={trait} key={`${trait + index}`} update={updateCharacteristic} />;
             })
           )}
           <h6>
