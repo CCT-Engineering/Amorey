@@ -7,11 +7,14 @@ import testData from '../../client/src/testData.jsx';
 import '@testing-library/jest-dom';
 
 describe('Render Overview Module', () => {
-  const setup = (current, currentStyles) => {
+  const setup = (current, currentStyles, stars = 5, favorites = [], reviewsQty = 5) => {
     const user = userEvent.setup();
     render(<Overview
       current={current}
       currentStyles={currentStyles}
+      stars={stars}
+      favorites={favorites}
+      reviewsQty={reviewsQty}
     />);
     return user;
   };
@@ -27,6 +30,9 @@ describe('Render Overview Module', () => {
     const { container } = render(<Overview
       current={testData.product40344Data}
       currentStyles={testData.product40344Styles.results}
+      stars={5}
+      favorites={[]}
+      reviewsQty={5}
     />);
     const [overviewMain] = container.getElementsByClassName('overviewMain');
     expect(overviewMain).toBeVisible();
