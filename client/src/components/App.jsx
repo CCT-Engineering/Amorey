@@ -76,6 +76,7 @@ function App() {
         currentStyles={currentStyles}
         stars={stars}
         ref={ratingsReviewsRef}
+        favorites={favorites}
         setFavorites={setFavorites}
       />
       {currentStyles.length && (

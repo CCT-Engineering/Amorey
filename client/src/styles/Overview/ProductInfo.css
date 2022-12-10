@@ -32,5 +32,29 @@
 .addToOutfit {
   margin-left: 15px;
   height: fit-content;
-  font-size: 11px;
+  font-family: Times;
+}
+
+.addToOutfit:before {
+  content: '\2665';
+  background: white;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #444;
+}
+
+.addToOutfitFav {
+  margin-left: 15px;
+  height: fit-content;
+  font-family: Times;
+}
+
+.addToOutfitFav:before {
+  content: '\2665';
+  background: firebrick;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #444;
 }
