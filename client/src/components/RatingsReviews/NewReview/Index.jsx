@@ -88,20 +88,20 @@ const NewReview = ({
           <h4>{`About the ${current.name}`}</h4>
           <StarRating setRating={setRating} />
           <h6>Do You recommend this product?</h6>
-          <label htmlFor="recYes">
+          <label htmlFor="recommend">
             Yes
             <input
               type="radio"
-              id="recYes"
+              name="recommend"
               onChange={() => updateInput(setRecommend, true)}
               required
             />
           </label>
-          <label htmlFor="recNo">
+          <label htmlFor="recommend">
             No
             <input
               type="radio"
-              id="recNo"
+              name="recommend"
               onChange={() => updateInput(setRecommend, false)}
             />
           </label>
