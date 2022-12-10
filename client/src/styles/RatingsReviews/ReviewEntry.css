@@ -1,4 +1,4 @@
-.main {
+.mainBody {
   display: block;
   background-color:#52d1bc;
   border-bottom: solid 2px black;
@@ -48,6 +48,16 @@
    margin-right: 1%;
 }
 
+.helpful:hover {
+  color: gold;
+  cursor: default;
+}
+
 .report {
   text-decoration: underline;
+}
+
+.report:hover{
+  color: gold;
+  cursor: default;
 }

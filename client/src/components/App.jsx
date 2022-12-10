@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Overview from './Overview/Overview.jsx';
 import RelatedOutfit from './RelatedOutfit/Index.jsx';
-import RatingsReviews from './RatingsReviews/Index.jsx';
+import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import requests from '../requests.js';
+import calculateAverageStars from '../util/calculateStarAverage.js';
 // import testData from '../testData.jsx'; // uncomment if needed
-import global from '../styles/global.css'; // Applies global styles to entire App (not just App.jsx)
+// import global from '../styles/global.css';
 import { setCookie, getCookie } from '../util';
 
 const FAVS_COOKIE = 'amorey_favs';
@@ -15,20 +16,14 @@ function App() {
   const [current, setCurrent] = useState({ features: [] });
   const [currentStyles, setCurrentStyles] = useState([]);
   const [metadata, setMetadata] = useState([]);
-  const [stars, setStars] = useState(5);
-
+  const [stars, setStars] = useState(0);
+  const [reviews, setReviews] = useState([]);
   const ratingsReviewsRef = useRef(null);
 
-  const calculateAverageStars = (ratings) => {
-    let totalStars = 0;
-    let ratingsCount = 0;
-
-    Object.keys(ratings).forEach((key) => {
-      totalStars += key * ratings[key];
-      ratingsCount += Number(ratings[key]);
+  const getReviews = (sortMethod = 'relevant') => {
+    requests.getReviews(current.id, sortMethod, (data) => {
+      setReviews(data.results);
     });
-    const average = totalStars / ratingsCount;
-    return (Math.round(average * 4) / 4).toFixed(2);
   };
 
   const setCurrentStylesMeta = (id) => {
@@ -38,6 +33,9 @@ function App() {
     requests.getMetadata(id, (metrics) => {
       setMetadata(metrics);
       setStars(calculateAverageStars(metrics.ratings));
+    });
+    requests.getReviews(id, 'relevant', (data) => {
+      setReviews(data.results);
     });
   };
 
@@ -58,7 +56,7 @@ function App() {
 
   // if current product changes, get new current product's styles & metadata from the API
   useEffect(() => {
-    if (current && current.id) {
+    if (current.id) {
       setCurrentStylesMeta(current.id);
     }
   }, [current]);
@@ -70,7 +68,8 @@ function App() {
 
   return (
     <>
-      <h1 className={global.h1}>Amorey</h1>
+      {/* <h1 className={global.h1}>Amorey</h1> */}
+      <img src="AMOREY.png" alt="AMOREY" />
       <Overview
         current={current}
         currentStyles={currentStyles}
@@ -93,14 +92,14 @@ function App() {
         setMetadata={setMetadata}
       />
       )}
-      {current.id && (
       <RatingsReviews
         current={current}
         metadata={metadata}
+        reviews={reviews}
+        getReviews={getReviews}
         stars={stars}
         ref={ratingsReviewsRef}
       />
-      )}
     </>
   );
 }

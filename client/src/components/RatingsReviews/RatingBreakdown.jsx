@@ -4,12 +4,13 @@ import { buildHandleEnterKeyPress } from '../../util';
 import local from '../../styles/RatingsReviews/RatingBreakdown.css';
 
 const RatingBreakdown = ({
-  ratings, recommend, stars, filter, sort,
+  ratings, recommend, stars, changeSearch, sort,
 }) => {
   const handleClick = (index) => {
     event.preventDefault();
-    filter(index);
+    changeSearch(index);
   };
+
   const reviewGraph = (starCount) => {
     const totalStars = Object.keys(ratings).reduce((total, key) => {
       return total + Number(ratings[key]);
@@ -42,33 +43,33 @@ const RatingBreakdown = ({
     <div className={local.ratingMain}>
       <h1 className={local.starHeader}>
         <div className={local.starRating}>
-          {(Math.round(stars * 4) / 4).toFixed(1)}
+          {stars && (Math.round(stars * 4) / 4).toFixed(1)}
         </div>
         <StarDisplay stars={stars} />
       </h1>
       <div className={local.recommend}>
-        {recommenedPercent()}
+        {recommend && recommenedPercent()}
         % of reviews recommend this product
       </div>
       <div className={local.graph}>
         <p className={local.graphText}>5 Stars</p>
-        {reviewGraph(5)}
+        {ratings && reviewGraph(5)}
       </div>
       <div className={local.graph}>
         <p className={local.graphText}>4 Stars</p>
-        {reviewGraph(4)}
+        {ratings && reviewGraph(4)}
       </div>
       <div className={local.graph}>
         <p className={local.graphText}>3 Stars</p>
-        {reviewGraph(3)}
+        {ratings && reviewGraph(3)}
       </div>
       <div className={local.graph}>
         <p className={local.graphText}>2 Stars</p>
-        {reviewGraph(2)}
+        {ratings && reviewGraph(2)}
       </div>
       <div className={local.graph}>
         <p className={local.graphText}>1 Stars</p>
-        {reviewGraph(1)}
+        {ratings && reviewGraph(1)}
       </div>
     </div>
   );
