@@ -10,21 +10,26 @@ module.exports = (req, res, next) => {
   // req.get('Cookie') looks at Cookie header rcvd from the client.
   const cookieString = req.get('Cookie') || '';
 
-  const parsedCookies = cookieString.split("; ").reduce((cookies, cookie) => {
-    if (cookie.length) {
-      let index = cookie.indexOf("=");
-      let key = cookie.slice(0, index);
-      let token = cookie.slice(index + 1);
-      cookies[key] = token;
+  // there could be many cookies stored on the client. We need to find ours...
+  const parsedCookies = cookieString.split('; ').reduce((cookies, cookie) => {
+    const modCookies = cookies;
+    if (modCookies.length) {
+      const index = cookie.indexOf('=');
+      const key = cookie.slice(0, index);
+      const token = cookie.slice(index + 1);
+      modCookies[key] = token;
     }
-    return cookies;
+    return modCookies;
   }, {});
 
-  if (parsedCookies.s_id) {
-    req.session_id = parsedCookies.s_id;
+  if (parsedCookies.amorey_id) {
+    // if amorey session id exists on cookie header rcvd from client, store it on the req obj
+    req.session_id = parsedCookies.amorey_id;
   } else {
+    // otherwise, create a new session id, save on req obj...
     req.session_id = uuidv4();
-    res.cookie("s_id", req.session_id);
+    // ...and set the new cookie on the response object so that it get saved on client.
+    res.cookie('amorey_id', req.session_id);
   }
 
   next();
