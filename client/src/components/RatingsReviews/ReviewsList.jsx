@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Sorting from './Sorting.jsx';
 import ReviewEntry from './ReviewEntry.jsx';
-import NewReview from './NewReview/Index.jsx';
+import NewReview from './NewReview/NewReview.jsx';
 import local from '../../styles/RatingsReviews/ReviewList.css';
 
 const ReviewsList = ({
@@ -13,8 +13,12 @@ const ReviewsList = ({
   let renderAmount = 0;
 
   const filterReviews = (filtered = []) => {
-    reviews.forEach((review) => sort[review.rating - 1] && filtered.push(review));
-    setFilters(filtered);
+    if (!sort.includes(1)) {
+      setFilters(reviews);
+    } else {
+      reviews.forEach((review) => sort[review.rating - 1] && filtered.push(review));
+      setFilters(filtered);
+    }
   };
 
   const loadMoreEntries = () => {
