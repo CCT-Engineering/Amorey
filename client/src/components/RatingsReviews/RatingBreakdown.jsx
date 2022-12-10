@@ -10,6 +10,7 @@ const RatingBreakdown = ({
     event.preventDefault();
     changeSearch(index);
   };
+
   const reviewGraph = (starCount) => {
     const totalStars = Object.keys(ratings).reduce((total, key) => {
       return total + Number(ratings[key]);
