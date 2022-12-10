@@ -18,18 +18,6 @@ function App() {
   const [reviews, setReviews] = useState([]);
   const ratingsReviewsRef = useRef(null);
 
-  // const calculateAverageStars = (ratings) => {
-  //   let totalStars = 0;
-  //   let ratingsCount = 0;
-
-  //   Object.keys(ratings).forEach((key) => {
-  //     totalStars += key * ratings[key];
-  //     ratingsCount += Number(ratings[key]);
-  //   });
-  //   const average = totalStars / ratingsCount;
-  //   return (Math.round(average * 4) / 4).toFixed(2);
-  // };
-
   const getReviews = (sortMethod = 'relevant') => {
     requests.getReviews(current.id, sortMethod, (data) => {
       setReviews(data.results);
@@ -64,7 +52,7 @@ function App() {
 
   // if current product changes, get new current product's styles & metadata from the API
   useEffect(() => {
-    if (current && current.id) {
+    if (current.id) {
       setCurrentStylesMeta(current.id);
     }
   }, [current]);
