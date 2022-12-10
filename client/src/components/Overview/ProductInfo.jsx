@@ -20,16 +20,6 @@ const ProductInfo = forwardRef(({
     });
   };
 
-  const heartStyle = {
-    // content: '&#x2665',
-    content: 'O',
-    background: 'FireBrick',
-    backgroundClip: 'text',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-    WebKitTextStroke: '1px #444',
-  };
-
   const isCurrentFav = (favs) => {
     let favAlreadyInFavs = false;
     favs.forEach((fav) => {
@@ -46,10 +36,11 @@ const ProductInfo = forwardRef(({
 
   useEffect(() => {
     console.log('isCurrentFav(favorites):', isCurrentFav(favorites))
-    let newState = isCurrentFav(favorites)
+    const newState = isCurrentFav(favorites)
+    console.log('newState:', newState)
     setCurrentIsFav(newState);
     console.log('useEffect currentIsFav:', currentIsFav);
-  }, [current]);
+  }, [current, favorites]);
 
   const addToOutfit = (e) => {
     e.preventDefault();
