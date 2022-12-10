@@ -5,7 +5,7 @@ import { buildHandleEnterKeyPress } from '../../util';
 import local from '../../styles/RatingsReviews/ReviewEntry.css';
 import date from '../../util/formatDate.js';
 
-const ReviewEntry = ({ review, update }) => {
+const ReviewEntry = ({ review, updateReview }) => {
   const [expand, setExpand] = useState(false);
   const [canRateReview, setRateReview] = useState(true);
 
@@ -13,7 +13,7 @@ const ReviewEntry = ({ review, update }) => {
     event.preventDefault();
     if (canRateReview) {
       setRateReview(false);
-      update(review.review_id, helpful);
+      updateReview(review.review_id, helpful);
     }
   };
 

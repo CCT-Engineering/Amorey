@@ -32,7 +32,9 @@ function App() {
       setMetadata(metrics);
       setStars(calculateAverageStars(metrics.ratings));
     });
-    getReviews();
+    requests.getReviews(id, 'relevant', (data) => {
+      setReviews(data.results);
+    });
   };
 
   const getProductData = (id) => {

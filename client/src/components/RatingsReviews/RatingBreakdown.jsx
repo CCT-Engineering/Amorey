@@ -4,11 +4,11 @@ import { buildHandleEnterKeyPress } from '../../util';
 import local from '../../styles/RatingsReviews/RatingBreakdown.css';
 
 const RatingBreakdown = ({
-  ratings, recommend, stars, filter, sort,
+  ratings, recommend, stars, changeSearch, sort,
 }) => {
   const handleClick = (index) => {
     event.preventDefault();
-    filter(index);
+    changeSearch(index);
   };
   const reviewGraph = (starCount) => {
     const totalStars = Object.keys(ratings).reduce((total, key) => {

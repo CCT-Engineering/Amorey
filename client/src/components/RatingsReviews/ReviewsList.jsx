@@ -6,7 +6,7 @@ import date from '../../util/formatDate.js';
 import local from '../../styles/RatingsReviews/ReviewList.css';
 
 const ReviewsList = ({
-  reviews, sort, newSort, changeSearch, update, current, details, renderReviews,
+  current, reviews, getReviews, sort, setSort, updateReview, traits,
 }) => {
   const [renderLimit, setRenderLimit] = useState(2);
   const [filters, setFilters] = useState([]);
@@ -50,7 +50,7 @@ const ReviewsList = ({
   const renderReviewEntries = (review, index) => {
     if (renderAmount < renderLimit) {
       renderAmount += 1;
-      return <ReviewEntry review={review} key={index} update={update} />;
+      return <ReviewEntry review={review} key={index} updateReview={updateReview} />;
     }
     return null;
   };
@@ -61,9 +61,9 @@ const ReviewsList = ({
     <>
       <Sorting
         sort={sort}
-        newSort={newSort}
-        reviews={filters}
-        changeSearch={changeSearch}
+        setSort={setSort}
+        filters={filters}
+        getReviews={getReviews}
         query={query}
         setQuery={setQuery}
       />
@@ -77,8 +77,8 @@ const ReviewsList = ({
       {modal && (
         <NewReview
           current={current}
-          details={details}
-          renderReviews={renderReviews}
+          traits={traits}
+          getReviews={getReviews}
           showModal={showModal}
         />
       )}

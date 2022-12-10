@@ -1,4 +1,4 @@
-import React, { useState, useEffect, forwardRef } from 'react';
+import React, { useState, forwardRef } from 'react';
 import ReviewsList from './ReviewsList.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import ProductBreakdown from './ProductBreakdown.jsx';
@@ -9,11 +9,6 @@ const Index = forwardRef(({
   current, metadata, reviews, getReviews, stars,
 }, ref) => {
   const [sort, setSort] = useState([0, 0, 0, 0, 0]);
-
-  const renderReviews = (sortMethod = 'relevant') => {
-    getReviews(sortMethod);
-    setSort([0, 0, 0, 0, 0]);
-  };
 
   const changeSearch = (star) => {
     const starSorting = sort.slice();
@@ -28,16 +23,16 @@ const Index = forwardRef(({
   const updateReview = (review, helpful) => {
     if (helpful) {
       requests.putHelpful(review, () => {
-        renderReviews();
+        getReviews('newest');
+        setSort([0, 0, 0, 0, 0]);
       });
     } else {
       requests.putReport(review, () => {
-        renderReviews();
+        getReviews('newest');
+        setSort([0, 0, 0, 0, 0]);
       });
     }
   };
-
-  useEffect(() => renderReviews(), [metadata]);
 
   return (
     <div ref={ref} className={local.ratingsReviews}>
@@ -49,23 +44,22 @@ const Index = forwardRef(({
               ratings={metadata.ratings}
               recommend={metadata.recommended}
               stars={stars}
-              filter={changeSearch}
+              changeSearch={changeSearch}
               sort={sort}
             />
-            <ProductBreakdown details={metadata.characteristics} />
+            <ProductBreakdown traits={metadata.characteristics} />
           </div>
         </div>
         <div className={local.reviews}>
           <div className={local.reviewMain}>
             <ReviewsList
-              reviews={reviews}
-              renderReviews={renderReviews}
-              sort={sort}
-              newSort={setSort}
-              changeSearch={renderReviews}
-              update={updateReview}
               current={current}
-              details={metadata.characteristics}
+              reviews={reviews}
+              getReviews={getReviews}
+              sort={sort}
+              setSort={setSort}
+              updateReview={updateReview}
+              traits={metadata.characteristics}
             />
           </div>
         </div>
