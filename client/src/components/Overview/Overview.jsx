@@ -8,7 +8,7 @@ import ProductDesc from './ProductDesc.jsx';
 import local from '../../styles/Overview/Overview.css';
 
 const Overview = forwardRef(({
-  current, currentStyles, stars, setFavorites,
+  current, currentStyles, stars, favorites, setFavorites, reviewsQty,
 }, ref) => {
   const [currentStyle, setCurrentStyle] = useState({ photos: [] });
   const [price, setPrice] = useState(current.default_price);
@@ -60,8 +60,10 @@ const Overview = forwardRef(({
             onSale={onSale}
             stars={stars}
             ref={ref}
+            favorites={favorites}
             setFavorites={setFavorites}
             currentStyles={currentStyles}
+            reviewsQty={reviewsQty}
           />
           <Styles
             currentStyles={currentStyles}

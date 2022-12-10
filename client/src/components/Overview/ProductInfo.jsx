@@ -1,11 +1,12 @@
-import React, { forwardRef } from 'react';
+import React, { useState, useEffect, forwardRef } from 'react';
 import local from '../../styles/Overview/ProductInfo.css';
 import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 
 const ProductInfo = forwardRef(({
-  current, price, origPrice, onSale, stars, setFavorites, currentStyles,
+  current, price, origPrice, onSale, stars, setFavorites, currentStyles, favorites, reviewsQty,
 }, ref) => {
+  const [currentIsFav, setCurrentIsFav] = useState(false);
   const priceStyle = {
     color: `${onSale ? 'red' : 'inherit'}`,
   };
@@ -19,22 +20,51 @@ const ProductInfo = forwardRef(({
     });
   };
 
-  const addToOutfit = (e) => {
+  const isCurrentFav = (favs) => {
+    let favAlreadyInFavs = false;
+    favs.forEach((fav) => {
+      if (fav.id === current.id) {
+        favAlreadyInFavs = true;
+      }
+    });
+    return favAlreadyInFavs;
+  };
+
+  useEffect(() => {
+    setCurrentIsFav(isCurrentFav(favorites));
+  }, [current, favorites]);
+
+  const addToOutfit = () => {
+    setFavorites((prevFavs) => {
+      const favAlreadyInFavs = isCurrentFav(prevFavs);
+      return favAlreadyInFavs ? prevFavs : [...prevFavs,
+        {
+          id: current.id,
+          name: current.name,
+          category: current.category,
+          default_price: current.default_price,
+          pic: currentStyles[0].photos[0].thumbnail_url,
+          stars,
+        }];
+    });
+  };
+
+  const removeFromOutfit = () => {
+    setFavorites((prevFavs) => {
+      return prevFavs.filter((prevFav) => prevFav.id !== current.id);
+    });
+  };
+
+  const addRemoveToOutfit = (e) => {
     e.preventDefault();
-    const newFav = {
-      id: current.id,
-      name: current.name,
-      category: current.category,
-      default_price: current.default_price,
-      pic: currentStyles[0].photos[0].thumbnail_url,
-      stars,
-    };
-    setFavorites((prevFavs) => [...prevFavs, newFav]);
+    const nothing = currentIsFav ? removeFromOutfit() : addToOutfit();
+    setCurrentIsFav(!currentIsFav);
+    return nothing;
   };
 
   return (
     <div className={local.productInfo}>
-      <StarDisplay stars={stars} />
+      {reviewsQty ? <StarDisplay stars={stars} /> : ''}
       <div
         role="button"
         tabIndex={0}
@@ -42,19 +72,18 @@ const ProductInfo = forwardRef(({
         onClick={scrollToReviews}
         onKeyPress={buildHandleEnterKeyPress(scrollToReviews)}
       >
-        Read All Reviews
+        {reviewsQty ? `Read All ${reviewsQty} Reviews` : ''}
       </div>
       <h5>{current.category}</h5>
       <div className={local.productName}>
         <h2>{current.name}</h2>
         <button
           type="button"
-          className={local.addToOutfit}
-          onClick={addToOutfit}
-          onKeyPress={buildHandleEnterKeyPress(addToOutfit)}
-        >
-          ♡
-        </button>
+          aria-label="add or remove to outfit"
+          className={currentIsFav ? local.addToOutfitFav : local.addToOutfit}
+          onClick={addRemoveToOutfit}
+          onKeyPress={buildHandleEnterKeyPress(addRemoveToOutfit)}
+        />
       </div>
       <h6>
         <span style={priceStyle}>

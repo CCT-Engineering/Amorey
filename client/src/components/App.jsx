@@ -8,8 +8,10 @@ import calculateAverageStars from '../util/calculateStarAverage.js';
 // import global from '../styles/global.css';
 import { setCookie, getCookie } from '../util';
 
+const FAVS_COOKIE = 'amorey_favs';
+
 function App() {
-  const [favorites, setFavorites] = useState(getCookie('amorey_favs') || []);
+  const [favorites, setFavorites] = useState(getCookie(FAVS_COOKIE) || []);
   // All states below are for the CURRENT product (the one displayed in Overview)
   const [current, setCurrent] = useState({ features: [] });
   const [currentStyles, setCurrentStyles] = useState([]);
@@ -61,7 +63,7 @@ function App() {
 
   // if favorites change, save favorites to cookie on client
   useEffect(() => {
-    setCookie('amorey_favs', favorites);
+    setCookie(FAVS_COOKIE, favorites);
   }, [favorites]);
 
   return (
@@ -72,8 +74,10 @@ function App() {
         current={current}
         currentStyles={currentStyles}
         stars={stars}
-        ref={ratingsReviewsRef}
+        favorites={favorites}
         setFavorites={setFavorites}
+        reviewsQty={reviews.length}
+        ref={ratingsReviewsRef}
       />
       {currentStyles.length && (
       <RelatedOutfit
