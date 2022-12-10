@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
   // there could be many cookies stored on the client. We need to find ours...
   const parsedCookies = cookieString.split('; ').reduce((cookies, cookie) => {
     const modCookies = cookies;
-    if (modCookies.length) {
+    if (cookie.length) {
       const index = cookie.indexOf('=');
       const key = cookie.slice(0, index);
       const token = cookie.slice(index + 1);
