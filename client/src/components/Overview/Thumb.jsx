@@ -10,8 +10,6 @@ const Thumb = forwardRef((props, ref) => {
   const {
     name, id, thumbUrl, photoIndex, setPhotoIndex,
   } = props;
-  console.log('thumbUrl:', thumbUrl);
-  console.log('formatted Img URL:', formatImg(thumbUrl, 60, 60));
   const thumbDesc = `Thumbnail ${id} of ${name} style`;
   const divStyle = {
     backgroundImage: `url(${formatImg(thumbUrl, 60, 60)})`,
