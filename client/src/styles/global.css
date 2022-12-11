@@ -1,5 +1,6 @@
 :global body {
-  background: linear-gradient(#e7f5f0, #7ebfb1);
+  background: linear-gradient(white, #e7f5f0 70px, #8bbfb4);
+  /* background: linear-gradient(to right, goldenrod, 30%, oldlace, 50%, whitesmoke); */
   box-sizing: border-box;
   color: #0a362e;
   font-family: "Tahoma", sans-serif;
@@ -108,4 +109,14 @@
 .photo {
   z-index: 2;
   align-self: center;
+}
+
+.logo {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  background-image: url('../assets/Amorey.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50px;
+  aspect-ratio: 3.5;
 }
