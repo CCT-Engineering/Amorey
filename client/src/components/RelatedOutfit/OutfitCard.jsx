@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import local from '../../styles/RelatedOutfit.css';
 import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 

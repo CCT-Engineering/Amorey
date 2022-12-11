@@ -33,3 +33,5 @@ client/dist/
 .eslintrc.js
 
 /backup
+
+/performance
