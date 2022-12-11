@@ -12,10 +12,11 @@ const RatingBreakdown = ({
   };
 
   const reviewGraph = (starCount) => {
-    const totalStars = Object.keys(ratings).reduce((total, key) => {
-      return total + Number(ratings[key]);
-    }, 0);
-    const percent = (ratings[starCount] / totalStars).toFixed(2) * 100;
+    const percent = ratings
+      ? (ratings[starCount]
+      / Object.keys(ratings).reduce((total, key) => (total + Number(ratings[key])), 0)).toFixed(2)
+      * 100
+      : 0;
 
     return (
       <div
@@ -34,6 +35,9 @@ const RatingBreakdown = ({
   };
 
   const recommenedPercent = () => {
+    if (!recommend) {
+      return 0;
+    }
     const approve = Number(recommend.true);
     const reject = Number(recommend.false);
     return Math.floor((approve / (approve + reject)) * 100);
@@ -48,28 +52,28 @@ const RatingBreakdown = ({
         <StarDisplay stars={stars} />
       </h1>
       <div className={local.recommend}>
-        {recommend && recommenedPercent()}
+        {recommenedPercent()}
         % of reviews recommend this product
       </div>
       <div className={local.graph}>
         <p className={local.graphText}>5 Stars</p>
-        {ratings && reviewGraph(5)}
+        {reviewGraph(5)}
       </div>
       <div className={local.graph}>
         <p className={local.graphText}>4 Stars</p>
-        {ratings && reviewGraph(4)}
+        {reviewGraph(4)}
       </div>
       <div className={local.graph}>
         <p className={local.graphText}>3 Stars</p>
-        {ratings && reviewGraph(3)}
+        {reviewGraph(3)}
       </div>
       <div className={local.graph}>
         <p className={local.graphText}>2 Stars</p>
-        {ratings && reviewGraph(2)}
+        {reviewGraph(2)}
       </div>
       <div className={local.graph}>
         <p className={local.graphText}>1 Stars</p>
-        {ratings && reviewGraph(1)}
+        {reviewGraph(1)}
       </div>
     </div>
   );
