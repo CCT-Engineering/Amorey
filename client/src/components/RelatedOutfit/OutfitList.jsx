@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import local from '../../styles/RelatedOutfit.css';
 import OutfitCard from './OutfitCard.jsx';
 import requests from '../../requests.js';

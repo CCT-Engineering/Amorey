@@ -26,7 +26,7 @@ function App() {
     });
   };
 
-  const setCurrentStylesMeta = (id) => {
+  const getCurStylesMetaRev = (id) => {
     requests.getStyles(id, (styleData) => {
       setCurrentStyles(styleData.results);
     });
@@ -42,12 +42,11 @@ function App() {
   const getProductData = (id) => {
     requests.getProductInfo(id, (data) => {
       setCurrent(data);
-      setCurrentStylesMeta(id);
     });
   };
 
   // on app load, get the basic product data from the API
-  // Then, pass first product to getProductData which gets the product metadata & styles
+  // Then, pass 1st product to getProductData which gets product metadata, styles, & reviews
   useEffect(() => {
     requests.getProducts((data) => {
       getProductData(data[0].id);
@@ -57,7 +56,7 @@ function App() {
   // if current product changes, get new current product's styles & metadata from the API
   useEffect(() => {
     if (current.id) {
-      setCurrentStylesMeta(current.id);
+      getCurStylesMetaRev(current.id);
     }
   }, [current]);
 
@@ -79,7 +78,6 @@ function App() {
         reviewsQty={reviews.length}
         ref={ratingsReviewsRef}
       />
-      {currentStyles.length && (
       <RelatedOutfit
         current={current}
         favorites={favorites}
@@ -92,7 +90,6 @@ function App() {
         calculateAverageStars={calculateAverageStars}
         setMetadata={setMetadata}
       />
-      )}
       <RatingsReviews
         current={current}
         metadata={metadata}
