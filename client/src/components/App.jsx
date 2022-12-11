@@ -67,8 +67,7 @@ function App() {
 
   return (
     <>
-      <h1 className={global.h1}>Amorey</h1>
-      {/* <img src="AMOREY.png" alt="AMOREY" /> */}
+      <img src="../src/assets/Amorey.png" alt="AMOREY" />
       <Overview
         current={current}
         currentStyles={currentStyles}
