@@ -19,13 +19,30 @@
   z-index: 2;
   align-self: center;
   width: 50%;
-  height: 50%;
+  height: 70%;
   overflow: auto;
   background: linear-gradient(#bee8d7, #7ebfb1);
 }
 
-.form {
+.bodyPrompt {
+  margin-top: -2%;
+}
 
+.usernamePrompt {
+  margin-top: -2%;
+}
+
+.emailPrompt {
+  margin-top: -2%;
+}
+
+.uploadPhoto {
+  margin-top: 1%;
+  margin-bottom: 4%;
+}
+
+.cancel {
+  margin-left: 10%;
 }
 
 .rating {

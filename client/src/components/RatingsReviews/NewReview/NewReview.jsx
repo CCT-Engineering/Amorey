@@ -34,19 +34,9 @@ const NewReview = ({
     }
   };
 
-  // function previewFile() {
-  //   const preview = document.querySelector('img');
-  //   const file = document.querySelector('input[type=file]').files[0];
-  //   const reader = new FileReader();
-  //   reader.onloadend = function () {
-  //     preview.src = reader.result;
-  //   };
-  //   if (file) {
-  //     reader.readAsDataURL(file);
-  //   } else {
-  //     preview.src = '';
-  //   }
-  // }
+  const showThumbnails = (photo, index) => {
+    return <div key={index}>TEST</div>;
+  };
 
   const updateCharacteristic = (key, value) => {
     const temp = characteristics;
@@ -71,7 +61,7 @@ const NewReview = ({
     showModal(false);
     console.log(newReview);
     requests.postReview(newReview, () => {
-      console.log('REVIEW SUCCESSFULLY  SUBMITTED');
+      console.log('REVIEW SUCCESSFULLY SUBMITTED');
       getReviews('newest');
     });
   };
@@ -83,7 +73,7 @@ const NewReview = ({
   return (
     <div className={local.modal}>
       <div className={local.reviewForm}>
-        <form id="newReview" className="form" onSubmit={collectFormData}>
+        <form id="newReview" onSubmit={collectFormData}>
           <h2>Write Your Review</h2>
           <h4>{`About the ${current.name}`}</h4>
           <StarRating setRating={setRating} />
@@ -127,9 +117,10 @@ const NewReview = ({
             />
             {' Body'}
           </h6>
-          <p>{letterCount > 0 ? `Minimum required characters left: [${letterCount}]` : 'Minimum reached'}</p>
+          <p className={local.bodyPrompt}>{letterCount > 0 ? `Minimum required characters left: [${letterCount}]` : 'Minimum reached'}</p>
           <h6>
             <input
+              className={local.username}
               placeholder="Example: Jackson11!"
               maxLength="60"
               onChange={() => updateInput(setName, event.target.value)}
@@ -137,9 +128,12 @@ const NewReview = ({
             />
             {' Username'}
           </h6>
-          <p>For privacy reasons, do not use your full name or email address</p>
+          <p className={local.usernamePrompt}>
+            For privacy reasons, do not use your full name or email address
+          </p>
           <h6>
             <input
+              className={local.email}
               type="email"
               placeholder="jackson11@email.com"
               maxLength="60"
@@ -150,10 +144,11 @@ const NewReview = ({
             />
             {' Email Address'}
           </h6>
-          <p>For authentication reasons, you will not be emailed</p>
+          <p className={local.emailPrompt}>For authentication reasons, you will not be emailed</p>
           <label htmlFor="photos">
             Upload Images (Optional)
             <input
+              className={local.uploadPhoto}
               id="uploadPhoto"
               type="file"
               accept="image/*"
@@ -161,8 +156,11 @@ const NewReview = ({
               multiple
             />
           </label>
-          {/* {showImgs ? previewFile() : null} */}
-          <button type="submit">Submit Review!</button>
+          {photos.map((photo, index) => showThumbnails(photo, index))}
+          <div>
+            <button className={local.submit} type="submit">Submit Review!</button>
+            <button className={local.cancel} type="button" onClick={() => showModal(false)}>Cancel</button>
+          </div>
         </form>
       </div>
     </div>
