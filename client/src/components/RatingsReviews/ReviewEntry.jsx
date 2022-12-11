@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Photos from './Images/Photos.jsx';
+import Thumbnail from '../SharedComponents/Thumbnail.jsx';
 import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 import local from '../../styles/RatingsReviews/ReviewEntry.css';
@@ -57,7 +57,7 @@ const ReviewEntry = ({ review, updateReview }) => {
         )}
       </div>
       {review.photos ? review.photos.map((photo, index) => (
-        <Photos photo={photo.url} key={`${photo.url + index}`} />
+        <Thumbnail photo={photo.url} key={`${photo.url + index}`} />
       )) : null}
       <div className={local.footer}>
         Helpful?

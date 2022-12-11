@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import StarRating from './StarRating.jsx';
 import Characteristic from './Characteristic.jsx';
-import Photos from '../Images/Photos.jsx';
+import Thumbnail from '../../SharedComponents/Thumbnail.jsx';
 import requests from '../../../requests.js';
 // import emailVerification from '../../../util/emailVerification.js';
 import local from '../../../styles/RatingsReviews/NewReview/NewReview.css';
@@ -155,7 +155,7 @@ const NewReview = ({
               multiple
             />
           </label>
-          {photos.map((photo, index) => <Photos photo={photo} key={`${photo + index}`} />)}
+          {photos.map((photo, index) => <Thumbnail photo={photo} key={`${photo + index}`} />)}
           <div>
             <button className={local.submit} type="submit">Submit Review!</button>
             <button className={local.cancel} type="button" onClick={() => showModal(false)}>Cancel</button>
