@@ -34,8 +34,6 @@ const Photos = ({ photo }) => {
             className={global.photo}
             src={photo}
             alt="text"
-            height="auto"
-            width="auto"
           />
         </div>
       )}

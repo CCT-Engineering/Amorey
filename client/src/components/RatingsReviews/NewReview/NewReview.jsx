@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Rating from './Rating.jsx';
 import Recommend from './Recommend.jsx';
 import Characteristic from './Characteristic.jsx';
@@ -23,6 +23,7 @@ const NewReview = ({
   const [photos, setPhotos] = useState([]);
   const [characteristics, setCharacteristics] = useState({});
   const [letterCount, setLetterCount] = useState(50);
+  const uploadPhoto = useRef();
 
   const updateLetterCount = (input) => {
     setLetterCount(50 - input.length);
@@ -32,8 +33,7 @@ const NewReview = ({
   const numberOfPhotos = () => {
     const { files } = event.target;
     if (files.length > 5) {
-      document.getElementById('uploadPhoto').value = [];
-      // alert('Maximum of 5 photo uploads is allowed');
+      uploadPhoto.current.value = [];
     } else {
       const photoArray = [];
       for (let i = 0; i < files.length; i += 1) {
@@ -94,7 +94,7 @@ const NewReview = ({
           <Body letterCount={letterCount} updateLetterCount={updateLetterCount} />
           <Username updateInput={updateInput} setName={setName} />
           <Email updateInput={updateInput} setEmail={setEmail} />
-          <Photos numberOfPhotos={numberOfPhotos} />
+          <Photos numberOfPhotos={numberOfPhotos} uploadPhoto={uploadPhoto} />
           <div className={local.thumbnails}>{photos.map((photo, index) => <Thumbnail photo={photo} key={`${photo + index}`} />)}</div>
           <div>
             <button className={local.submit} type="submit">Submit Review!</button>

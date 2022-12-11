@@ -6,11 +6,13 @@ import local from '../../styles/RatingsReviews/ReviewEntry.css';
 import date from '../../util/formatDate.js';
 
 const ReviewEntry = ({ review, updateReview }) => {
+  const unrated = !(localStorage.getItem(review.review_id) === 'true');
   const [expand, setExpand] = useState(false);
-  const [canRateReview, setRateReview] = useState(true);
+  const [canRateReview, setRateReview] = useState(unrated);
 
   const rateReview = (rating) => {
     if (canRateReview) {
+      localStorage.setItem(review.review_id, 'true');
       setRateReview(false);
       updateReview(review.review_id, rating);
     }
@@ -65,6 +67,7 @@ const ReviewEntry = ({ review, updateReview }) => {
           role="button"
           tabIndex={0}
           className={local.helpful}
+          style={{ textDecoration: canRateReview ? null : 'line-through' }}
           onClick={() => rateReview('putHelpful')}
           onKeyPress={buildHandleEnterKeyPress(() => rateReview('putHelpful'))}
         >
