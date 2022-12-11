@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import StarRating from './StarRating.jsx';
+import Rating from './Rating.jsx';
 import Recommend from './Recommend.jsx';
 import Characteristic from './Characteristic.jsx';
 import Summary from './Summary.jsx';
@@ -43,30 +43,34 @@ const NewReview = ({
     }
   };
 
+  const collectFormData = () => {
+    event.preventDefault();
+    if (rating) {
+      const newReview = {
+        product_id: current.id,
+        rating,
+        summary,
+        body,
+        recommend,
+        name,
+        email,
+        photos,
+        characteristics,
+      };
+      showModal(false);
+      requests.postReview(newReview, () => {
+        getReviews('newest');
+      });
+    } else {
+      // alert('Please enter a rating for the current product');
+    }
+  };
+
   const updateCharacteristic = (key, value) => {
     const temp = characteristics;
     const { id } = traits[key];
     temp[id] = value;
     setCharacteristics(temp);
-  };
-
-  const collectFormData = () => {
-    event.preventDefault();
-    const newReview = {
-      product_id: current.id,
-      rating,
-      summary,
-      body,
-      recommend,
-      name,
-      email,
-      photos,
-      characteristics,
-    };
-    showModal(false);
-    requests.postReview(newReview, () => {
-      getReviews('newest');
-    });
   };
 
   const updateInput = (setState, value) => {
@@ -79,7 +83,7 @@ const NewReview = ({
         <form id="newReview" onSubmit={collectFormData}>
           <h2>Write Your Review</h2>
           <h4>{`About the ${current.name}`}</h4>
-          <StarRating setRating={setRating} />
+          <Rating setRating={setRating} />
           <Recommend updateInput={updateInput} setRecommend={setRecommend} />
           {traits && (
             Object.keys(traits).map((trait, index) => {
@@ -91,17 +95,6 @@ const NewReview = ({
           <Username updateInput={updateInput} setName={setName} />
           <Email updateInput={updateInput} setEmail={setEmail} />
           <Photos numberOfPhotos={numberOfPhotos} />
-          {/* <label htmlFor="photos">
-            {'Upload Up To 5 Images (Optional) '}
-            <input
-              className={local.uploadPhoto}
-              id="uploadPhoto"
-              type="file"
-              accept="image/*"
-              onChange={numberOfPhotos}
-              multiple
-            />
-          </label> */}
           <div className={local.thumbnails}>{photos.map((photo, index) => <Thumbnail photo={photo} key={`${photo + index}`} />)}</div>
           <div>
             <button className={local.submit} type="submit">Submit Review!</button>

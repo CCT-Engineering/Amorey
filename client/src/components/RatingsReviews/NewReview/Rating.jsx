@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { buildHandleEnterKeyPress } from '../../../util';
 
-const StarRating = ({ setRating }) => {
+const Rating = ({ setRating }) => {
   const starText = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
   const [currentStar, setCurrentStar] = useState(0);
 
@@ -73,4 +73,4 @@ const StarRating = ({ setRating }) => {
   );
 };
 
-export default StarRating;
+export default Rating;
