@@ -7,6 +7,7 @@
   aspect-ratio: 1 / 1;
   margin: 1.5px;
   background-size: cover;
+  background-position: center;
   text-align: right;
   font-size: 1.3rem;
   font-weight: bold;

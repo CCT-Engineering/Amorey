@@ -62,11 +62,12 @@ const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent, setStars, calc
     setCurrent(info);
     setMetadata(rel1Meta);
   };
+
   return (
     <div className={local.relatedCard}>
       <button type="button" onClick={handleToggle} className={local.action}>☆</button>
       <center>
-        <img src={pic} alt="card pic" className={local.cardpic} onClick={handleChangeCurrent}></img>
+        <img src={pic} alt="card pic" className={local.cardpic} onClick={handleChangeCurrent} />
       </center>
       <div>
         {/* Category: */}

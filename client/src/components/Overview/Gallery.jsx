@@ -1,7 +1,7 @@
 import React, { useRef, createRef } from 'react';
 import local from '../../styles/Overview/Gallery.css';
 import Thumb from './Thumb.jsx';
-import { buildHandleEnterKeyPress, buildHandleKeyDown } from '../../util';
+import { buildHandleEnterKeyPress, buildHandleKeyDown, formatImg } from '../../util';
 
 // photoIndex prop is the index of the photo currently shown in main view.
 
@@ -19,7 +19,7 @@ function Gallery({
   let mainPhotoDivStyle;
   if (photoUrl) {
     mainPhotoDivStyle = {
-      backgroundImage: `url(${photoUrl})`,
+      backgroundImage: `url(${formatImg(photoUrl, 390, 530)})`,
     };
   } else {
     mainPhotoDivStyle = {
