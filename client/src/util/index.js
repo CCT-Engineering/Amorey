@@ -63,7 +63,6 @@ const getCookie = ((cName) => {
 const formatImg = (url, w, h) => {
   // this function works specifically for unsplash urls only
   // extract base url
-  // console.log('formatImg----url:', url)
   let newUrl = url.match(/^.*ixid=\w+/) || url.match(/^.*ixlib=[^&]+/);
   if (!newUrl) {
     return url; // return original url if match cannot be found
@@ -72,7 +71,8 @@ const formatImg = (url, w, h) => {
   // if w is less than 100px, zoom in faces by default, otherwise fit by crop
   newUrl += w < 100 ? '&fit=facearea&facepad=4' : '&fit=crop';
   newUrl += w ? `&w=${w}` : '';
-  newUrl += h ? `&w=${h}` : '';
+  newUrl += h ? `&h=${h}` : '';
+  console.log('newUrl inside formatImg:', newUrl)
   return newUrl;
 };
 

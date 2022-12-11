@@ -1,13 +1,27 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react';
-import global from '../../styles/global.css';
 import { buildHandleEnterKeyPress, formatImg } from '../../util';
 
 const Img = ({
-  src, w, h, alt = 'image', handleClick, handleKeyPress = buildHandleEnterKeyPress(handleClick),
+  src, w, h, alt = 'image', className, onClick, onKeyPress = buildHandleEnterKeyPress(onClick),
 }) => {
+  // console.log('src inside Img:', src)
   const newImgUrl = formatImg(src, w, h);
+  /*
+  WARNING: img tags should be used as interactive elements.
+  Use buttons or divs with background images instead.
+  */
   return (
-    <div className={global.Stars} style={{ '--rating': stars }} />
+    <img
+      role={onClick ? 'button' : 'img'}
+      src={newImgUrl}
+      alt={alt}
+      tabIndex={0}
+      className={className || ''}
+      onClick={onClick || ''}
+      onKeyPress={onClick ? onKeyPress : ''}
+    />
   );
 };
 
