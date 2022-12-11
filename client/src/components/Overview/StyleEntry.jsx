@@ -1,13 +1,13 @@
 import React from 'react';
 import local from '../../styles/Overview/StyleEntry.css';
-import { buildHandleEnterKeyPress } from '../../util';
+import { buildHandleEnterKeyPress, formatImg } from '../../util';
 
 function StyleEntry({ style, currentStyle, setStyle }) {
   const styleThumbUrl = style.photos[0].thumbnail_url;
   let divStyle;
   if (styleThumbUrl) {
     divStyle = {
-      backgroundImage: `url(${styleThumbUrl})`,
+      backgroundImage: `url(${formatImg(styleThumbUrl, 70, 70)})`,
     };
   } else {
     divStyle = {

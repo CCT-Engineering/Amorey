@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import local from '../../styles/Overview/Thumb.css';
-import { buildHandleEnterKeyPress } from '../../util';
+import { buildHandleEnterKeyPress, formatImg } from '../../util';
 
 // { name, id, thumbUrl, setPhotoIndex }
 
@@ -10,10 +10,12 @@ const Thumb = forwardRef((props, ref) => {
   const {
     name, id, thumbUrl, photoIndex, setPhotoIndex,
   } = props;
-
+  console.log('thumbUrl:', thumbUrl);
+  console.log('formatted Img URL:', formatImg(thumbUrl, 60, 60));
   const thumbDesc = `Thumbnail ${id} of ${name} style`;
   const divStyle = {
-    backgroundImage: `url(${thumbUrl})`,
+    backgroundImage: `url(${formatImg(thumbUrl, 60, 60)})`,
+    // backgroundImage: `url(${thumbUrl})`,
     border: id === photoIndex ? '1px solid blue' : '1px solid #111',
     opacity: id === photoIndex ? '1.0' : '0.7',
   };
