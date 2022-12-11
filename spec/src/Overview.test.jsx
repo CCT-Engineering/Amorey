@@ -4,7 +4,6 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Overview from '../../client/src/components/Overview/Overview.jsx';
 import testData from '../../client/src/testData.jsx';
-import '@testing-library/jest-dom';
 
 describe('Render Overview Module', () => {
   const setup = (current, currentStyles, stars = 5, favorites = [], reviewsQty = 5) => {

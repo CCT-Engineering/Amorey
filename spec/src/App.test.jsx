@@ -4,7 +4,6 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../../client/src/components/App.jsx';
 import testData from '../../client/src/testData.jsx';
-import '@testing-library/jest-dom';
 
 describe('Render App Page', () => {
   const setup = () => {
@@ -19,8 +18,8 @@ describe('Render App Page', () => {
     const title = screen.getByText('Amorey');
     expect(title).toHaveTextContent('Amorey');
 
-    const heading = screen.getByRole('heading', { level: 1 });
-    expect(heading).toBeInTheDocument();
+    const heading = screen.getAllByRole('heading', { level: 1 });
+    expect(heading[0]).toHaveTextContent('Amorey');
   });
 
   it('Should scroll so that reviews are visible when "Read All Reviews" is clicked', async () => {

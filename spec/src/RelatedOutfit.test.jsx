@@ -1,11 +1,11 @@
+/* eslint-disable no-undef */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import RelatedOutfit from '../../client/src/components/RelatedOutfit/Index.jsx';
-import '@testing-library/jest-dom';
 
 describe('Render RelatedOutfit Page', () => {
   it('Should render page with Title header', () => {
-    render(<RelatedOutfit />);
+    render(<RelatedOutfit current={{}} favorites={[]} stars={5} />);
 
     const relatedTitle = screen.getByText('RELATED PRODUCTS');
     expect(relatedTitle).toHaveTextContent('RELATED PRODUCTS');
