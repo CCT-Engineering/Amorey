@@ -2,9 +2,11 @@ import React from 'react';
 import local from '../../styles/RatingsReviews/Sorting.css';
 
 const Sorting = ({
-  sort, setSort, filters, getReviews, query, setQuery,
+  current, sort, setSort, filters, getReviews, query, setQuery,
 }) => {
-  const changeSort = () => getReviews(event.target.value);
+  const changeSort = () => {
+    return current.id && getReviews(event.target.value);
+  };
 
   const clearSort = () => setSort([0, 0, 0, 0, 0]);
 

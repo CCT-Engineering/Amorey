@@ -61,6 +61,7 @@ const ReviewsList = ({
   return (
     <>
       <Sorting
+        current={current}
         sort={sort}
         setSort={setSort}
         filters={filters}

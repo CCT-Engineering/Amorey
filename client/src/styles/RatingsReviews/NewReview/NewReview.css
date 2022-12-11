@@ -19,15 +19,20 @@
   z-index: 2;
   align-self: center;
   width: 50%;
-  height: 50%;
+  height: 70%;
   overflow: auto;
   background: linear-gradient(#bee8d7, #7ebfb1);
 }
 
-.form {
+.thumbnails {
+  margin-top: -2%;
+  margin-bottom: 2%;
+}
+
+.submit {
 
 }
 
-.rating {
-  display: center;
+.cancel {
+  margin-left: 10%;
 }
