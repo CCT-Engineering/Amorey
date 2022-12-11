@@ -1,4 +1,5 @@
 :global body {
+  --body-padding: 30px;
   background: linear-gradient(white, #e7f5f0 70px, #8bbfb4);
   /* background: linear-gradient(to right, goldenrod, 30%, oldlace, 50%, whitesmoke); */
   box-sizing: border-box;
@@ -6,7 +7,7 @@
   font-family: "Tahoma", sans-serif;
   margin: 0;
   overflow-x: hidden;
-  padding: 0;
+  padding: 0 var(--body-padding);
   font-size: 0.8rem;
   letter-spacing: 0.3px;
   line-height: 1.3;
@@ -114,6 +115,7 @@
 .logo {
   margin-top: 5px;
   margin-bottom: 15px;
+  margin-left: calc(var(--body-padding) * -1);
   background-image: url('../assets/Amorey.png');
   background-repeat: no-repeat;
   background-size: cover;
