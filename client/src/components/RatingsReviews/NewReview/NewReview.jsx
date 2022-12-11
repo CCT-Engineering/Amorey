@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import StarRating from './StarRating.jsx';
 import Characteristic from './Characteristic.jsx';
+import Photos from '../Images/Photos.jsx';
 import requests from '../../../requests.js';
+// import emailVerification from '../../../util/emailVerification.js';
 import local from '../../../styles/RatingsReviews/NewReview/NewReview.css';
 
 const NewReview = ({
@@ -16,7 +18,6 @@ const NewReview = ({
   const [photos, setPhotos] = useState([]);
   const [characteristics, setCharacteristics] = useState({});
   const [letterCount, setLetterCount] = useState(50);
-  // const [showImgs, setShowImgs] = useState(false);
 
   const updateLetterCount = (input) => {
     setLetterCount(50 - input.length);
@@ -24,18 +25,17 @@ const NewReview = ({
   };
 
   const numberOfPhotos = () => {
-    if (event.target.files.length > 5) {
+    const { files } = event.target;
+    if (files.length > 5) {
       document.getElementById('uploadPhoto').value = [];
       alert('Maximum of 5 photo uploads is allowed');
     } else {
-      console.log(event.target.files);
-      // setShowImgs(true);
-      setPhotos(event.target.files);
+      const photoArray = [];
+      for (let i = 0; i < files.length; i += 1) {
+        photoArray.push(URL.createObjectURL(files[i]));
+      }
+      setPhotos(photoArray);
     }
-  };
-
-  const showThumbnails = (photo, index) => {
-    return <div key={index}>TEST</div>;
   };
 
   const updateCharacteristic = (key, value) => {
@@ -137,7 +137,6 @@ const NewReview = ({
               type="email"
               placeholder="jackson11@email.com"
               maxLength="60"
-              // General Email Regex (RFC 5322 Official Standard)
               pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
               onChange={() => updateInput(setEmail, event.target.value)}
               required
@@ -156,7 +155,7 @@ const NewReview = ({
               multiple
             />
           </label>
-          {photos.map((photo, index) => showThumbnails(photo, index))}
+          {photos.map((photo, index) => <Photos photo={photo} key={`${photo + index}`} />)}
           <div>
             <button className={local.submit} type="submit">Submit Review!</button>
             <button className={local.cancel} type="button" onClick={() => showModal(false)}>Cancel</button>

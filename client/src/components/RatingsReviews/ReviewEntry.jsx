@@ -57,7 +57,7 @@ const ReviewEntry = ({ review, updateReview }) => {
         )}
       </div>
       {review.photos ? review.photos.map((photo, index) => (
-        <Photos photo={photo} key={`${photo.url + index}`} />
+        <Photos photo={photo.url} key={`${photo.url + index}`} />
       )) : null}
       <div className={local.footer}>
         Helpful?

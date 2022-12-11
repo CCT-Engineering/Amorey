@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import local from '../../../styles/RatingsReviews/Image/Index.css';
+import local from '../../../styles/RatingsReviews/Image/Photos.css';
 import { buildHandleEnterKeyPress } from '../../../util';
 
 const Photos = ({ photo }) => {
@@ -15,7 +15,7 @@ const Photos = ({ photo }) => {
     >
       <img
         className={expandImage ? local.photo : null}
-        src={photo.url}
+        src={photo}
         alt="text"
         height={expandImage ? 'auto' : '48px'}
         width={expandImage ? 'auto' : '48px'}
