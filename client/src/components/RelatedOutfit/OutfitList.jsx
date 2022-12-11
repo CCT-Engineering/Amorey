@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import local from '../../styles/RelatedOutfit.css';
 import OutfitCard from './OutfitCard.jsx';
 import requests from '../../requests.js';
 
-const OutfitList = ({ favorites, setFavorites, current, currentStyles, stars}) => {
+const OutfitList = ({ favorites, setFavorites, current, currentStyles, stars }) => {
   const addOutfit = () => {
     event.preventDefault();
     const copy = favorites.slice();
@@ -15,21 +15,21 @@ const OutfitList = ({ favorites, setFavorites, current, currentStyles, stars}) =
       category: current.category,
       default_price: current.default_price,
       pic: currentStyles[0].photos[0].thumbnail_url,
-      stars: stars,
-    }
+      stars,
+    };
 
-    console.log('current', current)
-    let dupCheck = false
-    favorites.forEach((favorite)=>{
+    console.log('current', current);
+    let dupCheck = false;
+    favorites.forEach((favorite) => {
       if (favorite.id === currentWPic.id) {
-        dupCheck=true
-        console.log('was dup')
+        dupCheck = true;
+        console.log('was dup');
       }
-    })
+    });
     if (dupCheck === false) {
       copy.push(currentWPic);
       setFavorites(copy);
-      }
+    }
     // if (favorites.includes(currentWPic)) {
     //   console.log('already got dup')
     // } else {
@@ -38,7 +38,6 @@ const OutfitList = ({ favorites, setFavorites, current, currentStyles, stars}) =
     // }
     // console.log('current', current)
     // console.log('favs', favorites)
-
   };
   return (
     <div className={local.outfit}>

@@ -7,7 +7,9 @@ import ProductDesc from './ProductDesc.jsx';
 // import testData from '../../testData.jsx';
 import local from '../../styles/Overview/Overview.css';
 
-const Overview = forwardRef(({ current, currentStyles, stars }, ref) => {
+const Overview = forwardRef(({
+  current, currentStyles, stars, favorites, setFavorites, reviewsQty,
+}, ref) => {
   const [currentStyle, setCurrentStyle] = useState({ photos: [] });
   const [price, setPrice] = useState(current.default_price);
   const [onSale, setOnSale] = useState(false);
@@ -58,6 +60,10 @@ const Overview = forwardRef(({ current, currentStyles, stars }, ref) => {
             onSale={onSale}
             stars={stars}
             ref={ref}
+            favorites={favorites}
+            setFavorites={setFavorites}
+            currentStyles={currentStyles}
+            reviewsQty={reviewsQty}
           />
           <Styles
             currentStyles={currentStyles}
