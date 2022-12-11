@@ -31,7 +31,9 @@
   box-shadow: 10px 5px 5px grey;
   position: relative;
   width: 177px;
+  /* height: 270px; */
   height: 266.23px;
+
   /* right: 200px; */
   /* overflow: hidden; */
   /* transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1); */
@@ -56,6 +58,7 @@
   width: 177px;
   height: 266.23px;
 }
+
 
 .cardpic {
   width: 175px;
