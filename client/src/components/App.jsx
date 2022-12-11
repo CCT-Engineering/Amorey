@@ -19,7 +19,6 @@ function App() {
   const [stars, setStars] = useState(0);
   const [reviews, setReviews] = useState([]);
   const ratingsReviewsRef = useRef(null);
-  const [testing] = useState(false);
 
   const getReviews = (sortMethod = 'relevant') => {
     requests.getReviews(current.id, sortMethod, (data) => {
@@ -28,7 +27,6 @@ function App() {
   };
 
   const getCurStylesMetaRev = (id) => {
-    console.log('inside getCurStylesMetaRev');
     requests.getStyles(id, (styleData) => {
       setCurrentStyles(styleData.results);
     });
@@ -80,7 +78,6 @@ function App() {
         reviewsQty={reviews.length}
         ref={ratingsReviewsRef}
       />
-      {currentStyles.length && (
       <RelatedOutfit
         current={current}
         favorites={favorites}
@@ -93,7 +90,6 @@ function App() {
         calculateAverageStars={calculateAverageStars}
         setMetadata={setMetadata}
       />
-      )}
       <RatingsReviews
         current={current}
         metadata={metadata}

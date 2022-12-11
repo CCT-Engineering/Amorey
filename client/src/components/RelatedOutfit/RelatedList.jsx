@@ -44,6 +44,7 @@ const RelatedList = ({ currentId, current, CurMeta, setCurrent, setStars, calcul
       });
     }
   }, [currentId]);
+
   const preClick = (event) => {
     event.preventDefault();
     const copyStart = viewStart
