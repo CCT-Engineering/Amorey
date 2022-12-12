@@ -96,7 +96,6 @@ const ProductInfo = forwardRef(({
         </span>
         <span className={local.oldPrice}>{onSale ? `$${origPrice}` : ''}</span>
       </h6>
-      <Img src={mysrc} w={200} h={200} />
     </div>
   );
 });
