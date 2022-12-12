@@ -11,7 +11,7 @@ const ReviewEntry = ({ review, updateReview }) => {
   const [canRateReview, setRateReview] = useState(unrated);
 
   const rateReview = (rating) => {
-    if (canRateReview) {
+    if (canRateReview || rating === 'putReport') {
       localStorage.setItem(review.review_id, 'true');
       setRateReview(false);
       updateReview(review.review_id, rating);
