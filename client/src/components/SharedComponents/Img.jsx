@@ -20,7 +20,7 @@ const Img = ({
       tabIndex={0}
       className={className || ''}
       onClick={onClick}
-      onKeyPress={onClick ? onKeyPress : ''}
+      onKeyPress={onClick}
     />
   );
 };

@@ -2,7 +2,6 @@ import React, { useState, useEffect, forwardRef } from 'react';
 import local from '../../styles/Overview/ProductInfo.css';
 import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
-import Img from '../SharedComponents/Img.jsx';
 
 const ProductInfo = forwardRef(({
   current, price, origPrice, onSale, stars, setFavorites, currentStyles, favorites, reviewsQty,
