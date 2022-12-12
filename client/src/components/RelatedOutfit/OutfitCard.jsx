@@ -1,6 +1,7 @@
 import React from 'react';
 import local from '../../styles/RelatedOutfit.css';
 import StarDisplay from '../SharedComponents/StarDisplay.jsx';
+import Img from '../SharedComponents/Img.jsx';
 
 const OutfitCard = ({ outfitPiece, index, favorites, setFavorites, stars, view }) => {
   const handleDelete = () => {
@@ -19,16 +20,19 @@ const OutfitCard = ({ outfitPiece, index, favorites, setFavorites, stars, view }
     setFavorites(copyFav);
     // copyView.splice(index, 1);
     console.log('after delete splice', copyFav);
-
   };
+  const delButton = <button type="button" className={local.action} onClick={handleDelete}>X</button>
+
   return (
     <div className={local.outfitCard}>
+      {/* <button type="button" className={local.action} onClick={handleDelete}>X</button> */}
+      {outfitPiece.pic ? delButton : ''}
       <center>
         {outfitPiece.pic
-          ? <img src={outfitPiece.pic} alt="card pic" className={local.cardpic} />
+          ? <Img src={outfitPiece.pic} w={175} h={192} alt="card pic" onClick={() => {}}/>
           : (
             <div className={local.noPhoto}>
-              <button type="button" className={local.action} onClick={handleDelete}>X</button>
+              {delButton}
               Photo Unavailable
             </div>
           )}

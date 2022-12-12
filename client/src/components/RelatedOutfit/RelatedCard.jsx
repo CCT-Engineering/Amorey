@@ -65,29 +65,21 @@ const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent, setStars, calc
     setMetadata(rel1Meta);
   };
 
-  const deleteButton = <button type="button" className={local.action} onClick={handleToggle} onKeyPress={buildHandleEnterKeyPress(handleToggle)}>☆</button>
+  const favButton = <button type="button" className={local.action} onClick={handleToggle}>☆</button>
 
-// scales for each component not whole div, also breaks everything else like buttons
-  // const handleEnter = (e) => {
-  //   e.target.style.transform = 'scale(1.025)';
-  // };
-  // const handleLeave = (e) => {
-  //   e.target.style.transform = 'scale(1)';
-  // };
   return (
     <div className={local.relatedCard}>
-    {/* <div className={local.relatedCard} onMouseEnter={handleEnter} onMouseLeave={handleLeave}></div> */}
-      {pic ? deleteButton : ''}
+      {pic ? favButton : ''}
+      {/* <button type="button" className={local.action} onClick={handleToggle}>☆</button> */}
       <center>
         {pic
           ? <Img src={pic} w={175} h={192} alt="card pic" onClick={handleChangeCurrent} />
           : (
-            <div className={local.noPhoto}>
-              {deleteButton}
+            <div className={local.noPhoto} onClick={handleChangeCurrent}>
+              {favButton}
               Photo Unavailable
             </div>
           )}
-        {/* <img src={pic} alt="card pic" className={local.cardpic} onClick={handleChangeCurrent} /> */}
       </center>
       <div>
         {/* Category: */}
