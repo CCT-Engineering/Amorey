@@ -3,6 +3,8 @@ import local from '../../styles/RelatedOutfit.css';
 import requests from '../../requests.js';
 import CompareTable from './CompareTable.jsx';
 import StarDisplay from '../SharedComponents/StarDisplay.jsx';
+import { buildHandleEnterKeyPress, formatImg } from '../../util';
+import Img from '../SharedComponents/Img.jsx';
 
 const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent, setStars, calculateAverageStars, setMetadata }) => {
   const [info, setInfo] = useState({});
@@ -63,11 +65,29 @@ const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent, setStars, calc
     setMetadata(rel1Meta);
   };
 
+  const deleteButton = <button type="button" className={local.action} onClick={handleToggle} onKeyPress={buildHandleEnterKeyPress(handleToggle)}>☆</button>
+
+// scales for each component not whole div, also breaks everything else like buttons
+  // const handleEnter = (e) => {
+  //   e.target.style.transform = 'scale(1.025)';
+  // };
+  // const handleLeave = (e) => {
+  //   e.target.style.transform = 'scale(1)';
+  // };
   return (
     <div className={local.relatedCard}>
-      <button type="button" onClick={handleToggle} className={local.action}>☆</button>
+    {/* <div className={local.relatedCard} onMouseEnter={handleEnter} onMouseLeave={handleLeave}></div> */}
+      {pic ? deleteButton : ''}
       <center>
-        <img src={pic} alt="card pic" className={local.cardpic} onClick={handleChangeCurrent} />
+        {pic
+          ? <Img src={pic} w={175} h={192} alt="card pic" onClick={handleChangeCurrent} />
+          : (
+            <div className={local.noPhoto}>
+              {deleteButton}
+              Photo Unavailable
+            </div>
+          )}
+        {/* <img src={pic} alt="card pic" className={local.cardpic} onClick={handleChangeCurrent} /> */}
       </center>
       <div>
         {/* Category: */}

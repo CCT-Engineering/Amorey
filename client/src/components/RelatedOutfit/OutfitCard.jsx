@@ -2,18 +2,36 @@ import React from 'react';
 import local from '../../styles/RelatedOutfit.css';
 import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 
-const OutfitCard = ({ outfitPiece, index, favorites, setFavorites, stars }) => {
+const OutfitCard = ({ outfitPiece, index, favorites, setFavorites, stars, view }) => {
   const handleDelete = () => {
     event.preventDefault();
-    let copy = favorites.slice();
-    copy.splice(index, 1);
-    setFavorites(copy);
+    console.log('delete index', index);
+    console.log('current favorites', favorites);
+    let deleting = view[index];
+    let copyFav = favorites.slice();
+    copyFav.map((check, favIndex) => {
+      if (check === deleting) {
+        copyFav.splice(favIndex, 1);
+      }
+    })
+    // setFavorites((previousFavs) => {
+    // })
+    setFavorites(copyFav);
+    // copyView.splice(index, 1);
+    console.log('after delete splice', copyFav);
+
   };
   return (
     <div className={local.outfitCard}>
-      <button type="button" className={local.action} onClick={handleDelete}>X</button>
       <center>
-        <img src={outfitPiece.pic} alt="card pic" className={local.cardpic}></img>
+        {outfitPiece.pic
+          ? <img src={outfitPiece.pic} alt="card pic" className={local.cardpic} />
+          : (
+            <div className={local.noPhoto}>
+              <button type="button" className={local.action} onClick={handleDelete}>X</button>
+              Photo Unavailable
+            </div>
+          )}
       </center>
       <div>
         {/* Category: */}
