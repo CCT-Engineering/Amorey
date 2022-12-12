@@ -1,5 +1,6 @@
 .header {
   margin-top: 50px;
+  margin-left: 9.8%;
 }
 
 .mainBody {
@@ -9,15 +10,12 @@
 }
 
 .ratings {
+  margin-left: 10%;
   width: 30%;
 }
 
 .reviews {
-  width: 70%;
-}
-
-.reviewMain {
-  background-color: #62b3a5;
-  display: block;
   margin-left: 5%;
+  margin-right: 10%;
+  width: 70%;
 }

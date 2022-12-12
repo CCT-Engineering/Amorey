@@ -45,12 +45,12 @@ const RatingBreakdown = ({
 
   return (
     <div className={local.ratingMain}>
-      <h1 className={local.starHeader}>
+      <div className={local.starHeader}>
         <div className={local.starRating}>
           {stars && (Math.round(stars * 4) / 4).toFixed(1)}
         </div>
         <StarDisplay stars={stars} />
-      </h1>
+      </div>
       <div className={local.recommend}>
         {recommenedPercent()}
         % of reviews recommend this product

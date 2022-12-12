@@ -1,21 +1,21 @@
 .reviewList {
   margin-top: 2%;
-  padding: 15px;
+  padding: 15px 0px;
   max-height: 80vh;
   overflow-y: auto;
 }
 
 .moreReviews {
-  background-color: #2e8f7f;
+  background-color: #52d1bc;
+  border: solid 1px #aae3d9;
   font-weight: 600;
-  margin-top: 2%;
   margin-right: 2%;
   padding: 15px;
 }
 
 .addReview {
-  background-color:#2e8f7f;
+  background-color:#52d1bc;
+  border: solid 1px #aae3d9;
   font-weight: 600;
-  margin-top: 2%;
   padding: 15px;
 }
