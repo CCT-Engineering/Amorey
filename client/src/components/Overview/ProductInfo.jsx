@@ -2,6 +2,7 @@ import React, { useState, useEffect, forwardRef } from 'react';
 import local from '../../styles/Overview/ProductInfo.css';
 import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
+import Img from '../SharedComponents/Img.jsx';
 
 const ProductInfo = forwardRef(({
   current, price, origPrice, onSale, stars, setFavorites, currentStyles, favorites, reviewsQty,
@@ -61,6 +62,8 @@ const ProductInfo = forwardRef(({
     setCurrentIsFav(!currentIsFav);
     return nothing;
   };
+
+  const mysrc = 'https://images.unsplash.com/photo-1447958272669-9c562446304f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format,enhance&fit=crop&w=390&w=530';
 
   return (
     <div className={local.productInfo}>

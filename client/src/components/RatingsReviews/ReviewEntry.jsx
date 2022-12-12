@@ -11,7 +11,7 @@ const ReviewEntry = ({ review, updateReview }) => {
   const [canRateReview, setRateReview] = useState(unrated);
 
   const rateReview = (rating) => {
-    if (canRateReview) {
+    if (canRateReview || rating === 'putReport') {
       localStorage.setItem(review.review_id, 'true');
       setRateReview(false);
       updateReview(review.review_id, rating);
@@ -22,10 +22,10 @@ const ReviewEntry = ({ review, updateReview }) => {
 
   const renderReviewBody = () => {
     return review.body.length < 250 || expand
-      ? <p className={local.body}>{review.body}</p>
+      ? <p id="test" className={local.body}>{review.body}</p>
       : (
         <div>
-          <p className={local.body}>{`${review.body.substring(0, 250)}...`}</p>
+          <p id="test" className={local.body}>{`${review.body.substring(0, 250)}...`}</p>
           <a
             role="button"
             tabIndex={0}

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Rating from './Rating.jsx';
 import Recommend from './Recommend.jsx';
 import Characteristic from './Characteristic.jsx';
@@ -24,7 +24,6 @@ const NewReview = ({
   const [photos, setPhotos] = useState([]);
   const [characteristics, setCharacteristics] = useState({});
   const [letterCount, setLetterCount] = useState(50);
-  const uploadPhoto = useRef();
 
   const updateLetterCount = (input) => {
     setLetterCount(50 - input.length);
@@ -32,16 +31,18 @@ const NewReview = ({
   };
 
   const numberOfPhotos = () => {
+    setPhotos([]);
     const { files } = event.target;
-    if (files.length > 5) {
-      uploadPhoto.current.value = [];
-    } else {
+    if (files.length < 6) {
       const photoArray = [];
       for (let i = 0; i < files.length; i += 1) {
         photoArray.push(URL.createObjectURL(files[i]));
       }
       setPhotos(photoArray);
+    } else {
+      alert('Please limit photo uploads to 5 or less');
     }
+    document.getElementById('uploadPhoto').val = null;
   };
 
   const collectFormData = () => {
@@ -63,7 +64,7 @@ const NewReview = ({
         getReviews('newest');
       });
     } else {
-      // alert('Please enter a rating for the current product');
+      alert('Please enter a rating for the current product');
     }
   };
 
@@ -82,7 +83,7 @@ const NewReview = ({
     <div className={local.modal}>
       <div className={local.reviewForm}>
         <form id="newReview" onSubmit={collectFormData}>
-          <div className={global.logo} role="img" alt="AMOREY" />
+          <div className={global.modalLogo} role="img" alt="AMOREY" />
           <h3 className={local.header}>
             {'Write Your Review About: '}
             <div className={local.product}>{current.name}</div>
@@ -98,7 +99,7 @@ const NewReview = ({
           <Body letterCount={letterCount} updateLetterCount={updateLetterCount} />
           <Username updateInput={updateInput} setName={setName} />
           <Email updateInput={updateInput} setEmail={setEmail} />
-          <Photos numberOfPhotos={numberOfPhotos} uploadPhoto={uploadPhoto} />
+          <Photos numberOfPhotos={numberOfPhotos} />
           <div className={local.thumbnails}>{photos.map((photo, index) => <Thumbnail photo={photo} key={`${photo + index}`} />)}</div>
           <div>
             <button className={local.submit} type="submit">Submit Review!</button>
