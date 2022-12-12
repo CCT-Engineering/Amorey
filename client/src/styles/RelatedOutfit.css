@@ -31,10 +31,10 @@
 }
 
 /* breaks the click */
-.relatedCard:hover {
+/* .relatedCard:hover {
   transform: scale(1.025);
   z-index: 1;
-}
+} */
 
 .compareTable:hover {
   transform: scale(1);
@@ -62,10 +62,10 @@
 }
 
 /* breaks the click */
-.outfitCard:hover {
+/* .outfitCard:hover {
   transform: scale(1.025);
   z-index: 1;
-}
+} */
 
 .addCard {
   display: block;
