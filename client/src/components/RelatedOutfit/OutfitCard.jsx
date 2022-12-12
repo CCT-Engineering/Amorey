@@ -25,7 +25,7 @@ const OutfitCard = ({ outfitPiece, index, favorites, setFavorites, stars, view }
     <div className={local.outfitCard}>
       <button type="button" className={local.action} onClick={handleDelete}>X</button>
       <center>
-        {outfitPiece.pic ? <img src={outfitPiece.pic} alt="card pic" className={local.cardpic}></img> : <p className={local.noPhoto}>Photo Unavailable</p>}
+        {outfitPiece.pic ? <img src={outfitPiece.pic} alt="card pic" className={local.cardpic}></img> : <div className={local.noPhoto}>Photo Unavailable</div>}
       </center>
       <div>
         {/* Category: */}

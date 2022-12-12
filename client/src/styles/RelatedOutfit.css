@@ -27,7 +27,7 @@
   position: relative;
   width: 177px;
   height: 266.23px;
-  background: rgb(138, 202, 191)
+  background: rgb(172, 233, 222)
 }
 
 /* breaks the click */
@@ -58,7 +58,7 @@
   position: relative;
   width: 177px;
   height: 266.23px;
-  background: rgb(138, 202, 191)
+  background: rgb(148, 215, 204)
 }
 
 /* breaks the click */
@@ -196,7 +196,7 @@
   position: relative;
   flex-direction: row;
   align-items: center;
-  background: whitesmoke;
+  /* background: whitesmoke; */
   color: #333;
   font-style: italic;
   letter-spacing: 3px;
