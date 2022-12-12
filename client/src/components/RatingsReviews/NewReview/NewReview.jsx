@@ -83,7 +83,7 @@ const NewReview = ({
     <div className={local.modal}>
       <div className={local.reviewForm}>
         <form id="newReview" onSubmit={collectFormData}>
-          <div className={global.logo} role="img" alt="AMOREY" />
+          <div className={global.modalLogo} role="img" alt="AMOREY" />
           <h3 className={local.header}>
             {'Write Your Review About: '}
             <div className={local.product}>{current.name}</div>
