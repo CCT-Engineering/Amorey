@@ -67,7 +67,7 @@ function App() {
 
   return (
     <>
-      <div className={global.logo} role="img" alt="AMOREY" />
+      <div className={global.logo} role="img" alt="AMOREY" name="logo" />
       <Overview
         current={current}
         currentStyles={currentStyles}
