@@ -6,3 +6,7 @@
   background-size: cover;
   background-position: center;
 }
+
+.thumb:hover {
+  cursor: pointer;
+}

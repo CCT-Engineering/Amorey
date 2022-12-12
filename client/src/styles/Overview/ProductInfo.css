@@ -35,6 +35,10 @@
   font-family: Times;
 }
 
+.addToOutfit:hover {
+  cursor: pointer;
+}
+
 .addToOutfit:before {
   content: '\2665';
   background: white;
@@ -57,4 +61,8 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px #444;
+}
+
+.addToOutfitFav:hover {
+  cursor: pointer;
 }

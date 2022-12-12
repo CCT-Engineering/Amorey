@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 0;
   position: relative;
   text-align: center;
   width: 375px;
@@ -15,12 +14,27 @@
   font-size: 1.5rem;
   text-shadow: 0px 0px 2.5px white;
   -webkit-text-stroke: 2px whitesmoke;
+  cursor: zoom-in;
 }
 
-.photo {
-  max-height: 70vh;
-  min-width: 200px;
-  max-width: 70vh;
+.galleryExp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  margin-top: -70px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: black;
+  font-size: 1.5rem;
+  text-shadow: 0px 0px 2.5px white;
+  -webkit-text-stroke: 2px whitesmoke;
+  cursor: crosshair;
+  background-color: rgba(0, 0, 0, .75);
 }
 
 .gallerySide {
@@ -66,6 +80,10 @@
   width: 45px;
 }
 
+.thbArrow:hover {
+  cursor: pointer;
+}
+
 .left {
   border: inherit;
   background: transparent;
@@ -79,6 +97,11 @@
   color: inherit;
   font-size: inherit;
 }
+
+.left:hover {
+  cursor: pointer;
+}
+
 
 .right {
   border: inherit;
@@ -94,10 +117,21 @@
   height: 100%;
 }
 
+.right:hover {
+  cursor: pointer;
+}
+
 .noPhoto {
   color: #333;
   font-style: italic;
   letter-spacing: 3px;
   text-shadow: none;
+  -webkit-text-stroke: 0;
+}
+
+.closeExpView {
+  position: absolute;
+  right: 10px;
+  top: 10px;
   -webkit-text-stroke: 0;
 }
