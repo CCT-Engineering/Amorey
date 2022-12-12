@@ -13,7 +13,7 @@ describe('Render App Page', () => {
   };
 
   it('Should scroll so that reviews are visible when "Read All Reviews" is clicked', async () => {
-    const user = setup(testData.product40344Data, testData.product40344Styles.results);
+    const user = setup();
     await user.click(await screen
       .findByRole('button', { name: /Read All Reviews/i }));
     expect(await screen.findByRole('heading', { name: /RATINGS & REVIEWS/i }))
@@ -21,7 +21,7 @@ describe('Render App Page', () => {
   });
 
   it('Should click add review button to display new review modal', async () => {
-    const user = setup(testData.product40344Data, testData.product40344Styles.results);
+    const user = setup();
     await user.click(await screen
       .findByRole('button', { name: /ADD A REVIEW +/i }));
     expect(await screen.findByRole('heading', { level: 3 }))
