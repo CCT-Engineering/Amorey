@@ -56,7 +56,12 @@ const ReviewsList = ({
 
   useEffect(() => filterReviews(), [reviews, sort, query]);
 
-  useEffect(() => setRenderLimit(2), [current]);
+  useEffect(() => {
+    setRenderLimit(2);
+    setQuery('');
+    setSort([0, 0, 0, 0, 0]);
+    document.getElementById('searchQuery').val = '';
+  }, [current]);
 
   return (
     <>

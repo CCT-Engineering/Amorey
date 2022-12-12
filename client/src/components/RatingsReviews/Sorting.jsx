@@ -47,7 +47,7 @@ const Sorting = ({
         </div>
         <label className={local.queryInput} htmlFor="searchQuery">
           {' Enter a search query '}
-          <input name="searchQuery" placeholder="Narrow your search" onChange={updateQuery} />
+          <input id="searchQuery" placeholder="Narrow your search" onChange={updateQuery} />
         </label>
       </div>
       <div className={local.body}>
