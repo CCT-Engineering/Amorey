@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import Rating from './Rating.jsx';
 import Recommend from './Recommend.jsx';
 import Characteristic from './Characteristic.jsx';

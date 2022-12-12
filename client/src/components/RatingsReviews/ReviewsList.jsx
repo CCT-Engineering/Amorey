@@ -6,7 +6,7 @@ import date from '../../util/formatDate.js';
 import local from '../../styles/RatingsReviews/ReviewList.css';
 
 const ReviewsList = ({
-  current, reviews, getReviews, sort, setSort, updateReview, traits,
+  current, reviews, getReviews, sort, setSort, updateReview, traits, setOrder,
 }) => {
   const [renderLimit, setRenderLimit] = useState(2);
   const [filters, setFilters] = useState([]);
@@ -68,6 +68,7 @@ const ReviewsList = ({
         getReviews={getReviews}
         query={query}
         setQuery={setQuery}
+        setOrder={setOrder}
       />
       <div className={local.reviewList}>
         {filters.map((review, index) => renderReviewEntries(review, index))}
