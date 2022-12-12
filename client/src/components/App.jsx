@@ -14,6 +14,7 @@ function App() {
   const [favorites, setFavorites] = useState(getCookie(FAVS_COOKIE) || []);
   // All states below are for the CURRENT product (the one displayed in Overview)
   const [current, setCurrent] = useState({ features: [] });
+  // console.log('current product:', current);
   const [currentStyles, setCurrentStyles] = useState([]);
   const [metadata, setMetadata] = useState([]);
   const [stars, setStars] = useState(0);
