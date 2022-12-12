@@ -13,7 +13,6 @@ const Thumb = forwardRef((props, ref) => {
   const thumbDesc = `Thumbnail ${id} of ${name} style`;
   const divStyle = {
     backgroundImage: `url(${formatImg(thumbUrl, 60, 60)})`,
-    // backgroundImage: `url(${thumbUrl})`,
     border: id === photoIndex ? '1px solid blue' : '1px solid #111',
     opacity: id === photoIndex ? '1.0' : '0.7',
   };

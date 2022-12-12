@@ -48,16 +48,14 @@ const ReviewEntry = ({ review, updateReview }) => {
       <h4 className={local.summary}>{review.summary}</h4>
       {renderReviewBody()}
       <div>
-        {review.recommend && '✓ I recommend this product'}
+        {review.recommend && <div className={local.recommend}>✓ I recommend this product</div>}
       </div>
-      <div className={local.response}>
-        {review.response && (
-          <div>
-            Response:
-            <div>{review.response}</div>
-          </div>
-        )}
-      </div>
+      {review.response && (
+        <div className={local.response}>
+          <div className={local.responseHeader}>Response:</div>
+          <div>{review.response}</div>
+        </div>
+      )}
       {review.photos ? review.photos.map((photo, index) => (
         <Thumbnail photo={photo.url} key={`${photo.url + index}`} />
       )) : null}
@@ -67,7 +65,7 @@ const ReviewEntry = ({ review, updateReview }) => {
           role="button"
           tabIndex={0}
           className={local.helpful}
-          style={{ textDecoration: canRateReview ? null : 'line-through' }}
+          style={{ color: canRateReview ? null : 'gold' }}
           onClick={() => rateReview('putHelpful')}
           onKeyPress={buildHandleEnterKeyPress(() => rateReview('putHelpful'))}
         >

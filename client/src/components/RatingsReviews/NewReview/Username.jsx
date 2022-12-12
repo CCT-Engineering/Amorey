@@ -7,6 +7,7 @@ const Username = ({ updateInput, setName }) => (
       <input
         className={local.username}
         placeholder="Example: Jackson11!"
+        size="30"
         maxLength="60"
         onChange={() => updateInput(setName, event.target.value)}
         required

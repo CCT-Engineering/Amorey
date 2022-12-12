@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { buildHandleEnterKeyPress } from '../../../util';
+import local from '../../../styles/RatingsReviews/NewReview/Rating.css';
 
 const Rating = ({ setRating }) => {
   const starText = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
@@ -11,8 +12,8 @@ const Rating = ({ setRating }) => {
   };
 
   return (
-    <>
-      <h6 className="rating">
+    <div className={local.main}>
+      <h6 className={local.header}>
         Overall Rating
         {currentStar ? `:  "${starText[currentStar - 1]}"` : null}
       </h6>
@@ -69,7 +70,7 @@ const Rating = ({ setRating }) => {
       >
         ★
       </a>
-    </>
+    </div>
   );
 };
 

@@ -4,6 +4,7 @@ const Summary = ({ updateInput, setSummary }) => (
   <h6>
     <input
       placeholder="Example: Best purchase ever!"
+      size="30"
       onChange={() => updateInput(setSummary, event.target.value)}
     />
     {' Summary (Optional)'}
