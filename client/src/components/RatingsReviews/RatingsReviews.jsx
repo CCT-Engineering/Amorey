@@ -42,17 +42,15 @@ const RatingsReviews = forwardRef(({
           <ProductBreakdown traits={metadata.characteristics} />
         </div>
         <div className={local.reviews}>
-          <div className={local.reviewMain}>
-            <ReviewsList
-              current={current}
-              reviews={reviews}
-              getReviews={getReviews}
-              sort={sort}
-              setSort={setSort}
-              updateReview={updateReview}
-              traits={metadata.characteristics}
-            />
-          </div>
+          <ReviewsList
+            current={current}
+            reviews={reviews}
+            getReviews={getReviews}
+            sort={sort}
+            setSort={setSort}
+            updateReview={updateReview}
+            traits={metadata.characteristics}
+          />
         </div>
       </div>
     </>

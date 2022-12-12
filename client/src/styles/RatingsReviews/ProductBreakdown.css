@@ -1,9 +1,7 @@
-.main {
-  background-color: #62b3a5;
-}
-
 .characteristic{
-  margin-bottom: 2%;
+  font-weight: 500;
+  font-size: medium;
+  margin-bottom: 1%;
 }
 
 .graphText {
@@ -35,9 +33,7 @@
 
 .ratings {
   display: flex;
+  font-size: small;
   justify-content: space-between;
   margin-bottom: 6%;
-}
-
-.ratingName {
 }

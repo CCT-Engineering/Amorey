@@ -18,10 +18,23 @@
   justify-content: center;
   z-index: 2;
   align-self: center;
-  width: 50%;
+  width: 30%;
   height: 70%;
   overflow: auto;
-  background: linear-gradient(#bee8d7, #7ebfb1);
+  background: linear-gradient(white, #e7f5f0 70px, #8bbfb4);
+}
+
+.header {
+  align-self: center;
+  padding: 5px 0 0 0;
+  margin-top: -3%;
+  margin-left: 1%;
+}
+
+.product {
+  display: inline-block;
+  font-weight: 600;
+  color: rgb(30, 85, 109);
 }
 
 .thumbnails {
@@ -30,9 +43,9 @@
 }
 
 .submit {
-
+  margin-left: 1%;
 }
 
 .cancel {
-  margin-left: 10%;
+  margin-left: 5%;
 }
