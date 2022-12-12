@@ -1,6 +1,5 @@
 .ratingMain {
   margin-bottom: 5%;
-  background-color: #62b3a5;
 }
 
 .starHeader {
@@ -15,8 +14,9 @@
 }
 
 .recommend {
-  font-size: smaller;
-  margin-bottom: 5%;
+  font-size: small;
+  margin-top: 2%;
+  margin-bottom: 3%;
 }
 
 .graph {
@@ -28,6 +28,7 @@
 .graphText {
   display: inline-block;
   text-decoration: underline;
+  margin-left: -1%;
   white-space: nowrap;
 }
 

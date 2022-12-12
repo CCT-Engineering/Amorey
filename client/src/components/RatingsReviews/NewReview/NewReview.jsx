@@ -9,6 +9,7 @@ import Email from './Email.jsx';
 import Photos from './Photos.jsx';
 import Thumbnail from '../../SharedComponents/Thumbnail.jsx';
 import requests from '../../../requests.js';
+import global from '../../../styles/global.css';
 import local from '../../../styles/RatingsReviews/NewReview/NewReview.css';
 
 const NewReview = ({
@@ -81,8 +82,11 @@ const NewReview = ({
     <div className={local.modal}>
       <div className={local.reviewForm}>
         <form id="newReview" onSubmit={collectFormData}>
-          <h2>Write Your Review</h2>
-          <h4>{`About the ${current.name}`}</h4>
+          <div className={global.logo} role="img" alt="AMOREY" />
+          <h3 className={local.header}>
+            {'Write Your Review About: '}
+            <div className={local.product}>{current.name}</div>
+          </h3>
           <Rating setRating={setRating} />
           <Recommend updateInput={updateInput} setRecommend={setRecommend} />
           {traits && (

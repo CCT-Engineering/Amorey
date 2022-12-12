@@ -1,10 +1,14 @@
 .mainBody {
-  background-color: 2e8f7f;
+  padding: 5px 0px;
 }
 
 .header {
   display: flex;
-  justify-content: space-between;
+  width: 100%
+}
+
+.reviewSort {
+  width: 62%;
 }
 
 .sortMethod {
@@ -16,15 +20,34 @@
   border-color: transparent;
 }
 
+.queryyInput {
+  width: 38%;
+}
+
+.body {
+  display: flex;
+  width: 100%;
+  margin-bottom: -2%;
+}
+
 .starQuery {
-  margin-left: -1.5%;
+  width: 62%;
+  margin-left: -.5%;
+}
+
+.hiddenButton {
+  background-color: transparent;
+  color: transparent;
+  border: solid 1px transparent;
+  font-weight: 600;
 }
 
 .clearButton {
-  background-color:#2e8f7f;
+  background-color:#52d1bc;
+  border: solid 1px #aae3d9;
   font-weight: 600;
 }
 
 .wordQuery {
-  margin-left: -1.5%;
+  width: 38%;
 }
