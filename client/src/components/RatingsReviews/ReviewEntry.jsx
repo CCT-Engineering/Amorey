@@ -22,10 +22,10 @@ const ReviewEntry = ({ review, updateReview }) => {
 
   const renderReviewBody = () => {
     return review.body.length < 250 || expand
-      ? <p className={local.body}>{review.body}</p>
+      ? <p id="test" className={local.body}>{review.body}</p>
       : (
         <div>
-          <p className={local.body}>{`${review.body.substring(0, 250)}...`}</p>
+          <p id="test" className={local.body}>{`${review.body.substring(0, 250)}...`}</p>
           <a
             role="button"
             tabIndex={0}
