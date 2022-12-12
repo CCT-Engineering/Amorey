@@ -4,6 +4,7 @@ import requests from '../../requests.js';
 import CompareTable from './CompareTable.jsx';
 import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 import { buildHandleEnterKeyPress, formatImg } from '../../util';
+import Img from '../SharedComponents/Img.jsx';
 
 const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent, setStars, calculateAverageStars, setMetadata }) => {
   const [info, setInfo] = useState({});
@@ -79,7 +80,7 @@ const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent, setStars, calc
       {pic ? deleteButton : ''}
       <center>
         {pic
-          ? <img src={pic} role="button" alt="card pic" tabIndex={0} className={local.cardpic} onClick={handleChangeCurrent} onKeyPress={buildHandleEnterKeyPress(handleChangeCurrent)} />
+          ? <Img src={pic} w={175} h={192} alt="card pic" onClick={handleChangeCurrent} />
           : (
             <div className={local.noPhoto}>
               {deleteButton}
