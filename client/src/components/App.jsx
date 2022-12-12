@@ -18,9 +18,10 @@ function App() {
   const [metadata, setMetadata] = useState([]);
   const [stars, setStars] = useState(0);
   const [reviews, setReviews] = useState([]);
+  const [order, setOrder] = useState('relevant');
   const ratingsReviewsRef = useRef(null);
 
-  const getReviews = (sortMethod = 'relevant') => {
+  const getReviews = (sortMethod = order) => {
     requests.getReviews(current.id, sortMethod, (data) => {
       setReviews(data.results);
     });
@@ -34,7 +35,7 @@ function App() {
       setMetadata(metrics);
       setStars(calculateAverageStars(metrics.ratings));
     });
-    requests.getReviews(id, 'relevant', (data) => {
+    requests.getReviews(id, order, (data) => {
       setReviews(data.results);
     });
   };
@@ -67,7 +68,7 @@ function App() {
 
   return (
     <>
-      <div className={global.logo} role="img" alt="AMOREY" />
+      <div className={global.logo} role="img" alt="AMOREY" name="logo" />
       <Overview
         current={current}
         currentStyles={currentStyles}
@@ -95,6 +96,7 @@ function App() {
         reviews={reviews}
         getReviews={getReviews}
         stars={stars}
+        setOrder={setOrder}
         ref={ratingsReviewsRef}
       />
     </>

@@ -12,22 +12,20 @@ describe('Render App Page', () => {
     return user;
   };
 
-  it('Should render page with Title header', () => {
-    render(<App />);
-
-    const title = screen.getByText('Amorey');
-    expect(title).toHaveTextContent('Amorey');
-
-    const heading = screen.getAllByRole('heading', { level: 1 });
-    expect(heading[0]).toHaveTextContent('Amorey');
-  });
-
   it('Should scroll so that reviews are visible when "Read All Reviews" is clicked', async () => {
     const user = setup(testData.product40344Data, testData.product40344Styles.results);
     await user.click(await screen
       .findByRole('button', { name: /Read All Reviews/i }));
     expect(await screen.findByRole('heading', { name: /RATINGS & REVIEWS/i }))
       .toBeVisible();
+  });
+
+  it('Should click add review button to display new review modal', async () => {
+    const user = setup(testData.product40344Data, testData.product40344Styles.results);
+    await user.click(await screen
+      .findByRole('button', { name: /ADD A REVIEW +/i }));
+    expect(await screen.findByRole('heading', { level: 3 }))
+      .toBeInTheDocument();
   });
 });
 

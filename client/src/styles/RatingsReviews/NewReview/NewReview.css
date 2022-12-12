@@ -19,7 +19,9 @@
   z-index: 2;
   align-self: center;
   width: 30%;
+  min-width: 500px;
   height: 70%;
+  min-height: 650px;
   overflow: auto;
   background: linear-gradient(white, #e7f5f0 70px, #8bbfb4);
 }

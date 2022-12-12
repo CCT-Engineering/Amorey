@@ -6,7 +6,7 @@ import requests from '../../requests.js';
 import local from '../../styles/RatingsReviews/RatingsReviews.css';
 
 const RatingsReviews = forwardRef(({
-  current, metadata, reviews, getReviews, stars,
+  current, metadata, reviews, getReviews, stars, setOrder,
 }, ref) => {
   const [sort, setSort] = useState([0, 0, 0, 0, 0]);
 
@@ -22,6 +22,7 @@ const RatingsReviews = forwardRef(({
 
   const updateReview = (review, rating) => {
     requests[rating](review, () => {
+      setOrder('newest');
       getReviews('newest');
       setSort([0, 0, 0, 0, 0]);
     });
@@ -50,6 +51,7 @@ const RatingsReviews = forwardRef(({
             setSort={setSort}
             updateReview={updateReview}
             traits={metadata.characteristics}
+            setOrder={setOrder}
           />
         </div>
       </div>

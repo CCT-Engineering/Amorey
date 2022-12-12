@@ -6,7 +6,7 @@ import date from '../../util/formatDate.js';
 import local from '../../styles/RatingsReviews/ReviewList.css';
 
 const ReviewsList = ({
-  current, reviews, getReviews, sort, setSort, updateReview, traits,
+  current, reviews, getReviews, sort, setSort, updateReview, traits, setOrder,
 }) => {
   const [renderLimit, setRenderLimit] = useState(2);
   const [filters, setFilters] = useState([]);
@@ -56,7 +56,12 @@ const ReviewsList = ({
 
   useEffect(() => filterReviews(), [reviews, sort, query]);
 
-  useEffect(() => setRenderLimit(2), [current]);
+  useEffect(() => {
+    setRenderLimit(2);
+    setQuery('');
+    setSort([0, 0, 0, 0, 0]);
+    document.getElementById('searchQuery').val = '';
+  }, [current]);
 
   return (
     <>
@@ -68,6 +73,7 @@ const ReviewsList = ({
         getReviews={getReviews}
         query={query}
         setQuery={setQuery}
+        setOrder={setOrder}
       />
       <div className={local.reviewList}>
         {filters.map((review, index) => renderReviewEntries(review, index))}
