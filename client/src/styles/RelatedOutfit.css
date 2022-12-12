@@ -9,44 +9,45 @@
 }
 .carousel {
   width: 900px;
-  /* left: 300px; */
-  /* right: 300px; */
 }
 
 .related {
   display: flex;
   width: 100%;
-  /* width: 100px; */
   margin: auto;
   position: relative;
   overflow: hidden;
   left: 50px;
-  /* white-space: nowrap; */
-  /* transition: transform 0.3s; */
+
 }
 .relatedCard {
-  /* display: block; */
   border: solid 1px black;
   margin: 1%;
   box-shadow: 10px 5px 5px grey;
   position: relative;
   width: 177px;
-  /* height: 270px; */
   height: 266.23px;
+  background: whitesmoke;
+}
 
-  /* right: 200px; */
-  /* overflow: hidden; */
-  /* transition: 1s cubic-bezier(0.39, 0.575, 0.565, 1); */
-  /* transform: translateX(-0%) */
-  /* display: inline-flex; */
-  /* z-index: 2; */
+/* breaks the click */
+.relatedCard:hover {
+  transform: scale(1.025);
+  z-index: 1;
+}
+
+.compareTable:hover {
+  transform: scale(1);
+  z-index: 3;
 }
 
 .outfit {
   display: flex;
   width: 100%;
   margin: auto;
-  /* left: 50px; */
+  position: relative;
+  overflow: hidden;
+  left: 50px;
 }
 
 .outfitCard {
@@ -57,15 +58,29 @@
   position: relative;
   width: 177px;
   height: 266.23px;
+  background: whitesmoke;
 }
 
+/* breaks the click */
+.outfitCard:hover {
+  transform: scale(1.025);
+  z-index: 1;
+}
+
+.addCard {
+  display: block;
+  border: solid 1px black;
+  margin: 1%;
+  box-shadow: 10px 5px 5px grey;
+  position: relative;
+  width: 177px;
+  height: 266.23px;
+}
 
 .cardpic {
   width: 175px;
   height: 192px;
 }
-
-
 
 .compareTable {
   position: fixed;
@@ -77,62 +92,88 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 4;
+  z-index: 3;
 }
 
 .tableContent {
   width: 500px;
   background-color: white;
-  /* z-index: 4; */
 }
 
 .tableHead {
   padding:10px;
-  /* z-index: 4; */
 }
 
 .tableBody {
   padding: 10px;
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
-  /* z-index: 4; */
 }
 
 .tableProd {
   columns: 2;
-  /* z-index: 4; */
 }
 
 .tableBody {
   columns: 3;
-  /* z-index: 4; */
 }
 
-.prev {
+.prevRel {
   display: flex;
   position: absolute;
   flex-direction: row;
   /* justify-content: center; */
   /* centers verically */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: grey;
   align-items: center;
   height: 100%;
   left: 20px;
   font-size: 2rem;
-  z-index: 1;
+  z-index: 2;
 }
 
-.next {
+.nextRel {
   display: flex;
   position: absolute;
   flex-direction: row;
   align-items: center;
   /* position of div itself relative to container it is inside. flex position of stuff inside the div; */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: grey;
   height: 100%;
   right: 20px;
   font-size: 2rem;
-  /* z-index: 1; */
-  z-index: 1;
+  z-index: 2;
 }
+
+.prevOut {
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: grey;
+  align-items: center;
+  height: 100%;
+  left: 140px;
+  font-size: 2rem;
+  z-index: 2;
+}
+
+.nextOut {
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  align-items: center;
+  /* position of div itself relative to container it is inside. flex position of stuff inside the div; */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: grey;
+  height: 100%;
+  right: 20px;
+  font-size: 2rem;
+  z-index: 2;
+}
+
 
 .action {
   /* position: relative;
@@ -147,4 +188,22 @@
   /* background: transparent; */
   top: 0px;
   right: 0px;
+}
+
+.noPhoto {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  /* background: whitesmoke; */
+  color: #333;
+  font-style: italic;
+  letter-spacing: 3px;
+  text-shadow: none;
+  -webkit-text-stroke: 0;
+  /* width: 100%; */
+  width: 164px;
+  height: 185px;
+
+  /* border: '1px solid #111', */
 }

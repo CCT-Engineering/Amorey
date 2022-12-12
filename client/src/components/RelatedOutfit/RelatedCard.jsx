@@ -62,12 +62,20 @@ const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent, setStars, calc
     setCurrent(info);
     setMetadata(rel1Meta);
   };
-
+// scales for each component not whole div, also breaks everything else like buttons
+  // const handleEnter = (e) => {
+  //   e.target.style.transform = 'scale(1.025)';
+  // };
+  // const handleLeave = (e) => {
+  //   e.target.style.transform = 'scale(1)';
+  // };
   return (
     <div className={local.relatedCard}>
+    {/* <div className={local.relatedCard} onMouseEnter={handleEnter} onMouseLeave={handleLeave}></div> */}
       <button type="button" onClick={handleToggle} className={local.action}>☆</button>
       <center>
-        <img src={pic} alt="card pic" className={local.cardpic} onClick={handleChangeCurrent} />
+        {pic ? <img src={pic} alt="card pic" className={local.cardpic} onClick={handleChangeCurrent} /> : <p className={local.noPhoto} onClick={handleChangeCurrent}>Photo Unavailable</p>}
+        {/* <img src={pic} alt="card pic" className={local.cardpic} onClick={handleChangeCurrent} /> */}
       </center>
       <div>
         {/* Category: */}
