@@ -123,3 +123,14 @@
   height: 50px;
   aspect-ratio: 3.5;
 }
+
+.modalLogo {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  margin-left: 30%;
+  background-image: url('../assets/Amorey.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50px;
+  aspect-ratio: 3.5;
+}

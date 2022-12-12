@@ -2,6 +2,7 @@
   margin-top: 2%;
   padding: 15px 0px;
   max-height: 80vh;
+  max-width: 95vh;
   overflow-y: auto;
 }
 

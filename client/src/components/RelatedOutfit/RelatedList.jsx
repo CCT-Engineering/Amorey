@@ -40,24 +40,19 @@ const RelatedList = ({ currentId, current, CurMeta, setCurrent, setStars, calcul
 
   const preClick = (event) => {
     event.preventDefault();
-    const copyStart = viewStart;
-    const copyEnd = viewEnd;
-    let copyArr = relateArr;
-    setViewStart(copyStart - 1);
-    setViewEnd(copyEnd - 1);
-    setView(copyArr.slice(copyStart - 1, copyEnd - 1));
+
+    setViewStart(viewStart - 1);
+    setViewEnd(viewEnd - 1);
+    setView(relateArr.slice(viewStart - 1, viewEnd - 1));
     // console.log('new start', copyStart - 1)
     // console.log('new end', copyEnd - 1)
   };
   const nextClick = (event) => {
     event.preventDefault();
 
-    const copyStart = viewStart;
-    const copyEnd = viewEnd;
-    let copyArr = relateArr;
-    setViewStart(copyStart + 1);
-    setViewEnd(copyEnd + 1);
-    setView(copyArr.slice(copyStart + 1, copyEnd + 1));
+    setViewStart(viewStart + 1);
+    setViewEnd(viewEnd + 1);
+    setView(relateArr.slice(viewStart + 1, viewEnd + 1));
     // console.log('new start', copyStart + 1)
     // console.log('new end', copyEnd + 1)
   };
