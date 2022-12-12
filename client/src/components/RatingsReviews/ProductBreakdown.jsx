@@ -31,9 +31,9 @@ const renderDetail = (trait, index, detail) => {
 const ProductBreakdown = ({ traits }) => {
   return (
     <div className={local.main}>
-      {traits && (
+      {traits ? (
         Object.keys(traits).map((trait, index) => renderDetail(trait, index, traits[trait]))
-      )}
+      ) : 'No Product Characteristics Available For Display'}
     </div>
   );
 };

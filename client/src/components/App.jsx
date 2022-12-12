@@ -5,7 +5,7 @@ import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import requests from '../requests.js';
 import calculateAverageStars from '../util/calculateStarAverage.js';
 // import testData from '../testData.jsx'; // uncomment if needed
-// import global from '../styles/global.css';
+import global from '../styles/global.css';
 import { setCookie, getCookie } from '../util';
 
 const FAVS_COOKIE = 'amorey_favs';
@@ -67,8 +67,7 @@ function App() {
 
   return (
     <>
-      <h1 className={global.h1}>Amorey</h1>
-      {/* <img src="AMOREY.png" alt="AMOREY" /> */}
+      <div className={global.logo} role="img" alt="AMOREY" />
       <Overview
         current={current}
         currentStyles={currentStyles}

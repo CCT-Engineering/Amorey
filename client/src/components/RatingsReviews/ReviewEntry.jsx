@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import Photos from './Images/Photos.jsx';
+import Thumbnail from '../SharedComponents/Thumbnail.jsx';
 import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 import local from '../../styles/RatingsReviews/ReviewEntry.css';
 import date from '../../util/formatDate.js';
 
 const ReviewEntry = ({ review, updateReview }) => {
+  const unrated = !(localStorage.getItem(review.review_id) === 'true');
   const [expand, setExpand] = useState(false);
-  const [canRateReview, setRateReview] = useState(true);
+  const [canRateReview, setRateReview] = useState(unrated);
 
   const rateReview = (rating) => {
     if (canRateReview) {
+      localStorage.setItem(review.review_id, 'true');
       setRateReview(false);
       updateReview(review.review_id, rating);
     }
@@ -57,7 +59,7 @@ const ReviewEntry = ({ review, updateReview }) => {
         )}
       </div>
       {review.photos ? review.photos.map((photo, index) => (
-        <Photos photo={photo} key={`${photo.url + index}`} />
+        <Thumbnail photo={photo.url} key={`${photo.url + index}`} />
       )) : null}
       <div className={local.footer}>
         Helpful?
@@ -65,6 +67,7 @@ const ReviewEntry = ({ review, updateReview }) => {
           role="button"
           tabIndex={0}
           className={local.helpful}
+          style={{ textDecoration: canRateReview ? null : 'line-through' }}
           onClick={() => rateReview('putHelpful')}
           onKeyPress={buildHandleEnterKeyPress(() => rateReview('putHelpful'))}
         >
