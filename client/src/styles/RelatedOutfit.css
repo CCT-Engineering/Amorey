@@ -2,13 +2,15 @@
   box-sizing: border-box;
   color: #111;
   font-family: "Tahoma", sans-serif;
-  margin: 0;
+  margin: auto;
   overflow-x: hidden;
   padding: 0;
   font-size: 0.8rem;
+  width: 900px;
 }
 .carousel {
-  width: 900px;
+  /* width: 900px; */
+  margin: auto;
 }
 
 .related {
@@ -17,9 +19,9 @@
   margin: auto;
   position: relative;
   overflow: hidden;
-  left: 50px;
-
+  /* left: 50px; */
 }
+
 .relatedCard {
   border: solid 1px black;
   margin: 1%;
@@ -27,7 +29,19 @@
   position: relative;
   width: 177px;
   height: 266.23px;
-  background: rgb(172, 233, 222)
+  background: rgb(172, 233, 222);
+}
+
+.hoverMe:hover {
+  border: solid 1px black;
+  margin: 1%;
+  box-shadow: 10px 5px 5px grey;
+  position: relative;
+  width: 177px;
+  height: 266.23px;
+  background: rgb(172, 233, 222);
+  transform: scale(1.025);
+  z-index: 1;
 }
 
 /* breaks the click */
@@ -36,10 +50,14 @@
   z-index: 1;
 } */
 
-.compareTable:hover {
+/* .disableHover {
+  pointer-events: none;
+} */
+
+/* .compareTable:hover {
   transform: scale(1);
   z-index: 3;
-}
+} */
 
 .outfit {
   display: flex;
@@ -47,7 +65,7 @@
   margin: auto;
   position: relative;
   overflow: hidden;
-  left: 50px;
+  /* left: 50px; */
 }
 
 .outfitCard {
@@ -62,10 +80,10 @@
 }
 
 /* breaks the click */
-/* .outfitCard:hover {
+.outfitCard:hover {
   transform: scale(1.025);
   z-index: 1;
-} */
+}
 
 .addCard {
   display: block;
@@ -73,14 +91,12 @@
   margin: 1%;
   box-shadow: 10px 5px 5px grey;
   position: relative;
-  width: 177px;
+  min-width: 177px;
   height: 266.23px;
 }
 
-.cardpic {
-  width: 175px;
-  height: 192px;
-  border-bottom: solid 1px black;
+.addCard:hover {
+  transform: scale(1.025);
 }
 
 .compareTable {
@@ -94,6 +110,7 @@
   align-items: center;
   justify-content: center;
   z-index: 3;
+  /* pointer-events: auto; */
 }
 
 .tableContent {
@@ -156,7 +173,7 @@
   -webkit-text-stroke-color: grey;
   align-items: center;
   height: 100%;
-  left: 140px;
+  left: 220px;
   font-size: 2rem;
   z-index: 2;
 }
@@ -196,14 +213,15 @@
   position: relative;
   flex-direction: row;
   align-items: center;
-  /* background: whitesmoke; */
+  background: whitesmoke;
   color: #333;
   font-style: italic;
   letter-spacing: 3px;
   text-shadow: none;
   -webkit-text-stroke: 0;
-  width: 100%;
-  /* width: 164px; */
+  /* width: 100%; */
+
+  min-width: 177px;
   height: 185px;
   border-bottom: solid 1px black;
   /* border: '1px solid #111', */

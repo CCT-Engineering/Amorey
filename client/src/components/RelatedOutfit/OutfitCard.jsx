@@ -6,8 +6,8 @@ import Img from '../SharedComponents/Img.jsx';
 const OutfitCard = ({ outfitPiece, index, favorites, setFavorites, stars, view }) => {
   const handleDelete = () => {
     event.preventDefault();
-    console.log('delete index', index);
-    console.log('current favorites', favorites);
+    // console.log('delete index', index);
+    // console.log('current favorites', favorites);
     let deleting = view[index];
     let copyFav = favorites.slice();
     copyFav.map((check, favIndex) => {
@@ -19,7 +19,7 @@ const OutfitCard = ({ outfitPiece, index, favorites, setFavorites, stars, view }
     // })
     setFavorites(copyFav);
     // copyView.splice(index, 1);
-    console.log('after delete splice', copyFav);
+    // console.log('after delete splice', copyFav);
   };
   const delButton = <button type="button" className={local.action} onClick={handleDelete}>X</button>
 
@@ -29,7 +29,7 @@ const OutfitCard = ({ outfitPiece, index, favorites, setFavorites, stars, view }
       {outfitPiece.pic ? delButton : ''}
       <center>
         {outfitPiece.pic
-          ? <Img src={outfitPiece.pic} w={175} h={192} alt="card pic" onClick={() => {}}/>
+          ? <Img src={outfitPiece.pic} w={177} h={192} alt="card pic"/>
           : (
             <div className={local.noPhoto}>
               {delButton}
@@ -41,10 +41,10 @@ const OutfitCard = ({ outfitPiece, index, favorites, setFavorites, stars, view }
         {/* Category: */}
         {outfitPiece.category}
       </div>
-      <div>
+      <b>
         {/* Name: */}
         {outfitPiece.name}
-      </div>
+      </b>
       <div>
         {/* Price: */}
         $
