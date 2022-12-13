@@ -49,19 +49,6 @@ describe('Render Overview Module', () => {
     expect(screen.getByRole('heading', { name: /camo onesie/i })).toBeVisible();
   });
 
-  // PROMISE PATTERN NOT WORKING FOR SOME REASON
-  // it('Should display name of style when its corresponding style thumb is clicked (1)', () => {
-  //   const user = setup();
-  //   screen.findByRole('button', { name: /Main Thumbnail Desert Brown/i })
-  //     .then((element) => {
-  //       user.click(element);
-  //     })
-  //     .then(() => screen.findByRole('heading', { level: 5, name: /style/i }))
-  //     .then((styleName) => {
-  //       expect(styleName).toHaveTextContent(/DESERT BROWN & TAN/i);
-  //     });
-  // });
-
   it('Should display name of style when its corresponding style thumb is clicked', async () => {
     const user = setup(testData.product40344Data, testData.product40344Styles.results);
     await user.click(await screen

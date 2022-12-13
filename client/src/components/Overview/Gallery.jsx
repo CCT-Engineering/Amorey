@@ -20,7 +20,6 @@ function Gallery({
   const [zoomView, setZoomView] = useState(false);
   const photoUrl = photos[photoIndex] ? photos[photoIndex].url : '';
   const [mainPhotoStyle, setMainPhotoStyle] = useState({});
-  console.log('mainPhotoStyle:', mainPhotoStyle);
 
   // States and Ref below are for expanded view zoom feature
   const [offset, setOffset] = useState({ x: -10, y: 0 }); // image margin offset
@@ -75,7 +74,6 @@ function Gallery({
           const { clientX, clientY } = e;
           setOffset({ x: 0, y: -70 });
           mousePos.current = { x: clientX, y: clientY };
-          console.log('zoom!');
           newAttr = { transform: 'scale(2.5)', cursor: 'zoom-out' };
         }
         setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
