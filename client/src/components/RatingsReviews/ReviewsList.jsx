@@ -80,8 +80,23 @@ const ReviewsList = ({
         {!filters.length && <div>Currently No Reviews To Display</div>}
       </div>
       {filters.length > 2 && renderAmount < filters.length && (
-        <button className={local.moreReviews} type="button" onClick={loadMoreEntries}>MORE REVIEWS</button>)}
-      <button className={local.addReview} type="button" onClick={() => showModal(true)}>ADD A REVIEW +</button>
+        <button
+          className={local.moreReviews}
+          aria-label="More Reviews"
+          type="button"
+          onClick={loadMoreEntries}
+        >
+          MORE REVIEWS
+        </button>
+      )}
+      <button
+        className={local.addReview}
+        aria-label="Add A Review +"
+        type="button"
+        onClick={() => showModal(true)}
+      >
+        ADD A REVIEW +
+      </button>
       {modal && (
         <NewReview
           current={current}

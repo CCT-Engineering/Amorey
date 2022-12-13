@@ -6,6 +6,7 @@ const Photos = ({ numberOfPhotos }) => (
     {'Upload Up To 5 Images (Optional) '}
     <input
       className={local.uploadPhoto}
+      aria-label="Photo Upload"
       id="uploadPhoto"
       type="file"
       accept="image/*"

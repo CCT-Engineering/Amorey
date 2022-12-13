@@ -8,6 +8,7 @@ const Photos = ({ photo }) => {
   return (
     <>
       <div
+        aria-label="Thumbnail"
         role="button"
         className={global.thumbnailMain}
         tabIndex={0}
@@ -25,6 +26,7 @@ const Photos = ({ photo }) => {
       {expandImage && (
         <div
           role="button"
+          aria-label="Thumbnail Expanded"
           className={global.photoModal}
           tabIndex={0}
           onClick={() => setExpandImage(!expandImage)}

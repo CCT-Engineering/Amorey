@@ -28,6 +28,7 @@ const ReviewEntry = ({ review, updateReview }) => {
           <p id="test" className={local.body}>{`${review.body.substring(0, 250)}...`}</p>
           <a
             role="button"
+            aria-label="Expand Body"
             tabIndex={0}
             className={local.expand}
             onClick={expandBody}
@@ -63,6 +64,7 @@ const ReviewEntry = ({ review, updateReview }) => {
         Helpful?
         <a
           role="button"
+          aria-label="Put Helpful"
           tabIndex={0}
           className={local.helpful}
           style={{ color: canRateReview ? null : 'gold' }}
@@ -74,6 +76,7 @@ const ReviewEntry = ({ review, updateReview }) => {
         {`(${review.helpfulness}) | `}
         <a
           role="button"
+          aria-label="Put Report"
           tabIndex={0}
           className={local.report}
           onClick={() => rateReview('putReport')}
