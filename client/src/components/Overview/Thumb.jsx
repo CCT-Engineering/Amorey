@@ -6,10 +6,9 @@ import { buildHandleEnterKeyPress, formatImg } from '../../util';
 
 // photoIndex prop is the index of the photo currently shown in main view.
 
-const Thumb = forwardRef((props, ref) => {
-  const {
-    name, id, thumbUrl, photoIndex, setPhotoIndex,
-  } = props;
+const Thumb = forwardRef(({
+  name, id, thumbUrl, photoIndex, setPhotoIndex,
+}, ref) => {
   const thumbDesc = `Thumbnail ${id} of ${name} style`;
   const divStyle = {
     backgroundImage: `url(${formatImg(thumbUrl, 60, 60)})`,

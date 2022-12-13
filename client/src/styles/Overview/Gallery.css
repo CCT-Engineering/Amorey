@@ -35,6 +35,8 @@
   -webkit-text-stroke: 2px whitesmoke;
   cursor: crosshair;
   background-color: rgba(0, 0, 0, .75);
+  overflow: hidden;
+  transition: transform 0.5s;
 }
 
 .gallerySide {
