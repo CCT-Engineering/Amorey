@@ -24,7 +24,7 @@
   background-color: transparent;
   outline-width: 0;
   border: 0;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid;
 }
 
 .body {
@@ -46,16 +46,24 @@
 
 .clearSort {
   background-color:#52d1bc;
-  border: solid 1px #aae3d9;
+  border: solid 1px;
   font-weight: 600;
+}
+
+.clearSort:hover{
+  background-color: #4cc6b2;
 }
 
 .clearQuery {
   background-color:#52d1bc;
-  border: solid 1px #aae3d9;
+  border: solid 1px;
   font-weight: 600;
   float: right;
   margin-right: -1%;
+}
+
+.clearQuery:hover{
+  background-color: #4cc6b2;
 }
 
 .wordQuery {

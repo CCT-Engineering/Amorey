@@ -68,6 +68,22 @@
   font-size: 0.8rem;
 }
 
+::placeholder {
+  color: #0a362e;
+}
+
+input {
+  color: #0a362e;
+}
+
+select {
+  color: #0a362e;
+}
+
+button {
+  color: #0a362e;
+}
+
 .Stars {
   --percent: calc(var(--rating) * 20%);
   display: inline-block;

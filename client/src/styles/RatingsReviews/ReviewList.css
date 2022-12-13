@@ -8,15 +8,23 @@
 
 .moreReviews {
   background-color: #52d1bc;
-  border: solid 1px #aae3d9;
+  border: solid 1px;
   font-weight: 600;
   margin-right: 2%;
   padding: 15px;
 }
 
+.moreReviews:hover {
+  background-color: #4cc6b2;
+}
+
 .addReview {
   background-color:#52d1bc;
-  border: solid 1px #aae3d9;
+  border: solid 1px;
   font-weight: 600;
   padding: 15px;
+}
+
+.addReview:hover {
+  background-color: #4cc6b2;
 }
