@@ -6,7 +6,7 @@ import requests from '../../requests.js';
 import local from '../../styles/RatingsReviews/RatingsReviews.css';
 
 const RatingsReviews = forwardRef(({
-  current, metadata, reviews, getReviews, stars, setOrder,
+  current, metadata, reviews, getReviews, stars, setOrder, darkMode,
 }, ref) => {
   const [sort, setSort] = useState([0, 0, 0, 0, 0]);
 
@@ -39,8 +39,9 @@ const RatingsReviews = forwardRef(({
             stars={stars}
             changeSearch={changeSearch}
             sort={sort}
+            darkMode={darkMode}
           />
-          <ProductBreakdown traits={metadata.characteristics} />
+          <ProductBreakdown traits={metadata.characteristics} darkMode={darkMode} />
         </div>
         <div className={local.reviews}>
           <ReviewsList
@@ -52,6 +53,7 @@ const RatingsReviews = forwardRef(({
             updateReview={updateReview}
             traits={metadata.characteristics}
             setOrder={setOrder}
+            darkMode={darkMode}
           />
         </div>
       </div>

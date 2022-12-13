@@ -18,10 +18,25 @@
   position: relative;
 }
 
+.barDimensionsDark {
+  background-color: yellow;
+  position: relative;
+  height: 17px;
+  width: 100%;
+  position: relative;
+}
+
 .barMarker {
   display: inline-block;
   position: relative;
   background-color: #52d1bc;
+  color: transparent;
+}
+
+.barMarkerDark {
+  display: inline-block;
+  position: relative;
+  background-color: orange;
   color: transparent;
 }
 

@@ -33,31 +33,16 @@
 }
 
 .graphDimensions {
-  background-color: #aae3d9;
-  height: 10px;
-  width: 100%;
-}
-
-.graphDimensionsDark {
-  background-color: green;
+  background-color: red;
   height: 10px;
   width: 100%;
 }
 
 .graphDisplay {
   height: 100%;
-  background: #52d1bc;
+  background: purple;
 }
 
 .graphDisplay:hover {
-  background-color: gold;
-}
-
-.graphDisplayDark {
-  height: 100%;
-  background: red;
-}
-
-.graphDisplayDark:hover {
   background-color: gold;
 }

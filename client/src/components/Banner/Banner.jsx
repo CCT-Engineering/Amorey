@@ -1,23 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { buildHandleEnterKeyPress } from '../../util';
 import global from '../../styles/global.css';
 import local from '../../styles/Banner/Banner.css';
 
-const Banner = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
+const Banner = ({ darkMode, setDarkMode }) => {
   function handleClick(e) {
     const App = document.getElementById('root');
 
     e.preventDefault();
-    if (!isDarkMode) {
+    if (!darkMode) {
       App.style.background = 'linear-gradient(black, #053f3f 70px, #0a5d74)';
       App.style.color = '#52d1bc';
     } else {
       App.style.background = 'revert';
       App.style.color = 'revert';
     }
-    setIsDarkMode(!isDarkMode);
+    setDarkMode(!darkMode);
   }
 
   return (

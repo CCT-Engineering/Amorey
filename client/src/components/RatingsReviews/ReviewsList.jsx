@@ -6,7 +6,7 @@ import date from '../../util/formatDate.js';
 import local from '../../styles/RatingsReviews/ReviewList.css';
 
 const ReviewsList = ({
-  current, reviews, getReviews, sort, setSort, updateReview, traits, setOrder,
+  current, reviews, getReviews, sort, setSort, updateReview, traits, setOrder, darkMode,
 }) => {
   const [renderLimit, setRenderLimit] = useState(2);
   const [filters, setFilters] = useState([]);
@@ -49,7 +49,9 @@ const ReviewsList = ({
   const renderReviewEntries = (review, index) => {
     if (renderAmount < renderLimit) {
       renderAmount += 1;
-      return <ReviewEntry review={review} key={index} updateReview={updateReview} />;
+      return (
+        <ReviewEntry review={review} key={index} updateReview={updateReview} darkMode={darkMode} />
+      );
     }
     return null;
   };
@@ -74,6 +76,7 @@ const ReviewsList = ({
         query={query}
         setQuery={setQuery}
         setOrder={setOrder}
+        darkMode={darkMode}
       />
       <div className={local.reviewList}>
         {filters.map((review, index) => renderReviewEntries(review, index))}
@@ -81,7 +84,7 @@ const ReviewsList = ({
       </div>
       {filters.length > 2 && renderAmount < filters.length && (
         <button
-          className={local.moreReviews}
+          className={darkMode ? local.moreReviewsDark : local.moreReviews}
           aria-label="More Reviews"
           type="button"
           onClick={loadMoreEntries}
@@ -89,20 +92,23 @@ const ReviewsList = ({
           MORE REVIEWS
         </button>
       )}
+      {current.id && (
       <button
-        className={local.addReview}
+        className={darkMode ? local.addReviewDark : local.addReview}
         aria-label="Add A Review +"
         type="button"
         onClick={() => showModal(true)}
       >
         ADD A REVIEW +
       </button>
+      )}
       {modal && (
         <NewReview
           current={current}
           traits={traits}
           getReviews={getReviews}
           showModal={showModal}
+          darkMode={darkMode}
         />
       )}
     </>
