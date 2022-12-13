@@ -29,6 +29,7 @@
 
 .starQuery {
   width: 100%;
+  margin-left: -.5%;
 }
 
 .hiddenButton {
@@ -49,6 +50,7 @@
   border: solid 1px #aae3d9;
   font-weight: 600;
   float: right;
+  margin-right: -1%;
 }
 
 .wordQuery {
