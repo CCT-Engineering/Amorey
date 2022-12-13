@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Banner from './Banner/Banner.jsx';
 import Overview from './Overview/Overview.jsx';
 import RelatedOutfit from './RelatedOutfit/Index.jsx';
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import requests from '../requests.js';
 import calculateAverageStars from '../util/calculateStarAverage.js';
 // import testData from '../testData.jsx'; // uncomment if needed
-import global from '../styles/global.css';
+// import global from '../styles/global.css';
 import { setCookie, getCookie } from '../util';
 
 const FAVS_COOKIE = 'amorey_favs';
@@ -69,7 +70,7 @@ function App() {
 
   return (
     <>
-      <div className={global.logo} role="img" alt="AMOREY" name="logo" />
+      <Banner />
       <Overview
         current={current}
         currentStyles={currentStyles}

@@ -16,10 +16,15 @@
   text-decoration: underline;
   background-color: transparent;
   border-color: transparent;
+  outline-width: 0;
 }
 
-.queryyInput {
+.queryInput {
   display: inline-block;
+  background-color: transparent;
+  outline-width: 0;
+  border: 0;
+  border-bottom: 1px solid black;
 }
 
 .body {

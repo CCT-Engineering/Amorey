@@ -22,10 +22,10 @@ const ReviewEntry = ({ review, updateReview }) => {
 
   const renderReviewBody = () => {
     return review.body.length < 250 || expand
-      ? <p id="test" className={local.body}>{review.body}</p>
+      ? <p className={local.body}>{review.body}</p>
       : (
         <div>
-          <p id="test" className={local.body}>{`${review.body.substring(0, 250)}...`}</p>
+          <p className={local.body}>{`${review.body.substring(0, 250)}...`}</p>
           <a
             role="button"
             aria-label="Expand Body"
@@ -62,8 +62,8 @@ const ReviewEntry = ({ review, updateReview }) => {
       )) : null}
       <div className={local.footer}>
         Helpful?
-        <a
-          role="button"
+        <button
+          type="button"
           aria-label="Put Helpful"
           tabIndex={0}
           className={local.helpful}
@@ -72,10 +72,10 @@ const ReviewEntry = ({ review, updateReview }) => {
           onKeyPress={buildHandleEnterKeyPress(() => rateReview('putHelpful'))}
         >
           YES
-        </a>
+        </button>
         {`(${review.helpfulness}) | `}
-        <a
-          role="button"
+        <button
+          type="button"
           aria-label="Put Report"
           tabIndex={0}
           className={local.report}
@@ -83,7 +83,7 @@ const ReviewEntry = ({ review, updateReview }) => {
           onKeyPress={buildHandleEnterKeyPress(() => rateReview('putReport'))}
         >
           Report
-        </a>
+        </button>
       </div>
     </div>
   );

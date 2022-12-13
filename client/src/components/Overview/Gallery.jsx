@@ -20,7 +20,7 @@ function Gallery({
   const [zoomView, setZoomView] = useState(false);
   const photoUrl = photos[photoIndex] ? photos[photoIndex].url : '';
   const [mainPhotoStyle, setMainPhotoStyle] = useState({});
-  console.log('mainPhotoStyle:', mainPhotoStyle);
+  // console.log('mainPhotoStyle:', mainPhotoStyle);
 
   // States and Ref below are for expanded view zoom feature
   const [offset, setOffset] = useState({ x: -10, y: 0 }); // image margin offset

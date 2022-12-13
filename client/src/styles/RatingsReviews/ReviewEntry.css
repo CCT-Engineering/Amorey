@@ -1,7 +1,7 @@
 .mainBody {
   display: block;
   background-color:#8acabf;
-  border-bottom: solid 2px black;
+  border-bottom: solid 2px;
   margin-bottom: 2%;
   padding-left: -10%;
   animation: fadeIn .5s;
@@ -64,20 +64,22 @@
 
 .helpful {
   text-decoration: underline;
-   margin-left: 1%;
-   margin-right: .5%;
+  background-color: transparent;
+  margin-left: 1%;
+  margin-right: .5%;
+  border: 0;
 }
 
 .helpful:hover {
-  color: gold;
-  cursor: default;
+  background-color: #00000033;
 }
 
 .report {
   text-decoration: underline;
+  background-color: transparent;
+  border: 0;
 }
 
 .report:hover{
-  color: gold;
-  cursor: default;
+  background-color: #00000033;
 }

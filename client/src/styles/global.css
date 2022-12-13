@@ -113,6 +113,12 @@
   align-self: center;
 }
 
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+}
+
 .logo {
   margin-top: 5px;
   margin-bottom: 15px;
@@ -120,7 +126,7 @@
   background-image: url('../assets/Amorey.png');
   background-repeat: no-repeat;
   background-size: cover;
-  height: 50px;
+  height: 75px;
   aspect-ratio: 3.5;
 }
 

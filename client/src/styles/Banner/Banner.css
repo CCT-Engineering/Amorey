@@ -1,0 +1,13 @@
+.searchBar {
+  padding-top: 15px;
+  font-size: x-large;
+}
+
+.searchInput{
+  font-size: x-large;
+  padding-top: 10px;
+  outline-width: 0;
+  background-color: transparent;
+  border: 0 solid;
+  border-bottom: 1px solid;
+}
