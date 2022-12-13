@@ -5,6 +5,7 @@ const Email = ({ updateInput, setEmail }) => (
   <>
     <h6>
       <input
+        aria-label="Email Input"
         className={local.email}
         type="email"
         size="30"

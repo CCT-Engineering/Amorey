@@ -3,7 +3,6 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../../client/src/components/App.jsx';
-import testData from '../../client/src/testData.jsx';
 
 describe('Render App Page', () => {
   const setup = () => {
@@ -18,14 +17,6 @@ describe('Render App Page', () => {
       .findByRole('button', { name: /Read All Reviews/i }));
     expect(await screen.findByRole('heading', { name: /RATINGS & REVIEWS/i }))
       .toBeVisible();
-  });
-
-  it('Should click add review button to display new review modal', async () => {
-    const user = setup();
-    await user.click(await screen
-      .findByRole('button', { name: /ADD A REVIEW +/i }));
-    expect(await screen.findByRole('heading', { level: 3 }))
-      .toBeInTheDocument();
   });
 });
 

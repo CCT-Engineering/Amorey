@@ -83,7 +83,7 @@ const NewReview = ({
     <div className={local.modal}>
       <div className={local.reviewForm}>
         <form id="newReview" onSubmit={collectFormData}>
-          <div className={global.modalLogo} role="img" alt="AMOREY" />
+          <div className={global.modalLogo} aria-label="Form Logo" role="img" alt="AMOREY" />
           <h3 className={local.header}>
             {'Write Your Review About: '}
             <div className={local.product}>{current.name}</div>
@@ -102,8 +102,8 @@ const NewReview = ({
           <Photos numberOfPhotos={numberOfPhotos} />
           <div className={local.thumbnails}>{photos.map((photo, index) => <Thumbnail photo={photo} key={`${photo + index}`} />)}</div>
           <div>
-            <button className={local.submit} type="submit">Submit Review!</button>
-            <button className={local.cancel} type="button" onClick={() => showModal(false)}>Cancel</button>
+            <button className={local.submit} aria-label="Submit Review" type="submit">Submit Review!</button>
+            <button className={local.cancel} aria-label="Cancel Review" type="button" onClick={() => showModal(false)}>Cancel</button>
           </div>
         </form>
       </div>

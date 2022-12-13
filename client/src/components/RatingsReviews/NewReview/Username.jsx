@@ -5,6 +5,7 @@ const Username = ({ updateInput, setName }) => (
   <>
     <h6>
       <input
+        aria-label="Username Input"
         className={local.username}
         placeholder="Example: Jackson11!"
         size="30"
