@@ -29,7 +29,7 @@ const OutfitCard = ({ outfitPiece, index, favorites, setFavorites, stars, view }
       {outfitPiece.pic ? delButton : ''}
       <center>
         {outfitPiece.pic
-          ? <Img src={outfitPiece.pic} w={177} h={192} alt="card pic"/>
+          ? <Img src={outfitPiece.pic} w={177} h={192} alt={`Your Outfit: ${outfitPiece.name} img`} />
           : (
             <div className={local.noPhoto}>
               {delButton}

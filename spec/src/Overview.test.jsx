@@ -64,6 +64,30 @@ describe('Render Overview Module', () => {
     expect(screen.getByRole('button', { name: /Main photo 0 of Black Lenses & Gold Frame/i }))
       .toHaveTextContent(/photo unavailable/i);
   });
+
+  // it('Should add product to Your Outfit when heart button is clicked', async () => {
+  //   const user = setup(testData.product40344Data, testData.product40344Styles.results);
+  //   await user.click(await screen
+  //     .findByRole('button', { name: /add or remove to outfit/i }));
+  //   expect(screen.getByRole('button', { name: /Your Outfit: Camo Onesie/i }))
+  //     .toBeInTheDocument();
+  // });
+
+  it('Should go to next photo in gallery when right arrow is clicked', async () => {
+    const user = setup(testData.product40344Data, testData.product40344Styles.results);
+    await user.click(await screen
+      .findByRole('button', { name: '⮕' }));
+    expect(await screen.findByRole('button', { name: /Main photo 1 of Forest Green & Black style/i }))
+      .toBeVisible();
+  });
+
+  // it('Should expand photo in Image Gallery when clicked', async () => {
+  //   const user = setup(testData.product40344Data, testData.product40344Styles.results);
+  //   await user.click(await screen
+  //     .findByRole('button', { name: /Main photo 0 of Forest Green & Black style/i }));
+  //   expect(await screen.findByRole('button', { name: /Main photo 0 of Forest Green & Black style/i }))
+  //     .toHaveClass('galleryExp');
+  // });
 });
 
 // docs recommened query type -> getByRole
