@@ -58,20 +58,10 @@ describe('Render Overview Module', () => {
   });
 
   it('Should display "photo unavailable" when photo url is null', async () => {
-    testData.product40344Styles.results.map((style) => {
-      const photos = style.photos.map((photo) => {
-        const singlePhoto = photo;
-        singlePhoto.url = null;
-        singlePhoto.thumbnail_url = null;
-        return singlePhoto;
-      });
-      const newStyle = style;
-      newStyle.photos = photos;
-      return newStyle;
-    });
-    const user = setup(testData.product40344Data, testData.product40344Styles.results);
-    await user.click(await screen.findByRole('img', { name: /Photo 0 of Forest Green & Black/i }));
-    expect(screen.getByRole('img', { name: /Photo 0 of Forest Green & Black/i }))
+    const user = setup(testData.prod40345Data, testData.prod40345Styles.results);
+    await user.click(await screen
+      .findByRole('button', { name: /Main Thumbnail Black Lenses & Gold Frame/i }));
+    expect(screen.getByRole('button', { name: /Main photo 0 of Black Lenses & Gold Frame/i }))
       .toHaveTextContent(/photo unavailable/i);
   });
 });
