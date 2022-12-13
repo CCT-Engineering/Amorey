@@ -27,7 +27,7 @@
   background-color: transparent;
   border-color: transparent;
   outline-width: 0;
-  color: pink;
+  color: #B6D8C4;
 }
 
 .queryInput {
@@ -43,12 +43,12 @@
   background-color: transparent;
   outline-width: 0;
   border: 0;
-  border-bottom: 1px solid red;
-  color: gold;
+  border-bottom: 1px solid #B6D8C4;
+  color: #B6D8C4;
 }
 
 .queryInputDark::placeholder {
-  color: red;
+  color: #B6D8C4;
 }
 
 .body {
@@ -79,13 +79,13 @@
 }
 
 .clearSortDark {
-  background-color: green;
+  background-color: #548C93;
   border: solid 1px;
   font-weight: 600;
 }
 
 .clearSortDark:hover{
-  background-color: blanchedalmond;
+  background-color: #73A4A3;
 }
 
 .clearQuery {
@@ -101,7 +101,7 @@
 }
 
 .clearQueryDark {
-  background-color:green;
+  background-color:#548C93;
   border: solid 1px;
   font-weight: 600;
   float: right;
@@ -109,7 +109,7 @@
 }
 
 .clearQueryDark:hover{
-  background-color: blanchedalmond;
+  background-color: #73A4A3;
 }
 
 .wordQuery {

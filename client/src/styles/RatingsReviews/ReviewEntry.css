@@ -3,17 +3,15 @@
   background-color:#8acabf;
   border-bottom: solid 2px;
   margin-bottom: 2%;
-  padding-left: -10%;
-  animation: fadeIn .5s;
+  animation: fadeIn .6s;
 }
 
 .mainBodyDark {
   display: block;
-  background-color: lightcoral;
-  border-bottom: solid 2px thistle;
+  background-color: #1E556C;
+  border-bottom: solid 2px #B6D8C4;
   margin-bottom: 2%;
-  padding-left: -10%;
-  animation: fadeIn .5s;
+  animation: fadeIn .6s;
 }
 
 @keyframes fadeIn {
@@ -24,29 +22,31 @@
 .header {
   display: flex;
   justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .rating {
-  padding: 5px 0 0 0;
+  padding-top: 5px;
 }
 
 .user {
-  padding: 5px 0 0 0;
+  padding-top: 5px;
 }
 
 .summary {
-  padding: 5px 0;
+  padding: 5px;
   font-weight: 600;
 }
 
 .body {
-  padding: 5px 0;
+  padding: 5px;
   word-wrap: break-word;
   hyphens: auto;
 }
 
 .recommend {
-  padding: 5px 0;
+  padding: 0px 5px 5px 5px;
 }
 
 .expand {
@@ -54,17 +54,20 @@
   text-decoration: underline;
   background-color: transparent;
   border-color: transparent;
+  padding-left: 5px;
+  padding-bottom: 5px;
   margin-bottom: 2%;
 }
 
 .response {
   background-color: #7eb4aa;
-  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin-bottom: 1%;
 }
 
 .responseDark {
-  background-color: orange;
+  background-color: #2B6678;
   padding: 5px;
   margin-bottom: 1%;
 }
@@ -74,6 +77,8 @@
 }
 
 .footer {
+  padding-left: 5px;
+  padding-right: 5px;
   margin-bottom: 1%;
 }
 
@@ -90,8 +95,7 @@
 }
 
 .helpfulDark {
-  color: chartreuse;
-  background-color: violet;
+  color: #B6D8C4;
   text-decoration: underline;
   background-color: transparent;
   margin-left: 1%;
@@ -100,7 +104,7 @@
 }
 
 .helpfulDark:hover {
-  background-color: wheat;
+  background-color: #3C7883;
 }
 
 .report {
@@ -114,13 +118,12 @@
 }
 
 .reportDark {
-  color: chartreuse;
-  background-color: violet;
+  color: #B6D8C4;
   text-decoration: underline;
   background-color: transparent;
   border: 0;
 }
 
 .reportDark:hover{
-  background-color: wheat;
+  background-color: #3C7883;
 }

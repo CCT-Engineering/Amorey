@@ -23,7 +23,7 @@
 .moreReviewsDark {
   margin-top: 1%;
   margin-bottom: 1%;
-  background-color: yellow;
+  background-color: #548C93;
   border: solid 1px;
   font-weight: 600;
   margin-right: 2%;
@@ -31,7 +31,7 @@
 }
 
 .moreReviewsDark:hover {
-  background-color: red;
+  background-color: #73A4A3;
 }
 
 .addReview {
@@ -50,12 +50,12 @@
 .addReviewDark {
   margin-top: 1%;
   margin-bottom: 1%;
-  background-color: yellow;
+  background-color: #548C93;
   border: solid 1px;
   font-weight: 600;
   padding: 15px;
 }
 
 .addReviewDark:hover {
-  background-color: red;
+  background-color: #73A4A3;
 }

@@ -39,7 +39,7 @@
 }
 
 .graphDimensionsDark {
-  background-color: green;
+  background-color: #1E556C;
   height: 10px;
   width: 100%;
 }
@@ -55,7 +55,7 @@
 
 .graphDisplayDark {
   height: 100%;
-  background: red;
+  background: #73A4A3;
 }
 
 .graphDisplayDark:hover {
