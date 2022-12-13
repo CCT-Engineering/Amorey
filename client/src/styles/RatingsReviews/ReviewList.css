@@ -7,16 +7,55 @@
 }
 
 .moreReviews {
+  margin-top: 1%;
+  margin-bottom: 1%;
   background-color: #52d1bc;
-  border: solid 1px #aae3d9;
+  border: solid 1px;
   font-weight: 600;
   margin-right: 2%;
   padding: 15px;
 }
 
+.moreReviews:hover {
+  background-color: #4cc6b2;
+}
+
+.moreReviewsDark {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  background-color: yellow;
+  border: solid 1px;
+  font-weight: 600;
+  margin-right: 2%;
+  padding: 15px;
+}
+
+.moreReviewsDark:hover {
+  background-color: red;
+}
+
 .addReview {
+  margin-top: 1%;
+  margin-bottom: 1%;
   background-color:#52d1bc;
-  border: solid 1px #aae3d9;
+  border: solid 1px;
   font-weight: 600;
   padding: 15px;
+}
+
+.addReview:hover {
+  background-color: #4cc6b2;
+}
+
+.addReviewDark {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  background-color: yellow;
+  border: solid 1px;
+  font-weight: 600;
+  padding: 15px;
+}
+
+.addReviewDark:hover {
+  background-color: red;
 }

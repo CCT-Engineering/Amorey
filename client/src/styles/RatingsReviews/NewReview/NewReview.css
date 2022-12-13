@@ -2,7 +2,7 @@
   position: fixed;
   display: flex;
   justify-content: center;
-  z-index: 1;
+  z-index: 3;
   left: 0;
   top: 0;
   width: 100%;
@@ -13,10 +13,10 @@
 
 .reviewForm {
   position: fixed;
-  border: 2px white solid;
+  border: 2px solid;
   display: flex;
   justify-content: center;
-  z-index: 2;
+  z-index: 4;
   align-self: center;
   width: 30%;
   min-width: 500px;
@@ -24,6 +24,21 @@
   min-height: 650px;
   overflow: auto;
   background: linear-gradient(white, #e7f5f0 70px, #8bbfb4);
+}
+
+.reviewFormDark {
+  position: fixed;
+  border: 2px gold solid;
+  display: flex;
+  justify-content: center;
+  z-index: 4;
+  align-self: center;
+  width: 30%;
+  min-width: 500px;
+  height: 70%;
+  min-height: 650px;
+  overflow: auto;
+  background: linear-gradient(black, #053f3f 70px, #0a5d74);
 }
 
 .header {
@@ -37,6 +52,12 @@
   display: inline-block;
   font-weight: 600;
   color: rgb(30, 85, 109);
+}
+
+.productDark {
+  display: inline-block;
+  font-weight: 600;
+  color: orange;
 }
 
 .thumbnails {

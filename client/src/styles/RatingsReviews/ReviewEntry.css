@@ -1,7 +1,16 @@
 .mainBody {
   display: block;
   background-color:#8acabf;
-  border-bottom: solid 2px black;
+  border-bottom: solid 2px;
+  margin-bottom: 2%;
+  padding-left: -10%;
+  animation: fadeIn .5s;
+}
+
+.mainBodyDark {
+  display: block;
+  background-color: lightcoral;
+  border-bottom: solid 2px thistle;
   margin-bottom: 2%;
   padding-left: -10%;
   animation: fadeIn .5s;
@@ -54,30 +63,64 @@
   margin-bottom: 1%;
 }
 
+.responseDark {
+  background-color: orange;
+  padding: 5px;
+  margin-bottom: 1%;
+}
+
 .responseHeader {
   font-weight: 600;
 }
 
 .footer {
-  margin-bottom: 2%;
+  margin-bottom: 1%;
 }
 
 .helpful {
   text-decoration: underline;
-   margin-left: 1%;
-   margin-right: .5%;
+  background-color: transparent;
+  margin-left: 1%;
+  margin-right: .5%;
+  border: 0;
 }
 
 .helpful:hover {
-  color: gold;
-  cursor: default;
+  background-color: #7eb4aa;
+}
+
+.helpfulDark {
+  color: chartreuse;
+  background-color: violet;
+  text-decoration: underline;
+  background-color: transparent;
+  margin-left: 1%;
+  margin-right: .5%;
+  border: 0;
+}
+
+.helpfulDark:hover {
+  background-color: wheat;
 }
 
 .report {
   text-decoration: underline;
+  background-color: transparent;
+  border: 0;
 }
 
 .report:hover{
-  color: gold;
-  cursor: default;
+  background-color: #7eb4aa;
+}
+
+.reportDark {
+  color: chartreuse;
+  background-color: violet;
+  text-decoration: underline;
+  background-color: transparent;
+  border: 0;
+}
+
+.reportDark:hover{
+  background-color: wheat;
 }
