@@ -4,7 +4,6 @@ import RelatedOutfit from './RelatedOutfit/Index.jsx';
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import requests from '../requests.js';
 import calculateAverageStars from '../util/calculateStarAverage.js';
-// import testData from '../testData.jsx'; // uncomment if needed
 import global from '../styles/global.css';
 import { setCookie, getCookie } from '../util';
 
