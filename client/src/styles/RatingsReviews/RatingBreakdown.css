@@ -32,6 +32,12 @@
   white-space: nowrap;
 }
 
+/* .graphStarCount {
+  height: 10px;
+  width: 100%;
+  float: right;
+} */
+
 .graphDimensions {
   background-color:#8acabf;
   height: 10px;

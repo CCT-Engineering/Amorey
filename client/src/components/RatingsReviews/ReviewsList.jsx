@@ -39,6 +39,12 @@ const ReviewsList = ({
   };
 
   const loadMoreEntries = () => {
+    // const target = document.getElementById('moreReviews');
+    // target.scrollIntoView({
+    //   behavior: 'smooth',
+    //   block: 'nearest',
+    //   inline: 'center',
+    // });
     if (renderLimit + 2 <= reviews.length) {
       setRenderLimit(renderLimit + 2);
     } else if (renderLimit < reviews.length) {
@@ -84,6 +90,7 @@ const ReviewsList = ({
       </div>
       {filters.length > 2 && renderAmount < filters.length && (
         <button
+          // id="moreReviews"
           className={darkMode ? local.moreReviewsDark : local.moreReviews}
           aria-label="More Reviews"
           type="button"
