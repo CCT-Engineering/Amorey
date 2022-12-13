@@ -62,6 +62,8 @@ const ProductInfo = forwardRef(({
     return nothing;
   };
 
+  const mysrc = 'https://images.unsplash.com/photo-1447958272669-9c562446304f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format,enhance&fit=crop&w=390&w=530';
+
   return (
     <div className={local.productInfo}>
       {reviewsQty ? <StarDisplay stars={stars} /> : ''}

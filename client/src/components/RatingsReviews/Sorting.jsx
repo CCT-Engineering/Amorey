@@ -2,15 +2,23 @@ import React from 'react';
 import local from '../../styles/RatingsReviews/Sorting.css';
 
 const Sorting = ({
-  current, sort, setSort, filters, getReviews, query, setQuery,
+  current, sort, setSort, filters, getReviews, query, setQuery, setOrder,
 }) => {
   const changeSort = () => {
-    return current.id && getReviews(event.target.value);
+    if (current.id) {
+      setOrder(event.target.value);
+      getReviews(event.target.value);
+    }
   };
 
   const clearSort = () => setSort([0, 0, 0, 0, 0]);
 
   const updateQuery = () => setQuery(event.target.value);
+
+  const clearQuery = () => {
+    document.getElementById('searchQuery').value = '';
+    setQuery('');
+  };
 
   const displayfilters = () => {
     return !sort.includes(1) ? (
@@ -26,7 +34,7 @@ const Sorting = ({
         {sort[3] ? ' 4' : null}
         {sort[4] ? ' 5' : null}
         {' Stars '}
-        <button className={local.clearButton} type="button" onClick={clearSort}>Clear Filters</button>
+        <button className={local.clearSort} aria-label="Clear Sort" type="button" onClick={clearSort}>Clear Filters</button>
       </p>
     );
   };
@@ -34,30 +42,22 @@ const Sorting = ({
   return (
     <h4 className={local.mainBody}>
       <div className={local.header}>
-        <div className={local.reviewSort}>
+        <div>
           {`${filters.length} reviews, sorted by`}
-          <select className={local.sortMethod} id="sortMethod" onChange={(changeSort)}>
-            <option value="relevant">relevance</option>
-            <option value="newest">newest</option>
-            <option value="helpful">helpful</option>
+          <select className={local.sortMethod} role="menu" aria-label="Sort Method" id="sortMethod" onChange={(changeSort)}>
+            <option aria-label="Relevant" value="relevant">relevance</option>
+            <option aria-label="Newest" value="newest">newest</option>
+            <option aria-label="Helpful" value="helpful">helpful</option>
           </select>
         </div>
-        <label className={local.queryInput} htmlFor="searchQuery">
+        <label htmlFor="searchQuery">
           {' Enter a search query '}
-          <input name="searchQuery" placeholder="Narrow your search" onChange={updateQuery} />
+          <input id="searchQuery" className={local.queryInput} aria-label="Search Query" placeholder="Narrow your search" onChange={updateQuery} />
         </label>
       </div>
       <div className={local.body}>
         {displayfilters()}
-        {query.length > 2
-          ? (
-            <p className={local.wordQuery}>
-              {`Current search query: ${query.length < 20
-                ? query
-                : (`${query.substring(0, 20)}...`)}`}
-            </p>
-          )
-          : <p />}
+        <p className={local.wordQuery}>{query.length ? <button className={local.clearQuery} aria-label="Clear Query" type="button" onClick={clearQuery}>Clear Query</button> : null }</p>
       </div>
     </h4>
   );

@@ -6,7 +6,7 @@ import date from '../../util/formatDate.js';
 import local from '../../styles/RatingsReviews/ReviewList.css';
 
 const ReviewsList = ({
-  current, reviews, getReviews, sort, setSort, updateReview, traits,
+  current, reviews, getReviews, sort, setSort, updateReview, traits, setOrder,
 }) => {
   const [renderLimit, setRenderLimit] = useState(2);
   const [filters, setFilters] = useState([]);
@@ -56,7 +56,12 @@ const ReviewsList = ({
 
   useEffect(() => filterReviews(), [reviews, sort, query]);
 
-  useEffect(() => setRenderLimit(2), [current]);
+  useEffect(() => {
+    setRenderLimit(2);
+    setQuery('');
+    setSort([0, 0, 0, 0, 0]);
+    document.getElementById('searchQuery').val = '';
+  }, [current]);
 
   return (
     <>
@@ -68,14 +73,30 @@ const ReviewsList = ({
         getReviews={getReviews}
         query={query}
         setQuery={setQuery}
+        setOrder={setOrder}
       />
       <div className={local.reviewList}>
         {filters.map((review, index) => renderReviewEntries(review, index))}
         {!filters.length && <div>Currently No Reviews To Display</div>}
       </div>
       {filters.length > 2 && renderAmount < filters.length && (
-        <button className={local.moreReviews} type="button" onClick={loadMoreEntries}>MORE REVIEWS</button>)}
-      <button className={local.addReview} type="button" onClick={() => showModal(true)}>ADD A REVIEW +</button>
+        <button
+          className={local.moreReviews}
+          aria-label="More Reviews"
+          type="button"
+          onClick={loadMoreEntries}
+        >
+          MORE REVIEWS
+        </button>
+      )}
+      <button
+        className={local.addReview}
+        aria-label="Add A Review +"
+        type="button"
+        onClick={() => showModal(true)}
+      >
+        ADD A REVIEW +
+      </button>
       {modal && (
         <NewReview
           current={current}

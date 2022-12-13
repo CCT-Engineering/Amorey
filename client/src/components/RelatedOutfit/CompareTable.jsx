@@ -12,6 +12,12 @@ const CompareTable = ({
     ).toString().slice(0, 2);
     return rec;
   };
+  // console.log('current', current);
+  // console.log('rel1Info', rel1Info);
+  // console.log('curMeta', CurMeta);
+  // console.log('slice', CurMeta.characteristics.Comfort.value.slice(0, 3));
+  // console.log('rel1', rel1Meta);
+
   return (
     <div className={local.compareTable}>
       <div className={local.tableContent}>
@@ -58,13 +64,15 @@ const CompareTable = ({
           </div>
           <div className={local.tableBody}>
             <div>
-              {CurMeta.characteristics.Comfort.value.slice(0, 3)}
-              /5.0
+              {CurMeta.characteristics.Comfort ? CurMeta.characteristics.Comfort.value.slice(0, 3) : <div>No data</div>}
+              {CurMeta.characteristics.Comfort ? '/5.0' : ''}
+              {/* /5.0 */}
             </div>
             <div>Comfort</div>
             <div>
-              {rel1Meta.characteristics.Comfort.value.slice(0, 3)}
-              /5.0
+              {rel1Meta.characteristics.Comfort ? rel1Meta.characteristics.Comfort.value.slice(0, 3) : ''}
+              {rel1Meta.characteristics.Comfort ? '/5.0' : ''}
+              {/* /5.0 */}
             </div>
           </div>
           <div className={local.tableBody}>

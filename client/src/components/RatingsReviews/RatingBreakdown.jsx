@@ -21,6 +21,7 @@ const RatingBreakdown = ({
     return (
       <div
         role="button"
+        aria-label={`${starCount} Star Ratings`}
         tabIndex={0}
         className={local.graphDimensions}
         onClick={() => handleClick(starCount, sort)}
@@ -45,7 +46,7 @@ const RatingBreakdown = ({
 
   return (
     <div className={local.ratingMain}>
-      <div className={local.starHeader}>
+      <div className={local.starHeader} role="heading" aria-level="1">
         <div className={local.starRating}>
           {stars && (Math.round(stars * 4) / 4).toFixed(1)}
         </div>

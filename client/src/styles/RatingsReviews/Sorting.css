@@ -1,14 +1,12 @@
 .mainBody {
   padding: 5px 0px;
+  max-width: 95vh;
 }
 
 .header {
   display: flex;
+  justify-content: space-between;
   width: 100%
-}
-
-.reviewSort {
-  width: 62%;
 }
 
 .sortMethod {
@@ -21,17 +19,16 @@
 }
 
 .queryyInput {
-  width: 38%;
+  display: inline-block;
 }
 
 .body {
   display: flex;
-  width: 100%;
-  margin-bottom: -2%;
+  align-content: flex-end;
 }
 
 .starQuery {
-  width: 62%;
+  width: 100%;
   margin-left: -.5%;
 }
 
@@ -42,12 +39,20 @@
   font-weight: 600;
 }
 
-.clearButton {
+.clearSort {
   background-color:#52d1bc;
   border: solid 1px #aae3d9;
   font-weight: 600;
 }
 
+.clearQuery {
+  background-color:#52d1bc;
+  border: solid 1px #aae3d9;
+  font-weight: 600;
+  float: right;
+  margin-right: -1%;
+}
+
 .wordQuery {
-  width: 38%;
+  width: 100%;
 }

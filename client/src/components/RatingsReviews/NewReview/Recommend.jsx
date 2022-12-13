@@ -7,6 +7,8 @@ const Recommend = ({ updateInput, setRecommend }) => (
     <label className={local.rating} htmlFor="recommend">
       Yes
       <input
+        role="button"
+        aria-label="Recommend Yes"
         type="radio"
         name="recommend"
         onChange={() => updateInput(setRecommend, true)}
@@ -16,6 +18,8 @@ const Recommend = ({ updateInput, setRecommend }) => (
     <label className={local.rating} htmlFor="recommend">
       No
       <input
+        role="button"
+        aria-label="Recommend No"
         type="radio"
         name="recommend"
         onChange={() => updateInput(setRecommend, false)}

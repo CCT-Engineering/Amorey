@@ -16,15 +16,15 @@ const renderRatings = (trait) => {
 const renderDetail = (trait, index, detail) => {
   const dividers = characteristic[trait][3] === 'Perfect';
   return (
-    <>
-      <div key={index} className={local.characteristic}>{trait}</div>
+    <div key={index}>
+      <div className={local.characteristic}>{trait}</div>
       <div className={local.barDimensions}>
         <div className={local.barMarker} style={{ left: dividers ? `${33}%` : `${20}%` }}>|</div>
         <div className={local.barDisplay} style={{ left: `${Number(detail.value) * 20}%` }}>▼</div>
         <div className={local.barMarker} style={{ left: dividers ? `${66}%` : `${80}%` }}>|</div>
       </div>
       <div className={local.ratings}>{renderRatings(trait)}</div>
-    </>
+    </div>
   );
 };
 
