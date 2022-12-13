@@ -59,18 +59,20 @@ const getCookie = ((cName) => {
   return undefined;
 });
 
-const formatImg = (url, w, h) => {
+const formatImg = (url, w, h, crop = true) => {
   // this function works specifically for unsplash urls only
   // extract base url
+  const height = w ? h : null;
   let newUrl = url.match(/https:\/\/.*ixid=\w+/) || url.match(/https:\/\/.*ixlib=[^&]+/);
   if (!newUrl) {
     return url; // return original url if match cannot be found
   }
-  newUrl += '&auto=format,enhance';
+  newUrl += '&auto=format,enhance,compress';
   // if w is less than 100px, zoom in on faces by default, otherwise fit by crop
-  newUrl += w < 100 ? '&fit=facearea&facepad=4' : '&fit=crop';
+  newUrl += w < 100 && w !== null ? '&fit=facearea&facepad=4' : '';
+  newUrl += crop ? '&fit=crop' : '';
   newUrl += w ? `&w=${w}` : '';
-  newUrl += h ? `&h=${h}` : '';
+  newUrl += height ? `&h=${height}` : '';
   return newUrl;
 };
 

@@ -1,4 +1,6 @@
-import React, { useState, useRef, createRef, useEffect } from 'react';
+import React, {
+  useState, useRef, createRef, useEffect,
+} from 'react';
 import local from '../../styles/Overview/Gallery.css';
 import Thumb from './Thumb.jsx';
 import { buildHandleEnterKeyPress, buildHandleKeyDown, formatImg } from '../../util';
@@ -8,22 +10,17 @@ import { buildHandleEnterKeyPress, buildHandleKeyDown, formatImg } from '../../u
 function Gallery({
   name, photos, photoIndex, setPhotoIndex,
 }) {
-  const [MAIN_PHOTO_WID, MAIN_PHOTO_HGT, ZOOM_MULTI] = [390, 530, 2.5];
+  const [MAIN_PHOTO_WID, MAIN_PHOTO_HGT] = [390, 530];
   // console.log('photos inside Gallery:', photos);
-  const photoUrl = photos[photoIndex] ? photos[photoIndex].url : '';
   const photoDescPrefix = 'Main photo';
   const photoDesc = `${photoDescPrefix} ${photoIndex} of ${name} style`;
   const photoQty = photos.length || 0;
 
   const [expandView, setExpandView] = useState(false);
   const [zoomView, setZoomView] = useState(false);
-  const w = MAIN_PHOTO_WID * (expandView ? ZOOM_MULTI : 1);
-  const h = MAIN_PHOTO_HGT * (expandView ? ZOOM_MULTI : 1);
-  const [mainPhotoStyle, setMainPhotoStyle] = useState(
-    photoUrl
-      ? { backgroundImage: `url(${formatImg(photoUrl, w, h)})` }
-      : { background: 'whitesmoke', border: '1px solid #111', cursor: 'not-allowed' },
-  );
+  const photoUrl = photos[photoIndex] ? photos[photoIndex].url : '';
+  const [mainPhotoStyle, setMainPhotoStyle] = useState({});
+  console.log('mainPhotoStyle:', mainPhotoStyle);
 
   // States and Ref below are for expanded view zoom feature
   const [offset, setOffset] = useState({ x: -10, y: 0 }); // image margin offset
@@ -64,16 +61,32 @@ function Gallery({
   const handleMainImgClick = (e) => {
     e.preventDefault();
     if (e.target.ariaLabel?.match(/^main photo/i)) {
+      let newAttr;
       if (expandView) {
-        setZoomView(!zoomView);
-        const { clientX, clientY } = e;
-        setOffset({ x: 0, y: -70 });
-        mousePos.current = { x: clientX, y: clientY };
-        console.log('zoom!');
-        const newAttr = { transform: 'scale(1.3)' };
+        if (zoomView) {
+          newAttr = {
+            transform: 'revert',
+            cursor: 'crosshair',
+            marginTop: '-70px',
+            marginRight: 'revert',
+          };
+        } else {
+          // if in Expanded View, but not Zoom View
+          const { clientX, clientY } = e;
+          setOffset({ x: 0, y: -70 });
+          mousePos.current = { x: clientX, y: clientY };
+          console.log('zoom!');
+          newAttr = { transform: 'scale(2.5)', cursor: 'zoom-out' };
+        }
         setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
+        setZoomView(!zoomView);
       } else {
+        // if NOT in Expanded view
         setExpandView(true);
+        newAttr = {
+          backgroundImage: `url(${formatImg(photoUrl, null, null, false)})`,
+        };
+        setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
       }
     }
   };
@@ -81,6 +94,13 @@ function Gallery({
   const closeExpView = (e) => {
     e.preventDefault();
     setExpandView(false);
+    const newAttr = {
+      transform: '',
+      cursor: '',
+      marginTop: '',
+      marginRight: '',
+    };
+    setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
   };
 
   // ENABLE ZOOM FEATURE
@@ -93,7 +113,7 @@ function Gallery({
       // console.log('diff:', mousePos.current.x - clientX, mousePos.current.y - clientY);
       setOffset({
         x: offset.x + (mousePos.current.x - clientX),
-        y: offset.y + (mousePos.current.y - clientY),
+        y: offset.y - (mousePos.current.y - clientY),
       });
       mousePos.current = { x: clientX, y: clientY };
       console.log('AFTER change:', offset.x, offset.y);
@@ -107,13 +127,12 @@ function Gallery({
   }, [offset]);
 
   useEffect(() => {
-    console.log('photoUrl inside useEffect:', photoUrl);
     setMainPhotoStyle(
       photoUrl
-        ? { backgroundImage: `url(${formatImg(photoUrl, w, h)})` }
+        ? { backgroundImage: `url(${formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT)})` }
         : { background: 'whitesmoke', border: '1px solid #111', cursor: 'not-allowed' },
     );
-  }, []);
+  }, [photoUrl]);
 
   let photoId = -1;
   const gallerySide = !photoUrl ? '' : (

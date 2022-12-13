@@ -36,13 +36,8 @@
   cursor: crosshair;
   background-color: rgba(0, 0, 0, .75);
   overflow: hidden;
-  transition: transform 0.3s;
+  transition: transform 0.5s;
 }
-
-/* .galleryExp:hover {
-  transform: scale(1.0);
-  margin-top: 200px;
-} */
 
 .gallerySide {
   padding: 1px 0;
