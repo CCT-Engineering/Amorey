@@ -49,19 +49,6 @@ describe('Render Overview Module', () => {
     expect(screen.getByRole('heading', { name: /camo onesie/i })).toBeVisible();
   });
 
-  // PROMISE PATTERN NOT WORKING FOR SOME REASON
-  // it('Should display name of style when its corresponding style thumb is clicked (1)', () => {
-  //   const user = setup();
-  //   screen.findByRole('button', { name: /Main Thumbnail Desert Brown/i })
-  //     .then((element) => {
-  //       user.click(element);
-  //     })
-  //     .then(() => screen.findByRole('heading', { level: 5, name: /style/i }))
-  //     .then((styleName) => {
-  //       expect(styleName).toHaveTextContent(/DESERT BROWN & TAN/i);
-  //     });
-  // });
-
   it('Should display name of style when its corresponding style thumb is clicked', async () => {
     const user = setup(testData.product40344Data, testData.product40344Styles.results);
     await user.click(await screen
@@ -71,22 +58,36 @@ describe('Render Overview Module', () => {
   });
 
   it('Should display "photo unavailable" when photo url is null', async () => {
-    testData.product40344Styles.results.map((style) => {
-      const photos = style.photos.map((photo) => {
-        const singlePhoto = photo;
-        singlePhoto.url = null;
-        singlePhoto.thumbnail_url = null;
-        return singlePhoto;
-      });
-      const newStyle = style;
-      newStyle.photos = photos;
-      return newStyle;
-    });
-    const user = setup(testData.product40344Data, testData.product40344Styles.results);
-    await user.click(await screen.findByRole('img', { name: /Photo 0 of Forest Green & Black/i }));
-    expect(screen.getByRole('img', { name: /Photo 0 of Forest Green & Black/i }))
+    const user = setup(testData.prod40345Data, testData.prod40345Styles.results);
+    await user.click(await screen
+      .findByRole('button', { name: /Main Thumbnail Black Lenses & Gold Frame/i }));
+    expect(screen.getByRole('button', { name: /Main photo 0 of Black Lenses & Gold Frame/i }))
       .toHaveTextContent(/photo unavailable/i);
   });
+
+  // it('Should add product to Your Outfit when heart button is clicked', async () => {
+  //   const user = setup(testData.product40344Data, testData.product40344Styles.results);
+  //   await user.click(await screen
+  //     .findByRole('button', { name: /add or remove to outfit/i }));
+  //   expect(screen.getByRole('button', { name: /Your Outfit: Camo Onesie/i }))
+  //     .toBeInTheDocument();
+  // });
+
+  it('Should go to next photo in gallery when right arrow is clicked', async () => {
+    const user = setup(testData.product40344Data, testData.product40344Styles.results);
+    await user.click(await screen
+      .findByRole('button', { name: '⮕' }));
+    expect(await screen.findByRole('button', { name: /Main photo 1 of Forest Green & Black style/i }))
+      .toBeVisible();
+  });
+
+  // it('Should expand photo in Image Gallery when clicked', async () => {
+  //   const user = setup(testData.product40344Data, testData.product40344Styles.results);
+  //   await user.click(await screen
+  //     .findByRole('button', { name: /Main photo 0 of Forest Green & Black style/i }));
+  //   expect(await screen.findByRole('button', { name: /Main photo 0 of Forest Green & Black style/i }))
+  //     .toHaveClass('galleryExp');
+  // });
 });
 
 // docs recommened query type -> getByRole

@@ -14,10 +14,19 @@ describe('Render App Page', () => {
   it('Should scroll so that reviews are visible when "Read All Reviews" is clicked', async () => {
     const user = setup();
     await user.click(await screen
-      .findByRole('button', { name: /Read All Reviews/i }));
+      .findByRole('button', { name: /Read All \d+ Reviews/i }));
     expect(await screen.findByRole('heading', { name: /RATINGS & REVIEWS/i }))
       .toBeVisible();
   });
+
+  // it('Should add product to Your Outfit when heart button is clicked', async () => {
+  //   const user = setup();
+  //   // breaking in line below:
+  //   await user.click(await screen
+  //     .findByRole('button', { name: /add or remove to outfit/i }, { timeout: 3000 }));
+  //   expect(screen.getByRole('button', { name: /Your Outfit: Camo Onesie/i }))
+  //     .toBeInTheDocument();
+  // });
 });
 
 // docs recommened query type -> getByRole
@@ -26,6 +35,7 @@ describe('Render App Page', () => {
 // other quries -> queryBy... findBy... (Intended for single element, error if multiple results)
 // multiple element queries -> getAllBy... queryAllBy... findAllBy...
 // https://testing-library.com/docs/queries/about/#byrole
+// LIST OF JEST DOM MATCHERS: https://github.com/testing-library/jest-dom
 
 // SOME ASSERTION TESTS - JEST
 // --------------------

@@ -6,6 +6,7 @@ module.exports = {
   collectCoverageFrom: [
     '!**/node_modules/**',
     'client/src/**/*.{js,jsx,ts,tsx}',
+    '!**/testData.jsx',
   ],
   moduleNameMapper: {
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
