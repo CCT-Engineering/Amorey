@@ -21,6 +21,7 @@ const RatingBreakdown = ({
     return (
       <div
         role="button"
+        aria-label={`${starCount} Star Ratings`}
         tabIndex={0}
         className={local.graphDimensions}
         onClick={() => handleClick(starCount, sort)}
