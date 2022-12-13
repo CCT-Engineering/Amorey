@@ -7,6 +7,8 @@
 }
 
 .moreReviews {
+  margin-top: 1%;
+  margin-bottom: 1%;
   background-color: #52d1bc;
   border: solid 1px;
   font-weight: 600;
@@ -19,6 +21,8 @@
 }
 
 .moreReviewsDark {
+  margin-top: 1%;
+  margin-bottom: 1%;
   background-color: yellow;
   border: solid 1px;
   font-weight: 600;
@@ -31,6 +35,8 @@
 }
 
 .addReview {
+  margin-top: 1%;
+  margin-bottom: 1%;
   background-color:#52d1bc;
   border: solid 1px;
   font-weight: 600;
@@ -42,6 +48,8 @@
 }
 
 .addReviewDark {
+  margin-top: 1%;
+  margin-bottom: 1%;
   background-color: yellow;
   border: solid 1px;
   font-weight: 600;

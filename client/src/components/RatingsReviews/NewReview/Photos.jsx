@@ -1,11 +1,11 @@
 import React from 'react';
 import local from '../../../styles/RatingsReviews/NewReview/Photos.css';
 
-const Photos = ({ numberOfPhotos }) => (
+const Photos = ({ numberOfPhotos, darkMode }) => (
   <label className={local.header} htmlFor="photos">
     {'Upload Up To 5 Images (Optional) '}
     <input
-      className={local.uploadPhoto}
+      className={darkMode ? local.uploadPhotoDark : local.uploadPhoto}
       aria-label="Photo Upload"
       id="uploadPhoto"
       type="file"

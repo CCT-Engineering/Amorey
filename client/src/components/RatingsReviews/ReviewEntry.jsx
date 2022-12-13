@@ -5,10 +5,11 @@ import { buildHandleEnterKeyPress } from '../../util';
 import local from '../../styles/RatingsReviews/ReviewEntry.css';
 import date from '../../util/formatDate.js';
 
-const ReviewEntry = ({ review, updateReview }) => {
+const ReviewEntry = ({ review, updateReview, darkMode }) => {
   const unrated = !(localStorage.getItem(review.review_id) === 'true');
   const [expand, setExpand] = useState(false);
   const [canRateReview, setRateReview] = useState(unrated);
+  review.response = 'test';
 
   const rateReview = (rating) => {
     if (canRateReview || rating === 'putReport') {
@@ -41,7 +42,7 @@ const ReviewEntry = ({ review, updateReview }) => {
   };
 
   return (
-    <div className={local.mainBody}>
+    <div className={darkMode ? local.mainBodyDark : local.mainBody}>
       <div className={local.header}>
         <div className={local.rating}><StarDisplay stars={review.rating} /></div>
         <div className={local.user}>{`${review.reviewer_name}, ${date(review.date)}`}</div>
@@ -52,7 +53,7 @@ const ReviewEntry = ({ review, updateReview }) => {
         {review.recommend && <div className={local.recommend}>✓ I recommend this product</div>}
       </div>
       {review.response && (
-        <div className={local.response}>
+        <div className={darkMode ? local.responseDark : local.response}>
           <div className={local.responseHeader}>Response:</div>
           <div>{review.response}</div>
         </div>
@@ -66,7 +67,7 @@ const ReviewEntry = ({ review, updateReview }) => {
           type="button"
           aria-label="Put Helpful"
           tabIndex={0}
-          className={local.helpful}
+          className={darkMode ? local.helpfulDark : local.helpful}
           style={{ color: canRateReview ? null : 'gold' }}
           onClick={() => rateReview('putHelpful')}
           onKeyPress={buildHandleEnterKeyPress(() => rateReview('putHelpful'))}
@@ -78,7 +79,7 @@ const ReviewEntry = ({ review, updateReview }) => {
           type="button"
           aria-label="Put Report"
           tabIndex={0}
-          className={local.report}
+          className={darkMode ? local.reportDark : local.report}
           onClick={() => rateReview('putReport')}
           onKeyPress={buildHandleEnterKeyPress(() => rateReview('putReport'))}
         >
