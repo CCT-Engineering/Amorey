@@ -8,8 +8,8 @@
 
 .mainBodyDark {
   display: block;
-  background-color: lightcoral;
-  border-bottom: solid 2px thistle;
+  background-color: #1E556C;
+  border-bottom: solid 2px #B6D8C4;
   margin-bottom: 2%;
   animation: fadeIn .6s;
 }
@@ -67,7 +67,7 @@
 }
 
 .responseDark {
-  background-color: orange;
+  background-color: #2B6678;
   padding: 5px;
   margin-bottom: 1%;
 }
@@ -95,8 +95,7 @@
 }
 
 .helpfulDark {
-  color: chartreuse;
-  background-color: violet;
+  color: #B6D8C4;
   text-decoration: underline;
   background-color: transparent;
   margin-left: 1%;
@@ -105,7 +104,7 @@
 }
 
 .helpfulDark:hover {
-  background-color: wheat;
+  background-color: #3C7883;
 }
 
 .report {
@@ -119,13 +118,12 @@
 }
 
 .reportDark {
-  color: chartreuse;
-  background-color: violet;
+  color: #B6D8C4;
   text-decoration: underline;
   background-color: transparent;
   border: 0;
 }
 
 .reportDark:hover{
-  background-color: wheat;
+  background-color: #3C7883;
 }
