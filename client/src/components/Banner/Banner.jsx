@@ -21,7 +21,7 @@ const Banner = ({ darkMode, setDarkMode }) => {
       />
       <div className={local.searchBar}>
         <label htmlFor="searchBar">
-          <input className={local.searchInput} name="searchBar" aria-label="Search Bar" />
+          <input className={darkMode ? local.searchInputDark : local.searchInput} name="searchBar" aria-label="Search Bar" />
         </label>
         🔍
       </div>

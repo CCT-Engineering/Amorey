@@ -92,7 +92,7 @@ const NewReview = ({
           <Recommend updateInput={updateInput} setRecommend={setRecommend} />
           {traits && (
             Object.keys(traits).map((trait, index) => {
-              return <Characteristic trait={trait} key={`${trait + index}`} update={updateCharacteristic} />;
+              return <Characteristic trait={trait} key={`${trait + index}`} update={updateCharacteristic} darkMode={darkMode} />;
             })
           )}
           <Summary updateInput={updateInput} setSummary={setSummary} />
