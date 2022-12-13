@@ -13,7 +13,7 @@ import global from '../../../styles/global.css';
 import local from '../../../styles/RatingsReviews/NewReview/NewReview.css';
 
 const NewReview = ({
-  current, traits, getReviews, showModal,
+  current, traits, getReviews, showModal, darkMode,
 }) => {
   const [rating, setRating] = useState(0);
   const [summary, setSummary] = useState('');
@@ -81,12 +81,12 @@ const NewReview = ({
 
   return (
     <div className={local.modal}>
-      <div className={local.reviewForm}>
+      <div className={darkMode ? local.reviewFormDark : local.reviewForm}>
         <form id="newReview" onSubmit={collectFormData}>
           <div className={global.modalLogo} aria-label="Form Logo" role="img" alt="AMOREY" />
           <h3 className={local.header}>
             {'Write Your Review About: '}
-            <div className={local.product}>{current.name}</div>
+            <div className={darkMode ? local.productDark : local.product}>{current.name}</div>
           </h3>
           <Rating setRating={setRating} />
           <Recommend updateInput={updateInput} setRecommend={setRecommend} />
@@ -99,7 +99,7 @@ const NewReview = ({
           <Body letterCount={letterCount} updateLetterCount={updateLetterCount} />
           <Username updateInput={updateInput} setName={setName} />
           <Email updateInput={updateInput} setEmail={setEmail} />
-          <Photos numberOfPhotos={numberOfPhotos} />
+          <Photos numberOfPhotos={numberOfPhotos} darkMode={darkMode} />
           <div className={local.thumbnails}>{photos.map((photo, index) => <Thumbnail photo={photo} key={`${photo + index}`} />)}</div>
           <div>
             <button className={local.submit} aria-label="Submit Review" type="submit">Submit Review!</button>

@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Banner from './Banner/Banner.jsx';
 import Overview from './Overview/Overview.jsx';
 import RelatedOutfit from './RelatedOutfit/Index.jsx';
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import requests from '../requests.js';
 import calculateAverageStars from '../util/calculateStarAverage.js';
-// import testData from '../testData.jsx'; // uncomment if needed
-import global from '../styles/global.css';
 import { setCookie, getCookie } from '../util';
 
 const FAVS_COOKIE = 'amorey_favs';
@@ -14,12 +13,12 @@ function App() {
   const [favorites, setFavorites] = useState(getCookie(FAVS_COOKIE) || []);
   // All states below are for the CURRENT product (the one displayed in Overview)
   const [current, setCurrent] = useState({ features: [] });
-  // console.log('current product:', current);
   const [currentStyles, setCurrentStyles] = useState([]);
   const [metadata, setMetadata] = useState([]);
   const [stars, setStars] = useState(0);
   const [reviews, setReviews] = useState([]);
   const [order, setOrder] = useState('relevant');
+  const [darkMode, setDarkMode] = useState(false);
   const ratingsReviewsRef = useRef(null);
 
   const getReviews = (sortMethod = order) => {
@@ -69,7 +68,7 @@ function App() {
 
   return (
     <>
-      <div className={global.logo} role="img" alt="AMOREY" name="logo" />
+      <Banner darkMode={darkMode} setDarkMode={setDarkMode} />
       <Overview
         current={current}
         currentStyles={currentStyles}
@@ -98,6 +97,7 @@ function App() {
         getReviews={getReviews}
         stars={stars}
         setOrder={setOrder}
+        darkMode={darkMode}
         ref={ratingsReviewsRef}
       />
     </>

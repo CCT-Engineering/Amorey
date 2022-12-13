@@ -4,7 +4,7 @@ import { buildHandleEnterKeyPress } from '../../util';
 import local from '../../styles/RatingsReviews/RatingBreakdown.css';
 
 const RatingBreakdown = ({
-  ratings, recommend, stars, changeSearch, sort,
+  darkMode, ratings, recommend, stars, changeSearch, sort,
 }) => {
   const handleClick = (index) => {
     event.preventDefault();
@@ -23,13 +23,16 @@ const RatingBreakdown = ({
         role="button"
         aria-label={`${starCount} Star Ratings`}
         tabIndex={0}
-        className={local.graphDimensions}
+        className={darkMode ? local.graphDimensionsDark : local.graphDimensions}
         onClick={() => handleClick(starCount, sort)}
         onKeyPress={buildHandleEnterKeyPress(handleClick)}
       >
         <div
-          className={local.graphDisplay}
-          style={{ width: `${percent}%`, border: sort[starCount - 1] ? 'solid 1px gold' : '' }}
+          className={darkMode ? local.graphDisplayDark : local.graphDisplay}
+          style={{
+            width: `${percent}%`,
+            border: sort[starCount - 1] ? 'solid 1px gold' : '',
+          }}
         />
       </div>
     );

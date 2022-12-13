@@ -16,10 +16,39 @@
   text-decoration: underline;
   background-color: transparent;
   border-color: transparent;
+  outline-width: 0;
 }
 
-.queryyInput {
+.sortMethodDark {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  text-decoration: underline;
+  background-color: transparent;
+  border-color: transparent;
+  outline-width: 0;
+  color: pink;
+}
+
+.queryInput {
   display: inline-block;
+  background-color: transparent;
+  outline-width: 0;
+  border: 0;
+  border-bottom: 1px solid;
+}
+
+.queryInputDark {
+  display: inline-block;
+  background-color: transparent;
+  outline-width: 0;
+  border: 0;
+  border-bottom: 1px solid red;
+  color: gold;
+}
+
+.queryInputDark::placeholder {
+  color: red;
 }
 
 .body {
@@ -41,16 +70,46 @@
 
 .clearSort {
   background-color:#52d1bc;
-  border: solid 1px #aae3d9;
+  border: solid 1px;
   font-weight: 600;
+}
+
+.clearSort:hover{
+  background-color: #4cc6b2;
+}
+
+.clearSortDark {
+  background-color: green;
+  border: solid 1px;
+  font-weight: 600;
+}
+
+.clearSortDark:hover{
+  background-color: blanchedalmond;
 }
 
 .clearQuery {
   background-color:#52d1bc;
-  border: solid 1px #aae3d9;
+  border: solid 1px;
   font-weight: 600;
   float: right;
   margin-right: -1%;
+}
+
+.clearQuery:hover{
+  background-color: #4cc6b2;
+}
+
+.clearQueryDark {
+  background-color:green;
+  border: solid 1px;
+  font-weight: 600;
+  float: right;
+  margin-right: -1%;
+}
+
+.clearQueryDark:hover{
+  background-color: blanchedalmond;
 }
 
 .wordQuery {
