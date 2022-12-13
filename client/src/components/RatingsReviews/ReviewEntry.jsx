@@ -49,6 +49,9 @@ const ReviewEntry = ({ review, updateReview, darkMode }) => {
       </div>
       <h4 className={local.summary}>{review.summary}</h4>
       {renderReviewBody()}
+      {review.photos ? review.photos.map((photo, index) => (
+        <Thumbnail photo={photo.url} key={`${photo.url + index}`} />
+      )) : null}
       <div>
         {review.recommend && <div className={local.recommend}>✓ I recommend this product</div>}
       </div>
@@ -58,9 +61,6 @@ const ReviewEntry = ({ review, updateReview, darkMode }) => {
           <div>{review.response}</div>
         </div>
       )}
-      {review.photos ? review.photos.map((photo, index) => (
-        <Thumbnail photo={photo.url} key={`${photo.url + index}`} />
-      )) : null}
       <div className={local.footer}>
         Helpful?
         <button
