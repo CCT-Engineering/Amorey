@@ -4,6 +4,7 @@ import local from '../../../styles/RatingsReviews/NewReview/Body.css';
 const Body = ({ letterCount, updateLetterCount }) => (
   <h6>
     <textarea
+      aria-label="Body Input"
       className={local.inputField}
       placeholder="Why did you like the product or not?"
       rows="3"

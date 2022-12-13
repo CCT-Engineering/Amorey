@@ -13,12 +13,13 @@ const Rating = ({ setRating }) => {
 
   return (
     <div className={local.main}>
-      <h6 className={local.header}>
+      <h6 className={local.header} name="Current Stars">
         Overall Rating
         {currentStar ? `:  "${starText[currentStar - 1]}"` : null}
       </h6>
       <a
         role="button"
+        aria-label="1 Star"
         tabIndex={0}
         className="star1"
         onClick={() => updateStars(1)}
@@ -30,6 +31,7 @@ const Rating = ({ setRating }) => {
       </a>
       <a
         role="button"
+        aria-label="2 Star"
         tabIndex={0}
         className="star2"
         onClick={() => updateStars(2)}
@@ -40,6 +42,7 @@ const Rating = ({ setRating }) => {
       </a>
       <a
         role="button"
+        aria-label="3 Star"
         name="rating"
         value={3}
         tabIndex={0}
@@ -52,6 +55,7 @@ const Rating = ({ setRating }) => {
       </a>
       <a
         role="button"
+        aria-label="4 Star"
         tabIndex={0}
         className="star4"
         onClick={() => updateStars(4)}
@@ -62,6 +66,7 @@ const Rating = ({ setRating }) => {
       </a>
       <a
         role="button"
+        aria-label="5 Star"
         tabIndex={0}
         className="star5"
         onClick={() => updateStars(5)}
