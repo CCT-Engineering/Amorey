@@ -88,7 +88,7 @@ const NewReview = ({
             {'Write Your Review About: '}
             <div className={darkMode ? local.productDark : local.product}>{current.name}</div>
           </h3>
-          <Rating setRating={setRating} />
+          <Rating setRating={setRating} darkMode={darkMode} />
           <Recommend updateInput={updateInput} setRecommend={setRecommend} />
           {traits && (
             Object.keys(traits).map((trait, index) => {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { buildHandleEnterKeyPress } from '../../../util';
 import local from '../../../styles/RatingsReviews/NewReview/Rating.css';
 
-const Rating = ({ setRating }) => {
+const Rating = ({ setRating, darkMode }) => {
   const starText = ['Poor', 'Fair', 'Average', 'Good', 'Great'];
   const [currentStar, setCurrentStar] = useState(0);
 
@@ -15,7 +15,7 @@ const Rating = ({ setRating }) => {
     <div className={local.main}>
       <h6 className={local.header} name="Current Stars">
         Overall Rating
-        {currentStar ? `:  "${starText[currentStar - 1]}"` : null}
+        <div className={darkMode ? local.selectedDark : local.selected}>{currentStar ? `:  "${starText[currentStar - 1]}"` : null}</div>
       </h6>
       <a
         role="button"

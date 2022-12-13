@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import characteristic from '../../../util/characteristics.js';
 import local from '../../../styles/RatingsReviews/NewReview/Characteristic.css';
 
-const Characteristic = ({ trait, index, update, darkMode }) => {
+const Characteristic = ({
+  trait, index, update, darkMode,
+}) => {
   const [rating, setRating] = useState(0);
   const updateRating = (value) => {
     setRating(value);
