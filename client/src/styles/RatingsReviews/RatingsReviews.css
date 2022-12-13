@@ -1,7 +1,6 @@
 .header {
   margin-top: 50px;
   margin-left: 9.8%;
-  /* margin-left: 22.3%; */
 }
 
 .mainBody {
@@ -12,13 +11,11 @@
 
 .ratings {
   margin-left: 10%;
-  /* margin-left: 22.5%; */
   width: 30%;
 }
 
 .reviews {
   margin-left: 5%;
   margin-right: 10%;
-  /* margin-right: 22.5%; */
   width: 70%;
 }

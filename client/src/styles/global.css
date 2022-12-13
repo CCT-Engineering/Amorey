@@ -105,6 +105,7 @@ button {
 .thumbnailMain {
   display: inline-block;
   padding-right: 1%;
+  padding-left: 5px;
 }
 
 .thumbnail {
@@ -115,7 +116,7 @@ button {
   position: fixed;
   display: flex;
   justify-content: center;
-  z-index: 1;
+  z-index: 2;
   left: 0;
   top: 0;
   width: 100%;
@@ -125,7 +126,7 @@ button {
 }
 
 .photo {
-  z-index: 2;
+  z-index: 3;
   align-self: center;
 }
 
