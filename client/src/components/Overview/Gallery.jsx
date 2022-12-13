@@ -127,11 +127,21 @@ function Gallery({
   }, [offset]);
 
   useEffect(() => {
-    setMainPhotoStyle(
-      photoUrl
-        ? { backgroundImage: `url(${formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT)})` }
-        : { background: 'whitesmoke', border: '1px solid #111', cursor: 'not-allowed' },
-    );
+    if (!photoUrl) {
+      setMainPhotoStyle({
+        background: 'whitesmoke',
+        border: '1px solid #111',
+        cursor: 'not-allowed',
+      });
+    } else if (expandView) {
+      setMainPhotoStyle({
+        backgroundImage: `url(${formatImg(photoUrl, null, null, false)})`,
+      });
+    } else {
+      setMainPhotoStyle({
+        backgroundImage: `url(${formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT)})`,
+      });
+    }
   }, [photoUrl]);
 
   let photoId = -1;

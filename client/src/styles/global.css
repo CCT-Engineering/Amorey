@@ -1,6 +1,6 @@
 :global body {
   --body-padding: 30px;
-  background: linear-gradient(white, #e7f5f0 70px, #8bbfb4);
+  background: linear-gradient(white, #eff 70px, #9cc);
   /* background: linear-gradient(to right, goldenrod, 30%, oldlace, 50%, whitesmoke); */
   box-sizing: border-box;
   color: #0a362e;
