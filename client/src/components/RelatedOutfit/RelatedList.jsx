@@ -19,20 +19,20 @@ const RelatedList = ({ currentId, current, CurMeta, setCurrent, setStars, calcul
         setRelatedArr(data);
         if (data.length > 5) {
           // console.log('>5 length', data.length)
-          const overflow = data.length - 5
+          const overflow = data.length - 5;
           // console.log('overflow', overflow)
-          const calcStart = Math.floor(overflow/2)
+          const calcStart = Math.floor(overflow / 2);
           // console.log('calcStart', calcStart)
-          setViewStart(calcStart)
+          setViewStart(calcStart);
           // console.log('start', viewStart)
-          setViewEnd(calcStart + 5)
+          setViewEnd(calcStart + 5);
           // console.log('end', viewEnd)
-          setView(data.slice(calcStart, calcStart + 5))
+          setView(data.slice(calcStart, calcStart + 5));
           // console.log('view', view)
         } else {
-          setView(data)
-          setViewStart(0)
-          setViewEnd(data.length)
+          setView(data);
+          setViewStart(0);
+          setViewEnd(data.length);
         }
       });
     }
@@ -49,7 +49,6 @@ const RelatedList = ({ currentId, current, CurMeta, setCurrent, setStars, calcul
   };
   const nextClick = (event) => {
     event.preventDefault();
-
     setViewStart(viewStart + 1);
     setViewEnd(viewEnd + 1);
     setView(relateArr.slice(viewStart + 1, viewEnd + 1));

@@ -61,51 +61,52 @@ const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent, setStars, calc
   };
   const handleChangeCurrent = () => {
     event.preventDefault();
+    // console.log('changing current')
     setCurrent(info);
     setMetadata(rel1Meta);
-  };
+  };;
 
-  const deleteButton = <button type="button" className={local.action} onClick={handleToggle} onKeyPress={buildHandleEnterKeyPress(handleToggle)}>☆</button>
+  const favButton = <button type="button" className={local.action} onClick={handleToggle}>☆</button>
 
-// scales for each component not whole div, also breaks everything else like buttons
-  // const handleEnter = (e) => {
-  //   e.target.style.transform = 'scale(1.025)';
-  // };
-  // const handleLeave = (e) => {
-  //   e.target.style.transform = 'scale(1)';
-  // };
   return (
     <div className={local.relatedCard}>
-    {/* <div className={local.relatedCard} onMouseEnter={handleEnter} onMouseLeave={handleLeave}></div> */}
-      {pic ? deleteButton : ''}
+    {/* <div className={`${local.relatedCard} ${toggleTable ? local.disableHover : ''}`}> */}
+      {/* {favButton} */}
+      {/* {pic ? favButton : ''} */}
+      {/* <button type="button" className={local.action} onClick={handleToggle}>☆</button> */}
+      <div className={local.hoverMe}>
       <center>
         {pic
-          ? <Img src={pic} w={175} h={192} alt="card pic" onClick={handleChangeCurrent} />
+          ? <Img src={pic} w={177} h={192} alt="card pic" onClick={handleChangeCurrent} />
           : (
-            <div className={local.noPhoto}>
-              {deleteButton}
+            <div className={local.noPhoto} onClick={handleChangeCurrent}>
+            {/* // <div className={local.noPhoto}> */}
+              {/* {favButton} */}
               Photo Unavailable
             </div>
           )}
-        {/* <img src={pic} alt="card pic" className={local.cardpic} onClick={handleChangeCurrent} /> */}
       </center>
+      {favButton}
       <div>
         {/* Category: */}
         {info.category}
       </div>
-      <div>
+      <b>
         {/* Name: */}
         {info.name}
-      </div>
+      </b>
       <div>
         {/* Price: $ */}
         $
         {price}
       </div>
       <StarDisplay stars={relStar} />
-      {toggleTable ? (
+      </div>
+      <div>
+        {toggleTable ? (
         <CompareTable handleToggle={handleToggle} current={current} rel1Info={info} rel1style={style} CurMeta={CurMeta} rel1Meta={rel1Meta} />
       ) : <div></div>}
+      </div>
     </div>
   );
 };

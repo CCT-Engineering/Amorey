@@ -7,9 +7,9 @@ const Index = ({ current, setCurrent, setFavorites, favorites, CurMeta, currentS
 
   return (
     <div className={local.RelatedOutfit}>
-      <h4>RELATED PRODUCTS</h4>
+      <h5>RELATED PRODUCTS</h5>
       <RelatedList currentId={current?.id} current={current} setCurrent={setCurrent} CurMeta={CurMeta} setStars={setStars} calculateAverageStars={calculateAverageStars} setMetadata={setMetadata} />
-      <h4>YOUR OUTFIT</h4>
+      <h5>YOUR OUTFIT</h5>
       {currentStyles.length && (
       <OutfitList current={current} favorites={favorites} setFavorites={setFavorites} currentStyles={currentStyles} stars={stars} />
       )}
