@@ -67,15 +67,18 @@ function Gallery({
           newAttr = {
             transform: 'revert',
             cursor: 'crosshair',
-            marginTop: '-70px',
+            marginTop: '-135px',
             marginRight: 'revert',
           };
         } else {
           // if in Expanded View, but not Zoom View
+          console.log('clientHeight:', document.documentElement.clientHeight);
+          console.log('clientWidth:', document.documentElement.clientWidth);
           const { clientX, clientY } = e;
-          setOffset({ x: 0, y: -70 });
+          // setOffset({ x: 0, y: -135 }); // ORIGINAL SETOFFSET
+          setOffset({ x: 0, y: 135 });
           mousePos.current = { x: clientX, y: clientY };
-          newAttr = { transform: 'scale(2.5)', cursor: 'zoom-out' };
+          newAttr = { transform: 'scale(1.0)', cursor: 'zoom-out' }; // CHANGE SCALE BACK TO 2.5!
         }
         setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
         setZoomView(!zoomView);
@@ -106,17 +109,17 @@ function Gallery({
 
   const handleMouseMove = (e) => {
     e.preventDefault();
-    if (zoomView) {
-      const { clientX, clientY } = e;
-      // console.log('BEFORE change:', offset.x, offset.y);
-      // console.log('diff:', mousePos.current.x - clientX, mousePos.current.y - clientY);
-      setOffset({
-        x: offset.x + (mousePos.current.x - clientX),
-        y: offset.y - (mousePos.current.y - clientY),
-      });
-      mousePos.current = { x: clientX, y: clientY };
-      console.log('AFTER change:', offset.x, offset.y);
-    }
+    const { clientX, clientY } = e;
+    console.log('mouseYPos:', clientY);
+    // if (zoomView) {
+    //   setOffset({
+    //     x: offset.x + (mousePos.current.x - clientX),
+    //     y: offset.y - (mousePos.current.y - clientY),
+    //   });
+    //   mousePos.current = { x: clientX, y: clientY };
+    //   console.log('marginTop:', -offset.y);
+    //   // console.log('AFTER change:', offset.x, offset.y);
+    // }
   };
 
   // update photo positioning when cursors moves and zoom mode on.
