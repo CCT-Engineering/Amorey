@@ -1,3 +1,42 @@
 .cart {
   display: block;
+  margin-top: 30px;
+}
+
+.sizeQty {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.addToCart {
+  display: block;
+  width: 100%;
+}
+
+.button {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  background-color:#52d1bc;
+  border: solid 1px;
+  font-weight: 600;
+  padding: 15px;
+}
+
+.button:hover {
+  background-color: #4cc6b2;
+}
+
+.buttonDark {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  background-color: #548C93;
+  border: solid 1px;
+  font-weight: 600;
+  padding: 15px;
+}
+
+.buttonDark:hover {
+  background-color: #73A4A3;
 }
