@@ -8,9 +8,9 @@ import ProductDesc from './ProductDesc.jsx';
 import local from '../../styles/Overview/Overview.css';
 
 const Overview = forwardRef(({
-  current, currentStyles, stars, favorites, setFavorites, reviewsQty,
+  current, currentStyles, stars, favorites, setFavorites, reviewsQty, darkMode,
 }, ref) => {
-  const [currentStyle, setCurrentStyle] = useState({ photos: [] });
+  const [currentStyle, setCurrentStyle] = useState({ photos: [], skus: {} });
   const [price, setPrice] = useState(current.default_price);
   const [onSale, setOnSale] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
@@ -69,8 +69,12 @@ const Overview = forwardRef(({
             currentStyles={currentStyles}
             currentStyle={currentStyle}
             setStyle={setStyle}
+            darkMode={darkMode}
           />
-          <Cart />
+          <Cart
+            currentStyle={currentStyle}
+            darkMode={darkMode}
+          />
         </div>
       </div>
       <ProductDesc current={current} />

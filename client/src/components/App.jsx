@@ -77,6 +77,7 @@ function App() {
         favorites={favorites}
         setFavorites={setFavorites}
         reviewsQty={reviews.length}
+        darkMode={darkMode}
         ref={ratingsReviewsRef}
       />
       <RelatedOutfit

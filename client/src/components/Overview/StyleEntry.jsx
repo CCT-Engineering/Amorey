@@ -2,13 +2,16 @@ import React from 'react';
 import local from '../../styles/Overview/StyleEntry.css';
 import { buildHandleEnterKeyPress, formatImg } from '../../util';
 
-function StyleEntry({ style, currentStyle, setStyle }) {
+function StyleEntry({
+  style, currentStyle, setStyle, darkMode,
+}) {
   const styleThumbUrl = style.photos[0].thumbnail_url;
   let divStyle;
   if (styleThumbUrl) {
     divStyle = {
       backgroundImage: `url(${formatImg(styleThumbUrl, 70, 70)})`,
     };
+    divStyle = darkMode ? { ...divStyle, border: '1px solid #B6D8C4' } : divStyle;
   } else {
     divStyle = {
       background: 'whitesmoke',
