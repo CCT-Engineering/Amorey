@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const url = 'http://ec2-52-13-2-252.us-west-2.compute.amazonaws.com:3300/';
+const url = 'http://localhost:3300/';
+console.log(window.location.href);
+console.log(window.location.hostname);
 
 const requests = {
   // pass in (callback)
