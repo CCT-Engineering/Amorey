@@ -11,7 +11,7 @@
 }
 
 .barDimensions {
-  background-color: #aae3d9;
+  background-color: #8acabf;
   color: #163a49;
   position: relative;
   height: 17px;
@@ -30,7 +30,7 @@
 .barMarker {
   display: inline-block;
   position: relative;
-  background-color: #52d1bc;
+  background-color: #37a492;
   color: transparent;
 }
 

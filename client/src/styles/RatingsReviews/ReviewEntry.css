@@ -40,7 +40,7 @@
 }
 
 .body {
-  padding: 5px;
+  padding: 0px 5px 5px 5px;
   word-wrap: break-word;
   hyphens: auto;
 }
@@ -54,22 +54,32 @@
   text-decoration: underline;
   background-color: transparent;
   border-color: transparent;
-  padding-left: 5px;
-  padding-bottom: 5px;
-  margin-bottom: 2%;
+  padding: 0px 5px;
+}
+
+.expandDark {
+  color: #B6D8C4;
+  font-weight: 600;
+  text-decoration: underline;
+  background-color: transparent;
+  border-color: transparent;
+  padding: 0px 5px;
 }
 
 .response {
   background-color: #7eb4aa;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 5px;
   margin-bottom: 1%;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
 .responseDark {
   background-color: #2B6678;
   padding: 5px;
   margin-bottom: 1%;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
 .responseHeader {

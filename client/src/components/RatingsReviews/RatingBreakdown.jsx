@@ -34,6 +34,7 @@ const RatingBreakdown = ({
             border: sort[starCount - 1] ? 'solid 1px gold' : '',
           }}
         />
+        {/* <div className={local.graphStarCount}>Test</div> */}
       </div>
     );
   };

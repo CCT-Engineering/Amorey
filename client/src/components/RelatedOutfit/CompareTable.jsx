@@ -1,27 +1,23 @@
 import React from 'react';
 import local from '../../styles/RelatedOutfit.css';
-import requests from '../../requests.js';
+import global from '../../styles/global.css';
 
 const CompareTable = ({
-  handleToggle, current, rel1Info, rel1style, CurMeta, rel1Meta
+  handleToggle, current, rel1Info, CurMeta, rel1Meta, darkMode,
 }) => {
   const calcRec = (meta) => {
-    let rec = (
-      100 * Number(meta.recommended.true) / (
+    const rec = (
+      (100 * Number(meta.recommended.true)) / (
         Number(meta.recommended.true) + Number(meta.recommended.false))
     ).toString().slice(0, 2);
     return rec;
   };
-  // console.log('current', current);
-  // console.log('rel1Info', rel1Info);
-  // console.log('curMeta', CurMeta);
-  // console.log('slice', CurMeta.characteristics.Comfort.value.slice(0, 3));
-  // console.log('rel1', rel1Meta);
 
   return (
     <div className={local.compareTable}>
-      <div className={local.tableContent}>
+      <div className={darkMode ? local.tableContentDark : local.tableContent}>
         <div className={local.tableHead}>
+          <div className={global.modalLogo} aria-label="CompareTable Logo" role="img" alt="AMOREY" />
           <h4> Comparing </h4>
           <div className={local.tableProd}>
             <div>
@@ -64,15 +60,14 @@ const CompareTable = ({
           </div>
           <div className={local.tableBody}>
             <div>
-              {CurMeta.characteristics.Comfort ? CurMeta.characteristics.Comfort.value.slice(0, 3) : <div>No data</div>}
+              {CurMeta.characteristics.Comfort
+                ? CurMeta.characteristics.Comfort.value.slice(0, 3) : <div>No data</div>}
               {CurMeta.characteristics.Comfort ? '/5.0' : ''}
-              {/* /5.0 */}
             </div>
             <div>Comfort</div>
             <div>
               {rel1Meta.characteristics.Comfort ? rel1Meta.characteristics.Comfort.value.slice(0, 3) : ''}
               {rel1Meta.characteristics.Comfort ? '/5.0' : ''}
-              {/* /5.0 */}
             </div>
           </div>
           <div className={local.tableBody}>
@@ -86,15 +81,6 @@ const CompareTable = ({
               /5.0
             </div>
           </div>
-          {/* <div className={local.tableBody}>
-            <div>
-              {CurMeta.ratings}
-            </div>
-            <div>Ratings</div>
-            <div>
-              {rel1Meta.ratings}
-            </div>
-          </div> */}
           <div className={local.tableBody}>
             <div>
               {calcRec(CurMeta)}

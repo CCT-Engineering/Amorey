@@ -3,54 +3,42 @@ import local from '../../styles/RelatedOutfit.css';
 import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 import Img from '../SharedComponents/Img.jsx';
 
-const OutfitCard = ({ outfitPiece, index, favorites, setFavorites, stars, view }) => {
+const OutfitCard = ({
+  outfitPiece, index, favorites, setFavorites, view, darkMode,
+}) => {
   const handleDelete = () => {
     event.preventDefault();
-    // console.log('delete index', index);
-    // console.log('current favorites', favorites);
-    let deleting = view[index];
-    let copyFav = favorites.slice();
-    copyFav.map((check, favIndex) => {
-      if (check === deleting) {
-        copyFav.splice(favIndex, 1);
-      }
-    })
-    // setFavorites((previousFavs) => {
-    // })
+    const deleting = view[index];
+    const copyFav = favorites.slice();
+    copyFav.map((check, favIndex) => check === deleting && copyFav.splice(favIndex, 1));
     setFavorites(copyFav);
-    // copyView.splice(index, 1);
-    // console.log('after delete splice', copyFav);
   };
-  const delButton = <button type="button" className={local.action} onClick={handleDelete}>X</button>
+  const delButton = <button type="button" className={local.action} onClick={handleDelete}>X</button>;
 
   return (
-    <div className={local.outfitCard}>
-      {/* <button type="button" className={local.action} onClick={handleDelete}>X</button> */}
+    <div className={darkMode ? local.outfitCardDark : local.outfitCard}>
       {outfitPiece.pic ? delButton : ''}
-      <center>
+      <div className={darkMode ? local.picContainerDark : local.picContainer}>
         {outfitPiece.pic
-          ? <Img src={outfitPiece.pic} w={177} h={192} alt={`Your Outfit: ${outfitPiece.name} img`} />
+          ? <Img src={outfitPiece.pic} w={211} h={221} alt={`Your Outfit: ${outfitPiece.name} img`} className={local.pic} />
           : (
-            <div className={local.noPhoto}>
+            <div className={darkMode ? local.noPhotoDark : local.noPhoto}>
               {delButton}
               Photo Unavailable
             </div>
           )}
-      </center>
-      <div>
-        {/* Category: */}
+      </div>
+      <div className={local.category}>
         {outfitPiece.category}
       </div>
-      <b>
-        {/* Name: */}
+      <h4 className={local.name}>
         {outfitPiece.name}
-      </b>
-      <div>
-        {/* Price: */}
+      </h4>
+      <div className={local.price}>
         $
         {outfitPiece.default_price}
       </div>
-      <StarDisplay stars={outfitPiece.stars} />
+      <StarDisplay stars={outfitPiece.stars} className={local.star} />
     </div>
   );
 };
