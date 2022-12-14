@@ -24,9 +24,9 @@ node_modules
 Icon
 
 .env
-/client/src/requests.js
 /coverage
 /spec/coverage
+/client/src/requests.js
 
 .eslintrc.js
 
