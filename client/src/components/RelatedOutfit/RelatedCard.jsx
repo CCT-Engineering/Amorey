@@ -70,37 +70,28 @@ const RelatedCard = ({ relateOneId, current, CurMeta, setCurrent, setStars, calc
 
   return (
     <div className={local.relatedCard}>
-    {/* <div className={`${local.relatedCard} ${toggleTable ? local.disableHover : ''}`}> */}
-      {/* {favButton} */}
-      {/* {pic ? favButton : ''} */}
-      {/* <button type="button" className={local.action} onClick={handleToggle}>☆</button> */}
       <div className={local.hoverMe}>
-      <center>
-        {pic
-          ? <Img src={pic} w={177} h={192} alt="card pic" onClick={handleChangeCurrent} />
-          : (
-            <div className={local.noPhoto} onClick={handleChangeCurrent}>
-            {/* // <div className={local.noPhoto}> */}
-              {/* {favButton} */}
-              Photo Unavailable
-            </div>
-          )}
-      </center>
-      {favButton}
-      <div>
-        {/* Category: */}
-        {info.category}
-      </div>
-      <b>
-        {/* Name: */}
-        {info.name}
-      </b>
-      <div>
-        {/* Price: $ */}
-        $
-        {price}
-      </div>
-      <StarDisplay stars={relStar} />
+        <div className={local.picContainer}>
+          {pic
+            ? <Img src={pic} w={211} h={221} alt="card pic" onClick={handleChangeCurrent} className={local.pic}/>
+            : (
+              <div className={local.noPhoto} onClick={handleChangeCurrent}>
+                Photo Unavailable
+              </div>
+            )}
+        </div>
+        {favButton}
+        <div className={local.category}>
+          {info.category}
+        </div>
+        <h4 className={local.name}>
+          {info.name}
+        </h4>
+        <div className={local.price}>
+          $
+          {price}
+        </div>
+        <StarDisplay stars={relStar} className={local.star}/>
       </div>
       <div>
         {toggleTable ? (
