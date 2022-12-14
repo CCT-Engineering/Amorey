@@ -3,7 +3,6 @@ import local from '../../styles/RelatedOutfit.css';
 import OutfitCard from './OutfitCard.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 
-
 const OutfitList = ({
   favorites, setFavorites, current, currentStyles, stars, darkMode,
 }) => {

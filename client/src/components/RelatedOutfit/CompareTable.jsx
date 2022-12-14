@@ -17,7 +17,7 @@ const CompareTable = ({
     <div className={local.compareTable}>
       <div className={darkMode ? local.tableContentDark : local.tableContent}>
         <div className={local.tableHead}>
-          {/* <div className={global.modalLogo} aria-label="CompareTable Logo" role="img" alt="AMOREY" /> */}
+          <div className={global.modalLogo} aria-label="CompareTable Logo" role="img" alt="AMOREY" />
           <h4> Comparing </h4>
           <div className={local.tableProd}>
             <div>
