@@ -5,18 +5,36 @@ function Cart({ currentStyle, darkMode }) {
   const [stock, setStock] = useState({});
   const [curSize, setCurSize] = useState('');
   const [stockTotal, setStockTotal] = useState(0);
+  const [curQty, setCurQty] = useState(0);
 
   function changeSize(e) {
     setCurSize(e.target.value);
+  }
+
+  function changeQty(e) {
+    setCurQty(e.target.value);
   }
 
   function collectCartData(e) {
     e.preventDefault();
   }
 
+  function expandSelect(e) {
+    e.size = 1;
+    e.focus();
+  }
+
   function handleCartClick(e) {
     e.preventDefault();
-    alert('Item Added!');
+    if (curSize && curQty) {
+      alert('Item Added!');
+    } else if (curSize) {
+      const dropdown = document.getElementById('Size');
+      console.log(dropdown);
+      expandSelect(dropdown);
+    } else {
+      console.log('Please select a size');
+    }
   }
 
   useEffect(() => {
@@ -68,6 +86,7 @@ function Cart({ currentStyle, darkMode }) {
             style={{ marginLeft: '15px' }}
             role="menu"
             id="Quantity"
+            onChange={changeQty}
             disabled={stockTotal ? null : true}
             defaultValue="Default"
             required
