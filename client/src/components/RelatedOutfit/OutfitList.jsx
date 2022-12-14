@@ -3,7 +3,6 @@ import local from '../../styles/RelatedOutfit.css';
 import OutfitCard from './OutfitCard.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 
-
 const OutfitList = ({
   favorites, setFavorites, current, currentStyles, stars, darkMode,
 }) => {
@@ -70,10 +69,6 @@ const OutfitList = ({
     <div className={local.carousel}>
       <div className={local.outfit}>
         <button type="button" onClick={addOutfit} className={darkMode ? local.addCardDark : local.addCard}>+ Add Current To Outfit</button>
-        {/* <div onClick={addOutfit} className={local.addCard}>
-          <div>+</div>
-          <div>Add Current To Outfit</div>
-        </div> */}
         <div
           role="button"
           tabIndex={0}
