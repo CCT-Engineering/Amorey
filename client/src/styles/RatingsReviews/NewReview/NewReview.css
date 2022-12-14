@@ -28,7 +28,7 @@
 
 .reviewFormDark {
   position: fixed;
-  border: 2px gold solid;
+  border: 2px #B6D8C4 solid;
   display: flex;
   justify-content: center;
   z-index: 4;
@@ -38,7 +38,7 @@
   height: 70%;
   min-height: 650px;
   overflow: auto;
-  background: linear-gradient(black, #053f3f 70px, #0a5d74);
+  background: linear-gradient(black, #133a4a 200px, #163051);
 }
 
 .header {
@@ -51,13 +51,13 @@
 .product {
   display: inline-block;
   font-weight: 600;
-  color: rgb(30, 85, 109);
+  color: #3C7883;
 }
 
 .productDark {
   display: inline-block;
   font-weight: 600;
-  color: orange;
+  color: #548C93;
 }
 
 .thumbnails {

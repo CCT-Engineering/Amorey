@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import characteristic from '../../../util/characteristics.js';
 import local from '../../../styles/RatingsReviews/NewReview/Characteristic.css';
 
-const Characteristic = ({ trait, index, update }) => {
+const Characteristic = ({
+  trait, index, update, darkMode,
+}) => {
   const [rating, setRating] = useState(0);
   const updateRating = (value) => {
     setRating(value);
@@ -14,7 +16,7 @@ const Characteristic = ({ trait, index, update }) => {
       <h6 className={local.header}>
         {`${trait}`}
         {rating
-          ? `:  "${characteristic[trait][rating]}"`
+          ? <div className={darkMode ? local.selectedDark : local.selected}>{`:  "${characteristic[trait][rating]}"`}</div>
           : null }
       </h6>
       <label className={local.rating} htmlFor={trait}>

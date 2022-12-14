@@ -1,6 +1,6 @@
 .reviewList {
   margin-top: 2%;
-  padding: 15px 0px;
+  padding: 15px 0 5px 0;
   max-height: 80vh;
   max-width: 95vh;
   overflow-y: auto;
@@ -9,7 +9,7 @@
 .moreReviews {
   margin-top: 1%;
   margin-bottom: 1%;
-  background-color: #52d1bc;
+  background-color: #3cad9a;
   border: solid 1px;
   font-weight: 600;
   margin-right: 2%;
@@ -37,7 +37,7 @@
 .addReview {
   margin-top: 1%;
   margin-bottom: 1%;
-  background-color:#52d1bc;
+  background-color:#3cad9a;
   border: solid 1px;
   font-weight: 600;
   padding: 15px;
