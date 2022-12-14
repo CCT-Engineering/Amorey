@@ -6,3 +6,13 @@
   font-weight: 500;
   padding: 5px 0 0 0;
 }
+
+.selected {
+  display: inline-block;
+  color: #2B6678;
+}
+
+.selectedDark {
+  display: inline-block;
+  color: #73A4A3;
+}

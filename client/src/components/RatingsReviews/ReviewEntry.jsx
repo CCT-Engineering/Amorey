@@ -9,7 +9,6 @@ const ReviewEntry = ({ review, updateReview, darkMode }) => {
   const unrated = !(localStorage.getItem(review.review_id) === 'true');
   const [expand, setExpand] = useState(false);
   const [canRateReview, setRateReview] = useState(unrated);
-  review.response = 'test';
 
   const rateReview = (rating) => {
     if (canRateReview || rating === 'putReport') {
@@ -27,16 +26,16 @@ const ReviewEntry = ({ review, updateReview, darkMode }) => {
       : (
         <div>
           <p className={local.body}>{`${review.body.substring(0, 250)}...`}</p>
-          <a
-            role="button"
+          <button
+            type="button"
             aria-label="Expand Body"
             tabIndex={0}
-            className={local.expand}
+            className={darkMode ? local.expandDark : local.expand}
             onClick={expandBody}
             onKeyPress={buildHandleEnterKeyPress(expandBody)}
           >
             Show more
-          </a>
+          </button>
         </div>
       );
   };
@@ -49,6 +48,9 @@ const ReviewEntry = ({ review, updateReview, darkMode }) => {
       </div>
       <h4 className={local.summary}>{review.summary}</h4>
       {renderReviewBody()}
+      {review.photos ? review.photos.map((photo, index) => (
+        <Thumbnail photo={photo.url} key={`${photo.url + index}`} />
+      )) : null}
       <div>
         {review.recommend && <div className={local.recommend}>✓ I recommend this product</div>}
       </div>
@@ -58,9 +60,6 @@ const ReviewEntry = ({ review, updateReview, darkMode }) => {
           <div>{review.response}</div>
         </div>
       )}
-      {review.photos ? review.photos.map((photo, index) => (
-        <Thumbnail photo={photo.url} key={`${photo.url + index}`} />
-      )) : null}
       <div className={local.footer}>
         Helpful?
         <button

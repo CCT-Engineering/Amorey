@@ -5,6 +5,7 @@ import RelatedOutfit from './RelatedOutfit/Index.jsx';
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import requests from '../requests.js';
 import calculateAverageStars from '../util/calculateStarAverage.js';
+import local from '../styles/App.css';
 import { setCookie, getCookie } from '../util';
 
 const FAVS_COOKIE = 'amorey_favs';
@@ -67,7 +68,7 @@ function App() {
   }, [favorites]);
 
   return (
-    <>
+    <div className={darkMode ? local.bodyDark : local.body}>
       <Banner darkMode={darkMode} setDarkMode={setDarkMode} />
       <Overview
         current={current}
@@ -100,7 +101,7 @@ function App() {
         darkMode={darkMode}
         ref={ratingsReviewsRef}
       />
-    </>
+    </div>
   );
 }
 
