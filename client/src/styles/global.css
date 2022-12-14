@@ -129,12 +129,11 @@ button {
 .banner {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 30px;
 }
 
 .logo {
-  margin-top: 5px;
-  margin-bottom: 15px;
-  margin-left: 10px;
   background-image: url('../assets/Amorey.png');
   background-repeat: no-repeat;
   background-size: cover;

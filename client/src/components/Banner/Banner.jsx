@@ -15,7 +15,8 @@ const Banner = ({ darkMode, setDarkMode }) => {
         className={global.logo}
         onClick={handleClick}
         onKeyPress={buildHandleEnterKeyPress(handleClick)}
-        role="img"
+        role="button"
+        tabIndex={0}
         alt="AMOREY"
         name="logo"
       />

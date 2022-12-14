@@ -3,7 +3,7 @@ import StyleEntry from './StyleEntry.jsx';
 import local from '../../styles/Overview/Styles.css';
 
 function Styles({
-  currentStyles, currentStyle, setStyle,
+  currentStyles, currentStyle, setStyle, darkMode,
 }) {
   return (
     <>
@@ -19,6 +19,7 @@ function Styles({
               style={style}
               currentStyle={currentStyle}
               setStyle={setStyle}
+              darkMode={darkMode}
             />
           ),
         )}
