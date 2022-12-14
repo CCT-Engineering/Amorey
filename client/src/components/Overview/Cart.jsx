@@ -19,21 +19,18 @@ function Cart({ currentStyle, darkMode }) {
     e.preventDefault();
   }
 
-  function expandSelect(e) {
-    e.size = 1;
-    e.focus();
-  }
-
   function handleCartClick(e) {
     e.preventDefault();
     if (curSize && curQty) {
       alert('Item Added!');
     } else if (curSize) {
-      const dropdown = document.getElementById('Size');
-      console.log(dropdown);
-      expandSelect(dropdown);
+      // console.log('Please select a quantity');
+      // const dropdown = document.getElementById('Quantity');
+      // select dropdown
     } else {
-      console.log('Please select a size');
+      // console.log('Please select a size');
+      // const dropdown = document.getElementById('Size');
+      // select dropdown
     }
   }
 
@@ -79,7 +76,8 @@ function Cart({ currentStyle, darkMode }) {
             <option value="Select Size" disabled>
               {stockTotal ? 'SELECT SIZE' : 'OUT OF STOCK'}
             </option>
-            {Object.keys(stock).map((size) => (<option value={size} key={size}>{size}</option>))}
+            {Object.keys(stock).map((size) => (
+              stock[size] > 0 && <option value={size} key={size}>{size}</option>))}
           </select>
           <select
             className={darkMode ? local.buttonDark : local.button}
@@ -92,7 +90,7 @@ function Cart({ currentStyle, darkMode }) {
             required
           >
             <option value="Default" disabled>-</option>
-            {[...Array(15).keys()].slice(1, Math.min(15, stock[curSize]) - 1).map((val) => (
+            {[...Array(16).keys()].slice(1, Math.min(15, stock[curSize]) + 1).map((val) => (
               <option value={val} key={`qty ${val}`}>{val}</option>
             ))}
           </select>
