@@ -90,6 +90,7 @@ function App() {
         setStars={setStars}
         calculateAverageStars={calculateAverageStars}
         setMetadata={setMetadata}
+        darkMode={darkMode}
       />
       <RatingsReviews
         current={current}
