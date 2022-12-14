@@ -69,6 +69,7 @@ const Overview = forwardRef(({
             currentStyles={currentStyles}
             currentStyle={currentStyle}
             setStyle={setStyle}
+            darkMode={darkMode}
           />
           <Cart
             currentStyle={currentStyle}
