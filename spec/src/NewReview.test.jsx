@@ -31,7 +31,7 @@ describe('Render App Page', () => {
       .findByRole('button', { name: 'Quality 5' }));
     await user.click(await screen
       .findByRole('textbox', { name: 'Summary Input' }));
-    await user.keyboard('This is a test that was submmited with user click and keyboard events', await screen
+    await user.keyboard('This is a test that was submitted with user click and keyboard events', await screen
       .findByRole('textbox', { name: 'Summary Input' }));
     await user.click(await screen
       .findByRole('textbox', { name: 'Body Input' }));
