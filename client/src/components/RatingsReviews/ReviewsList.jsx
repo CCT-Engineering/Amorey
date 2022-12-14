@@ -39,6 +39,7 @@ const ReviewsList = ({
   };
 
   const loadMoreEntries = () => {
+    // todo
     // const target = document.getElementById('moreReviews');
     // target.scrollIntoView({
     //   behavior: 'smooth',
