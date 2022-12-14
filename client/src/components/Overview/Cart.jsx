@@ -5,9 +5,14 @@ function Cart({ currentStyle, darkMode }) {
   const [stock, setStock] = useState({});
   const [curSize, setCurSize] = useState('');
   const [stockTotal, setStockTotal] = useState(0);
+  const [curQty, setCurQty] = useState(0);
 
   function changeSize(e) {
     setCurSize(e.target.value);
+  }
+
+  function changeQty(e) {
+    setCurQty(e.target.value);
   }
 
   function collectCartData(e) {
@@ -16,7 +21,17 @@ function Cart({ currentStyle, darkMode }) {
 
   function handleCartClick(e) {
     e.preventDefault();
-    alert('Item Added!');
+    if (curSize && curQty) {
+      alert('Item Added!');
+    } else if (curSize) {
+      // console.log('Please select a quantity');
+      // const dropdown = document.getElementById('Quantity');
+      // select dropdown
+    } else {
+      // console.log('Please select a size');
+      // const dropdown = document.getElementById('Size');
+      // select dropdown
+    }
   }
 
   useEffect(() => {
@@ -61,19 +76,21 @@ function Cart({ currentStyle, darkMode }) {
             <option value="Select Size" disabled>
               {stockTotal ? 'SELECT SIZE' : 'OUT OF STOCK'}
             </option>
-            {Object.keys(stock).map((size) => (<option value={size} key={size}>{size}</option>))}
+            {Object.keys(stock).map((size) => (
+              stock[size] > 0 && <option value={size} key={size}>{size}</option>))}
           </select>
           <select
             className={darkMode ? local.buttonDark : local.button}
             style={{ marginLeft: '15px' }}
             role="menu"
             id="Quantity"
+            onChange={changeQty}
             disabled={stockTotal ? null : true}
             defaultValue="Default"
             required
           >
             <option value="Default" disabled>-</option>
-            {[...Array(15).keys()].slice(1, Math.min(15, stock[curSize]) - 1).map((val) => (
+            {[...Array(16).keys()].slice(1, Math.min(15, stock[curSize]) + 1).map((val) => (
               <option value={val} key={`qty ${val}`}>{val}</option>
             ))}
           </select>

@@ -18,14 +18,14 @@
 .button {
   margin-top: 1%;
   margin-bottom: 1%;
-  background-color:#52d1bc;
+  background-color:#d1ece4;
   border: solid 1px;
   font-weight: 600;
   padding: 15px;
 }
 
 .button:hover {
-  background-color: #4cc6b2;
+  background-color: #b6d8d2;
 }
 
 .buttonDark {
