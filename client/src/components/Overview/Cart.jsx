@@ -4,16 +4,7 @@ import local from '../../styles/Overview/Cart.css';
 function Cart({ currentStyle, darkMode }) {
   const [stock, setStock] = useState({});
   const [curSize, setCurSize] = useState('');
-
-  function getTotalStock(style) {
-    let totalStock = 0;
-    Object.keys(style.skus).forEach((sku) => {
-      if (style.skus[sku] && style.skus[sku].quantity) {
-        totalStock += style.skus[sku].quantity;
-      }
-    });
-    return totalStock;
-  }
+  const [stockTotal, setStockTotal] = useState(0);
 
   function changeSize(e) {
     setCurSize(e.target.value);
@@ -29,6 +20,7 @@ function Cart({ currentStyle, darkMode }) {
   }
 
   useEffect(() => {
+    let totalStock = 0;
     const stockObj = {};
     Object.keys(currentStyle.skus).forEach((sku) => {
       const curSKU = currentStyle.skus[sku];
@@ -39,11 +31,12 @@ function Cart({ currentStyle, darkMode }) {
           stockObj[curSKU.size] = curSKU.quantity;
         }
       }
-      // document.getElementById('Size').target?.value('Select Size');
-      // document.getElementById('Size').defaultValue = 'Select Size';
-      // console.log(document.getElementById('Size'))
+      if (curSKU && curSKU.quantity) {
+        totalStock += curSKU.quantity;
+      }
     });
     setStock(stockObj);
+    setStockTotal(totalStock);
   }, [currentStyle]);
 
   const addToCartStyle = {
@@ -60,13 +53,13 @@ function Cart({ currentStyle, darkMode }) {
             className={darkMode ? local.buttonDark : local.button}
             role="menu"
             id="Size"
-            disabled={getTotalStock(currentStyle) ? null : true}
+            disabled={stockTotal ? null : true}
             onChange={changeSize}
             defaultValue="Select Size"
             required
           >
             <option value="Select Size" disabled>
-              {getTotalStock(currentStyle) ? 'SELECT SIZE' : 'OUT OF STOCK'}
+              {stockTotal ? 'SELECT SIZE' : 'OUT OF STOCK'}
             </option>
             {Object.keys(stock).map((size) => (<option value={size} key={size}>{size}</option>))}
           </select>
@@ -75,7 +68,7 @@ function Cart({ currentStyle, darkMode }) {
             style={{ marginLeft: '15px' }}
             role="menu"
             id="Quantity"
-            disabled={getTotalStock(currentStyle) ? null : true}
+            disabled={stockTotal ? null : true}
             defaultValue="Default"
             required
           >
@@ -86,7 +79,7 @@ function Cart({ currentStyle, darkMode }) {
           </select>
         </div>
         <div className={local.addToCart}>
-          {getTotalStock(currentStyle)
+          {stockTotal
             ? (
               <button
                 className={darkMode ? local.buttonDark : local.button}
