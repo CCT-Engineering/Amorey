@@ -47,7 +47,6 @@ const RelatedCard = ({
   };
 
   const favButton = <button type="button" className={local.action} onClick={handleToggle}>☆</button>;
-
   return (
     <div className={darkMode ? local.relatedCardDark : local.relatedCard}>
       <div className={darkMode ? local.hoverMeDark : local.hoverMe}>

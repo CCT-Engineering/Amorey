@@ -43,7 +43,6 @@ const RelatedList = ({
     setViewEnd(viewEnd + 1);
     setView(relateArr.slice(viewStart + 1, viewEnd + 1));
   };
-
   return (
     <div className={local.carousel}>
       <div className={local.related}>
@@ -68,7 +67,7 @@ const RelatedList = ({
         </div>
         {view.map((relateOneId, index) => (
           <RelatedCard
-            key={`${relateOneId + index}`}
+            key={`${index + current.id}`}
             relateOneId={relateOneId}
             current={current}
             CurMeta={CurMeta}
