@@ -3,28 +3,26 @@ import local from '../../styles/RelatedOutfit.css';
 import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 import Img from '../SharedComponents/Img.jsx';
 
-const OutfitCard = ({ outfitPiece, index, favorites, setFavorites, stars, view }) => {
+const OutfitCard = ({
+  outfitPiece, index, favorites, setFavorites, view, darkMode,
+}) => {
   const handleDelete = () => {
     event.preventDefault();
-    let deleting = view[index];
-    let copyFav = favorites.slice();
-    copyFav.map((check, favIndex) => {
-      if (check === deleting) {
-        copyFav.splice(favIndex, 1);
-      }
-    });
+    const deleting = view[index];
+    const copyFav = favorites.slice();
+    copyFav.map((check, favIndex) => check === deleting && copyFav.splice(favIndex, 1));
     setFavorites(copyFav);
   };
-  const delButton = <button type="button" className={local.action} onClick={handleDelete}>X</button>
+  const delButton = <button type="button" className={local.action} onClick={handleDelete}>X</button>;
 
   return (
-    <div className={local.outfitCard}>
+    <div className={darkMode ? local.outfitCardDark : local.outfitCard}>
       {outfitPiece.pic ? delButton : ''}
-      <div className={local.picContainer}>
+      <div className={darkMode ? local.picContainerDark : local.picContainer}>
         {outfitPiece.pic
-          ? <Img src={outfitPiece.pic} w={211} h={221} alt={`Your Outfit: ${outfitPiece.name} img`} className={local.pic}/>
+          ? <Img src={outfitPiece.pic} w={211} h={221} alt={`Your Outfit: ${outfitPiece.name} img`} className={local.pic} />
           : (
-            <div className={local.noPhoto}>
+            <div className={darkMode ? local.noPhotoDark : local.noPhoto}>
               {delButton}
               Photo Unavailable
             </div>
@@ -40,7 +38,7 @@ const OutfitCard = ({ outfitPiece, index, favorites, setFavorites, stars, view }
         $
         {outfitPiece.default_price}
       </div>
-      <StarDisplay stars={outfitPiece.stars} className={local.star}/>
+      <StarDisplay stars={outfitPiece.stars} className={local.star} />
     </div>
   );
 };

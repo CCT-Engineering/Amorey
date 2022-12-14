@@ -32,6 +32,18 @@
   background: rgb(172, 233, 222);
 }
 
+.relatedCardDark {
+  display: block;
+  border: solid 1px #B6D8C4;
+  margin: 1%;
+  box-shadow: 10px 5px 5px #1E556C;;
+  position: relative;
+  width: 210px;
+  height: 350px;
+  /* background: #3C7883; */
+  background: #1E556C;
+}
+
 .hoverMe:hover {
   border: solid 1px black;
   /* margin: 1%; */
@@ -43,6 +55,20 @@
   transform: scale(1.025);
   z-index: 1;
 }
+
+.hoverMeDark:hover {
+  border: solid 1px #B6D8C4;
+  /* margin: 1%; */
+  box-shadow: 10px 5px 5px #1E556C;
+  position: relative;
+  width: 210px;
+  height: 350px;
+  /* background: #3C7883; */
+  background: #1E556C;
+  transform: scale(1.025);
+  z-index: 1;
+}
+
 
 
 .outfit {
@@ -64,8 +90,25 @@
   background: rgb(148, 215, 204)
 }
 
+.outfitCardDark {
+  display: block;
+  border: solid 1px #B6D8C4;
+  margin: 1%;
+  box-shadow: 10px 5px 5px #1E556C;
+  position: relative;
+  min-width: 210px;
+  height: 350px;
+  /* background: #3C7883; */
+  background: #1E556C;
+}
+
 /* breaks the click */
 .outfitCard:hover {
+  transform: scale(1.025);
+  z-index: 1;
+}
+
+.outfitCardDark:hover {
   transform: scale(1.025);
   z-index: 1;
 }
@@ -80,7 +123,21 @@
   height: 350px;
 }
 
+.addCardDark {
+  display: block;
+  border: solid 1px #B6D8C4;
+  margin: 1%;
+  box-shadow: 10px 5px 5px #1E556C;
+  position: relative;
+  min-width: 210px;
+  height: 350px;
+}
+
 .addCard:hover {
+  transform: scale(1.025);
+}
+
+.addCardDark:hover {
   transform: scale(1.025);
 }
 
@@ -100,6 +157,17 @@
   /* max-height: 100%; */
   display: flex;
   justify-content: center;
+  background-color: whitesmoke;
+}
+
+.picContainerDark {
+  border-bottom: solid 1px #B6D8C4;
+  /* max-height: 192px; */
+  max-height: 220px;
+  /* max-height: 100%; */
+  display: flex;
+  justify-content: center;
+  background-color: #548C93;
 }
 
 .name {
@@ -131,12 +199,16 @@
   align-items: center;
   justify-content: center;
   z-index: 3;
-  /* pointer-events: auto; */
 }
 
 .tableContent {
   width: 500px;
-  background-color: white;
+  background:linear-gradient(white, #eff 200px, #9cc);
+}
+
+.tableContentDark {
+  width: 500px;
+  background: linear-gradient(black, #133a4a 200px, #163051);
 }
 
 .tableHead {
@@ -238,7 +310,26 @@
   flex-direction: row;
   align-items: center;
   background: whitesmoke;
-  color: #333;
+  font-style: italic;
+  letter-spacing: 3px;
+  text-shadow: none;
+  -webkit-text-stroke: 0;
+  width: 100%;
+
+  /* min-width: 210px; */
+  height: 220px;
+  /* border-bottom: solid 1px black; */
+  /* border: '1px solid #111', */
+  text-align: center;
+  justify-content: center;
+}
+
+.noPhotoDark {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  background: #548C93;
   font-style: italic;
   letter-spacing: 3px;
   text-shadow: none;
