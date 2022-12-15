@@ -2,34 +2,27 @@ import React, { useState, useEffect } from 'react';
 import local from '../../styles/RelatedOutfit.css';
 import RelatedCard from './RelatedCard.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
-import requests from '../../requests.js';
 
 const RelatedList = ({
-  currentId, current, CurMeta, setCurrent, setStars, calculateAverageStars, setMetadata, darkMode,
+  currentId, current, CurMeta, setCurrent, setCurStars, calculateAverageStars, setMetadata, darkMode, setCurrentStyles, relateArr,
 }) => {
-  const [relateArr, setRelatedArr] = useState([]);
   const [view, setView] = useState([]);
   const [viewStart, setViewStart] = useState(0);
   const [viewEnd, setViewEnd] = useState(0);
 
   useEffect(() => {
-    if (currentId) {
-      requests.getRelated(currentId, (data) => {
-        setRelatedArr(data);
-        if (data.length > 5) {
-          const overflow = data.length - 5;
-          const calcStart = Math.floor(overflow / 2);
-          setViewStart(calcStart);
-          setViewEnd(calcStart + 5);
-          setView(data.slice(calcStart, calcStart + 5));
-        } else {
-          setView(data);
-          setViewStart(0);
-          setViewEnd(data.length);
-        }
-      });
+    if (relateArr.length > 5) {
+      const overflow = relateArr.length - 5;
+      const calcStart = Math.floor(overflow / 2);
+      setViewStart(calcStart);
+      setViewEnd(calcStart + 5);
+      setView(relateArr.slice(calcStart, calcStart + 5));
+    } else {
+      setView(relateArr);
+      setViewStart(0);
+      setViewEnd(relateArr.length);
     }
-  }, [currentId]);
+  }, [relateArr]);
 
   const preClick = (event) => {
     event.preventDefault();
@@ -72,10 +65,11 @@ const RelatedList = ({
             current={current}
             CurMeta={CurMeta}
             setCurrent={setCurrent}
-            setStars={setStars}
+            setCurStars={setCurStars}
             calculateAverageStars={calculateAverageStars}
             setMetadata={setMetadata}
             darkMode={darkMode}
+            setCurrentStyles={setCurrentStyles}
           />
         ))}
       </div>

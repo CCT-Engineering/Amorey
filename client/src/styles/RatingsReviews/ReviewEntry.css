@@ -11,7 +11,7 @@
   background-color: #1E556C;
   border-bottom: solid 2px #B6D8C4;
   margin-bottom: 2%;
-  animation: fadeIn .6s;
+  animation: fadeIn .6;
 }
 
 @keyframes fadeIn {

@@ -20,6 +20,7 @@ function App() {
   const [reviews, setReviews] = useState([]);
   const [order, setOrder] = useState('relevant');
   const [darkMode, setDarkMode] = useState(false);
+  const [relateArr, setRelatedArr] = useState([]);
   const ratingsReviewsRef = useRef(null);
 
   const getReviews = (sortMethod = order) => {
@@ -28,39 +29,35 @@ function App() {
     });
   };
 
-  const getCurStylesMetaRev = (id) => {
-    requests.getStyles(id, (styleData) => {
-      setCurrentStyles(styleData.results);
-    });
-    requests.getMetadata(id, (metrics) => {
-      setMetadata(metrics);
-      setStars(calculateAverageStars(metrics.ratings));
-    });
-    requests.getReviews(id, order, (data) => {
-      setReviews(data.results);
+  const getRelated = () => {
+    requests.getRelated(current.id, (data) => {
+      setRelatedArr(data);
     });
   };
 
-  const getProductData = (id) => {
-    requests.getProductInfo(id, (data) => {
-      setCurrent(data);
-    });
-  };
-
-  // on app load, get the basic product data from the API
-  // Then, pass 1st product to getProductData which gets product metadata, styles, & reviews
+  // on app load, get product data, then get styles and metadata
   useEffect(() => {
     requests.getProducts((data) => {
-      getProductData(data[0].id);
+      requests.getProductInfo(data[0].id, (info) => {
+        setCurrent(info);
+      });
+      requests.getStyles(data[0].id, (styleData) => {
+        setCurrentStyles(styleData.results);
+      });
+      requests.getMetadata(data[0].id, (metrics) => {
+        setMetadata(metrics);
+        setStars(calculateAverageStars(metrics.ratings));
+      });
     });
   }, []);
 
-  // if current product changes, get new current product's styles & metadata from the API
+  // if current product changes, get related products and current reviews
   useEffect(() => {
     if (current.id) {
-      getCurStylesMetaRev(current.id);
+      getRelated();
+      getReviews();
     }
-  }, [current]);
+  }, [current.id]);
 
   // if favorites change, save favorites to cookie on client
   useEffect(() => {
@@ -88,10 +85,12 @@ function App() {
         setCurrent={setCurrent}
         currentStyles={currentStyles}
         stars={stars}
-        setStars={setStars}
+        setCurStars={setStars}
         calculateAverageStars={calculateAverageStars}
         setMetadata={setMetadata}
         darkMode={darkMode}
+        setCurrentStyles={setCurrentStyles}
+        relateArr={relateArr}
       />
       <RatingsReviews
         current={current}

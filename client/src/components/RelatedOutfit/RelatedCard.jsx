@@ -7,16 +7,13 @@ import { buildHandleEnterKeyPress } from '../../util';
 import Img from '../SharedComponents/Img.jsx';
 
 const RelatedCard = ({
-  relateOneId, current, CurMeta, setCurrent, setStars, calculateAverageStars, setMetadata, darkMode,
+  relateOneId, current, CurMeta, setCurrent, setCurStars, calculateAverageStars, setMetadata,
+  darkMode, setCurrentStyles,
 }) => {
   const [info, setInfo] = useState({});
   const [style, setStyle] = useState({});
-  const [pic, setPic] = useState(null);
-  const [price, setPrice] = useState(null);
-  const [rating, setRating] = useState(null);
   const [toggleTable, setToggleTable] = useState(false);
   const [rel1Meta, setRel1Meta] = useState(0);
-  const [onSale, setOnSale] = useState(false);
   const [relStar, setRelStar] = useState(5);
 
   useEffect(() => {
@@ -24,12 +21,8 @@ const RelatedCard = ({
       requests.getProductInfo(relateOneId, (infoData) => {
         setInfo(infoData);
       });
-      requests.getStyles(relateOneId, (styleData) => {
-        setStyle(styleData);
-        setPic(styleData.results[0].photos[0].thumbnail_url);
-        const saleCheck = !!styleData.results[0].sale_price;
-        setOnSale(saleCheck);
-        setPrice(saleCheck ? styleData.results[0].sale_price : styleData.results[0].original_price);
+      requests.getStyles(relateOneId, ({ results }) => {
+        setStyle(results);
       });
       requests.getMetadata(relateOneId, (metaData) => {
         setRelStar(calculateAverageStars(metaData.ratings));
@@ -37,6 +30,7 @@ const RelatedCard = ({
       });
     }
   }, [relateOneId]);
+
   const handleToggle = () => {
     setToggleTable(!toggleTable);
   };
@@ -44,6 +38,8 @@ const RelatedCard = ({
     event.preventDefault();
     setCurrent(info);
     setMetadata(rel1Meta);
+    setCurrentStyles(style);
+    setCurStars(relStar);
   };
 
   const favButton = <button type="button" className={local.action} onClick={handleToggle}>☆</button>;
@@ -51,8 +47,8 @@ const RelatedCard = ({
     <div className={darkMode ? local.relatedCardDark : local.relatedCard}>
       <div className={darkMode ? local.hoverMeDark : local.hoverMe}>
         <div className={darkMode ? local.picContainerDark : local.picContainer}>
-          {pic
-            ? <Img src={pic} w={211} h={221} alt="card pic" onClick={handleChangeCurrent} className={local.pic} />
+          {style[0]?.photos[0]?.thumbnail_url
+            ? <Img src={style[0].photos[0].thumbnail_url} w={211} h={221} alt="card pic" onClick={handleChangeCurrent} className={local.pic} />
             : (
               <div
                 role="button"
@@ -67,16 +63,16 @@ const RelatedCard = ({
         </div>
         {favButton}
         <div className={local.category}>
-          {info.category}
+          {info.category ? info.category : 'Category'}
         </div>
         <h4 className={local.name}>
-          {info.name}
+          {info.name ? info.name : 'Name'}
         </h4>
         <div className={local.price}>
           $
-          {price}
+          {style.length && style[0]?.sale_price ? style[0].sale_price : style[0]?.original_price}
         </div>
-        <StarDisplay stars={relStar} className={local.star} />
+        {relStar ? <StarDisplay stars={relStar} className={local.star} /> : null}
       </div>
       <div>
         {toggleTable ? (
