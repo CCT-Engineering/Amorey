@@ -38,13 +38,14 @@ const ReviewsList = ({
     }
   };
 
+  const windowScroll = () => {
+    const reviewList = document.getElementById('reviewList');
+    window.scroll({ top: document.body.scrollHeight, left: 0, behavior: 'smooth' });
+    reviewList.scroll({ top: reviewList.scrollHeight, behavior: 'smooth' });
+  };
+
   const loadMoreEntries = () => {
-    // const target = document.getElementById('moreReviews');
-    // target.scrollIntoView({
-    //   behavior: 'smooth',
-    //   block: 'nearest',
-    //   inline: 'center',
-    // });
+    setTimeout(() => { windowScroll(); }, 100);
     if (renderLimit + 2 <= reviews.length) {
       setRenderLimit(renderLimit + 2);
     } else if (renderLimit < reviews.length) {
@@ -84,7 +85,7 @@ const ReviewsList = ({
         setOrder={setOrder}
         darkMode={darkMode}
       />
-      <div className={local.reviewList}>
+      <div id="reviewList" className={local.reviewList}>
         {filters.map((review, index) => renderReviewEntries(review, index))}
         {!filters.length && <div>Currently No Reviews To Display</div>}
       </div>
