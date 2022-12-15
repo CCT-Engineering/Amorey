@@ -1,6 +1,9 @@
 .searchBar {
-  padding: 30px;
+  display: flex;
   font-size: x-large;
+  margin-bottom: 5px;
+  flex-wrap: nowrap;
+  align-items: flex-end;
 }
 
 .searchInput {

@@ -57,7 +57,7 @@ const ReviewsList = ({
     if (renderAmount < renderLimit) {
       renderAmount += 1;
       return (
-        <ReviewEntry review={review} key={index} updateReview={updateReview} darkMode={darkMode} />
+        <ReviewEntry review={review} key={`${index + JSON.stringify(review)}`} updateReview={updateReview} darkMode={darkMode} />
       );
     }
     return null;

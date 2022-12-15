@@ -10,8 +10,10 @@ import { buildHandleEnterKeyPress, buildHandleKeyDown, formatImg } from '../../u
 function Gallery({
   name, photos, photoIndex, setPhotoIndex,
 }) {
-  const [MAIN_PHOTO_WID, MAIN_PHOTO_HGT] = [390, 530];
-  // console.log('photos inside Gallery:', photos);
+  const [MAIN_PHOTO_WID, MAIN_PHOTO_HGT, TOP_OFFSET, ZOOM] = [390, 530, 135, 2.5];
+  // TOP_OFFSET is photo offset from top of window.
+  const windowHgt = document.documentElement.clientHeight;
+  const windowWidth = document.documentElement.clientWidth;
   const photoDescPrefix = 'Main photo';
   const photoDesc = `${photoDescPrefix} ${photoIndex} of ${name} style`;
   const photoQty = photos.length || 0;
@@ -20,10 +22,9 @@ function Gallery({
   const [zoomView, setZoomView] = useState(false);
   const photoUrl = photos[photoIndex] ? photos[photoIndex].url : '';
   const [mainPhotoStyle, setMainPhotoStyle] = useState({});
-  // console.log('mainPhotoStyle:', mainPhotoStyle);
 
   // States and Ref below are for expanded view zoom feature
-  const [offset, setOffset] = useState({ x: -10, y: 0 }); // image margin offset
+  const [offset, setOffset] = useState({ x: 0, y: 0 }); // image margin offset
   const mousePos = useRef({ x: 0, y: 0 }); // absolute position of cursor
 
   const thumbRefs = useRef([]);
@@ -67,15 +68,15 @@ function Gallery({
           newAttr = {
             transform: 'revert',
             cursor: 'crosshair',
-            marginTop: '-70px',
+            marginTop: `-${TOP_OFFSET}px`,
             marginRight: 'revert',
           };
         } else {
           // if in Expanded View, but not Zoom View
           const { clientX, clientY } = e;
-          setOffset({ x: 0, y: -70 });
+          setOffset({ x: 0, y: TOP_OFFSET });
           mousePos.current = { x: clientX, y: clientY };
-          newAttr = { transform: 'scale(2.5)', cursor: 'zoom-out' };
+          newAttr = { transform: `scale(${ZOOM})`, cursor: 'zoom-out' };
         }
         setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
         setZoomView(!zoomView);
@@ -106,22 +107,39 @@ function Gallery({
 
   const handleMouseMove = (e) => {
     e.preventDefault();
+    const { clientX, clientY } = e;
     if (zoomView) {
-      const { clientX, clientY } = e;
-      // console.log('BEFORE change:', offset.x, offset.y);
-      // console.log('diff:', mousePos.current.x - clientX, mousePos.current.y - clientY);
       setOffset({
-        x: offset.x + (mousePos.current.x - clientX),
-        y: offset.y - (mousePos.current.y - clientY),
+        x: offset.x + ZOOM * (mousePos.current.x - clientX),
+        y: offset.y - ZOOM * (mousePos.current.y - clientY),
       });
       mousePos.current = { x: clientX, y: clientY };
-      console.log('AFTER change:', offset.x, offset.y);
     }
   };
 
   // update photo positioning when cursors moves and zoom mode on.
   useEffect(() => {
-    const newAttr = { marginTop: -offset.y, marginRight: -offset.x };
+    const maxYmargin = windowHgt * ((ZOOM - 1) / 2) - TOP_OFFSET;
+    const minYmargin = -windowHgt * ((ZOOM - 1) / 2) - TOP_OFFSET;
+    let newYmargin;
+    if (-offset.y > maxYmargin) {
+      newYmargin = maxYmargin;
+    } else if (-offset.y < minYmargin) {
+      newYmargin = minYmargin;
+    } else {
+      newYmargin = -offset.y;
+    }
+    const maxXmargin = windowWidth * ((ZOOM - 1) / 2) - 0;
+    const minXmargin = -windowWidth * ((ZOOM - 1) / 2) + 0;
+    let newXmargin;
+    if (-offset.x > maxXmargin) {
+      newXmargin = maxXmargin;
+    } else if (-offset.x < minXmargin) {
+      newXmargin = minXmargin;
+    } else {
+      newXmargin = -offset.x;
+    }
+    const newAttr = { marginTop: newYmargin, marginRight: newXmargin };
     setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
   }, [offset]);
 

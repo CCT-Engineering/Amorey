@@ -1,11 +1,12 @@
 .styles {
   display: flex;
-  max-width: 281px;
   flex-wrap: wrap;
 }
 
 .styleHead {
   text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .styleTitle {

@@ -90,7 +90,7 @@ const OutfitList = ({
         {
           view.map((outfitPiece, index) => (
             <OutfitCard
-              key={`${outfitPiece + index}`}
+              key={`${current.id + outfitPiece + index}`}
               outfitPiece={outfitPiece}
               index={index}
               favorites={favorites}
