@@ -20,8 +20,8 @@
   align-self: center;
   width: 30%;
   min-width: 500px;
-  height: 70%;
-  min-height: 650px;
+  height: 75%;
+  min-height: 700px;
   overflow: auto;
   background: linear-gradient(white, #e7f5f0 70px, #8bbfb4);
 }
@@ -35,8 +35,8 @@
   align-self: center;
   width: 30%;
   min-width: 500px;
-  height: 70%;
-  min-height: 650px;
+  height: 75%;
+  min-height: 700px;
   overflow: auto;
   background: linear-gradient(black, #133a4a 200px, #163051);
 }
