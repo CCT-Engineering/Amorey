@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:3300/';
+const url = window.location.href.includes('amazonaws') ? window.location.href : 'http://localhost:3300/';
 
 const requests = {
   // pass in (callback)
