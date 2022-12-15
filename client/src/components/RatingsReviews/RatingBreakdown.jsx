@@ -10,7 +10,6 @@ const RatingBreakdown = ({
     event.preventDefault();
     changeSearch(index);
   };
-
   const reviewGraph = (starCount) => {
     const percent = ratings
       ? (ratings[starCount]
@@ -31,10 +30,10 @@ const RatingBreakdown = ({
           className={darkMode ? local.graphDisplayDark : local.graphDisplay}
           style={{
             width: `${percent}%`,
-            border: sort[starCount - 1] ? 'solid 1px gold' : '',
+            background: sort[starCount - 1] ? 'gold' : null,
           }}
         />
-        {/* <div className={local.graphStarCount}>Test</div> */}
+        <div className={local.graphStarCount}>{ratings ? ratings[starCount] : null}</div>
       </div>
     );
   };

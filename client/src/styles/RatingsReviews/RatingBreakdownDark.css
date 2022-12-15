@@ -32,17 +32,38 @@
   white-space: nowrap;
 }
 
+/* .graphStarCount {
+  height: 10px;
+  width: 100%;
+  float: right;
+} */
+
 .graphDimensions {
-  background-color: red;
+  background-color:#8acabf;
+  height: 10px;
+  width: 100%;
+}
+
+.graphDimensionsDark {
+  background-color: #1E556C;
   height: 10px;
   width: 100%;
 }
 
 .graphDisplay {
   height: 100%;
-  background: purple;
+  background: #37a492;
 }
 
 .graphDisplay:hover {
+  background-color: gold;
+}
+
+.graphDisplayDark {
+  height: 100%;
+  background: #73A4A3;
+}
+
+.graphDisplayDark:hover {
   background-color: gold;
 }

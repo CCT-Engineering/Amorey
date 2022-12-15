@@ -14,29 +14,29 @@
   background-color: #8acabf;
   color: #163a49;
   position: relative;
+  text-align: center;
   height: 17px;
   width: 100%;
-  position: relative;
 }
 
 .barDimensionsDark {
   background-color: #1E556C;
   position: relative;
+  text-align: center;
   height: 17px;
   width: 100%;
-  position: relative;
 }
 
 .barMarker {
+  position: absolute;
   display: inline-block;
-  position: relative;
   background-color: #37a492;
   color: transparent;
 }
 
 .barMarkerDark {
+  position: absolute;
   display: inline-block;
-  position: relative;
   background-color: #3C7883;
   color: transparent;
 }
@@ -44,7 +44,6 @@
 .barDisplay {
   z-index: 1;
   display: inline-block;
-  position: relative;
 }
 
 .ratings {
