@@ -56,7 +56,7 @@
 }
 
 .graphDisplay:hover {
-  background-color: gold;
+  background-color: #1E556C;
 }
 
 .graphDisplayDark {
@@ -65,5 +65,11 @@
 }
 
 .graphDisplayDark:hover {
-  background-color: gold;
+  background-color: #8acabf;
+}
+
+.graphStarCount {
+  margin-top: -11px;
+  float: right;
+  font-size: xx-small;
 }

@@ -20,9 +20,9 @@ const ProductBreakdown = ({ traits, darkMode }) => {
       <div key={index}>
         <div className={local.characteristic}>{trait}</div>
         <div className={darkMode ? local.barDimensionsDark : local.barDimensions}>
-          <div className={darkMode ? local.barMarkerDark : local.barMarker} style={{ left: dividers ? `${33}%` : `${20}%` }}>|</div>
-          <div className={local.barDisplay} style={{ left: `${Number(detail.value) * 20}%` }}>▼</div>
-          <div className={darkMode ? local.barMarkerDark : local.barMarker} style={{ left: dividers ? `${66}%` : `${80}%` }}>|</div>
+          <div className={darkMode ? local.barMarkerDark : local.barMarker} style={{ left: dividers ? `${33.33}%` : `${20}%` }}>|</div>
+          <div className={local.barDisplay} style={{ left: Number(detail.value) }}>▼</div>
+          <div className={darkMode ? local.barMarkerDark : local.barMarker} style={{ right: dividers ? `${33.33}%` : `${20}%` }}>|</div>
         </div>
         <div className={local.ratings}>{renderRatings(trait)}</div>
       </div>

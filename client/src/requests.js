@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:3300/';
+const url = window.location.href === 'http://127.0.0.1:8080/client/dist/index.html' ? 'http://localhost:3300/' : window.location.href;
 
 const requests = {
   // pass in (callback)
