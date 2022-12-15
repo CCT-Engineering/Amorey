@@ -18,7 +18,6 @@ const RelatedCard = ({
 
   useEffect(() => {
     if (relateOneId) {
-      console.log('retreiving product data');
       requests.getProductInfo(relateOneId, (infoData) => {
         setInfo(infoData);
       });

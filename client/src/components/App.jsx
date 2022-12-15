@@ -35,7 +35,7 @@ function App() {
     });
   };
 
-  // on app load, get product data, then get sty
+  // on app load, get product data, then get styles and metadata
   useEffect(() => {
     requests.getProducts((data) => {
       requests.getProductInfo(data[0].id, (info) => {
