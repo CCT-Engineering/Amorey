@@ -20,6 +20,7 @@ function App() {
   const [reviews, setReviews] = useState([]);
   const [order, setOrder] = useState('relevant');
   const [darkMode, setDarkMode] = useState(false);
+  const [relateArr, setRelatedArr] = useState([]);
   const ratingsReviewsRef = useRef(null);
 
   const getReviews = (sortMethod = order) => {
@@ -28,7 +29,13 @@ function App() {
     });
   };
 
-  // on app load, get the basic product data from the A
+  const getRelated = () => {
+    requests.getRelated(current.id, (data) => {
+      setRelatedArr(data);
+    });
+  };
+
+  // on app load, get product data, then get sty
   useEffect(() => {
     requests.getProducts((data) => {
       requests.getProductInfo(data[0].id, (info) => {
@@ -44,10 +51,11 @@ function App() {
     });
   }, []);
 
-  // if current product changes, get new current product's styles & metadata from the API
+  // if current product changes, get related products and current reviews
   useEffect(() => {
     if (current.id) {
-      getReviews(current.id);
+      getRelated();
+      getReviews();
     }
   }, [current.id]);
 
@@ -82,6 +90,7 @@ function App() {
         setMetadata={setMetadata}
         darkMode={darkMode}
         setCurrentStyles={setCurrentStyles}
+        relateArr={relateArr}
       />
       <RatingsReviews
         current={current}
