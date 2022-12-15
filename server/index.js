@@ -5,6 +5,7 @@ const path = require('path');
 const axios = require('axios');
 const morgan = require('morgan');
 const cors = require('cors');
+const compression = require('compression');
 const sessionHandler = require('./session-handler');
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json());
 // Generates a new session if one does not exist.
 app.use(sessionHandler);
 app.use(express.urlencoded({ extended: true }));
+app.use(compression());
 
 // STATIC SERVICE OF ASSETS
 app.use(express.static(path.join(__dirname, '../client/dist')));
