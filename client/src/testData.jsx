@@ -6,85 +6,85 @@
 const testData = {};
 
 testData.prod40345Styles = {
-    "product_id": "40345",
-    "results": [
+  "product_id": "40345",
+  "results": [
+    {
+      "style_id": 240506,
+      "name": "Black Lenses & Black Frame",
+      "original_price": "69.00",
+      "sale_price": null,
+      "default?": false,
+      "photos": [
         {
-            "style_id": 240506,
-            "name": "Black Lenses & Black Frame",
-            "original_price": "69.00",
-            "sale_price": null,
-            "default?": false,
-            "photos": [
-                {
-                    "thumbnail_url": null,
-                    "url": null
-                }
-            ],
-            "skus": {
-                "null": {
-                    "quantity": null,
-                    "size": null
-                }
-            }
-        },
-        {
-            "style_id": 240507,
-            "name": "Black Lenses & Gold Frame",
-            "original_price": "69.00",
-            "sale_price": null,
-            "default?": true,
-            "photos": [
-                {
-                    "thumbnail_url": null,
-                    "url": null
-                }
-            ],
-            "skus": {
-                "null": {
-                    "quantity": null,
-                    "size": null
-                }
-            }
-        },
-        {
-            "style_id": 240508,
-            "name": "Gold Lenses & Black Frame",
-            "original_price": "69.00",
-            "sale_price": null,
-            "default?": false,
-            "photos": [
-                {
-                    "thumbnail_url": null,
-                    "url": null
-                }
-            ],
-            "skus": {
-                "null": {
-                    "quantity": null,
-                    "size": null
-                }
-            }
-        },
-        {
-            "style_id": 240509,
-            "name": "Gold Lenses & Gold Frame",
-            "original_price": "69.00",
-            "sale_price": null,
-            "default?": false,
-            "photos": [
-                {
-                    "thumbnail_url": null,
-                    "url": null
-                }
-            ],
-            "skus": {
-                "null": {
-                    "quantity": null,
-                    "size": null
-                }
-            }
+          "thumbnail_url": null,
+          "url": null
         }
-    ]
+      ],
+      "skus": {
+        "null": {
+          "quantity": null,
+          "size": null
+        }
+      }
+    },
+    {
+      "style_id": 240507,
+      "name": "Black Lenses & Gold Frame",
+      "original_price": "69.00",
+      "sale_price": null,
+      "default?": true,
+      "photos": [
+        {
+          "thumbnail_url": null,
+          "url": null
+        }
+      ],
+      "skus": {
+        "null": {
+          "quantity": null,
+          "size": null
+        }
+      }
+    },
+    {
+      "style_id": 240508,
+      "name": "Gold Lenses & Black Frame",
+      "original_price": "69.00",
+      "sale_price": null,
+      "default?": false,
+      "photos": [
+        {
+          "thumbnail_url": null,
+          "url": null
+        }
+      ],
+      "skus": {
+        "null": {
+          "quantity": null,
+          "size": null
+        }
+      }
+    },
+    {
+      "style_id": 240509,
+      "name": "Gold Lenses & Gold Frame",
+      "original_price": "69.00",
+      "sale_price": null,
+      "default?": false,
+      "photos": [
+        {
+          "thumbnail_url": null,
+          "url": null
+        }
+      ],
+      "skus": {
+        "null": {
+          "quantity": null,
+          "size": null
+        }
+      }
+    }
+  ]
 }
 
 testData.prod40345Data = {
@@ -98,18 +98,18 @@ testData.prod40345Data = {
   "created_at": "2021-08-13T14:38:44.509Z",
   "updated_at": "2021-08-13T14:38:44.509Z",
   "features": [
-      {
-          "feature": "Lenses",
-          "value": "Ultrasheen"
-      },
-      {
-          "feature": "UV Protection",
-          "value": null
-      },
-      {
-          "feature": "Frames",
-          "value": "LightCompose"
-      }
+    {
+      "feature": "Lenses",
+      "value": "Ultrasheen"
+    },
+    {
+      "feature": "UV Protection",
+      "value": null
+    },
+    {
+      "feature": "Frames",
+      "value": "LightCompose"
+    }
   ]
 }
 
