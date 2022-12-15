@@ -7,7 +7,7 @@ import { buildHandleEnterKeyPress } from '../../util';
 import Img from '../SharedComponents/Img.jsx';
 
 const RelatedCard = ({
-  relateOneId, current, CurMeta, setCurrent, setStars, calculateAverageStars, setMetadata, darkMode,
+  relateOneId, current, CurMeta, setCurrent, setCurStars, calculateAverageStars, setMetadata, darkMode, setCurrentStyles
 }) => {
   const [info, setInfo] = useState({});
   const [style, setStyle] = useState({});
@@ -24,12 +24,12 @@ const RelatedCard = ({
       requests.getProductInfo(relateOneId, (infoData) => {
         setInfo(infoData);
       });
-      requests.getStyles(relateOneId, (styleData) => {
-        setStyle(styleData);
-        setPic(styleData.results[0].photos[0].thumbnail_url);
-        const saleCheck = !!styleData.results[0].sale_price;
+      requests.getStyles(relateOneId, ({ results }) => {
+        setStyle(results);
+        setPic(results[0].photos[0].thumbnail_url);
+        const saleCheck = !!results[0].sale_price;
         setOnSale(saleCheck);
-        setPrice(saleCheck ? styleData.results[0].sale_price : styleData.results[0].original_price);
+        setPrice(saleCheck ? results[0].sale_price : results[0].original_price);
       });
       requests.getMetadata(relateOneId, (metaData) => {
         setRelStar(calculateAverageStars(metaData.ratings));
@@ -41,9 +41,12 @@ const RelatedCard = ({
     setToggleTable(!toggleTable);
   };
   const handleChangeCurrent = () => {
+    console.log(style);
     event.preventDefault();
     setCurrent(info);
     setMetadata(rel1Meta);
+    setCurrentStyles(style);
+    setCurStars(relStar);
   };
 
   const favButton = <button type="button" className={local.action} onClick={handleToggle}>☆</button>;
@@ -67,16 +70,16 @@ const RelatedCard = ({
         </div>
         {favButton}
         <div className={local.category}>
-          {info.category}
+          {info.category ? info.category : null}
         </div>
         <h4 className={local.name}>
-          {info.name}
+          {info.name ? info.name : null}
         </h4>
         <div className={local.price}>
           $
-          {price}
+          {price ? price : null}
         </div>
-        <StarDisplay stars={relStar} className={local.star} />
+        {relStar ? <StarDisplay stars={relStar} className={local.star} /> : null}
       </div>
       <div>
         {toggleTable ? (

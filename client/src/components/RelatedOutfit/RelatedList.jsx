@@ -5,7 +5,7 @@ import { buildHandleEnterKeyPress } from '../../util';
 import requests from '../../requests.js';
 
 const RelatedList = ({
-  currentId, current, CurMeta, setCurrent, setStars, calculateAverageStars, setMetadata, darkMode,
+  currentId, current, CurMeta, setCurrent, setCurStars, calculateAverageStars, setMetadata, darkMode, setCurrentStyles,
 }) => {
   const [relateArr, setRelatedArr] = useState([]);
   const [view, setView] = useState([]);
@@ -72,10 +72,11 @@ const RelatedList = ({
             current={current}
             CurMeta={CurMeta}
             setCurrent={setCurrent}
-            setStars={setStars}
+            setCurStars={setCurStars}
             calculateAverageStars={calculateAverageStars}
             setMetadata={setMetadata}
             darkMode={darkMode}
+            setCurrentStyles={setCurrentStyles}
           />
         ))}
       </div>

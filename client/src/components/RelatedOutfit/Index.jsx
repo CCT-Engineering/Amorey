@@ -5,7 +5,8 @@ import OutfitList from './OutfitList.jsx';
 
 const Index = ({
   current, setCurrent, setFavorites, favorites, CurMeta,
-  currentStyles, stars, setStars, calculateAverageStars, setMetadata, darkMode,
+  currentStyles, stars, setCurStars, calculateAverageStars, setMetadata, darkMode,
+  setCurrentStyles,
 }) => {
   return (
     <div className={local.RelatedOutfit}>
@@ -15,10 +16,11 @@ const Index = ({
         current={current}
         setCurrent={setCurrent}
         CurMeta={CurMeta}
-        setStars={setStars}
+        setCurStars={setCurStars}
         calculateAverageStars={calculateAverageStars}
         setMetadata={setMetadata}
         darkMode={darkMode}
+        setCurrentStyles={setCurrentStyles}
       />
       <h5>YOUR OUTFIT</h5>
       {currentStyles.length && (

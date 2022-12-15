@@ -28,39 +28,28 @@ function App() {
     });
   };
 
-  const getCurStylesMetaRev = (id) => {
-    requests.getStyles(id, (styleData) => {
-      setCurrentStyles(styleData.results);
-    });
-    requests.getMetadata(id, (metrics) => {
-      setMetadata(metrics);
-      setStars(calculateAverageStars(metrics.ratings));
-    });
-    requests.getReviews(id, order, (data) => {
-      setReviews(data.results);
-    });
-  };
-
-  const getProductData = (id) => {
-    requests.getProductInfo(id, (data) => {
-      setCurrent(data);
-    });
-  };
-
-  // on app load, get the basic product data from the API
-  // Then, pass 1st product to getProductData which gets product metadata, styles, & reviews
+  // on app load, get the basic product data from the A
   useEffect(() => {
     requests.getProducts((data) => {
-      getProductData(data[0].id);
+      requests.getProductInfo(data[0].id, (info) => {
+        setCurrent(info);
+      });
+      requests.getStyles(data[0].id, (styleData) => {
+        setCurrentStyles(styleData.results);
+      });
+      requests.getMetadata(data[0].id, (metrics) => {
+        setMetadata(metrics);
+        setStars(calculateAverageStars(metrics.ratings));
+      });
     });
   }, []);
 
   // if current product changes, get new current product's styles & metadata from the API
   useEffect(() => {
     if (current.id) {
-      getCurStylesMetaRev(current.id);
+      getReviews(current.id);
     }
-  }, [current]);
+  }, [current.id]);
 
   // if favorites change, save favorites to cookie on client
   useEffect(() => {
@@ -88,10 +77,11 @@ function App() {
         setCurrent={setCurrent}
         currentStyles={currentStyles}
         stars={stars}
-        setStars={setStars}
+        setCurStars={setStars}
         calculateAverageStars={calculateAverageStars}
         setMetadata={setMetadata}
         darkMode={darkMode}
+        setCurrentStyles={setCurrentStyles}
       />
       <RatingsReviews
         current={current}
