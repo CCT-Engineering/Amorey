@@ -34,9 +34,12 @@ app.all('/*', (req, res) => {
   })
     .then((resAPI) => res.status(resAPI.status).send(resAPI.data))
     .catch((errAPI) => {
-      console.log(errAPI.response)
-      res.status(errAPI.response.status).send(errAPI);
-
+      if (errAPI) {
+        console.log(errAPI.response);
+        res.status(errAPI.response.status).send(errAPI);
+      } else {
+        res.sendStatus(404);
+      }
     });
 });
 
