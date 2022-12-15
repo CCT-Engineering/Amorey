@@ -49,7 +49,7 @@ const ReviewEntry = ({ review, updateReview, darkMode }) => {
       <h4 className={local.summary}>{review.summary}</h4>
       {renderReviewBody()}
       {review.photos ? review.photos.map((photo, index) => (
-        <Thumbnail photo={photo.url} key={`${photo.url + index}`} />
+        <Thumbnail photo={photo.url} key={`${review.id + index}`} />
       )) : null}
       <div>
         {review.recommend && <div className={local.recommend}>✓ I recommend this product</div>}
