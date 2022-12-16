@@ -2,7 +2,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import RelatedOutfit from '../../client/src/components/RelatedOutfit/Index.jsx';
-import testData from '../../client/src/testData.jsx';
+import testData from '../mock/testData.jsx';
 
 describe('Render RelatedOutfit Page', () => {
   it('Should render page with Title header', () => {
