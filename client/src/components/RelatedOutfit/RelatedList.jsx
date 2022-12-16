@@ -13,6 +13,10 @@ const RelatedList = ({
     0: null, 1: null, 2: null, 3: null, 4: null,
   });
 
+  // useEffect(() => {
+  //   console.log('newCards: ', cards);
+  // }, [cards]);
+
   const build = (relateOneId, index) => {
     const temp = cards;
     temp[index] = (
@@ -32,6 +36,7 @@ const RelatedList = ({
         />
       )
     );
+    // console.log('built: ', temp);
     setCards(temp);
   };
 
@@ -78,12 +83,13 @@ const RelatedList = ({
     setViewEnd(viewEnd - 1);
     setCards(newCards);
   };
+
   const nextClick = (event) => {
     event.preventDefault();
     const newCards = {
       0: cards[1], 1: cards[2], 2: cards[3], 3: cards[4], 4: null,
     };
-    newCards[4] = buildOne(relateArr[viewEnd + 1]);
+    newCards[4] = buildOne(relateArr[viewEnd]);
     setViewStart(viewStart + 1);
     setViewEnd(viewEnd + 1);
     setCards(newCards);
@@ -109,7 +115,7 @@ const RelatedList = ({
           onClick={(e) => nextClick(e)}
           onKeyPress={buildHandleEnterKeyPress((e) => preClick(e))}
         >
-          {viewEnd + 1 < relateArr.length && relateArr.length > 5 ? <div>&gt;</div> : null}
+          {viewEnd < relateArr.length && relateArr.length > 5 ? <div>&gt;</div> : null}
         </div>
         {cards[0]}
         {cards[1]}

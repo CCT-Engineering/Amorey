@@ -15,7 +15,7 @@ const RelatedCard = ({
   const [toggleTable, setToggleTable] = useState(false);
   const [rel1Meta, setRel1Meta] = useState(0);
   const [relStar, setRelStar] = useState(5);
-
+  // console.log('Making new card');
   useEffect(() => {
     if (relateOneId) {
       requests.getProductInfo(relateOneId, (infoData) => {

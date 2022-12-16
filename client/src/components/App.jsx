@@ -31,7 +31,11 @@ function App() {
 
   const getRelated = () => {
     requests.getRelated(current.id, (data) => {
-      setRelatedArr(data);
+      const unique = [...new Set(data)];
+      const temp = unique.filter((item) => {
+        return item !== current.id;
+      });
+      setRelatedArr(temp);
     });
   };
 
