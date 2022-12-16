@@ -15,9 +15,7 @@ const RelatedCard = ({
   const [toggleTable, setToggleTable] = useState(false);
   const [rel1Meta, setRel1Meta] = useState(0);
   const [relStar, setRelStar] = useState(5);
-  const updateTheme = (theme) => {
-    darkMode = theme;
-  }
+
   useEffect(() => {
     if (relateOneId) {
       requests.getProductInfo(relateOneId, (infoData) => {
@@ -33,13 +31,10 @@ const RelatedCard = ({
     }
   }, [relateOneId]);
 
-  useEffect(() => {
-    console.log('changed theme');
-  }, [darkMode]);
-
   const handleToggle = () => {
     setToggleTable(!toggleTable);
   };
+
   const handleChangeCurrent = () => {
     event.preventDefault();
     setCurrent(info);
@@ -53,8 +48,8 @@ const RelatedCard = ({
 
   const favButton = <button type="button" className={local.action} onClick={handleToggle}>☆</button>;
   return (
-    <div className={darkMode ? local.relatedCardDark : local.relatedCard}>
-      <div className={darkMode ? local.hoverMeDark : local.hoverMe}>
+    <div className={`related-card ${darkMode ? local.relatedCardDark : local.relatedCard}`}>
+      <div className={`hover-me ${darkMode ? local.hoverMeDark : local.hoverMe}`}>
         <div className={darkMode ? local.picContainerDark : local.picContainer}>
           {style[0]?.photos[0]?.thumbnail_url
             ? <Img src={style[0].photos[0].thumbnail_url} w={211} h={221} alt="card pic" onClick={handleChangeCurrent} className={local.pic} />
@@ -84,16 +79,16 @@ const RelatedCard = ({
         {relStar ? <StarDisplay stars={relStar} className={local.star} /> : null}
       </div>
       <div>
-        {toggleTable ? (
-          <CompareTable
-            handleToggle={handleToggle}
-            current={current}
-            rel1Info={info}
-            CurMeta={CurMeta}
-            rel1Meta={rel1Meta}
-            darkMode={darkMode}
-          />
-        ) : <div />}
+        <CompareTable
+          style={{ display: toggleTable ? 'block' : 'none' }}
+          handleToggle={handleToggle}
+          toggleTable={toggleTable}
+          current={current}
+          rel1Info={info}
+          CurMeta={CurMeta}
+          rel1Meta={rel1Meta}
+          darkMode={darkMode}
+        />
       </div>
     </div>
   );

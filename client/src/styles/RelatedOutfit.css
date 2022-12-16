@@ -375,3 +375,7 @@
   text-align: center;
   justify-content: center;
 }
+
+.none {
+  display: none;
+}

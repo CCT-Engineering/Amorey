@@ -3,7 +3,8 @@ import local from '../../styles/RelatedOutfit.css';
 import global from '../../styles/global.css';
 
 const CompareTable = ({
-  handleToggle, current, rel1Info, CurMeta, rel1Meta, darkMode,
+  handleToggle, current, rel1Info, CurMeta, rel1Meta,
+  toggleTable, darkMode,
 }) => {
   const calcRec = (meta) => {
     const rec = (
@@ -14,8 +15,9 @@ const CompareTable = ({
   };
 
   return (
-    <div className={local.compareTable}>
-      <div className={darkMode ? local.tableContentDark : local.tableContent}>
+    <div className={toggleTable ? local.compareTable : local.none}>
+      <div className={`table-content ${darkMode ? local.tableContentDark : local.tableContent}`}>
+        {toggleTable && (
         <div className={local.tableHead}>
           <div className={global.modalLogo} aria-label="CompareTable Logo" role="img" alt="AMOREY" />
           <h4> Comparing </h4>
@@ -96,6 +98,7 @@ const CompareTable = ({
             Close
           </button>
         </div>
+        )}
       </div>
     </div>
   );
