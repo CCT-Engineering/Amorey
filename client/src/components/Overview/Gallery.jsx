@@ -14,7 +14,7 @@ function Gallery({
   const windowWidth = document.documentElement.clientWidth;
   const MAIN_PHOTO_WID = Math.round(Math.max(windowWidth * 0.8 - 250, 200));
   const MAIN_PHOTO_HGT = 530;
-    // TOP_OFFSET is photo offset from top of window.
+  // TOP_OFFSET is photo offset from top of window.
   const TOP_OFFSET = 135;
   const ZOOM = 2.5;
 
@@ -103,6 +103,7 @@ function Gallery({
       cursor: '',
       marginTop: '',
       marginRight: '',
+      backgroundImage: `url(${formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT)})`,
     };
     setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
   };

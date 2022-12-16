@@ -7,6 +7,15 @@
   background: rgb(172, 233, 222)
 }
 
+.productDescDark {
+  display: flex;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 80%;
+  padding: 10px;
+  background: #1E556C
+}
+
 .sloganDesc {
   display: block;
   width: 65%;
@@ -25,7 +34,7 @@
 }
 
 .divider {
-  background: #666;
+  background: #555;
   height: 75%;
 }
 
