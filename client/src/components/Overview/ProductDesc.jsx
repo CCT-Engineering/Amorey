@@ -6,7 +6,6 @@ function ProductDesc({ current, darkMode }) {
   return (
     <div
       className={darkMode ? local.productDescDark : local.productDesc}
-      // style={darkMode ? { background: '#1E556C' } : { background: 'revert' }}
     >
       <div className={local.sloganDesc}>
         <h4>{current.slogan}</h4>
