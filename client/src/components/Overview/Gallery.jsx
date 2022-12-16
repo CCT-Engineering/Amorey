@@ -89,7 +89,7 @@ function Gallery({
         // if NOT in Expanded view
         setExpandView(true);
         newAttr = {
-          backgroundImage: `url(${formatImg(photoUrl, null, null, false)})`,
+          backgroundImage: `url(${formatImg(photoUrl, null, 2160, false)})`,
         };
         setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
       }
@@ -158,7 +158,7 @@ function Gallery({
       });
     } else if (expandView) {
       setMainPhotoStyle({
-        backgroundImage: `url(${formatImg(photoUrl, null, null, false)})`,
+        backgroundImage: `url(${formatImg(photoUrl, null, 2160, false)})`,
       });
     } else {
       setMainPhotoStyle({

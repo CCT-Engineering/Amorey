@@ -62,7 +62,8 @@ const getCookie = ((cName) => {
 const formatImg = (url, w, h, crop = true) => {
   // this function works specifically for unsplash urls only
   // extract base url
-  const height = w ? h : null;
+  // const height = w ? h : null;
+  const height = h;
   let newUrl = url.match(/https:\/\/.*ixid=\w+/) || url.match(/https:\/\/.*ixlib=[^&]+/);
   if (!newUrl) {
     return url; // return original url if match cannot be found

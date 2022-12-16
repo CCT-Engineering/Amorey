@@ -1,7 +1,6 @@
 import React from 'react';
 import local from '../../styles/Overview/Social.css';
 import { buildHandleEnterKeyPress } from '../../util';
-import imgfdsfs from '../../assets/f-logo-RGB-Blue-58.png';
 
 function Social({ darkMode }) {
   const socialBackground = darkMode
