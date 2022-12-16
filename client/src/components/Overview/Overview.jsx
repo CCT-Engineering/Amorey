@@ -76,7 +76,7 @@ const Overview = forwardRef(({
           />
         </div>
       </div>
-      <ProductDesc current={current} />
+      <ProductDesc current={current} darkMode={darkMode} />
     </>
   );
 });

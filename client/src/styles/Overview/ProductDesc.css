@@ -1,9 +1,19 @@
 .productDesc {
   display: flex;
-  padding: 20px 0;
+  margin: 20px auto;
   width: 100%;
-  margin: auto;
-  max-width: 900px;
+  max-width: 80%;
+  padding: 10px;
+  background: rgb(172, 233, 222)
+}
+
+.productDescDark {
+  display: flex;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 80%;
+  padding: 10px;
+  background: #1E556C
 }
 
 .sloganDesc {
@@ -24,7 +34,7 @@
 }
 
 .divider {
-  background: #666;
+  background: #555;
   height: 75%;
 }
 

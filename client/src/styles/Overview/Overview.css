@@ -1,9 +1,16 @@
 .overviewMain {
   justify-content: center;
+  align-items: flex-end;
   display: flex;
+  flex-wrap: wrap-reverse;
   margin: auto;
+  width: 80%;
 }
 
 .infoStylesCart {
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0px;
+  min-width: 120px;
   max-width: 281px;
 }

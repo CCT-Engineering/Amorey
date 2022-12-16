@@ -70,7 +70,7 @@ const formatImg = (url, w, h, crop = true) => {
   newUrl += '&auto=format,enhance,compress';
   // if w is less than 100px, zoom in on faces by default, otherwise fit by crop
   newUrl += w < 100 && w !== null ? '&fit=facearea&facepad=4' : '';
-  newUrl += crop ? '&fit=crop' : '';
+  newUrl += crop ? '&fit=crop&crop=faces,entropy' : '';
   newUrl += w ? `&w=${w}` : '';
   newUrl += height ? `&h=${height}` : '';
   return newUrl;
