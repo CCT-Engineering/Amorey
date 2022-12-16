@@ -63,6 +63,7 @@ const Overview = forwardRef(({
             setFavorites={setFavorites}
             currentStyles={currentStyles}
             reviewsQty={reviewsQty}
+            darkMode={darkMode}
           />
           <Styles
             currentStyles={currentStyles}

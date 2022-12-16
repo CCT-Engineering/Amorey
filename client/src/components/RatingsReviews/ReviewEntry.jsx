@@ -43,7 +43,9 @@ const ReviewEntry = ({ review, updateReview, darkMode }) => {
   return (
     <div className={darkMode ? local.mainBodyDark : local.mainBody}>
       <div className={local.header}>
-        <div className={local.rating}><StarDisplay stars={review.rating} /></div>
+        <div className={local.rating}>
+          <StarDisplay stars={review.rating} darkMode={darkMode} />
+        </div>
         <div className={local.user}>{`${review.reviewer_name}, ${date(review.date)}`}</div>
       </div>
       <h4 className={local.summary}>{review.summary}</h4>

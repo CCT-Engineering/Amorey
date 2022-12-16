@@ -53,7 +53,7 @@ const RatingBreakdown = ({
         <div className={local.starRating}>
           {stars && (Math.round(stars * 4) / 4).toFixed(1)}
         </div>
-        <StarDisplay stars={stars} />
+        <StarDisplay stars={stars} darkMode={darkMode} />
       </div>
       <div className={local.recommend}>
         {recommenedPercent()}

@@ -38,7 +38,7 @@ const OutfitCard = ({
         $
         {outfitPiece.default_price}
       </div>
-      <StarDisplay stars={outfitPiece.stars} className={local.star} />
+      <StarDisplay stars={outfitPiece.stars} className={local.star} darkMode={darkMode} />
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { buildHandleEnterKeyPress } from '../../util';
 
 const ProductInfo = forwardRef(({
   current, price, origPrice, onSale, stars, setFavorites, currentStyles, favorites, reviewsQty,
+  darkMode,
 }, ref) => {
   const [currentIsFav, setCurrentIsFav] = useState(false);
   const priceStyle = {
@@ -64,7 +65,7 @@ const ProductInfo = forwardRef(({
 
   return (
     <div className={local.productInfo}>
-      {reviewsQty ? <StarDisplay stars={stars} /> : ''}
+      {reviewsQty ? <StarDisplay stars={stars} darkMode={darkMode} /> : ''}
       <div
         role="button"
         tabIndex={0}

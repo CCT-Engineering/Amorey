@@ -76,7 +76,9 @@ const RelatedCard = ({
           $
           {style.length && style[0]?.sale_price ? style[0].sale_price : style[0]?.original_price}
         </div>
-        {relStar ? <StarDisplay stars={relStar} className={local.star} /> : null}
+        {relStar
+          ? <StarDisplay stars={relStar} className={local.star} darkMode={darkMode} />
+          : null}
       </div>
       <div>
         <CompareTable
