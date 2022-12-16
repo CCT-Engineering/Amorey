@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   position: relative;
   text-align: center;
-  /* width: 380px; */
   height: 510px;
 
   background-size: cover;
@@ -13,10 +13,6 @@
   background-position: center;
   background-color: #333;
   margin-right: 25px;
-  color: black;
-  font-size: 1.5rem;
-  text-shadow: 0px 0px 2.5px white;
-  -webkit-text-stroke: 2px whitesmoke;
   cursor: zoom-in;
   flex-shrink: 1;
   flex-grow: 1;
@@ -36,14 +32,9 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  color: black;
-  font-size: 1.5rem;
-  text-shadow: 0px 0px 2.5px white;
-  -webkit-text-stroke: 2px whitesmoke;
   cursor: crosshair;
   background-color: rgba(0, 0, 0, .75);
   overflow: hidden;
-  /* transition: transform 0.5s; */
 }
 
 .gallerySide {
@@ -55,7 +46,6 @@
   position: absolute;
   top: 5px;
   left: 5px;
-  /* height: 300px; */
   background: rgba(255,255,255,0.5)
 }
 
@@ -64,14 +54,10 @@
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  /* position: absolute;
-  top: 5px;
-  left: 5px; */
   height: 201px;
   overflow: scroll;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
-  /* background: rgba(255,255,255,0.3) */
 }
 
 .galleryThumbs::-webkit-scrollbar {
@@ -82,11 +68,13 @@
   margin: 2px 0px;
   border: 0;
   background: black;
-  color: initial;
   font-size: 0.6rem;
   font-weight: normal;
   opacity: 0.7;
   width: 45px;
+  color: black;
+  text-shadow: 0px 0px 2.5px white;
+  -webkit-text-stroke: 2px whitesmoke;
 }
 
 .thbArrow:hover {
@@ -103,8 +91,11 @@
   left: 60px;
   opacity: 0.7;
   height: 100%;
-  color: inherit;
-  font-size: inherit;
+
+  color: black;
+  font-size: 1.5rem;
+  text-shadow: 0px 0px 2.5px white;
+  -webkit-text-stroke: 2px whitesmoke;
 }
 
 .left:hover {
@@ -120,10 +111,14 @@
   position: absolute;
   top: 0;
   right: 5px;
-  color: inherit;
   font-size: inherit;
   opacity: 0.7;
   height: 100%;
+
+  color: black;
+  font-size: 1.5rem;
+  text-shadow: 0px 0px 2.5px white;
+  -webkit-text-stroke: 2px whitesmoke;
 }
 
 .right:hover {
@@ -134,13 +129,18 @@
   color: #333;
   font-style: italic;
   letter-spacing: 3px;
-  text-shadow: none;
-  -webkit-text-stroke: 0;
 }
 
 .closeExpView {
   position: absolute;
   right: 10px;
   top: 10px;
-  -webkit-text-stroke: 0;
+  color: black;
+}
+
+.social {
+  position: relative;
+  width: 30px;
+  height: 10px;
+  background: rgb(172, 233, 222);
 }
