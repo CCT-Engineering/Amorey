@@ -8,7 +8,7 @@ import Img from '../SharedComponents/Img.jsx';
 
 const RelatedCard = ({
   relateOneId, current, CurMeta, setCurrent, setCurStars, calculateAverageStars, setMetadata,
-  darkMode, setCurrentStyles,
+  darkMode, setCurrentStyles, setCards,
 }) => {
   const [info, setInfo] = useState({});
   const [style, setStyle] = useState({});
@@ -40,6 +40,9 @@ const RelatedCard = ({
     setMetadata(rel1Meta);
     setCurrentStyles(style);
     setCurStars(relStar);
+    setCards({
+      0: null, 1: null, 2: null, 3: null, 4: null,
+    });
   };
 
   const favButton = <button type="button" className={local.action} onClick={handleToggle}>☆</button>;
