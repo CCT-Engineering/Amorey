@@ -1,4 +1,5 @@
 .productDesc {
+  box-sizing: border-box;
   display: flex;
   margin: 20px auto;
   width: 100%;
