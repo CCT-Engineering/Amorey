@@ -9,7 +9,6 @@ const RatingsReviews = forwardRef(({
   current, metadata, reviews, getReviews, stars, setOrder, darkMode,
 }, ref) => {
   const [sort, setSort] = useState([0, 0, 0, 0, 0]);
-
   const changeSearch = (star) => {
     const starSorting = sort.slice();
     starSorting[star - 1] = Number(!starSorting[star - 1]);
