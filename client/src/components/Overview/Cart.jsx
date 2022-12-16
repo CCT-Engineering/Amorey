@@ -66,8 +66,8 @@ function Cart({ currentStyle, darkMode }) {
         <div className={local.sizeQty}>
           <select
             className={darkMode ? local.buttonDark : local.button}
-            role="menu"
             id="Size"
+            aria-label="select size"
             disabled={stockTotal ? null : true}
             onChange={changeSize}
             defaultValue="Select Size"
@@ -82,8 +82,8 @@ function Cart({ currentStyle, darkMode }) {
           <select
             className={darkMode ? local.buttonDark : local.button}
             style={{ marginLeft: '15px' }}
-            role="menu"
-            id="Quantity"
+            id="select quantity"
+            aria-label="Quantity"
             onChange={changeQty}
             disabled={stockTotal ? null : true}
             defaultValue="Default"
@@ -101,6 +101,7 @@ function Cart({ currentStyle, darkMode }) {
               <button
                 className={darkMode ? local.buttonDark : local.button}
                 type="submit"
+                aria-label="add to cart"
                 style={addToCartStyle}
                 onClick={handleCartClick}
               >

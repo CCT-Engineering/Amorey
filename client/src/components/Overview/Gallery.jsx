@@ -10,10 +10,14 @@ import { buildHandleEnterKeyPress, buildHandleKeyDown, formatImg } from '../../u
 function Gallery({
   name, photos, photoIndex, setPhotoIndex,
 }) {
-  const [MAIN_PHOTO_WID, MAIN_PHOTO_HGT, TOP_OFFSET, ZOOM] = [390, 530, 135, 2.5];
-  // TOP_OFFSET is photo offset from top of window.
   const windowHgt = document.documentElement.clientHeight;
   const windowWidth = document.documentElement.clientWidth;
+  const MAIN_PHOTO_WID = Math.round(Math.max(windowWidth * 0.8 - 250, 200));
+  const MAIN_PHOTO_HGT = 530;
+    // TOP_OFFSET is photo offset from top of window.
+  const TOP_OFFSET = 135;
+  const ZOOM = 2.5;
+
   const photoDescPrefix = 'Main photo';
   const photoDesc = `${photoDescPrefix} ${photoIndex} of ${name} style`;
   const photoQty = photos.length || 0;
