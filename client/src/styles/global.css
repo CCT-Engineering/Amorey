@@ -94,7 +94,7 @@ button {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1px #444;
+  -webkit-text-stroke: 1px #0a362e;
 }
 
 .starsDark {

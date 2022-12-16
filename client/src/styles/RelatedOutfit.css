@@ -379,3 +379,39 @@
 .none {
   display: none;
 }
+
+.stars {
+  --percent: calc(var(--rating) * 20%);
+  display: inline-block;
+  font-size: 1.5em;
+  font-family: Times;
+  line-height: 1;
+}
+
+.stars:before {
+  content: '★★★★★';
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, gold var(--percent), #548C93 var(--percent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #0a362e;
+}
+
+.starsDark {
+  --percent: calc(var(--rating) * 20%);
+  display: inline-block;
+  font-size: 1.5em;
+  font-family: Times;
+  line-height: 1;
+}
+
+.starsDark:before {
+  content: '★★★★★';
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, gold var(--percent), #1E556C var(--percent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #B6D8C4;
+}

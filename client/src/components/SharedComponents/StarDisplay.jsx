@@ -1,9 +1,9 @@
 import React from 'react';
 import global from '../../styles/global.css';
 
-const StarDisplay = ({ stars, darkMode }) => {
+const StarDisplay = ({ stars }) => {
   return (
-    <div className={darkMode ? global.starsDark : global.stars} style={{ '--rating': stars }} />
+    <div className={global.Stars} style={{ '--rating': stars }} />
   );
 };
 
