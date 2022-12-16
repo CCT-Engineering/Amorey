@@ -50,6 +50,7 @@ const Overview = forwardRef(({
           photos={currentStyle.photos}
           photoIndex={photoIndex}
           setPhotoIndex={setPhotoIndex}
+          darkMode={darkMode}
         />
         <div className={local.infoStylesCart}>
           <ProductInfo

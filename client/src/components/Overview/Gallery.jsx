@@ -3,16 +3,17 @@ import React, {
 } from 'react';
 import local from '../../styles/Overview/Gallery.css';
 import Thumb from './Thumb.jsx';
+import Social from './Social.jsx';
 import { buildHandleEnterKeyPress, buildHandleKeyDown, formatImg } from '../../util';
 
 // photoIndex prop is the index of the photo currently shown in main view.
 
 function Gallery({
-  name, photos, photoIndex, setPhotoIndex,
+  name, photos, photoIndex, setPhotoIndex, darkMode,
 }) {
   const windowHgt = document.documentElement.clientHeight;
   const windowWidth = document.documentElement.clientWidth;
-  const MAIN_PHOTO_WID = Math.round(Math.max(windowWidth * 0.8 - 250, 200));
+  const MAIN_PHOTO_WID = Math.round(Math.max(windowWidth * 0.8 - 250, 300));
   const MAIN_PHOTO_HGT = 530;
   // TOP_OFFSET is photo offset from top of window.
   const TOP_OFFSET = 135;
@@ -88,7 +89,7 @@ function Gallery({
         // if NOT in Expanded view
         setExpandView(true);
         newAttr = {
-          backgroundImage: `url(${formatImg(photoUrl, null, null, false)})`,
+          backgroundImage: `url(${formatImg(photoUrl, null, 2160, false)})`,
         };
         setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
       }
@@ -157,7 +158,7 @@ function Gallery({
       });
     } else if (expandView) {
       setMainPhotoStyle({
-        backgroundImage: `url(${formatImg(photoUrl, null, null, false)})`,
+        backgroundImage: `url(${formatImg(photoUrl, null, 2160, false)})`,
       });
     } else {
       setMainPhotoStyle({
@@ -223,9 +224,13 @@ function Gallery({
             x
           </button>
         )
-        : ''}
+        : <Social darkMode={darkMode} />}
     </div>
   );
 }
 
 export default Gallery;
+
+// const productDescBackground = darkMode
+// ? { background: '#1E556C' }
+// : { background: 'rgb(172, 233, 222)' };

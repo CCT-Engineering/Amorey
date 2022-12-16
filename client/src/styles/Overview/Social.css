@@ -1,0 +1,49 @@
+.social {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  height: 20px;
+  width: 80px;
+  background: rgb(172, 233, 222);
+  padding: 3px 10px;
+}
+
+.socialBtn {
+  border: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.fbLogo {
+  border: 0;
+  background: transparent;
+  background-image: url('../../assets/f-logo-RGB-Blue-58.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20px;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+.twitLogo {
+  border: 0;
+  background: transparent;
+  background-image: url('../../assets/Twitter-social-icons-circle-blue.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20px;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+.pintLogo {
+  border: 0;
+  background: transparent;
+  background-image: url('../../assets/P-Badge-Skycicle-Blue-450-compress.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 20px;
+  aspect-ratio: 1;
+  cursor: pointer;
+}

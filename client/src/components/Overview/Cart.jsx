@@ -66,6 +66,7 @@ function Cart({ currentStyle, darkMode }) {
         <div className={local.sizeQty}>
           <select
             className={darkMode ? local.buttonDark : local.button}
+            style={{ marginRight: '15px' }}
             id="Size"
             aria-label="select size"
             disabled={stockTotal ? null : true}
@@ -81,7 +82,6 @@ function Cart({ currentStyle, darkMode }) {
           </select>
           <select
             className={darkMode ? local.buttonDark : local.button}
-            style={{ marginLeft: '15px' }}
             id="select quantity"
             aria-label="Quantity"
             onChange={changeQty}
