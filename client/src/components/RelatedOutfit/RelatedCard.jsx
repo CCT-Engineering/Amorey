@@ -50,14 +50,14 @@ const RelatedCard = ({
   return (
     <div className={`related-card ${darkMode ? local.relatedCardDark : local.relatedCard}`}>
       <div className={`hover-me ${darkMode ? local.hoverMeDark : local.hoverMe}`}>
-        <div className={`picture ${darkMode ? local.picContainerDark : local.picContainer}`}>
+        <div className={darkMode ? local.picContainerDark : local.picContainer}>
           {style[0]?.photos[0]?.thumbnail_url
             ? <Img src={style[0].photos[0].thumbnail_url} w={211} h={221} alt="card pic" onClick={handleChangeCurrent} className={local.pic} />
             : (
               <div
                 role="button"
                 tabIndex={0}
-                className={darkMode ? local.noPhotoDark : local.noPhoto}
+                className={local.noPhoto}
                 onClick={handleChangeCurrent}
                 onKeyPress={buildHandleEnterKeyPress(handleChangeCurrent)}
               >
@@ -76,9 +76,11 @@ const RelatedCard = ({
           $
           {style.length && style[0]?.sale_price ? style[0].sale_price : style[0]?.original_price}
         </div>
-        {relStar
-          ? <StarDisplay stars={relStar} className={local.star} darkMode={darkMode} />
-          : null}
+        <div className={local.starContainer}>
+          {relStar
+            ? <StarDisplay stars={relStar} className={local.star} darkMode={darkMode} />
+            : null}
+        </div>
       </div>
       <div>
         <CompareTable
