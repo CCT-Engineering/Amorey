@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const url = window.location.href === 'http://127.0.0.1:8080/client/dist/index.html' ? 'http://localhost:3300/' : window.location.href;
+const url = window.location.href.includes('amazonaws') ? window.location.href : 'http://localhost:3300/';
 
 const requests = {
   // pass in (callback)
   getProducts: (callback) => {
-    axios.get(`${url}products`)
+    axios.get(`${url}products/?page=1&count=1`)
       .then(({ data }) => callback(data))
       .catch((err) => console.error(err));
   },
