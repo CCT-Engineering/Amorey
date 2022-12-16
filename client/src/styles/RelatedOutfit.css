@@ -69,14 +69,13 @@
   z-index: 1;
 }
 
-
-
 .outfit {
   display: flex;
   width: 100%;
   margin: auto;
   position: relative;
   overflow: hidden;
+  transition: all .3s linear;
 }
 
 .outfitCard {
@@ -87,7 +86,8 @@
   position: relative;
   min-width: 210px;
   height: 350px;
-  background: rgb(148, 215, 204)
+  background: rgb(148, 215, 204);
+  transition: all .3s linear;
 }
 
 .outfitCardDark {
@@ -115,22 +115,34 @@
 
 .addCard {
   display: block;
-  border: solid 1px black;
+  border: solid 5px black;
   margin: 1%;
   box-shadow: 10px 5px 5px grey;
   position: relative;
   min-width: 210px;
   height: 350px;
+  background-image: url('../assets/Hanger.png');
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  /* background-position-y: center; */
+  background-position-y: 70px;
 }
 
 .addCardDark {
   display: block;
-  border: solid 1px #B6D8C4;
+  border: solid 5px black;
   margin: 1%;
   box-shadow: 10px 5px 5px #1E556C;
   position: relative;
   min-width: 210px;
   height: 350px;
+  background-image: url('../assets/Hanger.png');
+  background-size: 75%;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  /* background-position-y: center; */
+  background-position-y: 70px;
 }
 
 .addCard:hover {
@@ -140,6 +152,25 @@
 .addCardDark:hover {
   transform: scale(1.025);
 }
+
+.addWords {
+  position: absolute;
+  font-size: x-large;
+  top: 220px;
+}
+
+/* .hanger {
+  position: absolute;
+  height: 125px;
+  width: 183px;
+  z-index: 1;
+  top: 35px;
+  left: 24px;
+  background-color: transparent;
+}
+.hanger:hover {
+  transform: scale(1.025);
+} */
 
 .pic {
   /* max-height: 220px; */
@@ -302,6 +333,7 @@
   height: 50px;
   width: 50px;
   font-size: 1.25rem;
+  /* border: 3px solid; */
 }
 
 .noPhoto {

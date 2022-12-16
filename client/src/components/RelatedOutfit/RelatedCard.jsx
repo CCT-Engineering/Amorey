@@ -15,7 +15,9 @@ const RelatedCard = ({
   const [toggleTable, setToggleTable] = useState(false);
   const [rel1Meta, setRel1Meta] = useState(0);
   const [relStar, setRelStar] = useState(5);
-
+  const updateTheme = (theme) => {
+    darkMode = theme;
+  }
   useEffect(() => {
     if (relateOneId) {
       requests.getProductInfo(relateOneId, (infoData) => {
@@ -30,6 +32,10 @@ const RelatedCard = ({
       });
     }
   }, [relateOneId]);
+
+  useEffect(() => {
+    console.log('changed theme');
+  }, [darkMode]);
 
   const handleToggle = () => {
     setToggleTable(!toggleTable);
