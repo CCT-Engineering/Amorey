@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import local from '../../styles/RelatedOutfit.css';
 import requests from '../../requests.js';
 import CompareTable from './CompareTable.jsx';
-import StarDisplay from '../SharedComponents/StarDisplay.jsx';
+import StarDisplay from '../SharedComponents/StarDisplay2.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 import Img from '../SharedComponents/Img.jsx';
 
@@ -34,6 +34,7 @@ const RelatedCard = ({
   const handleToggle = () => {
     setToggleTable(!toggleTable);
   };
+
   const handleChangeCurrent = () => {
     event.preventDefault();
     setCurrent(info);
@@ -47,9 +48,9 @@ const RelatedCard = ({
 
   const favButton = <button type="button" className={local.action} onClick={handleToggle}>☆</button>;
   return (
-    <div className={darkMode ? local.relatedCardDark : local.relatedCard}>
-      <div className={darkMode ? local.hoverMeDark : local.hoverMe}>
-        <div className={darkMode ? local.picContainerDark : local.picContainer}>
+    <div className={`related-card ${darkMode ? local.relatedCardDark : local.relatedCard}`}>
+      <div className={`hover-me ${darkMode ? local.hoverMeDark : local.hoverMe}`}>
+        <div className={`picture ${darkMode ? local.picContainerDark : local.picContainer}`}>
           {style[0]?.photos[0]?.thumbnail_url
             ? <Img src={style[0].photos[0].thumbnail_url} w={211} h={221} alt="card pic" onClick={handleChangeCurrent} className={local.pic} />
             : (
@@ -75,19 +76,21 @@ const RelatedCard = ({
           $
           {style.length && style[0]?.sale_price ? style[0].sale_price : style[0]?.original_price}
         </div>
-        {relStar ? <StarDisplay stars={relStar} className={local.star} /> : null}
+        {relStar
+          ? <StarDisplay stars={relStar} className={local.star} darkMode={darkMode} />
+          : null}
       </div>
       <div>
-        {toggleTable ? (
-          <CompareTable
-            handleToggle={handleToggle}
-            current={current}
-            rel1Info={info}
-            CurMeta={CurMeta}
-            rel1Meta={rel1Meta}
-            darkMode={darkMode}
-          />
-        ) : <div />}
+        <CompareTable
+          style={{ display: toggleTable ? 'block' : 'none' }}
+          handleToggle={handleToggle}
+          toggleTable={toggleTable}
+          current={current}
+          rel1Info={info}
+          CurMeta={CurMeta}
+          rel1Meta={rel1Meta}
+          darkMode={darkMode}
+        />
       </div>
     </div>
   );
