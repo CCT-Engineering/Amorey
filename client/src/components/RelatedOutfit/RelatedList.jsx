@@ -18,20 +18,17 @@ const RelatedList = ({
     const temp2 = document.getElementsByClassName('hover-me');
     const temp3 = document.getElementsByClassName('table-content');
     const temp4 = document.getElementsByClassName('stars');
-    const temp5 = document.getElementsByClassName('picture');
     for (let i = 0; i < temp1.length; i += 1) {
       if (darkMode) {
         temp1[i]?.classList?.replace(local.relatedCard, local.relatedCardDark);
         temp2[i]?.classList?.replace(local.hoverMe, local.hoverMeDark);
         temp3[i]?.classList?.replace(local.tableContent, local.tableContentDark);
         temp4[i]?.classList?.replace(local.stars, local.starsDark);
-        temp5[i]?.classList?.replace(local.picContainer, local.picContainerDark);
       } else if (!darkMode) {
         temp1[i]?.classList?.replace(local.relatedCardDark, local.relatedCard);
         temp2[i]?.classList?.replace(local.hoverMeDark, local.hoverMe);
         temp3[i]?.classList?.replace(local.tableContentDark, local.tableContent);
         temp4[i]?.classList?.replace(local.starsDark, local.stars);
-        temp5[i]?.classList?.replace(local.picContainerDark, local.picContainer);
       }
     }
   }, [darkMode, cards]);

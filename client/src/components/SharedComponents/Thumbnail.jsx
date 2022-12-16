@@ -4,8 +4,6 @@ import { buildHandleEnterKeyPress } from '../../util';
 
 const Photos = ({ photo }) => {
   const [expandImage, setExpandImage] = useState(false);
-  let res = photo.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/g);
-  res = res === null ? null : res;
 
   return (
     <>
@@ -19,7 +17,7 @@ const Photos = ({ photo }) => {
       >
         <img
           className={global.thumbnail}
-          src={res}
+          src={photo}
           alt="text"
           height="48px"
           width="48px"
@@ -36,7 +34,7 @@ const Photos = ({ photo }) => {
         >
           <img
             className={global.photo}
-            src={res}
+            src={photo}
             alt="text"
           />
         </div>
