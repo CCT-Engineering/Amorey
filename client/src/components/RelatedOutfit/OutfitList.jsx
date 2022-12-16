@@ -68,7 +68,12 @@ const OutfitList = ({
   return (
     <div className={local.carousel}>
       <div className={local.outfit}>
-        <button type="button" onClick={addOutfit} className={darkMode ? local.addCardDark : local.addCard}>+ Add Current To Outfit</button>
+
+        <button type="button" onClick={addOutfit} className={darkMode ? local.addCardDark : local.addCard}>
+          <div className={local.addWords}>
+            + Add Current To Outfit
+          </div>
+        </button>
         <div
           role="button"
           tabIndex={0}

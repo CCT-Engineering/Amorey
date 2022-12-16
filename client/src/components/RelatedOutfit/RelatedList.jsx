@@ -14,8 +14,33 @@ const RelatedList = ({
   });
 
   // useEffect(() => {
+<<<<<<< HEAD
   //   console.log('newCards: ', cards);
   // }, [cards]);
+=======
+  //   const newCards = {
+  //     0: cards[0], 1: cards[1], 2: cards[2], 3: cards[3], 4: cards[4],
+  //   };
+  //   const tempCard1 = document.getElementsByClassName(local.relatedCard);
+  //   const tempCard2 = document.getElementsByClassName(local.hoverMe);
+  //   // const tempCard3 = document.getElementsByClassName(local.relatedCardDark);
+  //   // const tempCard4 = document.getElementsByClassName(local.hoverMeDark);
+  //   console.log('temp array', tempCard1)
+  //   for (let i = 0; i < tempCard1.length; i++) {
+  //     console.log('tempcard1', tempCard1[i]);
+  //     if (darkMode) {
+  //       tempCard1[i]?.classList?.replace(local.relatedCard, local.relatedCardDark);
+  //       tempCard2[i]?.classList?.replace(local.hoverMe, local.hoverMeDark);
+  //     } else if (!darkMode) {
+  //       // tempCard3[i]?.classList?.replace(local.relatedCardDark, local.relatedCard);
+  //       // tempCard4[i]?.classList?.replace(local.hoverMeDark, local.hoverMe);
+  //     }
+  //   }
+  //   //newCards[0]?.props.darkMode
+  //   //console.log('class name get elements', document.getElementsByClassName(local.relatedCard));
+  //   // setCards(newCards);
+  // }, [darkMode]);
+>>>>>>> 290f265b012b6a57ea3f816dcd26f34a3487ed77
 
   const build = (relateOneId, index) => {
     const temp = cards;
