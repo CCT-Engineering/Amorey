@@ -12,7 +12,7 @@ function Gallery({
 }) {
   const windowHgt = document.documentElement.clientHeight;
   const windowWidth = document.documentElement.clientWidth;
-  const MAIN_PHOTO_WID = Math.round(Math.max(windowWidth * 0.8 - 250, 200));
+  const MAIN_PHOTO_WID = Math.round(Math.max(windowWidth * 0.8 - 250, 300));
   const MAIN_PHOTO_HGT = 530;
   // TOP_OFFSET is photo offset from top of window.
   const TOP_OFFSET = 135;
