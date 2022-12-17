@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   position: relative;
   text-align: center;
   height: 510px;
@@ -136,11 +135,4 @@
   right: 10px;
   top: 10px;
   color: black;
-}
-
-.social {
-  position: relative;
-  width: 30px;
-  height: 10px;
-  background: rgb(172, 233, 222);
 }
