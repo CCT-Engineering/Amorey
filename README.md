@@ -34,6 +34,7 @@
   - Due to request limitations of the current api, user's should refrain from excessive server requests within a short time span to avoid temporarily getting timed out by the server
 
 # Testing
+  - Testing libraries include React Test Library and Jest.
 
 # Team Members
 
