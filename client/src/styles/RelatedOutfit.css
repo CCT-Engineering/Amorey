@@ -1,6 +1,5 @@
 .RelatedOutfit {
   box-sizing: border-box;
-  /* color: #111; */
   font-family: "Tahoma", sans-serif;
   margin: auto;
   /* overflow-x: hidden; */
@@ -19,6 +18,7 @@
   margin: auto;
   position: relative;
   overflow: hidden;
+  /* transition: all .3s linear; */
 }
 
 .relatedCard {
@@ -30,6 +30,7 @@
   min-width: 210px;
   height: 350px;
   background: rgb(172, 233, 222);
+  /* transition: all .3s linear; */
 }
 
 .relatedCardDark {
@@ -40,13 +41,12 @@
   position: relative;
   min-width: 210px;
   height: 350px;
-  /* background: #3C7883; */
   background: #1E556C;
+  /* transition: all .3s linear; */
 }
 
 .hoverMe:hover {
   border: solid 1px black;
-  /* margin: 1%; */
   box-shadow: 10px 5px 5px grey;
   position: relative;
   min-width: 210px;
@@ -54,19 +54,20 @@
   background: rgb(172, 233, 222);
   transform: scale(1.025);
   z-index: 1;
+  /* transition: all .3s linear; */
 }
+
 
 .hoverMeDark:hover {
   border: solid 1px #B6D8C4;
-  /* margin: 1%; */
   box-shadow: 10px 5px 5px #1E556C;
   position: relative;
   width: 210px;
   height: 350px;
-  /* background: #3C7883; */
   background: #1E556C;
   transform: scale(1.025);
   z-index: 1;
+  /* transition: all .3s linear; */
 }
 
 .outfit {
@@ -75,7 +76,7 @@
   margin: auto;
   position: relative;
   overflow: hidden;
-  transition: all .3s linear;
+  /* transition: all .3s linear; */
 }
 
 .outfitCard {
@@ -87,7 +88,7 @@
   min-width: 210px;
   height: 350px;
   background: rgb(148, 215, 204);
-  transition: all .3s linear;
+  /* transition: all .3s linear; */
 }
 
 .outfitCardDark {
@@ -100,9 +101,9 @@
   height: 350px;
   /* background: #3C7883; */
   background: #1E556C;
+  /* transition: all .3s linear; */
 }
 
-/* breaks the click */
 .outfitCard:hover {
   transform: scale(1.025);
   z-index: 1;
@@ -125,8 +126,8 @@
   background-size: 75%;
   background-repeat: no-repeat;
   background-position-x: center;
-  /* background-position-y: center; */
   background-position-y: 70px;
+  /* transition: all .3s linear; */
 }
 
 .addCardDark {
@@ -141,8 +142,8 @@
   background-size: 75%;
   background-repeat: no-repeat;
   background-position-x: center;
-  /* background-position-y: center; */
   background-position-y: 70px;
+  /* transition: all .3s linear; */
 }
 
 .addCard:hover {
@@ -168,6 +169,7 @@
 .picContainer {
   border-bottom: solid 1px black;
   max-height: 220px;
+  /* width: 210px; */
   display: flex;
   justify-content: center;
   background-color: whitesmoke;
@@ -298,22 +300,12 @@
 
 
 .action {
-  /* position: relative;
-  top: 0;
-  right: 0; */
-  /* float: right; */
-  /* display: inline-block;
-  vertical-align: top; */
-  /* object-position: 5px, 10%; */
-  /* display: flex; */
   position: absolute;
-  /* background: transparent; */
   top: 0px;
   right: 0px;
   height: 50px;
   width: 50px;
   font-size: 1.25rem;
-  /* border: 3px solid; */
 }
 
 .noPhoto {
@@ -329,7 +321,7 @@
   -webkit-text-stroke: 0;
   /* width: 100%; */
 
-  min-width: 211px;
+  min-width: 210px;
   height: 220px;
   /* border-bottom: solid 1px black; */
   /* border: '1px solid #111', */
