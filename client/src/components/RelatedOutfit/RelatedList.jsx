@@ -15,20 +15,17 @@ const RelatedList = ({
 
   useEffect(() => {
     const temp1 = document.getElementsByClassName('related-card');
-    const temp2 = document.getElementsByClassName('hover-me');
-    const temp3 = document.getElementsByClassName('table-content');
-    const temp4 = document.getElementsByClassName('stars');
+    const temp2 = document.getElementsByClassName('table-content');
+    const temp3 = document.getElementsByClassName('stars');
     for (let i = 0; i < temp1.length; i += 1) {
       if (darkMode) {
         temp1[i]?.classList?.replace(local.relatedCard, local.relatedCardDark);
-        temp2[i]?.classList?.replace(local.hoverMe, local.hoverMeDark);
-        temp3[i]?.classList?.replace(local.tableContent, local.tableContentDark);
-        temp4[i]?.classList?.replace(local.stars, local.starsDark);
+        temp2[i]?.classList?.replace(local.tableContent, local.tableContentDark);
+        temp3[i]?.classList?.replace(local.stars, local.starsDark);
       } else if (!darkMode) {
         temp1[i]?.classList?.replace(local.relatedCardDark, local.relatedCard);
-        temp2[i]?.classList?.replace(local.hoverMeDark, local.hoverMe);
-        temp3[i]?.classList?.replace(local.tableContentDark, local.tableContent);
-        temp4[i]?.classList?.replace(local.starsDark, local.stars);
+        temp2[i]?.classList?.replace(local.tableContentDark, local.tableContent);
+        temp3[i]?.classList?.replace(local.starsDark, local.stars);
       }
     }
   }, [darkMode, cards]);

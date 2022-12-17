@@ -48,8 +48,8 @@ const RelatedCard = ({
 
   const favButton = <button type="button" className={local.action} onClick={handleToggle}>☆</button>;
   return (
-    <div className={`related-card ${darkMode ? local.relatedCardDark : local.relatedCard}`}>
-      <div className={`hover-me ${darkMode ? local.hoverMeDark : local.hoverMe}`}>
+    <>
+      <div className={`related-card ${darkMode ? local.relatedCardDark : local.relatedCard}`}>
         <div className={darkMode ? local.picContainerDark : local.picContainer}>
           {style[0]?.photos[0]?.thumbnail_url
             ? <Img src={style[0].photos[0].thumbnail_url} w={211} h={221} alt="card pic" onClick={handleChangeCurrent} className={local.pic} />
@@ -94,7 +94,7 @@ const RelatedCard = ({
           darkMode={darkMode}
         />
       </div>
-    </div>
+    </>
   );
 };
 

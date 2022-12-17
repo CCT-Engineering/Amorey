@@ -1,3 +1,7 @@
+* {
+  transition: color .075s linear;
+}
+
 :global body {
   box-sizing: border-box;
   font-family: "Tahoma", sans-serif;
