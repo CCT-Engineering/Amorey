@@ -5,6 +5,7 @@ const path = require('path');
 const axios = require('axios');
 const morgan = require('morgan');
 const cors = require('cors');
+const favicon = require('serve-favicon');
 const compression = require('compression');
 const sessionHandler = require('./session-handler');
 
@@ -22,6 +23,7 @@ app.use(compression());
 
 // STATIC SERVICE OF ASSETS
 app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(favicon(path.join(__dirname, 'favicon.ico')));
 
 // ROUTES
 app.all('/*', (req, res) => {
