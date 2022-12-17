@@ -81,7 +81,10 @@ function Gallery({
           const { clientX, clientY } = e;
           setOffset({ x: 0, y: TOP_OFFSET });
           mousePos.current = { x: clientX, y: clientY };
-          newAttr = { transform: `scale(${ZOOM})`, cursor: 'zoom-out' };
+          newAttr = {
+            transform: `scale(${ZOOM})`,
+            cursor: 'zoom-out',
+          };
         }
         setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
         setZoomView(!zoomView);
@@ -89,7 +92,7 @@ function Gallery({
         // if NOT in Expanded view
         setExpandView(true);
         newAttr = {
-          backgroundImage: `url(${formatImg(photoUrl, null, 2160, false)})`,
+          backgroundImage: `url(${formatImg(photoUrl, null, windowHgt, false)})`,
         };
         setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
       }
@@ -158,7 +161,7 @@ function Gallery({
       });
     } else if (expandView) {
       setMainPhotoStyle({
-        backgroundImage: `url(${formatImg(photoUrl, null, 2160, false)})`,
+        backgroundImage: `url(${formatImg(photoUrl, null, windowHgt, false)})`,
       });
     } else {
       setMainPhotoStyle({
