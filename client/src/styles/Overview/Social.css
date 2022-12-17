@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-between;
   position: absolute;
-  bottom: 0;
+  top: 5px;
+  right: 5px;
   height: 20px;
   width: 80px;
   background: rgb(172, 233, 222);
