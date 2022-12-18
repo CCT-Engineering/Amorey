@@ -12,15 +12,16 @@
 This project is designed to handle different incoming product data from an api and display their contents for an online shopping page. Data is displayed in several ways on the page for the user to interact with including an overview, related items, current outfit, ratings, and reviews.
 
 ## Installation
-1. In your terminal, first run "npm install" to install all project dependencies to your local workspace
-1. Next, make a copy of the "example.env" file and name it ".env". Place this file into the project's root directory
-1. After you have made the .env file, you will need to create or use an already created API token from github. This token must have the following scopes: read:org, user, read:user, user:email, user:follow
-1. Once you have an api token, paste it over the "mysecretpasscode" text within .env and save your file
-  - Additionally, in the .env file, you can update "WEBPACK_MODE" from "development" to "production" once you are ready to deploy the application for users
-1. Finally, in order to run the application, in your terminal run the command "node server/index.js"
+1. In your terminal, first run `npm install` to install all project dependencies to your local workspace
+1. Next, make a copy of the "example.env" file and name it `.env`. Place this file into the project's root directory
+1. After you have made the `.env` file, you will need to create or use an already created API token from github. This token must have the following scopes: read:org, user, read:user, user:email, user:follow
+1. Once you have an api token, paste it over the "mysecretpasscode" text within `.env` and save your file
+  - Additionally, in the `.env` file, you can update `WEBPACK_MODE` from `development` to `production` once you are ready to deploy the application for users
+1. Finally, in order to run the application, in your terminal run the command `node server/index.js`
 
 ## Features
 ### Overview:
+![Demo of Overview Section](/client/src/assets/README-OverviewScreenCap.gif)
 - Wide-format image gallery using dynamic server-side image manipulation to intelligently focus on photo subject.
 - Full screen expanded-view for viewing high-res versions of product images, with 2.5x zoom capability.
 - Flexible thumbnail side-scroller allows user to quickly toggle through all available product style photos.
@@ -50,7 +51,7 @@ This project is designed to handle different incoming product data from an api a
 Due to request limitations of the current api, user's should refrain from excessive server requests within a short time span to avoid temporarily getting timed out by the server
 
 ## Testing
-Testing libraries include React Test Library and Jest. This application comes with several tests already setup and can be run using "npm test". This script will generate a report showing what parts of the application are currently covered in our testing implementation. Any future testing files should be stored in "/spec/src" and can you use "../mock/testData.jsx" if additional testing data is needed.
+Testing libraries include React Test Library and Jest. This application comes with several tests already setup and can be run using `npm test`. This script will generate a report showing what parts of the application are currently covered in our testing implementation. Any future testing files should be stored in `/spec/src` and can you use `../mock/testData.jsx` if additional testing data is needed.
 
 ## Team Members
 - Chad Fusco (Overview)
