@@ -38,6 +38,7 @@ CCT Engineering was engaged by Amorey Clothing to modernize the front-end design
 - Navigate styles for a particular product using the Style Select thumbnails
 - User can toggle between light and dark modes for the site.
 ### Related Items:
+![Demo of Overview Section](/client/src/assets/README-RelatedOutfit.gif)
 - Nagivate through all the various related products using the carousel arrows.
 - Change the current product to keep your shopping experience going, with the click of an image.
 - Compare related products with the star icon, to see which features best suit your needs.
