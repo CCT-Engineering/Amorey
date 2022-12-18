@@ -36,11 +36,11 @@ This project is designed to handle different incoming product data from an api a
 - Nagivate through all your favorite products that you have saved using the carousel arrows.
 - Save all your favorite products in "Your Outfit" using the "+ Add Current to Outfit" or heart icon above, and it will persist the next time you visit.
 - Remove anything in your "Your Outfit" using the "X" icon, if you are having second thoughts about a product.
-### Ratings:
+### Ratings & Reviews:
+![Demo of Overview Section](/client/src/assets/README-RatingsReviewsScreenCap.gif)
 - Displays product analytics including product rating, customer recommendation, and product characteristic ratings
 - Displays amount of reviews with each rating amount in the form of a graph
 - Users can interact with the rating graph to filter reviews down based on selected ratings
-### Reviews:
 - Displays the two most current reviews posted about a product based on relevance, helpfulness, or newest.
 - Ability to display additional reviews incrementing by two at a time
 - Ability to filter reviews down using an input query based on text matching within the review entry
