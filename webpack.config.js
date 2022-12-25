@@ -1,7 +1,6 @@
 require('dotenv').config();
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   mode: process.env.WEBPACK_MODE,
@@ -45,8 +44,4 @@ module.exports = {
       template: path.join(__dirname, 'client/src', 'index.html'),
     }),
   ],
-  optimization: {
-    minimize: true,
-    minimizer: [new TerserPlugin()],
-  },
 };

@@ -39,7 +39,6 @@ app.all('/*', (req, res) => {
     .then((resAPI) => res.status(resAPI.status).send(resAPI.data))
     .catch((errAPI) => {
       if (errAPI.response) {
-        console.log(errAPI.response);
         res.status(errAPI.response.status).send(errAPI);
       } else {
         res.sendStatus(404);
