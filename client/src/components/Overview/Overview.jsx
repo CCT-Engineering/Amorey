@@ -37,6 +37,7 @@ const Overview = forwardRef(({
       const style = currentStyles[0];
       setCurrentStyle(style);
       setStylePriceSale(style);
+      setPhotoIndex(0);
     }
   }, [currentStyles]);
 
