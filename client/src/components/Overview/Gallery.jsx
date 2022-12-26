@@ -21,7 +21,7 @@ function Gallery({
 
   const photoDescPrefix = 'Main photo';
   const photoDesc = `${photoDescPrefix} ${photoIndex} of ${name} style`;
-  const photoQty = photos.length || 0;
+  const photoQty = photos.reduce((acc, photo) => (acc + photo.url ? 1 : 0), 0);
 
   const [expandView, setExpandView] = useState(false);
   const [zoomView, setZoomView] = useState(false);
@@ -208,8 +208,8 @@ function Gallery({
       className={expandView ? local.galleryExp : local.gallery}
       style={mainPhotoStyle}
       aria-label={photoDesc}
-      onClick={handleMainImgClick}
-      onKeyPress={buildHandleEnterKeyPress(handleMainImgClick)}
+      onClick={photoQty ? handleMainImgClick : () => {}}
+      onKeyPress={photoQty ? buildHandleEnterKeyPress(handleMainImgClick) : () => {}}
       onMouseMove={handleMouseMove}
     >
       {photoUrl ? gallerySide : <p className={local.noPhoto}>Photo Unavailable</p>}
@@ -233,7 +233,3 @@ function Gallery({
 }
 
 export default Gallery;
-
-// const productDescBackground = darkMode
-// ? { background: '#1E556C' }
-// : { background: 'rgb(172, 233, 222)' };
