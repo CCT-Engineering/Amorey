@@ -41,8 +41,6 @@ const Overview = forwardRef(({
     }
   }, [currentStyles]);
 
-  // console.log('currentStyle inside Overview:', currentStyle);
-
   return (
     <>
       <div className={local.overviewMain}>
