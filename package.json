@@ -9,7 +9,7 @@
     "client-dev": "webpack --config ./webpack.config.js  -w",
     "server-dev": "nodemon server/index.js",
     "test": "jest --transformIgnorePatterns \"node_modules/(?!axios)/\"",
-    "deploy": "screen -d -m node server/index.js",
+    "deploy": "webpack --config ./webpack.config.js; screen -d -m node server/index.js",
     "show-screens": "screen -ls"
   },
   "repository": {
