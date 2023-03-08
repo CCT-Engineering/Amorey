@@ -30,15 +30,18 @@ module.exports = {
     'react/prop-types': 'off',
 
     // allow global variables, specifically for event
-    'no-restricted-globals': 'off', // CHAD TO UNCOMMENT BEFORE PUSHING
+    'no-restricted-globals': 'off', // consider turning on
 
     // allow arrow functions
     'arrow-body-style': 'off',
 
     // allow react component as return for function
-    'react/function-component-definition': 'off', // CHAD TO UNCOMMENT BEFORE PUSHING
+    'react/function-component-definition': 'off', // consider turning on
 
     // related to button click on non-button html element
     'jsx-a11y/anchor-is-valid': 'off',
+
+    // allow console.log and console.error
+    'no-console': 'off',
   },
 };
