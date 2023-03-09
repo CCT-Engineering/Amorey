@@ -7,7 +7,10 @@ const requests = {
   getProducts: (callback) => {
     fetch(`${url}products/?page=1&count=1`)
       .then((res) => res.json())
-      .then((data) => callback(data))
+      .then((data) => {
+        console.log('data from fetch:', data);
+        callback(data);
+      })
       .catch((err) => console.error(err));
   },
 
