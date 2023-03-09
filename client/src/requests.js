@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 const url = window.location.href.includes('amazonaws') ? window.location.href : 'http://localhost:3300/';
 
 // getData helper function for GET requests
