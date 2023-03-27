@@ -5,7 +5,7 @@ const url = window.location.href.includes('amazonaws') ? window.location.href : 
 const requests = {
   // pass in (callback)
   getProducts: (callback) => {
-    axios.get(`${url}products/?page=1&count=1`)
+    axios.get(`${url}products/?page=1&count=5`)
       .then(({ data }) => callback(data))
       .catch((err) => console.error(err));
   },
