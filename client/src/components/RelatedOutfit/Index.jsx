@@ -26,6 +26,7 @@ const Index = ({
       <h5>YOUR OUTFIT</h5>
       <OutfitList
         current={current}
+        setCurrent={setCurrent}
         favorites={favorites}
         setFavorites={setFavorites}
         currentStyles={currentStyles}

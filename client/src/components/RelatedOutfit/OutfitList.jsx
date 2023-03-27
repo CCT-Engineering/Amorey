@@ -4,7 +4,7 @@ import OutfitCard from './OutfitCard.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 
 const OutfitList = ({
-  favorites, setFavorites, current, currentStyles, stars, darkMode,
+  favorites, setFavorites, current, setCurrent, currentStyles, stars, darkMode,
 }) => {
   const [view, setView] = useState([]);
   const [viewStart, setViewStart] = useState(0);
@@ -96,6 +96,7 @@ const OutfitList = ({
           view.map((outfitPiece, index) => (
             <OutfitCard
               key={`${current.id + outfitPiece + index}`}
+              setCurrent={setCurrent}
               outfitPiece={outfitPiece}
               index={index}
               favorites={favorites}

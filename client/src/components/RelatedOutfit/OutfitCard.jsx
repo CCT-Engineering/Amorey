@@ -2,9 +2,10 @@ import React from 'react';
 import local from '../../styles/RelatedOutfit.css';
 import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 import Img from '../SharedComponents/Img.jsx';
+import requests from '../../requests.js';
 
 const OutfitCard = ({
-  outfitPiece, index, favorites, setFavorites, view, darkMode,
+  outfitPiece, index, favorites, setFavorites, view, darkMode, setCurrent,
 }) => {
   const handleDelete = () => {
     event.preventDefault();
@@ -15,12 +16,19 @@ const OutfitCard = ({
   };
   const delButton = <button type="button" className={local.action} onClick={handleDelete}>X</button>;
 
+  const handleChangeCurrent = (e) => {
+    e.preventDefault();
+    requests.getProductInfo(outfitPiece.id, (info) => {
+      setCurrent(info);
+    });
+  };
+
   return (
     <div className={darkMode ? local.outfitCardDark : local.outfitCard}>
       {outfitPiece.pic ? delButton : ''}
       <div className={darkMode ? local.picContainerDark : local.picContainer}>
         {outfitPiece.pic
-          ? <Img src={outfitPiece.pic} w={211} h={221} alt={`Your Outfit: ${outfitPiece.name} img`} className={local.pic} />
+          ? <Img src={outfitPiece.pic} w={211} h={221} alt={`Your Outfit: ${outfitPiece.name} img`} onClick={handleChangeCurrent} className={local.pic} />
           : (
             <div className={darkMode ? local.noPhotoDark : local.noPhoto}>
               {delButton}

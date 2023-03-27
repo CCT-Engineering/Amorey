@@ -39,6 +39,16 @@ function App() {
     });
   };
 
+  const getStylesMetadata = (productID) => {
+    requests.getStyles(productID, (styleData) => {
+      setCurrentStyles(styleData.results);
+    });
+    requests.getMetadata(productID, (metrics) => {
+      setMetadata(metrics);
+      setStars(calculateAverageStars(metrics.ratings));
+    });
+  };
+
   // on app load, get product data, then get styles and metadata
   useEffect(() => {
     requests.getProducts((data) => {
@@ -46,19 +56,14 @@ function App() {
       requests.getProductInfo(productID, (info) => {
         setCurrent(info);
       });
-      requests.getStyles(productID, (styleData) => {
-        setCurrentStyles(styleData.results);
-      });
-      requests.getMetadata(productID, (metrics) => {
-        setMetadata(metrics);
-        setStars(calculateAverageStars(metrics.ratings));
-      });
+      getStylesMetadata(productID);
     });
   }, []);
 
   // if current product changes, get related products and current reviews
   useEffect(() => {
     if (current.id) {
+      getStylesMetadata(current.id);
       getRelated();
       getReviews();
     }
