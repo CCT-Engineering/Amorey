@@ -52,7 +52,7 @@ function App() {
   // on app load, get product data, then get styles and metadata
   useEffect(() => {
     requests.getProducts((data) => {
-      const productID = data[4].id;
+      const productID = data[0].id;
       requests.getProductInfo(productID, (info) => {
         setCurrent(info);
       });
