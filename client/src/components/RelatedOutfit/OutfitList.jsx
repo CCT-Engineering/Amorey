@@ -4,7 +4,7 @@ import OutfitCard from './OutfitCard.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 
 const OutfitList = ({
-  favorites, setFavorites, current, currentStyles, stars, darkMode,
+  favorites, setFavorites, current, setCurrent, currentStyles, stars, darkMode,
 }) => {
   const [view, setView] = useState([]);
   const [viewStart, setViewStart] = useState(0);
@@ -68,10 +68,10 @@ const OutfitList = ({
   return (
     <div className={local.carousel}>
       <div className={local.outfit}>
-
         <button type="button" onClick={addOutfit} className={darkMode ? local.addCardDark : local.addCard}>
+          <div className={local.hangerPic} />
           <div className={local.addWords}>
-            + Add Current To Outfit
+            <h4>Add {current.name} To Outfit</h4>
           </div>
         </button>
         <div
@@ -96,6 +96,7 @@ const OutfitList = ({
           view.map((outfitPiece, index) => (
             <OutfitCard
               key={`${current.id + outfitPiece + index}`}
+              setCurrent={setCurrent}
               outfitPiece={outfitPiece}
               index={index}
               favorites={favorites}

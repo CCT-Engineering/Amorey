@@ -2,14 +2,15 @@
   box-sizing: border-box;
   font-family: "Tahoma", sans-serif;
   margin: auto;
-  /* overflow-x: hidden; */
   padding: 0;
   font-size: 0.8rem;
-  width: 1183px;
+  /* width: 1183px; */
+  width: 80%;
 }
+
 .carousel {
-  /* width: 900px; */
-  margin: auto;
+  width: 1183px;
+  margin: 0;
   min-height: 370px;
 }
 
@@ -18,13 +19,12 @@
   width: 100%;
   margin: auto;
   position: relative;
-  overflow: hidden;
 }
 
 .relatedCard {
   display: block;
   border: solid 1px black;
-  margin: 1%;
+  margin: 1% 2% 1% 0;
   box-shadow: 10px 5px 5px grey;
   position: relative;
   min-width: 210px;
@@ -61,13 +61,12 @@
   width: 100%;
   margin: auto;
   position: relative;
-  overflow: hidden;
 }
 
 .outfitCard {
   display: block;
   border: solid 1px black;
-  margin: 1%;
+  margin: 1% 2% 1% 0;
   box-shadow: 10px 5px 5px grey;
   position: relative;
   min-width: 210px;
@@ -102,32 +101,24 @@
 .addCard {
   display: block;
   border: solid 5px black;
-  margin: 1%;
+  margin: 1% 2% 1% 0;
   box-shadow: 10px 5px 5px grey;
   position: relative;
-  min-width: 210px;
+  /* min-width: 210px; */
+  width: 211px;
   height: 350px;
-  background-image: url('../assets/Hanger.png');
-  background-size: 75%;
-  background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: 70px;
   transition: transform .3s linear;
 }
 
 .addCardDark {
   display: block;
   border: solid 5px black;
-  margin: 1%;
+  margin: 1% 2% 1% 0;
   box-shadow: 10px 5px 5px #1E556C;
   position: relative;
-  min-width: 210px;
+  /* min-width: 210px; */
+  width: 211px;
   height: 350px;
-  background-image: url('../assets/Hanger.png');
-  background-size: 75%;
-  background-repeat: no-repeat;
-  background-position-x: center;
-  background-position-y: 70px;
   transition: transform .3s linear;
 }
 
@@ -139,11 +130,19 @@
   transform: scale(1.025);
 }
 
+.hangerPic {
+  margin: auto;
+  width: 95%;
+  height: 80px;
+  background-image: url('../assets/Hanger.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: bottom;
+}
+
 .addWords {
-  font-family: "Tahoma", sans-serif;
-  position: absolute;
-  font-size: x-large;
-  top: 220px;
+  margin: auto;
 }
 
 .pic {

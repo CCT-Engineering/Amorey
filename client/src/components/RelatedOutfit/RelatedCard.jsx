@@ -29,14 +29,14 @@ const RelatedCard = ({
         setRel1Meta(metaData);
       });
     }
-  }, [relateOneId]);
+  }, []);
 
   const handleToggle = () => {
     setToggleTable(!toggleTable);
   };
 
-  const handleChangeCurrent = () => {
-    event.preventDefault();
+  const handleChangeCurrent = (e) => {
+    e.preventDefault();
     setCurrent(info);
     setMetadata(rel1Meta);
     setCurrentStyles(style);
