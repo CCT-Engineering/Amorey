@@ -59,6 +59,7 @@ const NewReview = ({
         photos,
         characteristics,
       };
+      console.log(newReview);
       showModal(false);
       requests.postReview(newReview, () => {
         getReviews('newest');

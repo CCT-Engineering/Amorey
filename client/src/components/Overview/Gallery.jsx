@@ -21,7 +21,7 @@ function Gallery({
 
   const photoDescPrefix = 'Main photo';
   const photoDesc = `${photoDescPrefix} ${photoIndex} of ${name} style`;
-  const photoQty = photos.reduce((acc, photo) => (acc + photo.url ? 1 : 0), 0);
+  const photoQty = photos.reduce((acc, photo) => acc + (photo.url ? 1 : 0), 0);
 
   const [expandView, setExpandView] = useState(false);
   const [zoomView, setZoomView] = useState(false);
@@ -49,7 +49,7 @@ function Gallery({
   };
 
   function buildBtn(className, btnName, onKeyDownBindings, content) {
-    return (
+    const newBtn = (
       <button
         type="button"
         tabIndex={0}
@@ -62,6 +62,7 @@ function Gallery({
         {content}
       </button>
     );
+    return newBtn;
   }
 
   const handleMainImgClick = (e) => {
