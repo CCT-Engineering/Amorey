@@ -9,8 +9,8 @@ const getData = (res, callback) => (
 
 const requests = {
   // pass in (callback)
-  getProducts: (callback) => {
-    fetch(`${url}products/?page=1&count=1`)
+  getProducts: (callback, pg = 1, cnt = 1) => {
+    fetch(`${url}products/?page=${pg}&count=${cnt}`)
       .then((res) => getData(res, callback));
   },
 

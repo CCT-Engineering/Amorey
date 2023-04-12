@@ -51,13 +51,13 @@ function App() {
 
   // on app load, get product data, then get styles and metadata
   useEffect(() => {
-    requests.getProducts((data) => {
-      const productID = data[0].id;
+    requests.getProducts((products) => {
+      const productID = products[0].id;
       requests.getProductInfo(productID, (info) => {
         setCurrent(info);
       });
       getStylesMetadata(productID);
-    });
+    }, process.env.STARTING_PRODUCT_IDX ?? 1);
   }, []);
 
   // if current product changes, get related products and current reviews
