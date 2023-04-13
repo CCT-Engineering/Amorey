@@ -44,10 +44,10 @@ const QuestionEntry = ({ question, darkMode }) => {
       </div>
       {(sortedAnswers?.length || 0)
         ? <AnswersList renderedAnswers={sortedAnswers.slice(0, renderLimit)} />
-        : <div>Currently No Answers To Display</div>}
+        : <div className={local.noAnswers}>Currently No Answers To Display</div>}
       {renderLimit < Object.values(question.answers).length && (
         <button
-          className={local.moreAnswers}
+          className={darkMode ? local.moreAnswersDark : local.moreAnswers}
           aria-label="More Answers"
           type="button"
           onClick={loadMoreAnswers}

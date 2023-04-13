@@ -1,7 +1,6 @@
 .header {
   display: flex;
   justify-content: space-between;
-  padding-left: 5px;
   padding-right: 5px;
 }
 
@@ -28,9 +27,36 @@
 
 .moreAnswers {
   font-weight: 600;
+  font-size: small;
   background-color: transparent;
   border: none;
-  margin-left: 10px;
+  padding: 5px 25px;
+  transition: transform .2s linear;
+}
+
+.moreAnswers:hover {
+  transform: scale(1.03);
+  color: #0e4f4e
+}
+
+.moreAnswersDark {
+  color: #B6D8C4;
+  font-weight: 600;
+  font-size: small;
+  background-color: transparent;
+  border: none;
+  padding: 5px 25px;
+  transition: transform .2s linear;
+}
+
+.moreAnswersDark:hover {
+  transform: scale(1.03);
+  color: #c2e7d7;
+}
+
+.noAnswers {
+  padding: 5px 0 5px 25px;
+  font-style: italic;
 }
 
 @keyframes fadeIn {
