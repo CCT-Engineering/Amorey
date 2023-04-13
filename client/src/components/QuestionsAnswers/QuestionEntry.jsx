@@ -24,7 +24,7 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
 
   const windowScroll = () => {
     const questionDiv = document.getElementById('question');
-    const questionDivBottom = questionDiv.geBoundingClientRect().bottom;
+    const questionDivBottom = questionDiv.getBoundingClientRect().bottom;
     const scrollAmount = questionDivBottom - window.innerHeight;
 
     if (scrollAmount > 0) {

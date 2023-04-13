@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { buildHandleEnterKeyPress } from '../../util';
 import date from '../../util/formatDate.js';
+import Thumbnail from '../SharedComponents/Thumbnail.jsx';
 import local from '../../styles/QuestionsAnswers/AnswerEntry.css';
 
 const AnswerEntry = ({ answer, updateQuestions, darkMode }) => {
@@ -24,6 +25,9 @@ const AnswerEntry = ({ answer, updateQuestions, darkMode }) => {
           <h4 className={local.aLetter}>A:</h4>
           {answer.body}
         </div>
+        {answer.photos ? answer.photos.map((photoURL, i) => (
+          <Thumbnail photo={photoURL} key={`Answer Photo ${answer.id + i}`} />
+        )) : null}
         <div className={local.footer}>
           <div className={local.answerBy}>
             {`by ${answer.answerer_name} - ${date(answer.date)}`}

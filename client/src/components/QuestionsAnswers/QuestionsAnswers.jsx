@@ -7,7 +7,7 @@ const QuestionsAnswers = ({
   current, questions, getQuestions, darkMode,
 }) => {
   const [renderLimit, setRenderLimit] = useState(2);
-  const [userQuestions, setUserQuestions] = useState(
+  const [userQuestions] = useState(
     JSON.parse(localStorage.getItem('userQuestions')) || [],
   );
   const [sortedQuestions, setSortedQuestions] = useState([]);
