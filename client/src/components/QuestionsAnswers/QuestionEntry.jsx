@@ -3,7 +3,7 @@ import AnswersList from './AnswersList.jsx';
 import local from '../../styles/QuestionsAnswers/QuestionEntry.css';
 
 const QuestionEntry = ({ question, darkMode }) => {
-  const [renderLimit, setRenderLimit] = useState(1);
+  const [renderLimit, setRenderLimit] = useState(2);
   const [sortedAnswers, setSortedAnswers] = useState([]);
 
   const sortAnswers = (answerArr, sort = 'helpfulness') => (

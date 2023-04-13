@@ -35,6 +35,7 @@
   cursor: crosshair;
   background-color: rgba(0, 0, 0, .75);
   overflow: hidden;
+  transition: transform .2s linear;
 }
 
 .galleryExp:hover {
