@@ -65,7 +65,7 @@ const QuestionsAnswers = ({
         : <div>Currently No Questions To Display</div>}
       {renderLimit < (questions.length - userQuestions.length) && (
         <button
-          className={darkMode ? local.moreQuestionsDark : local.moreQuestions}
+          className={darkMode ? local.buttonDark : local.button}
           aria-label="More Questions"
           type="button"
           onClick={loadMoreQuestions}
@@ -73,6 +73,14 @@ const QuestionsAnswers = ({
           MORE QUESTIONS
         </button>
       )}
+      <button
+        className={darkMode ? local.buttonDark : local.button}
+        aria-label="Add A Review +"
+        type="button"
+        onClick={() => showModal(true)}
+      >
+        ADD A REVIEW +
+      </button>
     </div>
   );
 };

@@ -38,7 +38,7 @@ const AnswerEntry = ({ answer, updateQuestions, darkMode }) => {
             type="button"
             aria-label="Mark Answer Helpful"
             tabIndex={0}
-            className={darkMode ? local.helpfulDark : local.helpful}
+            className={darkMode ? local.textBtnDark : local.textBtn}
             style={{ color: canRateAnswer ? null : 'gold' }}
             onClick={() => markAnswer('putHelpfulAnswer')}
             onKeyPress={buildHandleEnterKeyPress(() => markAnswer('putHelpfulAnswer'))}
@@ -50,7 +50,7 @@ const AnswerEntry = ({ answer, updateQuestions, darkMode }) => {
             type="button"
             aria-label="Report Answer"
             tabIndex={0}
-            className={darkMode ? local.reportDark : local.report}
+            className={darkMode ? local.textBtnDark : local.textBtn}
             onClick={() => markAnswer('putReportAnswer')}
             onKeyPress={buildHandleEnterKeyPress(() => markAnswer('putReportAnswer'))}
           >

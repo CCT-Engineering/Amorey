@@ -8,7 +8,7 @@
   width: 80%;
 }
 
-.moreQuestions {
+.button {
   margin-top: 1%;
   margin-bottom: 1%;
   background-color: #3cad9a;
@@ -18,11 +18,11 @@
   padding: 15px;
 }
 
-.moreQuestions:hover {
+.button:hover {
   background-color: #4cc6b2;
 }
 
-.moreQuestionsDark {
+.buttonDark {
   margin-top: 1%;
   margin-bottom: 1%;
   background-color: #548C93;
@@ -32,6 +32,6 @@
   padding: 15px;
 }
 
-.moreQuestionsDark:hover {
+.buttonDark:hover {
   background-color: #73A4A3;
 }
