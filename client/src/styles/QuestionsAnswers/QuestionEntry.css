@@ -26,6 +26,14 @@
   font-weight: 600;
 }
 
+.moreAnswers {
+  font-weight: 600;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }

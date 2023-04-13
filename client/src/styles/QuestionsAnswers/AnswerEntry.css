@@ -1,11 +1,15 @@
-/* .header {
+.header {
   display: flex;
   justify-content: space-between;
   padding-left: 5px;
   padding-right: 5px;
 }
 
-.mainBody {
+.answer {
+  display: flex;
+}
+
+/* .mainBody {
   display: block;
   background-color:#8acabf;
   border-bottom: solid 2px;

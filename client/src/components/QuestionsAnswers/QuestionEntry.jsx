@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import AnswersList from './AnswersList.jsx';
 import local from '../../styles/QuestionsAnswers/QuestionEntry.css';
 
 const QuestionEntry = ({ question, darkMode }) => {
-  const [renderLimit, setRenderLimit] = useState(2);
-  const [sortedAnswer, setSortedAnswers] = useState([]);
+  const [renderLimit, setRenderLimit] = useState(1);
+  const [sortedAnswers, setSortedAnswers] = useState([]);
 
   const sortAnswers = (answerArr, sort = 'helpfulness') => (
     Object.values(answerArr).sort((a, b) => {
@@ -14,10 +15,7 @@ const QuestionEntry = ({ question, darkMode }) => {
     }).slice(0, renderLimit)
   );
 
-  const sortedAnswers = sortAnswers(question.answers, 'helpfulness');
-
   useEffect(() => {
-    console.log('renderLimit:', renderLimit);
     setSortedAnswers(sortAnswers(question.answers).slice(0, renderLimit));
   }, [question.answers, renderLimit]);
 
@@ -36,7 +34,7 @@ const QuestionEntry = ({ question, darkMode }) => {
 
   const loadMoreAnswers = () => {
     setTimeout(() => { windowScroll(); }, 100);
-    setRenderLimit(Math.min(renderLimit + 2, question.answers.length));
+    setRenderLimit(Math.min(renderLimit + 2, Object.values(question.answers).length));
   };
 
   return (
@@ -44,6 +42,19 @@ const QuestionEntry = ({ question, darkMode }) => {
       <div className={local.header}>
         <h4 className={local.summary}>{`Q: ${question.question_body}`}</h4>
       </div>
+      {(sortedAnswers?.length || 0)
+        ? <AnswersList renderedAnswers={sortedAnswers.slice(0, renderLimit)} />
+        : <div>Currently No Answers To Display</div>}
+      {renderLimit < Object.values(question.answers).length && (
+        <button
+          className={local.moreAnswers}
+          aria-label="More Answers"
+          type="button"
+          onClick={loadMoreAnswers}
+        >
+          MORE ANSWERS
+        </button>
+      )}
     </div>
   );
 };

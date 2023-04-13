@@ -1,10 +1,13 @@
 import React from 'react';
 import local from '../../styles/QuestionsAnswers/AnswerEntry.css';
 
-const AnswerEntry = ({ answer, darkMode }) => (
-  <div id="answers" className={darkMode ? local.mainBodyDark : local.mainBody}>
-    <div className={local.header}>
-      <h4 className={local.summary}>{`Q: ${question.question_body}`}</h4>
+const AnswerEntry = ({ answer }) => (
+  <div className={local.answer}>
+    <h4 className={local.summary}>A:</h4>
+    <div className={local.answerBody}>
+      <div className={local.header}>
+        {answer.body}
+      </div>
     </div>
   </div>
 );
