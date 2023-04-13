@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import local from '../../styles/QuestionsAnswers/QuestionEntry.css';
 
 const QuestionEntry = ({ question, darkMode }) => {
   const [renderLimit, setRenderLimit] = useState(2);
+  const [sortedAnswer, setSortedAnswers] = useState([]);
 
   const sortAnswers = (answerArr, sort = 'helpfulness') => (
     Object.values(answerArr).sort((a, b) => {
@@ -15,19 +16,31 @@ const QuestionEntry = ({ question, darkMode }) => {
 
   const sortedAnswers = sortAnswers(question.answers, 'helpfulness');
 
+  useEffect(() => {
+    console.log('renderLimit:', renderLimit);
+    setSortedAnswers(sortAnswers(question.answers).slice(0, renderLimit));
+  }, [question.answers, renderLimit]);
+
   const windowScroll = () => {
-    const AnswerList = document.getElementById('answers');
-    window.scroll({ top: document.body.scrollHeight, left: 0, behavior: 'smooth' });
-    AnswerList.scroll({ top: AnswerList.scrollHeight, behavior: 'smooth' });
+    const questionDiv = document.getElementById('question');
+    const questionDivBottom = questionDiv.getBoundingClientRect().bottom;
+    const scrollAmount = questionDivBottom - window.innerHeight;
+
+    if (scrollAmount > 0) {
+      window.scrollBy({
+        top: scrollAmount,
+        behavior: 'smooth',
+      });
+    }
   };
 
-  const loadMoreQuestions = () => {
+  const loadMoreAnswers = () => {
     setTimeout(() => { windowScroll(); }, 100);
-    setRenderLimit(Math.min(renderLimit + 2, sortedAnswers.length));
+    setRenderLimit(Math.min(renderLimit + 2, question.answers.length));
   };
 
   return (
-    <div id="answers" className={darkMode ? local.mainBodyDark : local.mainBody}>
+    <div id="question" className={darkMode ? local.mainBodyDark : local.mainBody}>
       <div className={local.header}>
         <h4 className={local.summary}>{`Q: ${question.question_body}`}</h4>
       </div>

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import QuestionEntry from './QuestionEntry.jsx';
+import React, { useState, useEffect } from 'react';
+import QuestionsList from './QuestionsList.jsx';
 import local from '../../styles/QuestionsAnswers/QuestionsAnswers.css';
 
 const QuestionsAnswers = ({
@@ -9,7 +9,7 @@ const QuestionsAnswers = ({
   const [userQuestions, setUserQuestions] = useState(
     JSON.parse(localStorage.getItem('userQuestions')) || [],
   );
-  let renderAmount = 0;
+  const [sortedQuestions, setSortedQuestions] = useState([]);
 
   const sortQuestions = (questionArr, sort = 'helpfulness') => (
     questionArr.sort((a, b) => {
@@ -17,45 +17,48 @@ const QuestionsAnswers = ({
         return b.question_helpfulness - a.question_helpfulness;
       }
       return new Date(b.question_date) - new Date(a.question_date);
-    }).slice(0, renderLimit)
+    })
   );
 
+  useEffect(() => {
+    console.log('renderLimit:', renderLimit);
+    setSortedQuestions(sortQuestions(questions).slice(0, renderLimit));
+  }, [questions, renderLimit]);
+
   const sortedUserQuestions = sortQuestions(userQuestions, 'newest');
-  const sortedQuestions = sortQuestions(questions, 'helpfulness');
 
   const windowScroll = () => {
-    const QuestionList = document.getElementById('questions');
-    window.scroll({ top: document.body.scrollHeight, left: 0, behavior: 'smooth' });
-    QuestionList.scroll({ top: QuestionList.scrollHeight, behavior: 'smooth' });
+    const questionsDiv = document.getElementById('questions');
+    const questionsDivBottom = questionsDiv.getBoundingClientRect().bottom;
+    const scrollAmount = questionsDivBottom - window.innerHeight;
+
+    if (scrollAmount > 0) {
+      window.scrollBy({
+        top: scrollAmount,
+        behavior: 'smooth',
+      });
+    }
   };
 
   const loadMoreQuestions = () => {
     setTimeout(() => { windowScroll(); }, 100);
-    setRenderLimit(Math.min(renderLimit + 2, sortedQuestions.length));
+    setRenderLimit(Math.min(renderLimit + 2, questions.length));
   };
 
   return (
     <div id="questions" className={local.mainBody}>
       <h5 className={local.header}>QUESTIONS & ANSWERS</h5>
-      {!((sortedUserQuestions?.length || 0) + (sortedQuestions?.length || 0))
-        && <div>Currently No Questions To Display</div>}
-      {sortedUserQuestions.map((questionItem) => (
-        <QuestionEntry
-          key={`Question${questionItem.question_id}`}
-          question={questionItem}
-          darkMode={darkMode}
-        />
-      ))}
-      {sortedQuestions.map((questionItem) => (
-        <QuestionEntry
-          key={`Question${questionItem.question_id}`}
-          question={questionItem}
-          darkMode={darkMode}
-        />
-      ))}
-      {renderLimit < sortedQuestions.length && (
+      {((sortedUserQuestions?.length || 0) + (sortedQuestions?.length || 0))
+        ? (
+          <QuestionsList
+            renderedQuestions={[...sortedUserQuestions, ...sortedQuestions.slice(0, renderLimit)]}
+            darkMode={darkMode}
+          />
+        )
+        : <div>Currently No Questions To Display</div>}
+      {renderLimit < (questions.length - userQuestions.length) && (
         <button
-          className={darkMode ? local.moreReviewsDark : local.moreReviews}
+          className={darkMode ? local.moreQuestionsDark : local.moreQuestions}
           aria-label="More Questions"
           type="button"
           onClick={loadMoreQuestions}

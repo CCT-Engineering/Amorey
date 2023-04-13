@@ -1,0 +1,32 @@
+/* .header {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.mainBody {
+  display: block;
+  background-color:#8acabf;
+  border-bottom: solid 2px;
+  margin-bottom: 2%;
+  animation: fadeIn .6s;
+}
+
+.mainBodyDark {
+  display: block;
+  background-color: #1E556C;
+  border-bottom: solid 2px #B6D8C4;
+  margin-bottom: 2%;
+  animation: fadeIn .6;
+}
+
+.summary {
+  padding: 5px;
+  font-weight: 600;
+} */
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

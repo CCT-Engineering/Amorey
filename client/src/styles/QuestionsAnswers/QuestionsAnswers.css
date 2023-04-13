@@ -7,3 +7,31 @@
   margin: auto;
   width: 80%;
 }
+
+.moreQuestions {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  background-color: #3cad9a;
+  border: solid 1px;
+  font-weight: 600;
+  margin-right: 2%;
+  padding: 15px;
+}
+
+.moreQuestions:hover {
+  background-color: #4cc6b2;
+}
+
+.moreQuestionsDark {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  background-color: #548C93;
+  border: solid 1px;
+  font-weight: 600;
+  margin-right: 2%;
+  padding: 15px;
+}
+
+.moreQuestionsDark:hover {
+  background-color: #73A4A3;
+}
