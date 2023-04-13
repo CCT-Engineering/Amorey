@@ -34,6 +34,7 @@ function App() {
   const getQuestions = () => {
     requests.getQuestions(current.id, (data) => {
       setQuestions(data.results);
+      console.log('data.results:', data.results.slice(0, 5));
     });
   };
 
@@ -68,7 +69,7 @@ function App() {
     }, process.env.STARTING_PRODUCT_IDX ?? 1);
   }, []);
 
-  // if current product changes, get related products and current reviews
+  // if current product changes, get related products, current reviews, questions, & metadata
   useEffect(() => {
     if (current.id) {
       getStylesMetadata(current.id);
