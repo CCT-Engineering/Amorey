@@ -4,6 +4,11 @@ import { buildHandleEnterKeyPress } from '../../util';
 
 const Photos = ({ photo }) => {
   const [expandImage, setExpandImage] = useState(false);
+  const [isImageVisible, setIsImageVisible] = useState(true);
+
+  const handleImageError = () => {
+    setIsImageVisible(false);
+  };
 
   return (
     <>
@@ -15,13 +20,16 @@ const Photos = ({ photo }) => {
         onClick={() => setExpandImage(!expandImage)}
         onKeyPress={buildHandleEnterKeyPress(() => setExpandImage(!expandImage))}
       >
-        <img
-          className={global.thumbnail}
-          src={photo}
-          alt="text"
-          height="48px"
-          width="48px"
-        />
+        {isImageVisible && (
+          <img
+            className={global.thumbnail}
+            src={photo}
+            alt="text"
+            height="48px"
+            width="48px"
+            onError={handleImageError}
+          />
+        )}
       </div>
       {expandImage && (
         <div
