@@ -64,6 +64,34 @@ const requests = {
       .catch((err) => console.error(err));
   },
 
+  // pass in (question_id)
+  putHelpfulQuestion: (id, callback) => {
+    fetch(`${url}qa/questions/${id}/helpful`, { method: 'PUT' })
+      .then(() => callback())
+      .catch((err) => console.error(err));
+  },
+
+  // pass in (question_id)
+  putReportQuestion: (id, callback) => {
+    fetch(`${url}qa/questions/${id}/report`, { method: 'PUT' })
+      .then(() => callback())
+      .catch((err) => console.error(err));
+  },
+
+  // pass in (answer_id)
+  putHelpfulAnswer: (id, callback) => {
+    fetch(`${url}qa/answers/${id}/helpful`, { method: 'PUT' })
+      .then(() => callback())
+      .catch((err) => console.error(err));
+  },
+
+  // pass in (answer_id)
+  putReportAnswer: (id, callback) => {
+    fetch(`${url}qa/answers/${id}/report`, { method: 'PUT' })
+      .then(() => callback())
+      .catch((err) => console.error(err));
+  },
+
   // pass in (new review object)
   postReview: (review, callback) => {
     console.log('review:', review);
