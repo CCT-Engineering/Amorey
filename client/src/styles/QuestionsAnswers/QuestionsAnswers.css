@@ -16,7 +16,6 @@
   font-weight: 600;
   margin-right: 2%;
   padding: 15px;
-  cursor: pointer;
 }
 
 .moreQuestions:hover {
@@ -31,7 +30,6 @@
   font-weight: 600;
   margin-right: 2%;
   padding: 15px;
-  cursor: pointer;
 }
 
 .moreQuestionsDark:hover {
