@@ -26,7 +26,7 @@ const OutfitCard = ({
   return (
     <div className={darkMode ? local.outfitCardDark : local.outfitCard}>
       {outfitPiece.pic ? delButton : ''}
-      <div className={darkMode ? local.picContainerDark : local.picContainer}>
+      <div className={darkMode ? local.picContainerDark : local.picContainer} role="button">
         {outfitPiece.pic
           ? <Img src={outfitPiece.pic} w={211} h={221} alt={`Your Outfit: ${outfitPiece.name} img`} onClick={handleChangeCurrent} className={local.pic} />
           : (
