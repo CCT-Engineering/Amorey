@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import AnswersList from './AnswersList.jsx';
 import local from '../../styles/QuestionsAnswers/QuestionEntry.css';
 
-const QuestionEntry = ({ question, darkMode }) => {
+const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
   const [renderLimit, setRenderLimit] = useState(2);
   const [sortedAnswers, setSortedAnswers] = useState([]);
 
@@ -41,9 +41,40 @@ const QuestionEntry = ({ question, darkMode }) => {
     <div id="question" className={darkMode ? local.mainBodyDark : local.mainBody}>
       <div className={local.header}>
         <h4 className={local.summary}>{`Q: ${question.question_body}`}</h4>
+        <div className={local.questionActionBar}>
+          <div>Helpful?</div>
+          <button
+            type="button"
+            aria-label="Mark Question Helpful"
+            tabIndex={0}
+            className={darkMode ? local.helpfulDark : local.helpful}
+            style={{ color: canRateAnswer ? null : 'gold' }}
+            onClick={() => markAnswer('putHelpfulQuestion')}
+            onKeyPress={buildHandleEnterKeyPress(() => markAnswer('putHelpfulQuestion'))}
+          >
+            YES
+          </button>
+          <div>{`(${answer.helpfulness}) | `}</div>
+          <button
+            type="button"
+            aria-label="Report Question"
+            tabIndex={0}
+            className={darkMode ? local.reportDark : local.report}
+            onClick={() => markAnswer('putReportQuestion')}
+            onKeyPress={buildHandleEnterKeyPress(() => markAnswer('putReportQuestion'))}
+          >
+            Report
+          </button>
+        </div>
       </div>
       {(sortedAnswers?.length || 0)
-        ? <AnswersList renderedAnswers={sortedAnswers.slice(0, renderLimit)} darkMode={darkMode} />
+        ? (
+          <AnswersList
+            renderedAnswers={sortedAnswers.slice(0, renderLimit)}
+            updateQuestions={updateQuestions}
+            darkMode={darkMode}
+          />
+        )
         : <div className={local.noAnswers}>Currently No Answers To Display</div>}
       {renderLimit < Object.values(question.answers).length && (
         <button

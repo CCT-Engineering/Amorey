@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
 import { buildHandleEnterKeyPress } from '../../util';
+import date from '../../util/formatDate.js';
 import local from '../../styles/QuestionsAnswers/AnswerEntry.css';
 
-const AnswerEntry = ({ answer, darkMode }) => {
-  const unrated = !(localStorage.getItem(answer.id) === 'true');
-  const [expand, setExpand] = useState(false);
-  const [canRateReview, setRateReview] = useState(unrated);
+const AnswerEntry = ({ answer, updateQuestions, darkMode }) => {
+  const unrated = !(localStorage.getItem(`A${answer.id}`) === 'true');
+  const [canRateAnswer, setCanRateAnswer] = useState(unrated);
 
-  const rateReview = (rating) => {
-    if (rating === 'putReport') {
-      localStorage.setItem(review.review_id, 'true');
-      updateReview(review.review_id, rating);
-    } else if (canRateReview) {
-      localStorage.setItem(review.review_id, 'true');
-      setRateReview(false);
-      updateReview(review.review_id, rating);
+  const markAnswer = (action) => {
+    localStorage.setItem(`A${answer.id}`, 'true');
+    if (action === 'putReport') {
+      updateQuestions(answer.id, action);
+    } else if (canRateAnswer) {
+      setCanRateAnswer(false);
+      updateQuestions(answer.id, action);
     }
   };
 
@@ -26,19 +25,19 @@ const AnswerEntry = ({ answer, darkMode }) => {
           {answer.body}
         </div>
         <div className={local.footer}>
-          <div>
-            {`by ${answer.answerer_name} |`}
+          <div className={local.answerBy}>
+            {`by ${answer.answerer_name} - ${date(answer.date)}`}
             &nbsp;
           </div>
-          <div>Helpful?</div>
+          <div>| Helpful?</div>
           <button
             type="button"
             aria-label="Put Helpful"
             tabIndex={0}
             className={darkMode ? local.helpfulDark : local.helpful}
-            style={{ color: canRateReview ? null : 'gold' }}
-            onClick={() => rateReview('putHelpful')}
-            onKeyPress={buildHandleEnterKeyPress(() => rateReview('putHelpful'))}
+            style={{ color: canRateAnswer ? null : 'gold' }}
+            onClick={() => markAnswer('putHelpfulAnswer')}
+            onKeyPress={buildHandleEnterKeyPress(() => markAnswer('putHelpfulAnswer'))}
           >
             YES
           </button>
@@ -48,8 +47,8 @@ const AnswerEntry = ({ answer, darkMode }) => {
             aria-label="Put Report"
             tabIndex={0}
             className={darkMode ? local.reportDark : local.report}
-            onClick={() => rateReview('putReport')}
-            onKeyPress={buildHandleEnterKeyPress(() => rateReview('putReport'))}
+            onClick={() => markAnswer('putReportAnswer')}
+            onKeyPress={buildHandleEnterKeyPress(() => markAnswer('putReportAnswer'))}
           >
             Report
           </button>

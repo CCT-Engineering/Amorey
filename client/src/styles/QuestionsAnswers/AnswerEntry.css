@@ -5,6 +5,7 @@
 
 .answer {
   display: flex;
+  padding-left: 15px;
 }
 
 .answerBody {
@@ -67,8 +68,13 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: nowrap;
+  padding: 5px 0;
 }
 
 .footer > * {
   white-space: nowrap;
+}
+
+.answerBy {
+  font-style: italic;
 }

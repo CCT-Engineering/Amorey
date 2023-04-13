@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import QuestionsList from './QuestionsList.jsx';
+import requests from '../../requests.js';
 import local from '../../styles/QuestionsAnswers/QuestionsAnswers.css';
 
 const QuestionsAnswers = ({
@@ -42,8 +43,12 @@ const QuestionsAnswers = ({
   };
 
   const loadMoreQuestions = () => {
-    setTimeout(() => { windowScroll(); }, 100);
+    setTimeout(() => windowScroll(), 100);
     setRenderLimit(Math.min(renderLimit + 2, questions.length));
+  };
+
+  const updateQuestions = (review, rating) => {
+    requests[rating](review, () => getQuestions());
   };
 
   return (
@@ -53,6 +58,7 @@ const QuestionsAnswers = ({
         ? (
           <QuestionsList
             renderedQuestions={[...sortedUserQuestions, ...sortedQuestions.slice(0, renderLimit)]}
+            updateQuestions={updateQuestions}
             darkMode={darkMode}
           />
         )
