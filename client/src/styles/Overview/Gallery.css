@@ -5,18 +5,19 @@
   position: relative;
   text-align: center;
   height: 510px;
-
   background-size: cover;
-
   background-repeat: no-repeat;
   background-position: center;
   background-color: #333;
   margin-right: 25px;
-  cursor: zoom-in;
   flex-shrink: 1;
   flex-grow: 1;
   flex-basis: 0px;
   min-width: 220px;
+}
+
+.gallery:hover {
+  cursor: zoom-in;
 }
 
 .galleryExp {
@@ -34,6 +35,10 @@
   cursor: crosshair;
   background-color: rgba(0, 0, 0, .75);
   overflow: hidden;
+}
+
+.galleryExp:hover {
+  cursor: crosshair;
 }
 
 .gallerySide {
@@ -86,7 +91,6 @@
   left: 60px;
   opacity: 0.7;
   height: 100%;
-
   color: black;
   font-size: 1.5rem;
   text-shadow: 0px 0px 2.5px white;
@@ -104,7 +108,6 @@
   font-size: inherit;
   opacity: 0.7;
   height: 100%;
-
   color: black;
   font-size: 1.5rem;
   text-shadow: 0px 0px 2.5px white;
