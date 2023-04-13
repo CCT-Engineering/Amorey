@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import AnswersList from './AnswersList.jsx';
+import { buildHandleEnterKeyPress } from '../../util';
 import local from '../../styles/QuestionsAnswers/QuestionEntry.css';
 
 const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
+  const unrated = !(localStorage.getItem(`Q${question.question_id}`) === 'true');
   const [renderLimit, setRenderLimit] = useState(2);
   const [sortedAnswers, setSortedAnswers] = useState([]);
+  const [canRateQuestion, setCanRateQuestion] = useState(unrated);
 
   const sortAnswers = (answerArr, sort = 'helpfulness') => (
     Object.values(answerArr).sort((a, b) => {
@@ -21,7 +24,7 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
 
   const windowScroll = () => {
     const questionDiv = document.getElementById('question');
-    const questionDivBottom = questionDiv.getBoundingClientRect().bottom;
+    const questionDivBottom = questionDiv.geBoundingClientRect().bottom;
     const scrollAmount = questionDivBottom - window.innerHeight;
 
     if (scrollAmount > 0) {
@@ -37,6 +40,16 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
     setRenderLimit(Math.min(renderLimit + 2, Object.values(question.answers).length));
   };
 
+  const markQuestion = (action) => {
+    localStorage.setItem(`Q${question.question_id}`, 'true');
+    if (action === 'putReportQuestion') {
+      updateQuestions(question.question_id, action);
+    } else if (canRateQuestion) {
+      setCanRateQuestion(false);
+      updateQuestions(question.question_id, action);
+    }
+  };
+
   return (
     <div id="question" className={darkMode ? local.mainBodyDark : local.mainBody}>
       <div className={local.header}>
@@ -48,20 +61,20 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
             aria-label="Mark Question Helpful"
             tabIndex={0}
             className={darkMode ? local.helpfulDark : local.helpful}
-            style={{ color: canRateAnswer ? null : 'gold' }}
-            onClick={() => markAnswer('putHelpfulQuestion')}
-            onKeyPress={buildHandleEnterKeyPress(() => markAnswer('putHelpfulQuestion'))}
+            style={{ color: canRateQuestion ? null : 'gold' }}
+            onClick={() => markQuestion('putHelpfulQuestion')}
+            onKeyPress={buildHandleEnterKeyPress(() => markQuestion('putHelpfulQuestion'))}
           >
             YES
           </button>
-          <div>{`(${answer.helpfulness}) | `}</div>
+          <div>{`(${question.question_helpfulness}) | `}</div>
           <button
             type="button"
             aria-label="Report Question"
             tabIndex={0}
             className={darkMode ? local.reportDark : local.report}
-            onClick={() => markAnswer('putReportQuestion')}
-            onKeyPress={buildHandleEnterKeyPress(() => markAnswer('putReportQuestion'))}
+            onClick={() => markQuestion('putReportQuestion')}
+            onKeyPress={buildHandleEnterKeyPress(() => markQuestion('putReportQuestion'))}
           >
             Report
           </button>

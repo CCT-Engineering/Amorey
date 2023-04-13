@@ -19,9 +19,9 @@ const AnswerEntry = ({ answer, updateQuestions, darkMode }) => {
 
   return (
     <div className={local.answer}>
-      <h4>A:</h4>
       <div className={local.answerBody}>
         <div className={local.header}>
+          <h4 className={local.aLetter}>A:</h4>
           {answer.body}
         </div>
         <div className={local.footer}>
@@ -32,7 +32,7 @@ const AnswerEntry = ({ answer, updateQuestions, darkMode }) => {
           <div>| Helpful?</div>
           <button
             type="button"
-            aria-label="Put Helpful"
+            aria-label="Mark Answer Helpful"
             tabIndex={0}
             className={darkMode ? local.helpfulDark : local.helpful}
             style={{ color: canRateAnswer ? null : 'gold' }}
@@ -44,7 +44,7 @@ const AnswerEntry = ({ answer, updateQuestions, darkMode }) => {
           <div>{`(${answer.helpfulness}) | `}</div>
           <button
             type="button"
-            aria-label="Put Report"
+            aria-label="Report Answer"
             tabIndex={0}
             className={darkMode ? local.reportDark : local.report}
             onClick={() => markAnswer('putReportAnswer')}

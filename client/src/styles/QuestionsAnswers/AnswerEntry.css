@@ -1,6 +1,11 @@
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: left;
+  align-items: baseline;
+}
+
+.aLetter {
+  padding: 0 5px 0 0;
 }
 
 .answer {
