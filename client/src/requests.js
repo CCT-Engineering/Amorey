@@ -8,7 +8,7 @@ const getData = (res, callback) => (
 );
 
 const requests = {
-  // pass in (callback)
+  // pass in (callback, page, count)
   getProducts: (callback, pg = 1, cnt = 1) => {
     fetch(`${url}products/?page=${pg}&count=${cnt}`)
       .then((res) => getData(res, callback));
@@ -33,14 +33,20 @@ const requests = {
   },
 
   // pass in (product_id, sort method, callback)
-  getReviews: (id, sort, callback) => {
-    fetch(`${url}reviews/?product_id=${id}&sort=${sort}&count=999`)
+  getReviews: (id, sort, callback, pg = 1, cnt = 999) => {
+    fetch(`${url}reviews/?product_id=${id}&sort=${sort}&page=${pg}&count=${cnt}`)
       .then((res) => getData(res, callback));
   },
 
-  // pass in (product_id)
+  // pass in (product_id, callback)
   getMetadata: (id, callback) => {
     fetch(`${url}reviews/meta/?product_id=${id}`)
+      .then((res) => getData(res, callback));
+  },
+
+  // pass in (product_id, callback)
+  getQuestions: (id, callback, pg = 1, cnt = 999) => {
+    fetch(`${url}qa/questions/?product_id=${id}&page=${pg}&count=${cnt}`)
       .then((res) => getData(res, callback));
   },
 

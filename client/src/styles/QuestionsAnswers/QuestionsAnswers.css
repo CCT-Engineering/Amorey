@@ -1,0 +1,13 @@
+.header {
+  margin-top: 50px;
+  margin-left: 9.8%;
+}
+
+.mainBody {
+  justify-content: center;
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap-reverse;
+  margin: auto;
+  width: 80%;
+}

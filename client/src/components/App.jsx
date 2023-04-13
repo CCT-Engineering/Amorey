@@ -3,6 +3,7 @@ import Banner from './Banner/Banner.jsx';
 import Overview from './Overview/Overview.jsx';
 import RelatedOutfit from './RelatedOutfit/Index.jsx';
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
+import QuestionsAnswers from './QuestionsAnswers/QuestionsAnswers.jsx';
 import requests from '../requests.js';
 import calculateAverageStars from '../util/calculateStarAverage.js';
 import local from '../styles/App.css';
@@ -28,6 +29,8 @@ function App() {
       setReviews(data.results);
     });
   };
+
+  // const getQuestions = () = {};
 
   const getRelated = () => {
     requests.getRelated(current.id, (data) => {
@@ -101,6 +104,9 @@ function App() {
         darkMode={darkMode}
         setCurrentStyles={setCurrentStyles}
         relateArr={relateArr}
+      />
+      <QuestionsAnswers
+        darkMode={darkMode}
       />
       <RatingsReviews
         current={current}
