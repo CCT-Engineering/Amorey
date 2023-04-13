@@ -43,7 +43,7 @@ const QuestionEntry = ({ question, darkMode }) => {
         <h4 className={local.summary}>{`Q: ${question.question_body}`}</h4>
       </div>
       {(sortedAnswers?.length || 0)
-        ? <AnswersList renderedAnswers={sortedAnswers.slice(0, renderLimit)} />
+        ? <AnswersList renderedAnswers={sortedAnswers.slice(0, renderLimit)} darkMode={darkMode} />
         : <div className={local.noAnswers}>Currently No Answers To Display</div>}
       {renderLimit < Object.values(question.answers).length && (
         <button

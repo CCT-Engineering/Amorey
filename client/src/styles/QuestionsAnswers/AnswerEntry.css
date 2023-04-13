@@ -15,3 +15,60 @@
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
+
+.helpful {
+  text-decoration: underline;
+  background-color: transparent;
+  margin-left: 1%;
+  margin-right: .5%;
+  border: 0;
+}
+
+.helpful:hover {
+  background-color: #7eb4aa;
+}
+
+.helpfulDark {
+  color: #B6D8C4;
+  text-decoration: underline;
+  background-color: transparent;
+  margin-left: 1%;
+  margin-right: .5%;
+  border: 0;
+}
+
+.helpfulDark:hover {
+  background-color: #3C7883;
+}
+
+.report {
+  text-decoration: underline;
+  background-color: transparent;
+  border: 0;
+}
+
+.report:hover{
+  background-color: #7eb4aa;
+}
+
+.reportDark {
+  color: #B6D8C4;
+  text-decoration: underline;
+  background-color: transparent;
+  border: 0;
+}
+
+.reportDark:hover{
+  background-color: #3C7883;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.footer > * {
+  white-space: nowrap;
+}
