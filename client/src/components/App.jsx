@@ -19,6 +19,7 @@ function App() {
   const [metadata, setMetadata] = useState([]);
   const [stars, setStars] = useState(0);
   const [reviews, setReviews] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const [order, setOrder] = useState('relevant');
   const [darkMode, setDarkMode] = useState(false);
   const [relateArr, setRelatedArr] = useState([]);
@@ -30,7 +31,11 @@ function App() {
     });
   };
 
-  // const getQuestions = () = {};
+  const getQuestions = () => {
+    requests.getQuestions(current.id, (data) => {
+      setQuestions(data.results);
+    });
+  };
 
   const getRelated = () => {
     requests.getRelated(current.id, (data) => {
@@ -69,6 +74,7 @@ function App() {
       getStylesMetadata(current.id);
       getRelated();
       getReviews();
+      getQuestions();
     }
   }, [current.id]);
 
