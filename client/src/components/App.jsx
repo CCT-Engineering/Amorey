@@ -112,6 +112,9 @@ function App() {
         relateArr={relateArr}
       />
       <QuestionsAnswers
+        current={current}
+        questions={questions}
+        getQuestions={getQuestions}
         darkMode={darkMode}
       />
       <RatingsReviews

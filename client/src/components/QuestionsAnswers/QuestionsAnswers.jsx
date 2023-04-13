@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import requests from '../../requests.js';
 import local from '../../styles/QuestionsAnswers/QuestionsAnswers.css';
 
-const QuestionsAnswers = () => {
+const QuestionsAnswers = ({
+  current, questions, getQuestions, darkMode
+}) => {
   const hello = 'hi';
 
   return (
