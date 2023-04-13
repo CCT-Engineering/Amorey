@@ -8,6 +8,14 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
   const [renderLimit, setRenderLimit] = useState(2);
   const [sortedAnswers, setSortedAnswers] = useState([]);
   const [canRateQuestion, setCanRateQuestion] = useState(unrated);
+  const [showMessage, setShowMessage] = useState(false);
+
+  const handleAddAnswer = () => {
+    setShowMessage(true);
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 3000); // Message will be hidden after 3 seconds
+  };
 
   const sortAnswers = (answerArr, sort = 'helpfulness') => (
     Object.values(answerArr).sort((a, b) => {
@@ -78,6 +86,20 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
           >
             Report
           </button>
+          {' | '}
+          <div className={local.addButtonContainer}>
+            <button
+              type="button"
+              aria-label="Add Answer"
+              tabIndex={0}
+              className={darkMode ? local.reportDark : local.report}
+              onClick={handleAddAnswer}
+              onKeyPress={buildHandleEnterKeyPress(handleAddAnswer)}
+            >
+              Add Answer
+            </button>
+            {showMessage && <span className={local.tempMessage}>Not yet implemented</span>}
+          </div>
         </div>
       </div>
       {(sortedAnswers?.length || 0)

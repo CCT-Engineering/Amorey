@@ -121,3 +121,40 @@
 .reportDark:hover{
   background-color: #3C7883;
 }
+
+/* .tempMessage {
+  margin-left: 5px;
+  color: red;
+} */
+
+.addButtonContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.tempMessage {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, -5px);
+  background-color: white;
+  color: red;
+  border: 1px solid red;
+  border-radius: 5px;
+  padding: 5px;
+  white-space: nowrap;
+  z-index: 1;
+  animation: fade-out 2s forwards;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
