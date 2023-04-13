@@ -3,7 +3,7 @@ import QuestionsList from './QuestionsList.jsx';
 import local from '../../styles/QuestionsAnswers/QuestionsAnswers.css';
 
 const QuestionsAnswers = ({
-  questions, getQuestions, darkMode,
+  current, questions, getQuestions, darkMode,
 }) => {
   const [renderLimit, setRenderLimit] = useState(2);
   const [userQuestions, setUserQuestions] = useState(
@@ -23,6 +23,8 @@ const QuestionsAnswers = ({
   useEffect(() => {
     setSortedQuestions(sortQuestions(questions).slice(0, renderLimit));
   }, [questions, renderLimit]);
+
+  useEffect(() => { setRenderLimit(2); }, [current]);
 
   const sortedUserQuestions = sortQuestions(userQuestions, 'newest');
 
