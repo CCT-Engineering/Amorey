@@ -153,6 +153,25 @@ function Gallery({
     setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
   }, [offset]);
 
+  const preloadHigherResImage = () => {
+    const preloadImage = new Image();
+    preloadImage.src = formatImg(photoUrl, null, windowHgt * 1.5, false);
+    preloadImage.onload = () => {
+      console.log('formatImg(photoUrl, null, windowHgt, false):', formatImg(photoUrl, null, windowHgt * ZOOM, false));
+    };
+  };
+
+  useEffect(() => {
+    // preload the lowerResImage to create a trigger to preload the higher res
+    // once the lowerResImage is finished loading.
+    const lowerResImage = new Image();
+    lowerResImage.src = formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT);
+    lowerResImage.onload = () => {
+      console.log('formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT):', formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT));
+      setTimeout(() => preloadHigherResImage(), 1000);
+    };
+  }, [photoUrl, windowHgt]);
+
   useEffect(() => {
     if (!photoUrl) {
       setMainPhotoStyle({
@@ -162,7 +181,7 @@ function Gallery({
       });
     } else if (expandView) {
       setMainPhotoStyle({
-        backgroundImage: `url(${formatImg(photoUrl, null, windowHgt, false)})`,
+        backgroundImage: `url(${formatImg(photoUrl, null, windowHgt * 1.5, false)})`,
       });
     } else {
       setMainPhotoStyle({
@@ -183,7 +202,7 @@ function Gallery({
             photoId += 1;
             return (
               <Thumb
-                key={photo.thumbnail_url?.match(/(?<=photo-)(.+)(?=\?)/g)}
+                key={`${photo.thumbnail_url?.match(/(?<=photo-)(.+)(?=\?)/g)}-${photoIndex}`}
                 ref={thumbRefs.current[photoId]}
                 name={name}
                 id={photoId}
