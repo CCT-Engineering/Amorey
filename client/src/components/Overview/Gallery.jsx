@@ -44,21 +44,23 @@ function Gallery({
   useEffect(() => {
     // preload the lowerResImage to create a trigger to preload the higher res
     // once the lowerResImage is finished loading.
-    const lowerResImage = new Image();
-    lowerResImage.src = formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT);
-    lowerResImage.onload = () => {
-      if (expandView) {
-        if (photoIndex + 1 < photos.length) {
-          preloadHigherResImage(photoIndex + 1);
+    if (photoUrl) {
+      const lowerResImage = new Image();
+      lowerResImage.src = formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT);
+      lowerResImage.onload = () => {
+        if (expandView) {
+          if (photoIndex + 1 < photos.length) {
+            preloadHigherResImage(photoIndex + 1);
+            setTimeout(() => preloadHigherResImage(), 800);
+          }
+          if (photoIndex > 0) {
+            preloadHigherResImage(photoIndex - 1);
+          }
+        } else {
           setTimeout(() => preloadHigherResImage(), 800);
         }
-        if (photoIndex > 0) {
-          preloadHigherResImage(photoIndex - 1);
-        }
-      } else {
-        setTimeout(() => preloadHigherResImage(), 800);
-      }
-    };
+      };
+    }
   }, [photoUrl, windowHgt]);
 
   const handleBtnClick = (e) => {
