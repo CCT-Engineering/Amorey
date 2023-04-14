@@ -35,6 +35,32 @@ function Gallery({
   const thumbRefs = useRef([]);
   thumbRefs.current = photos.map((photo, i) => thumbRefs.current[i] ?? createRef());
 
+  const preloadHigherResImage = (highResPhotoIdx = photoIndex) => {
+    const highResPhotoUrl = photos[highResPhotoIdx].url;
+    const preloadImage = new Image();
+    preloadImage.src = formatImg(highResPhotoUrl, null, windowHgt * 1.5, false);
+  };
+
+  useEffect(() => {
+    // preload the lowerResImage to create a trigger to preload the higher res
+    // once the lowerResImage is finished loading.
+    const lowerResImage = new Image();
+    lowerResImage.src = formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT);
+    lowerResImage.onload = () => {
+      if (expandView) {
+        if (photoIndex + 1 < photos.length) {
+          preloadHigherResImage(photoIndex + 1);
+          setTimeout(() => preloadHigherResImage(), 800);
+        }
+        if (photoIndex > 0) {
+          preloadHigherResImage(photoIndex - 1);
+        }
+      } else {
+        setTimeout(() => preloadHigherResImage(), 800);
+      }
+    };
+  }, [photoUrl, windowHgt]);
+
   const handleBtnClick = (e) => {
     e.preventDefault();
     const decrButtons = ['left', 'thumbUp'];
@@ -93,8 +119,14 @@ function Gallery({
         // if NOT in Expanded view
         setExpandView(true);
         newAttr = {
-          backgroundImage: `url(${formatImg(photoUrl, null, windowHgt, false)})`,
+          backgroundImage: `url(${formatImg(photoUrl, null, windowHgt * 1.5, false)})`,
         };
+        if (photoIndex + 1 < photos.length) {
+          preloadHigherResImage(photoIndex + 1);
+        }
+        if (photoIndex > 0) {
+          preloadHigherResImage(photoIndex - 1);
+        }
         setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
       }
     }
@@ -152,25 +184,6 @@ function Gallery({
     const newAttr = { marginTop: newYmargin, marginRight: newXmargin };
     setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
   }, [offset]);
-
-  const preloadHigherResImage = () => {
-    const preloadImage = new Image();
-    preloadImage.src = formatImg(photoUrl, null, windowHgt * 1.5, false);
-    preloadImage.onload = () => {
-      console.log('formatImg(photoUrl, null, windowHgt, false):', formatImg(photoUrl, null, windowHgt * ZOOM, false));
-    };
-  };
-
-  useEffect(() => {
-    // preload the lowerResImage to create a trigger to preload the higher res
-    // once the lowerResImage is finished loading.
-    const lowerResImage = new Image();
-    lowerResImage.src = formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT);
-    lowerResImage.onload = () => {
-      console.log('formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT):', formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT));
-      setTimeout(() => preloadHigherResImage(), 1000);
-    };
-  }, [photoUrl, windowHgt]);
 
   useEffect(() => {
     if (!photoUrl) {
