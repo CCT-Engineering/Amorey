@@ -82,7 +82,7 @@ const NewReview = ({
 
   return (
     <div className={global.modalBackground}>
-      <div className={darkMode ? local.reviewFormDark : local.reviewForm}>
+      <div className={darkMode ? global.modalBodyDark : global.modalBody}>
         <form id="newReview" onSubmit={collectFormData}>
           <div className={global.modalLogo} aria-label="Form Logo" role="img" alt="AMOREY" />
           <h3 className={local.header}>
