@@ -198,7 +198,8 @@ div[role="button"] {
   display: flex;
   justify-content: center;
   z-index: 4;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: 700px;
   overflow: auto;
 }
@@ -216,6 +217,6 @@ div[role="button"] {
 @media (max-width: 767px) {
   .modalBody,
   .modalBodyDark {
-    overflow-x: scroll;
+    overflow-x: auto;
   }
 }
