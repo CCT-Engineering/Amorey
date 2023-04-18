@@ -1,0 +1,30 @@
+.header {
+  padding: 5px 0 0 0;
+  margin-top: -3%;
+  margin-left: 1%;
+}
+
+.product {
+  display: inline-block;
+  font-weight: 600;
+  color: #3C7883;
+}
+
+.productDark {
+  display: inline-block;
+  font-weight: 600;
+  color: #548C93;
+}
+
+.thumbnails {
+  margin-top: -2%;
+  margin-bottom: 2%;
+}
+
+.submit {
+  margin-left: 1%;
+}
+
+.cancel {
+  margin-left: 5%;
+}
