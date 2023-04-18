@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import QuestionsList from './QuestionsList.jsx';
+import NewQuestion from './NewQuestion.jsx';
 import requests from '../../requests.js';
 import { buildHandleEnterKeyPress } from '../../util';
 import local from '../../styles/QuestionsAnswers/QuestionsAnswers.css';
@@ -12,14 +13,7 @@ const QuestionsAnswers = ({
     JSON.parse(localStorage.getItem('userQuestions')) || [],
   );
   const [sortedQuestions, setSortedQuestions] = useState([]);
-  const [showMessage, setShowMessage] = useState(false);
-
-  const handleAddQuestion = () => {
-    setShowMessage(true);
-    setTimeout(() => {
-      setShowMessage(false);
-    }, 3000); // Message will be hidden after 3 seconds
-  };
+  const [showModal, setShowModal] = useState(false);
 
   const sortQuestions = (questionArr, sort = 'helpfulness') => (
     questionArr.sort((a, b) => {
@@ -60,6 +54,10 @@ const QuestionsAnswers = ({
     requests[rating](review, () => getQuestions());
   };
 
+  const handleAddQuestion = () => {
+    setShowModal(true);
+  };
+
   return (
     <div id="questions" className={local.mainBody}>
       <h5 className={local.header}>QUESTIONS & ANSWERS</h5>
@@ -92,7 +90,13 @@ const QuestionsAnswers = ({
         >
           ADD A QUESTION +
         </button>
-        {showMessage && <span className={local.tempMessage}>Not yet implemented</span>}
+        {showModal && (
+          <NewQuestion
+            current={current}
+            setShowModal={setShowModal}
+            darkMode={darkMode}
+          />
+        )}
       </div>
     </div>
   );

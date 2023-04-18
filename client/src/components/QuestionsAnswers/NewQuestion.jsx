@@ -1,38 +1,33 @@
 import React, { useState } from 'react';
-import Thumbnail from '../SharedComponents/Thumbnail.jsx';
 import requests from '../../requests.js';
 import global from '../../styles/global.css';
 import local from '../../styles/QuestionsAnswers/NewQuestion.css';
 
 const NewQuestion = ({
-  current, getReviews, showModal, darkMode,
+  current, getReviews, setShowModal, darkMode,
 }) => {
-  const [summary, setSummary] = useState('');
-  const [photos, setPhotos] = useState([]);
-  const [letterCount, setLetterCount] = useState(50);
+  const QUESTION_MIN = 50;
+  const QUESTION_MAX = 1000;
+  const NAME_MIN = 1;
+  const NAME_MAX = 60;
+  const [question, setQuestion] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [questionLetterCount, setQuestionLetterCount] = useState(0);
+  const [nameLetterCount, setNameLetterCount] = useState(0);
 
-  const updateLetterCount = (input) => {
-    setLetterCount(50 - input.length);
-    setBody(input);
+  const handleQuestionChange = (value) => {
+    setQuestionLetterCount(value.length);
+    setQuestion(value);
   };
 
-  const numberOfPhotos = () => {
-    setPhotos([]);
-    const { files } = event.target;
-    if (files.length < 6) {
-      const photoArray = [];
-      for (let i = 0; i < files.length; i += 1) {
-        photoArray.push(URL.createObjectURL(files[i]));
-      }
-      setPhotos(photoArray);
-    } else {
-      alert('Please limit photo uploads to 5 or less');
-    }
-    document.getElementById('uploadPhoto').val = null;
+  const handleNameChange = (value) => {
+    setNameLetterCount(value.length);
+    setName(value);
   };
 
-  const collectFormData = () => {
-    event.preventDefault();
+  const collectFormData = (e) => {
+    e.preventDefault();
     if (rating) {
       const newReview = {
         product_id: current.id,
@@ -50,35 +45,79 @@ const NewQuestion = ({
     }
   };
 
-  const updateInput = (setState, value) => {
-    setState(value);
+  const getCharCountMsg = (letterCount, min) => {
+    let message = '';
+    if (letterCount < min) {
+      message = `Minimum required characters left: [${min - letterCount}]`;
+    }
+    return (
+      <span className={local.minChars}>{message}</span>
+    );
   };
 
   return (
     <div className={global.modalBackground}>
       <div className={darkMode ? global.modalBodyDark : global.modalBody}>
-        <form id="newReview" onSubmit={collectFormData}>
+        <form id="newQuestion" onSubmit={collectFormData}>
           <div className={global.modalLogo} aria-label="Form Logo" role="img" alt="AMOREY" />
-          <h3 className={local.header}>
-            {'Write Your Review About: '}
+          <h3 className={local.title}>
+            {'Ask Your Question About: '}
             <div className={darkMode ? local.productDark : local.product}>{current.name}</div>
           </h3>
-          <Rating setRating={setRating} darkMode={darkMode} />
-          <Recommend updateInput={updateInput} setRecommend={setRecommend} />
-          {traits && (
-            Object.keys(traits).map((trait, index) => {
-              return <Characteristic trait={trait} key={`${trait + index}`} update={updateCharacteristic} darkMode={darkMode} />;
-            })
-          )}
-          <Summary updateInput={updateInput} setSummary={setSummary} />
-          <Body letterCount={letterCount} updateLetterCount={updateLetterCount} />
-          <Username updateInput={updateInput} setName={setName} />
-          <Email updateInput={updateInput} setEmail={setEmail} />
-          <Photos numberOfPhotos={numberOfPhotos} darkMode={darkMode} />
-          <div className={local.thumbnails}>{photos.map((photo, index) => <Thumbnail photo={photo} key={`${photo + index}`} />)}</div>
+          <h6>
+            <div className={local.header}>
+              Your Question:&nbsp;&nbsp;
+              {getCharCountMsg(questionLetterCount, QUESTION_MIN)}
+            </div>
+          </h6>
+          <textarea
+            aria-label="Question Input"
+            className={local.inputField}
+            placeholder="What is your question?"
+            rows="3"
+            cols="50"
+            minLength={QUESTION_MIN}
+            maxLength={QUESTION_MAX}
+            onChange={(e) => handleQuestionChange(e.target.value)}
+            required
+          />
+          <h6>
+            <div className={local.header}>
+              Your Nickname:&nbsp;&nbsp;
+              {getCharCountMsg(nameLetterCount, NAME_MIN)}
+            </div>
+          </h6>
+          <input
+            aria-label="Nickname Input"
+            placeholder="Example: Jackson11!"
+            size="30"
+            minLength={NAME_MIN}
+            maxLength={NAME_MAX}
+            onChange={(e) => handleNameChange(e.target.value)}
+            required
+          />
+          <p>
+            For privacy reasons, do not use your full name or email address
+          </p>
+          <h6>
+            <div className={local.header}>
+              Your Email Address:
+            </div>
+          </h6>
+          <input
+            aria-label="Email Input"
+            type="email"
+            placeholder="jackson11@email.com"
+            size="30"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <p>
+            For authentication only. You will not be emailed.
+          </p>
           <div>
-            <button className={local.submit} aria-label="Submit Review" type="submit">Submit Review!</button>
-            <button className={local.cancel} aria-label="Cancel Review" type="button" onClick={() => showModal(false)}>Cancel</button>
+            <button className={local.submit} aria-label="Submit Question" type="submit">Submit Question!</button>
+            <button className={local.cancel} aria-label="Cancel Question" type="button" onClick={() => setShowModal(false)}>Cancel</button>
           </div>
         </form>
       </div>
