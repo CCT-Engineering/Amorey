@@ -88,7 +88,7 @@ div[role="button"] {
   cursor: pointer;
 }
 
-.stars {
+.stars, .starsDark {
   --percent: calc(var(--rating) * 20%);
   display: inline-block;
   font-size: 1.5em;
@@ -104,14 +104,6 @@ div[role="button"] {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px #0a362e;
-}
-
-.starsDark {
-  --percent: calc(var(--rating) * 20%);
-  display: inline-block;
-  font-size: 1.5em;
-  font-family: Times;
-  line-height: 1;
 }
 
 .starsDark:before {
