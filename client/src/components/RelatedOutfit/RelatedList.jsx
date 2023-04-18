@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import local from '../../styles/RelatedOutfit.css';
+import global from '../../styles/global.css';
 import RelatedCard from './RelatedCard.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 
@@ -21,11 +22,11 @@ const RelatedList = ({
       if (darkMode) {
         temp1[i]?.classList?.replace(local.relatedCard, local.relatedCardDark);
         temp2[i]?.classList?.replace(local.tableContent, local.tableContentDark);
-        temp3[i]?.classList?.replace(local.stars, local.starsDark);
-      } else if (!darkMode) {
+        temp3[i]?.classList?.replace(global.stars, global.starsDark);
+      } else {
         temp1[i]?.classList?.replace(local.relatedCardDark, local.relatedCard);
         temp2[i]?.classList?.replace(local.tableContentDark, local.tableContent);
-        temp3[i]?.classList?.replace(local.starsDark, local.stars);
+        temp3[i]?.classList?.replace(global.starsDark, global.stars);
       }
     }
   }, [darkMode, cards]);

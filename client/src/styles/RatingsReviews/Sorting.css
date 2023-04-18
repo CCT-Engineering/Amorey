@@ -9,7 +9,7 @@
   width: 100%
 }
 
-.sortMethod {
+.sortMethod, .sortMethodDark {
   font-family: inherit;
   font-weight: inherit;
   font-size: inherit;
@@ -20,29 +20,21 @@
 }
 
 .sortMethodDark {
-  font-family: inherit;
-  font-weight: inherit;
-  font-size: inherit;
-  text-decoration: underline;
-  background-color: transparent;
-  border-color: transparent;
-  outline-width: 0;
   color: #B6D8C4;
 }
 
-.queryInput {
+.queryInput, .queryInputDark {
   display: inline-block;
   background-color: transparent;
   outline-width: 0;
   border: 0;
+}
+
+.queryInput {
   border-bottom: 1px solid;
 }
 
 .queryInputDark {
-  display: inline-block;
-  background-color: transparent;
-  outline-width: 0;
-  border: 0;
   border-bottom: 1px solid #B6D8C4;
   color: #B6D8C4;
 }
@@ -68,44 +60,44 @@
   font-weight: 600;
 }
 
-.clearSort {
-  background-color:#3cad9a;
+.clearSort, .clearSortDark {
   border: solid 1px;
   font-weight: 600;
+}
+
+.clearSort {
+  background-color:#3cad9a;
+}
+
+.clearSortDark {
+  background-color: #548C93;
 }
 
 .clearSort:hover{
   background-color: #4cc6b2;
 }
 
-.clearSortDark {
-  background-color: #548C93;
-  border: solid 1px;
-  font-weight: 600;
-}
-
 .clearSortDark:hover{
   background-color: #73A4A3;
 }
 
-.clearQuery {
-  background-color:#3cad9a;
+.clearQuery, .clearQueryDark {
   border: solid 1px;
   font-weight: 600;
   float: right;
   margin-right: -1%;
 }
 
-.clearQuery:hover{
-  background-color: #4cc6b2;
+.clearQuery {
+  background-color:#3cad9a;
 }
 
 .clearQueryDark {
   background-color:#548C93;
-  border: solid 1px;
-  font-weight: 600;
-  float: right;
-  margin-right: -1%;
+}
+
+.clearQuery:hover{
+  background-color: #4cc6b2;
 }
 
 .clearQueryDark:hover{

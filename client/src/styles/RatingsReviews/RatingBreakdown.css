@@ -38,16 +38,17 @@
   float: right;
 } */
 
-.graphDimensions {
-  background-color:#8acabf;
+.graphDimensions, .graphDimensionsDark {
   height: 10px;
   width: 100%;
 }
 
+.graphDimensions {
+  background-color: #8acabf;
+}
+
 .graphDimensionsDark {
   background-color: #1E556C;
-  height: 10px;
-  width: 100%;
 }
 
 .graphDisplay {

@@ -8,30 +8,27 @@
   width: 80%;
 }
 
-.button {
+.button, .buttonDark {
   margin-top: 1%;
   margin-bottom: 1%;
-  background-color: #3cad9a;
-  border: solid 1px;
   font-weight: 600;
   margin-right: 2%;
   padding: 15px;
   white-space: nowrap;
+}
+
+.button {
+  background-color: #3cad9a;
+  border: solid 1px;
+}
+
+.buttonDark {
+  background-color: #548C93;
+  border: solid 1px;
 }
 
 .button:hover {
   background-color: #4cc6b2;
-}
-
-.buttonDark {
-  margin-top: 1%;
-  margin-bottom: 1%;
-  background-color: #548C93;
-  border: solid 1px;
-  font-weight: 600;
-  margin-right: 2%;
-  padding: 15px;
-  white-space: nowrap;
 }
 
 .buttonDark:hover {

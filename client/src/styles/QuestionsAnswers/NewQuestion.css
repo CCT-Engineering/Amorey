@@ -4,15 +4,16 @@
   margin-left: 1%;
 }
 
-.product {
+.product, .productDark {
   display: inline-block;
   font-weight: 600;
+}
+
+.product {
   color: #3C7883;
 }
 
 .productDark {
-  display: inline-block;
-  font-weight: 600;
   color: #548C93;
 }
 

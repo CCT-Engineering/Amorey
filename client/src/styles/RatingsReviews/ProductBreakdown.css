@@ -10,35 +10,34 @@
   white-space: nowrap;
 }
 
-.barDimensions {
-  background-color: #8acabf;
-  color: #163a49;
+.barDimensions, .barDimensionsDark {
   position: relative;
   text-align: center;
   height: 17px;
   width: 100%;
+}
+
+.barDimensions {
+  background-color: #8acabf;
+  color: #163a49;
 }
 
 .barDimensionsDark {
   background-color: #1E556C;
-  position: relative;
-  text-align: center;
-  height: 17px;
-  width: 100%;
+}
+
+.barMarker, .barMarkerDark {
+  position: absolute;
+  display: inline-block;
+  color: transparent;
 }
 
 .barMarker {
-  position: absolute;
-  display: inline-block;
   background-color: #37a492;
-  color: transparent;
 }
 
 .barMarkerDark {
-  position: absolute;
-  display: inline-block;
   background-color: #3C7883;
-  color: transparent;
 }
 
 .barDisplay {
