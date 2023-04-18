@@ -193,29 +193,29 @@ div[role="button"] {
   background-color: rgba(0, 0, 0, .75);
 }
 
-.modalBody {
+.modalBody, .modalBodyDark {
   position: fixed;
-  border: 2px solid;
   display: flex;
   justify-content: center;
   z-index: 4;
   width: 500px;
   height: 700px;
   overflow: auto;
+}
+
+.modalBody {
+  border: 2px solid;
   background: linear-gradient(white, #e7f5f0 70px, #8bbfb4);
 }
 
 .modalBodyDark {
-  position: fixed;
   border: 2px #B6D8C4 solid;
-  display: flex;
-  justify-content: center;
-  z-index: 4;
-  align-self: center;
-  width: 30%;
-  min-width: 500px;
-  height: 75%;
-  min-height: 700px;
-  overflow: auto;
   background: linear-gradient(black, #133a4a 200px, #163051);
+}
+
+@media (max-width: 767px) {
+  .modalBody,
+  .modalBodyDark {
+    overflow-x: scroll;
+  }
 }
