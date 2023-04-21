@@ -14,6 +14,7 @@ const QuestionsAnswers = ({
   );
   const [sortedQuestions, setSortedQuestions] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  console.log('userQuestions:', userQuestions);
 
   const sortQuestions = (questionArr, sort = 'helpfulness') => (
     questionArr.sort((a, b) => {
@@ -94,6 +95,7 @@ const QuestionsAnswers = ({
           <NewQuestion
             current={current}
             setShowModal={setShowModal}
+            getQuestions={getQuestions}
             darkMode={darkMode}
           />
         )}

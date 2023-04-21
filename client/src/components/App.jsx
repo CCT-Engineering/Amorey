@@ -36,7 +36,6 @@ function App() {
   const getQuestions = () => {
     requests.getQuestions(current.id, (data) => {
       setQuestions(data.results);
-      console.log('data.results:', data.results.slice(0, 5));
     });
   };
 

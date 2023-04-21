@@ -4,9 +4,9 @@ import global from '../../styles/global.css';
 import local from '../../styles/QuestionsAnswers/NewQuestion.css';
 
 const NewQuestion = ({
-  current, getReviews, setShowModal, darkMode,
+  current, setShowModal, getQuestions, darkMode,
 }) => {
-  const QUESTION_MIN = 50;
+  const QUESTION_MIN = 10;
   const QUESTION_MAX = 1000;
   const NAME_MIN = 1;
   const NAME_MAX = 60;
@@ -28,21 +28,18 @@ const NewQuestion = ({
 
   const collectFormData = (e) => {
     e.preventDefault();
-    if (rating) {
-      const newReview = {
-        product_id: current.id,
-        summary,
-        name,
-        photos,
-      };
-      console.log(newReview);
-      showModal(false);
-      requests.postReview(newReview, () => {
-        getReviews('newest');
-      });
-    } else {
-      alert('Please enter a rating for the current product');
-    }
+    const newQuestion = {
+      product_id: current.id,
+      body: question,
+      email,
+      name,
+    };
+    setShowModal(false);
+    const userQuestions = JSON.parse(localStorage.getItem('userQuestions')) || [];
+    localStorage.setItem('userQuestions', JSON.stringify(userQuestions.concat(question)));
+    requests.postQuestion(newQuestion, () => {
+      getQuestions();
+    });
   };
 
   const getCharCountMsg = (letterCount, min) => {
