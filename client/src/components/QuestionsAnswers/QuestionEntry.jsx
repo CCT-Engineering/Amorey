@@ -6,7 +6,7 @@ import local from '../../styles/QuestionsAnswers/QuestionEntry.css';
 const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
   const unrated = !(localStorage.getItem(`Q${question.question_id}`) === 'true');
   const [renderLimit, setRenderLimit] = useState(2);
-  const [answers, setAnswers] = useState(question.answers || []);
+  const [answers, setAnswers] = useState([]);
   const [sortedAnswers, setSortedAnswers] = useState([]);
   const [canRateQuestion, setCanRateQuestion] = useState(unrated);
   const [showMessage, setShowMessage] = useState(false);
@@ -19,7 +19,7 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
   };
 
   const sortAnswers = (answerArr, sort = 'helpfulness') => (
-    Object.values(answerArr).sort((a, b) => {
+    answerArr.sort((a, b) => {
       if (sort === 'helpfulness') {
         return b.helpfulness - a.helpfulness;
       }
@@ -28,7 +28,7 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
   );
 
   useEffect(() => {
-    setAnswers(question.answers || []);
+    setAnswers(question.answers ? Object.values(question.answers) : []);
   }, [question, renderLimit]);
 
   useEffect(() => {
@@ -50,7 +50,7 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
 
   const loadMoreAnswers = () => {
     setTimeout(() => { windowScroll(); }, 100);
-    setRenderLimit(Math.min(renderLimit + 2, Object.values(answers).length));
+    setRenderLimit(Math.min(renderLimit + 2, answers.length));
   };
 
   const markQuestion = (action) => {
@@ -116,7 +116,7 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
           />
         )
         : <div className={local.noAnswers}>Currently No Answers To Display</div>}
-      {renderLimit < Object.values(answers).length && (
+      {renderLimit < answers.length && (
         <button
           className={darkMode ? local.moreAnswersDark : local.moreAnswers}
           aria-label="More Answers"
