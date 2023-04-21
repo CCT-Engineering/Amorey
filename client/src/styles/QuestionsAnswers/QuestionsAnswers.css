@@ -1,0 +1,71 @@
+.header {
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+.mainBody {
+  margin: auto;
+  width: 80%;
+}
+
+.button {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  background-color: #3cad9a;
+  border: solid 1px;
+  font-weight: 600;
+  margin-right: 2%;
+  padding: 15px;
+  white-space: nowrap;
+}
+
+.button:hover {
+  background-color: #4cc6b2;
+}
+
+.buttonDark {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  background-color: #548C93;
+  border: solid 1px;
+  font-weight: 600;
+  margin-right: 2%;
+  padding: 15px;
+  white-space: nowrap;
+}
+
+.buttonDark:hover {
+  background-color: #73A4A3;
+}
+
+.addButtonContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.tempMessage {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, -5px);
+  background-color: white;
+  color: red;
+  border: 1px solid red;
+  border-radius: 5px;
+  padding: 5px;
+  white-space: nowrap;
+  z-index: 1;
+  animation: fade-out 2s forwards;
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

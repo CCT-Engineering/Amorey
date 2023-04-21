@@ -36,7 +36,7 @@
 .relatedCardDark {
   display: block;
   border: solid 1px #B6D8C4;
-  margin: 1%;
+  margin: 1% 2% 1% 0;
   box-shadow: 10px 5px 5px #1E556C;;
   position: relative;
   min-width: 210px;
@@ -78,7 +78,7 @@
 .outfitCardDark {
   display: block;
   border: solid 1px #B6D8C4;
-  margin: 1%;
+  margin: 1% 2% 1% 0;
   box-shadow: 10px 5px 5px #1E556C;
   position: relative;
   min-width: 210px;

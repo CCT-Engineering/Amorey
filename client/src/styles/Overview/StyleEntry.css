@@ -25,11 +25,3 @@
   text-shadow: none;
   -webkit-text-stroke: 0;
 }
-
-.style:hover {
-  cursor: pointer;
-}
-
-.noThumb:hover {
-  cursor: pointer;
-}

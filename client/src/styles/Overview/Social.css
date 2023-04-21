@@ -24,7 +24,6 @@
   background-size: cover;
   height: 20px;
   aspect-ratio: 1;
-  cursor: pointer;
 }
 
 .twitLogo {
@@ -35,7 +34,6 @@
   background-size: cover;
   height: 20px;
   aspect-ratio: 1;
-  cursor: pointer;
 }
 
 .pintLogo {
@@ -46,5 +44,4 @@
   background-size: cover;
   height: 20px;
   aspect-ratio: 1;
-  cursor: pointer;
 }

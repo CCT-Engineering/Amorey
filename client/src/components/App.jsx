@@ -3,6 +3,7 @@ import Banner from './Banner/Banner.jsx';
 import Overview from './Overview/Overview.jsx';
 import RelatedOutfit from './RelatedOutfit/Index.jsx';
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
+import QuestionsAnswers from './QuestionsAnswers/QuestionsAnswers.jsx';
 import requests from '../requests.js';
 import calculateAverageStars from '../util/calculateStarAverage.js';
 import local from '../styles/App.css';
@@ -18,6 +19,7 @@ function App() {
   const [metadata, setMetadata] = useState([]);
   const [stars, setStars] = useState(0);
   const [reviews, setReviews] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const [order, setOrder] = useState('relevant');
   const [darkMode, setDarkMode] = useState(false);
   const [relateArr, setRelatedArr] = useState([]);
@@ -26,6 +28,13 @@ function App() {
   const getReviews = (sortMethod = order) => {
     requests.getReviews(current.id, sortMethod, (data) => {
       setReviews(data.results);
+    });
+  };
+
+  const getQuestions = () => {
+    requests.getQuestions(current.id, (data) => {
+      setQuestions(data.results);
+      console.log('data.results:', data.results.slice(0, 5));
     });
   };
 
@@ -51,21 +60,22 @@ function App() {
 
   // on app load, get product data, then get styles and metadata
   useEffect(() => {
-    requests.getProducts((data) => {
-      const productID = data[0].id;
+    requests.getProducts((products) => {
+      const productID = products[0].id;
       requests.getProductInfo(productID, (info) => {
         setCurrent(info);
       });
       getStylesMetadata(productID);
-    });
+    }, process.env.STARTING_PRODUCT_IDX ?? 1);
   }, []);
 
-  // if current product changes, get related products and current reviews
+  // if current product changes, get related products, current reviews, questions, & metadata
   useEffect(() => {
     if (current.id) {
       getStylesMetadata(current.id);
       getRelated();
       getReviews();
+      getQuestions();
     }
   }, [current.id]);
 
@@ -101,6 +111,12 @@ function App() {
         darkMode={darkMode}
         setCurrentStyles={setCurrentStyles}
         relateArr={relateArr}
+      />
+      <QuestionsAnswers
+        current={current}
+        questions={questions}
+        getQuestions={getQuestions}
+        darkMode={darkMode}
       />
       <RatingsReviews
         current={current}

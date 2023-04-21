@@ -19,10 +19,6 @@
   text-shadow: 0px 0px 1px black;
 }
 
-.reviewsLink:hover {
-  cursor: pointer;
-}
-
 .productName {
   display: flex;
   justify-content: left;
@@ -33,10 +29,6 @@
   margin-left: 15px;
   height: fit-content;
   font-family: Times;
-}
-
-.addToOutfit:hover {
-  cursor: pointer;
 }
 
 .addToOutfit:before {
@@ -61,8 +53,4 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px #444;
-}
-
-.addToOutfitFav:hover {
-  cursor: pointer;
 }

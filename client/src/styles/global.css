@@ -81,6 +81,11 @@ select {
 
 button {
   color: #0a362e;
+  cursor: pointer;
+}
+
+div[role="button"] {
+  cursor: pointer;
 }
 
 .stars {

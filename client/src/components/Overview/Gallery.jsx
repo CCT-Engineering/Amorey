@@ -35,6 +35,34 @@ function Gallery({
   const thumbRefs = useRef([]);
   thumbRefs.current = photos.map((photo, i) => thumbRefs.current[i] ?? createRef());
 
+  const preloadHigherResImage = (highResPhotoIdx = photoIndex) => {
+    const highResPhotoUrl = photos[highResPhotoIdx].url;
+    const preloadImage = new Image();
+    preloadImage.src = formatImg(highResPhotoUrl, null, windowHgt * 1.5, false);
+  };
+
+  useEffect(() => {
+    // preload the lowerResImage to create a trigger to preload the higher res
+    // once the lowerResImage is finished loading.
+    if (photoUrl) {
+      const lowerResImage = new Image();
+      lowerResImage.src = formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT);
+      lowerResImage.onload = () => {
+        if (expandView) {
+          if (photoIndex + 1 < photos.length) {
+            preloadHigherResImage(photoIndex + 1);
+            setTimeout(() => preloadHigherResImage(), 800);
+          }
+          if (photoIndex > 0) {
+            preloadHigherResImage(photoIndex - 1);
+          }
+        } else {
+          setTimeout(() => preloadHigherResImage(), 800);
+        }
+      };
+    }
+  }, [photoUrl, windowHgt]);
+
   const handleBtnClick = (e) => {
     e.preventDefault();
     const decrButtons = ['left', 'thumbUp'];
@@ -93,8 +121,14 @@ function Gallery({
         // if NOT in Expanded view
         setExpandView(true);
         newAttr = {
-          backgroundImage: `url(${formatImg(photoUrl, null, windowHgt, false)})`,
+          backgroundImage: `url(${formatImg(photoUrl, null, windowHgt * 1.5, false)})`,
         };
+        if (photoIndex + 1 < photos.length) {
+          preloadHigherResImage(photoIndex + 1);
+        }
+        if (photoIndex > 0) {
+          preloadHigherResImage(photoIndex - 1);
+        }
         setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
       }
     }
@@ -162,7 +196,7 @@ function Gallery({
       });
     } else if (expandView) {
       setMainPhotoStyle({
-        backgroundImage: `url(${formatImg(photoUrl, null, windowHgt, false)})`,
+        backgroundImage: `url(${formatImg(photoUrl, null, windowHgt * 1.5, false)})`,
       });
     } else {
       setMainPhotoStyle({
@@ -183,7 +217,7 @@ function Gallery({
             photoId += 1;
             return (
               <Thumb
-                key={photo.thumbnail_url?.match(/(?<=photo-)(.+)(?=\?)/g)}
+                key={`${photo.thumbnail_url?.match(/(?<=photo-)(.+)(?=\?)/g)}-${photoIndex}`}
                 ref={thumbRefs.current[photoId]}
                 name={name}
                 id={photoId}
