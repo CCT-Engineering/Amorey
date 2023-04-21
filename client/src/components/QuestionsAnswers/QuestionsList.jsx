@@ -15,7 +15,7 @@ const QuestionsList = ({ renderedQuestions, updateQuestions, darkMode }) => {
         />
       ))}
     </div>
-  )
+  );
 };
 
 export default QuestionsList;

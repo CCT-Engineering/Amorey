@@ -35,8 +35,9 @@ const NewQuestion = ({
       name,
     };
     setShowModal(false);
-    const userQuestions = JSON.parse(localStorage.getItem('userQuestions')) || [];
-    localStorage.setItem('userQuestions', JSON.stringify(userQuestions.concat(question)));
+    const userQuestions = JSON.parse(localStorage.getItem('userQuestions')) || {};
+    const userQuestion = { [question + name]: new Date().toISOString() };
+    localStorage.setItem('userQuestions', JSON.stringify({ ...userQuestions, ...userQuestion }));
     requests.postQuestion(newQuestion, () => {
       getQuestions();
     });
