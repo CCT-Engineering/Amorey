@@ -6,6 +6,7 @@ import local from '../../styles/QuestionsAnswers/QuestionEntry.css';
 const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
   const unrated = !(localStorage.getItem(`Q${question.question_id}`) === 'true');
   const [renderLimit, setRenderLimit] = useState(2);
+  const [answers, setAnswers] = useState([]);
   const [sortedAnswers, setSortedAnswers] = useState([]);
   const [canRateQuestion, setCanRateQuestion] = useState(unrated);
   const [showMessage, setShowMessage] = useState(false);
@@ -18,7 +19,7 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
   };
 
   const sortAnswers = (answerArr, sort = 'helpfulness') => (
-    Object.values(answerArr).sort((a, b) => {
+    answerArr.sort((a, b) => {
       if (sort === 'helpfulness') {
         return b.helpfulness - a.helpfulness;
       }
@@ -27,8 +28,12 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
   );
 
   useEffect(() => {
-    setSortedAnswers(sortAnswers(question.answers).slice(0, renderLimit));
-  }, [question.answers, renderLimit]);
+    setAnswers(question.answers ? Object.values(question.answers) : []);
+  }, [question, renderLimit]);
+
+  useEffect(() => {
+    setSortedAnswers(sortAnswers(answers).slice(0, renderLimit));
+  }, [answers]);
 
   const windowScroll = () => {
     const questionDiv = document.getElementById('question');
@@ -45,7 +50,7 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
 
   const loadMoreAnswers = () => {
     setTimeout(() => { windowScroll(); }, 100);
-    setRenderLimit(Math.min(renderLimit + 2, Object.values(question.answers).length));
+    setRenderLimit(Math.min(renderLimit + 2, answers.length));
   };
 
   const markQuestion = (action) => {
@@ -102,7 +107,7 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
           </div>
         </div>
       </div>
-      {(sortedAnswers?.length || 0)
+      {(answers?.length || 0)
         ? (
           <AnswersList
             renderedAnswers={sortedAnswers.slice(0, renderLimit)}
@@ -111,7 +116,7 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
           />
         )
         : <div className={local.noAnswers}>Currently No Answers To Display</div>}
-      {renderLimit < Object.values(question.answers).length && (
+      {renderLimit < answers.length && (
         <button
           className={darkMode ? local.moreAnswersDark : local.moreAnswers}
           aria-label="More Answers"

@@ -88,7 +88,7 @@ div[role="button"] {
   cursor: pointer;
 }
 
-.stars {
+.stars, .starsDark {
   --percent: calc(var(--rating) * 20%);
   display: inline-block;
   font-size: 1.5em;
@@ -104,14 +104,6 @@ div[role="button"] {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1px #0a362e;
-}
-
-.starsDark {
-  --percent: calc(var(--rating) * 20%);
-  display: inline-block;
-  font-size: 1.5em;
-  font-family: Times;
-  line-height: 1;
 }
 
 .starsDark:before {
@@ -177,4 +169,46 @@ div[role="button"] {
   background-size: cover;
   height: 50px;
   aspect-ratio: 3.5;
+}
+
+.modalBackground {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, .75);
+}
+
+.modalBody, .modalBodyDark {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  z-index: 4;
+  width: 100%;
+  max-width: 500px;
+  height: 700px;
+  overflow: auto;
+}
+
+.modalBody {
+  border: 2px solid;
+  background: linear-gradient(white, #e7f5f0 70px, #8bbfb4);
+}
+
+.modalBodyDark {
+  border: 2px #B6D8C4 solid;
+  background: linear-gradient(black, #133a4a 200px, #163051);
+}
+
+@media (max-width: 767px) {
+  .modalBody,
+  .modalBodyDark {
+    overflow-x: auto;
+  }
 }

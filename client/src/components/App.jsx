@@ -14,7 +14,9 @@ const FAVS_COOKIE = 'amorey_favs';
 function App() {
   const [favorites, setFavorites] = useState(getCookie(FAVS_COOKIE) || []);
   // All states below are for the CURRENT product (the one displayed in Overview)
-  const [current, setCurrent] = useState({ features: [] });
+  // const [current, setCurrent] = useState({ features: [] });
+  // TEMP LINE BELOW! REMOVE ME AND UNCOMMENT LINE ABOVE!
+  const [current, setCurrent] = useState({ features: [], id: 1 });
   const [currentStyles, setCurrentStyles] = useState([]);
   const [metadata, setMetadata] = useState([]);
   const [stars, setStars] = useState(0);
@@ -34,7 +36,6 @@ function App() {
   const getQuestions = () => {
     requests.getQuestions(current.id, (data) => {
       setQuestions(data.results);
-      console.log('data.results:', data.results.slice(0, 5));
     });
   };
 

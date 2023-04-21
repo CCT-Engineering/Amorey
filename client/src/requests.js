@@ -1,12 +1,24 @@
 const url = window.location.href.includes('amazonaws') ? window.location.href : 'http://localhost:3300/';
 
-// getData helper function for GET requests
+// HELPER FUNCTIONS
 const getData = (res, callback) => (
   res.json()
     .then((data) => callback(data))
     .catch((err) => console.error(err))
 );
 
+const postData = (body, requestPath, callback) => {
+  const options = {
+    method: 'POST',
+    headers: new Headers({ 'content-type': 'application/json' }),
+    body: JSON.stringify(body),
+  };
+  fetch(requestPath, options)
+    .then(() => callback())
+    .catch((err) => console.error(err));
+};
+
+// API REQUEST OBJECT
 const requests = {
   // pass in (callback, page, count)
   getProducts: (callback, pg = 1, cnt = 1) => {
@@ -93,17 +105,10 @@ const requests = {
   },
 
   // pass in (new review object)
-  postReview: (review, callback) => {
-    console.log('review:', review);
-    const options = {
-      method: 'POST',
-      headers: new Headers({ 'content-type': 'application/json' }),
-      body: JSON.stringify(review),
-    };
-    fetch(`${url}reviews`, options)
-      .then(() => callback())
-      .catch((err) => console.error(err));
-  },
+  postReview: (review, callback) => postData(review, `${url}reviews`, callback),
+
+  // pass in (new question object)
+  postQuestion: (question, callback) => postData(question, `${url}qa/questions`, callback),
 };
 
 export default requests;

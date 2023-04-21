@@ -11,7 +11,7 @@
 
 .answer {
   display: flex;
-  padding-left: 15px;
+  padding-left: 30px;
 }
 
 .answerBody {
@@ -23,21 +23,18 @@
   100% { opacity: 1; }
 }
 
-.textBtn {
+.textBtn, .textBtnDark {
   text-decoration: underline;
   background-color: transparent;
   border: 0;
-}
-
-.textBtn:hover {
-  background-color: #7eb4aa;
 }
 
 .textBtnDark {
   color: #B6D8C4;
-  text-decoration: underline;
-  background-color: transparent;
-  border: 0;
+}
+
+.textBtn:hover {
+  background-color: #7eb4aa;
 }
 
 .textBtnDark:hover {

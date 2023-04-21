@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import local from '../../styles/RelatedOutfit.css';
 import requests from '../../requests.js';
 import CompareTable from './CompareTable.jsx';
-import StarDisplay from '../SharedComponents/StarDisplay2.jsx';
+import StarDisplay from '../SharedComponents/StarDisplay.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 import Img from '../SharedComponents/Img.jsx';
 

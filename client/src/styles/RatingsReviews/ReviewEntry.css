@@ -1,17 +1,17 @@
-.mainBody {
+.mainBody, .mainBodyDark {
   display: block;
-  background-color:#8acabf;
-  border-bottom: solid 2px;
   margin-bottom: 2%;
   animation: fadeIn .6s;
 }
 
+.mainBody {
+  background-color: #8acabf;
+  border-bottom: solid 2px;
+}
+
 .mainBodyDark {
-  display: block;
   background-color: #1E556C;
   border-bottom: solid 2px #B6D8C4;
-  margin-bottom: 2%;
-  animation: fadeIn .6;
 }
 
 @keyframes fadeIn {
@@ -49,7 +49,7 @@
   padding: 0px 5px 5px 5px;
 }
 
-.expand {
+.expand, .expandDark {
   font-weight: 600;
   text-decoration: underline;
   background-color: transparent;
@@ -59,27 +59,21 @@
 
 .expandDark {
   color: #B6D8C4;
-  font-weight: 600;
-  text-decoration: underline;
-  background-color: transparent;
-  border-color: transparent;
-  padding: 0px 5px;
+}
+
+.response, .responseDark {
+  padding: 5px;
+  margin-bottom: 1%;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
 .response {
   background-color: #7eb4aa;
-  padding: 5px;
-  margin-bottom: 1%;
-  margin-left: 3%;
-  margin-right: 3%;
 }
 
 .responseDark {
   background-color: #2B6678;
-  padding: 5px;
-  margin-bottom: 1%;
-  margin-left: 3%;
-  margin-right: 3%;
 }
 
 .responseHeader {
@@ -92,46 +86,38 @@
   margin-bottom: 1%;
 }
 
-.helpful {
+.helpful, .helpfulDark {
   text-decoration: underline;
   background-color: transparent;
   margin-left: 1%;
   margin-right: .5%;
   border: 0;
+}
+
+.helpfulDark {
+  color: #B6D8C4;
 }
 
 .helpful:hover {
   background-color: #7eb4aa;
 }
 
-.helpfulDark {
-  color: #B6D8C4;
-  text-decoration: underline;
-  background-color: transparent;
-  margin-left: 1%;
-  margin-right: .5%;
-  border: 0;
-}
-
 .helpfulDark:hover {
   background-color: #3C7883;
 }
 
-.report {
+.report, .reportDark {
   text-decoration: underline;
   background-color: transparent;
   border: 0;
-}
-
-.report:hover{
-  background-color: #7eb4aa;
 }
 
 .reportDark {
   color: #B6D8C4;
-  text-decoration: underline;
-  background-color: transparent;
-  border: 0;
+}
+
+.report:hover{
+  background-color: #7eb4aa;
 }
 
 .reportDark:hover{
