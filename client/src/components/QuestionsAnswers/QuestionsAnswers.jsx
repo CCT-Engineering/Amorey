@@ -2,21 +2,8 @@ import React, { useState, useEffect } from 'react';
 import QuestionsList from './QuestionsList.jsx';
 import NewQuestion from './NewQuestion.jsx';
 import requests from '../../requests.js';
-import { buildHandleEnterKeyPress } from '../../util';
+import { buildHandleEnterKeyPress, areDatesWithinRange } from '../../util';
 import local from '../../styles/QuestionsAnswers/QuestionsAnswers.css';
-
-function areDatesWithinRange(dateString1, dateString2, range) {
-  // range is the maximum time in secs between dateString1 and dateString2
-  const date1 = new Date(dateString1);
-  const date2 = new Date(dateString2);
-
-  const timestamp1 = date1.getTime();
-  const timestamp2 = date2.getTime();
-
-  const difference = Math.abs(timestamp1 - timestamp2);
-
-  return difference <= range * 1000;
-}
 
 const QuestionsAnswers = ({
   current, questions, getQuestions, darkMode,
