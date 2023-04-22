@@ -58,8 +58,8 @@ const QuestionsAnswers = ({
     setRenderLimit(Math.min(renderLimit + 2, questions.length));
   };
 
-  const updateQuestions = (review, rating) => {
-    requests[rating](review, () => getQuestions());
+  const updateQuestions = (id, action) => {
+    requests[action](id, () => getQuestions());
   };
 
   const handleAddQuestion = () => {

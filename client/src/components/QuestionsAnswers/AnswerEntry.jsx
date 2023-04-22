@@ -10,7 +10,7 @@ const AnswerEntry = ({ answer, updateQuestions, darkMode }) => {
 
   const markAnswer = (action) => {
     localStorage.setItem(`A${answer.id}`, 'true');
-    if (action === 'putReport') {
+    if (action === 'putReportAnswer') {
       updateQuestions(answer.id, action);
     } else if (canRateAnswer) {
       setCanRateAnswer(false);
