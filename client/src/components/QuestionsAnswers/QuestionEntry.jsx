@@ -20,7 +20,7 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
 
   const sortAnswers = (answerArr, sort = 'helpfulness') => (
     answerArr.sort((a, b) => {
-      if (sort === 'helpfulness') {
+      if (sort === 'helpfulness' && b.helpfulness !== a.helpfulness) {
         return b.helpfulness - a.helpfulness;
       }
       return new Date(b.date) - new Date(a.date);
