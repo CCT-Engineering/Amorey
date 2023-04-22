@@ -64,7 +64,7 @@ const requests = {
 
   // pass in (question_id, callback)
   getAnswers: (questionID, callback, pg = 1, cnt = 999) => {
-    fetch(`${url}qa/questions/${questionID}/?page=${pg}&count=${cnt}`)
+    fetch(`${url}qa/questions/${questionID}/answers/?page=${pg}&count=${cnt}`)
       .then((res) => getData(res, callback));
   },
 
