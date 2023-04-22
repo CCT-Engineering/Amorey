@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AnswersList from './AnswersList.jsx';
 import NewAnswer from './NewAnswer.jsx';
-import { buildHandleEnterKeyPress } from '../../util';
+import { buildHandleEnterKeyPress, areDatesWithinRange } from '../../util';
 import local from '../../styles/QuestionsAnswers/QuestionEntry.css';
 import requests from '../../requests.js';
 
@@ -11,12 +11,23 @@ const QuestionEntry = ({
   const unrated = !(localStorage.getItem(`Q${question.question_id}`) === 'true');
   const [renderLimit, setRenderLimit] = useState(2);
   const [answers, setAnswers] = useState(question.answers ? Object.values(question.answers) : []);
+  const [userAnswers] = useState(
+    JSON.parse(localStorage.getItem('userAnswers')) || {},
+  );
   const [sortedAnswers, setSortedAnswers] = useState([]);
   const [canRateQuestion, setCanRateQuestion] = useState(unrated);
   const [showModal, setShowModal] = useState(false);
 
   const sortAnswers = (answerArr, sort = 'helpfulness') => (
     answerArr.sort((a, b) => {
+      const aUserDate = userAnswers[a.body + a.answerer_name];
+      const bUserDate = userAnswers[b.body + b.answerer_name];
+      if (aUserDate && !bUserDate && areDatesWithinRange(aUserDate, a.date, 87000)) {
+        return -1;
+      }
+      if (bUserDate && !aUserDate && areDatesWithinRange(bUserDate, b.date, 87000)) {
+        return 1;
+      }
       if (sort === 'helpfulness' && b.helpfulness !== a.helpfulness) {
         return b.helpfulness - a.helpfulness;
       }
