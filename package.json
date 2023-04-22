@@ -6,11 +6,10 @@
   "scripts": {
     "start": "npm run client-dev & npm run server-dev & live-server --open=./client/dist/index.html; fg",
     "from-server": "npm run client-dev & npm run server-dev & open http://localhost:3300; fg",
-    "client-dev": "./node_modules/.bin/webpack --config ./webpack.config.js -w",
+    "client-dev": "webpack -- --config ./webpack.config.js -w",
     "server-dev": "nodemon server/index.js",
     "test": "jest --transformIgnorePatterns \"node_modules/(?!axios)/\"",
-    "deploy": "webpack --config ./webpack.config.js; screen -d -m node server/index.js",
-    "show-screens": "screen -ls"
+    "webpack": "webpack"
   },
   "repository": {
     "type": "git",
