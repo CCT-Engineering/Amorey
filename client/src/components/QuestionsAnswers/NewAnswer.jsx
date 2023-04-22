@@ -59,9 +59,10 @@ const NewAnswer = ({
         <form id="newAnswer" onSubmit={collectFormData}>
           <div className={global.modalLogo} aria-label="Form Logo" role="img" alt="AMOREY" />
           <h3 className={local.title}>Submit your Answer</h3>
-          <div className={darkMode ? local.productDark : local.product}>
-            {`${current.name}: ${question.question_body}`}
-          </div>
+          <h3 className={darkMode ? local.subtitleDark : local.subtitle}>
+            <span>{`${current.name}: `}</span>
+            <span className={local.question}>{question.question_body}</span>
+          </h3>
           <h6>
             <div className={local.header}>
               Your Answer:&nbsp;&nbsp;
@@ -94,7 +95,7 @@ const NewAnswer = ({
             onChange={(e) => handleNameChange(e.target.value)}
             required
           />
-          <p>
+          <p className={local.note}>
             For privacy reasons, do not use your full name or email address
           </p>
           <h6>
@@ -110,10 +111,10 @@ const NewAnswer = ({
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <p>
+          <p className={local.note}>
             For authentication only. You will not be emailed.
           </p>
-          <div>
+          <div className={local.buttons}>
             <button className={local.submit} aria-label="Submit Answer" type="submit">Submit Answer!</button>
             <button className={local.cancel} aria-label="Cancel Answer" type="button" onClick={() => setShowModal(false)}>Cancel</button>
           </div>

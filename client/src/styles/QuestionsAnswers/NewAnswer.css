@@ -2,21 +2,22 @@
   margin-bottom: 5px;
 }
 
-.title {
-  margin-bottom: 5px;
-}
-
-.product, .productDark {
+.subtitle, .subtitleDark {
+  padding-bottom: 10px;
   display: inline-block;
   font-weight: 600;
 }
 
-.product {
+.subtitle {
   color: #3C7883;
 }
 
-.productDark {
+.subtitleDark {
   color: #548C93;
+}
+
+.question {
+  font-style: italic;
 }
 
 .submit {
@@ -36,4 +37,16 @@
 .inputField {
   resize: none;
   columns: 600;
+}
+
+.buttons {
+  padding-top: 10px;
+}
+
+.note {
+  margin-left: 10px;
+}
+
+input, textarea {
+  margin-left: 13px;
 }

@@ -85,6 +85,7 @@ const QuestionsAnswers = ({
       {(sortedQuestions?.length || 0)
         ? (
           <QuestionsList
+            current={current}
             renderedQuestions={sortedQuestions.slice(0, renderLimit)}
             updateQuestions={updateQuestions}
             darkMode={darkMode}
