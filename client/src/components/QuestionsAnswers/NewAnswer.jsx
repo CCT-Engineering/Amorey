@@ -60,7 +60,10 @@ const NewAnswer = ({
           <div className={global.modalLogo} aria-label="Form Logo" role="img" alt="AMOREY" />
           <h3 className={local.title}>Submit your Answer</h3>
           <h3 className={darkMode ? local.subtitleDark : local.subtitle}>
-            {`${current.name}: ${question.question_body}`}
+            <span>
+              {`${current.name}: `}
+              <span style={{ fontStyle: 'italic' }}>{question.question_body}</span>
+            </span>
           </h3>
           <h6>
             <div className={local.header}>
