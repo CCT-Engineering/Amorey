@@ -34,19 +34,10 @@ const QuestionsAnswers = ({
     questionArr.sort((a, b) => {
       const aUserDate = userQuestions[a.question_body + a.asker_name];
       const bUserDate = userQuestions[b.question_body + b.asker_name];
-      // console.log('a.question_body + a.asker_name:', a.question_body + a.asker_name);
-      if (aUserDate) {
-        console.log('TRUE!');
-        console.log('!bUserDate:', !bUserDate);
-        const dateCheck = areDatesWithinRange(aUserDate, a.question_date, 87000);
-        console.log('dateCheck:', dateCheck);
-      }
       if (aUserDate && !bUserDate && areDatesWithinRange(aUserDate, a.question_date, 87000)) {
-        console.log('CP #1');
         return -1;
       }
       if (bUserDate && !aUserDate && areDatesWithinRange(bUserDate, b.question_date, 87000)) {
-        console.log('CP #2');
         return 1;
       }
       if (sort === 'helpfulness' && b.question_helpfulness !== a.question_helpfulness) {
