@@ -36,4 +36,17 @@
 .inputField {
   resize: none;
   columns: 600;
+  margin-left: 13px;
+}
+
+.input {
+  margin-left: 13px;
+}
+
+.note {
+  margin-left: 10px;
+}
+
+.buttons {
+  padding-top: 10px;
 }

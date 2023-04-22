@@ -86,6 +86,7 @@ const NewQuestion = ({
             </div>
           </h6>
           <input
+            className={local.input}
             aria-label="Nickname Input"
             placeholder="Example: Jackson11!"
             size="30"
@@ -94,7 +95,7 @@ const NewQuestion = ({
             onChange={(e) => handleNameChange(e.target.value)}
             required
           />
-          <p>
+          <p className={local.note}>
             For privacy reasons, do not use your full name or email address
           </p>
           <h6>
@@ -103,6 +104,7 @@ const NewQuestion = ({
             </div>
           </h6>
           <input
+            className={local.input}
             aria-label="Email Input"
             type="email"
             placeholder="jackson11@email.com"
@@ -110,10 +112,10 @@ const NewQuestion = ({
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <p>
+          <p className={local.note}>
             For authentication only. You will not be emailed.
           </p>
-          <div>
+          <div className={local.buttons}>
             <button className={local.submit} aria-label="Submit Question" type="submit">Submit Question!</button>
             <button className={local.cancel} aria-label="Cancel Question" type="button" onClick={() => setShowModal(false)}>Cancel</button>
           </div>

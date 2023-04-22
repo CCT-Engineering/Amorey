@@ -118,7 +118,7 @@ const requests = {
 
   // pass in (new answer object, question_id)
   postAnswer: (answer, questionID, callback) => (
-    postData(answer, `${url}qa/${questionID}/questions`, callback)
+    postData(answer, `${url}qa/questions/${questionID}/answers`, callback)
   ),
 };
 

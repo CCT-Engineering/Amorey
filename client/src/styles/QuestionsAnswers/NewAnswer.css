@@ -37,6 +37,7 @@
 .inputField {
   resize: none;
   columns: 600;
+  margin-left: 13px;
 }
 
 .buttons {
@@ -47,6 +48,6 @@
   margin-left: 10px;
 }
 
-input, textarea {
+.input {
   margin-left: 13px;
 }

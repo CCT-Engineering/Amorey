@@ -37,7 +37,7 @@ const NewAnswer = ({
     setShowModal(false);
     const userAnswers = JSON.parse(localStorage.getItem('userAnswers')) || {};
     const userAnswer = { [answer + name]: new Date().toISOString() };
-    localStorage.setItem('userQuestions', JSON.stringify({ ...userAnswers, ...userAnswer }));
+    localStorage.setItem('userAnswers', JSON.stringify({ ...userAnswers, ...userAnswer }));
     requests.postAnswer(newAnswer, question.question_id, () => {
       getAnswers();
     });
@@ -87,6 +87,7 @@ const NewAnswer = ({
             </div>
           </h6>
           <input
+            className={local.input}
             aria-label="Nickname Input"
             placeholder="Example: Jackson11!"
             size="30"
@@ -104,6 +105,7 @@ const NewAnswer = ({
             </div>
           </h6>
           <input
+            className={local.input}
             aria-label="Email Input"
             type="email"
             placeholder="jackson11@email.com"
