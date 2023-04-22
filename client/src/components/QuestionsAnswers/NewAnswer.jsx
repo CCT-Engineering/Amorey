@@ -4,21 +4,21 @@ import global from '../../styles/global.css';
 import local from '../../styles/QuestionsAnswers/NewAnswer.css';
 
 const NewAnswer = ({
-  current, setShowModal, getAnswers, darkMode,
+  current, question, setShowModal, getAnswers, darkMode,
 }) => {
-  const QUESTION_MIN = 10;
-  const QUESTION_MAX = 1000;
+  const ANSWER_MIN = 10;
+  const ANSWER_MAX = 1000;
   const NAME_MIN = 1;
   const NAME_MAX = 60;
-  const [question, setQuestion] = useState('');
+  const [answer, setAnswer] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [questionLetterCount, setQuestionLetterCount] = useState(0);
+  const [answerLetterCount, setAnswerLetterCount] = useState(0);
   const [nameLetterCount, setNameLetterCount] = useState(0);
 
-  const handleQuestionChange = (value) => {
-    setQuestionLetterCount(value.length);
-    setQuestion(value);
+  const handleAnswerChange = (value) => {
+    setAnswerLetterCount(value.length);
+    setAnswer(value);
   };
 
   const handleNameChange = (value) => {
@@ -28,18 +28,18 @@ const NewAnswer = ({
 
   const collectFormData = (e) => {
     e.preventDefault();
-    const newQuestion = {
+    const newAnswer = {
       product_id: current.id,
-      body: question,
+      body: answer,
       email,
       name,
     };
     setShowModal(false);
-    const userQuestions = JSON.parse(localStorage.getItem('userQuestions')) || {};
-    const userQuestion = { [question + name]: new Date().toISOString() };
-    localStorage.setItem('userQuestions', JSON.stringify({ ...userQuestions, ...userQuestion }));
-    requests.postQuestion(newQuestion, () => {
-      getQuestions();
+    const userAnswers = JSON.parse(localStorage.getItem('userAnswers')) || {};
+    const userAnswer = { [answer + name]: new Date().toISOString() };
+    localStorage.setItem('userQuestions', JSON.stringify({ ...userAnswers, ...userAnswer }));
+    requests.postAnswer(newAnswer, question.question_id, () => {
+      getAnswers();
     });
   };
 
@@ -56,27 +56,27 @@ const NewAnswer = ({
   return (
     <div className={global.modalBackground}>
       <div className={darkMode ? global.modalBodyDark : global.modalBody}>
-        <form id="newQuestion" onSubmit={collectFormData}>
+        <form id="newAnswer" onSubmit={collectFormData}>
           <div className={global.modalLogo} aria-label="Form Logo" role="img" alt="AMOREY" />
-          <h3 className={local.title}>
-            {'Ask Your Question About: '}
-            <div className={darkMode ? local.productDark : local.product}>{current.name}</div>
-          </h3>
+          <h3 className={local.title}>Submit your Answer</h3>
+          <div className={darkMode ? local.productDark : local.product}>
+            {`${current.name}: ${question.question_body}`}
+          </div>
           <h6>
             <div className={local.header}>
-              Your Question:&nbsp;&nbsp;
-              {getCharCountMsg(questionLetterCount, QUESTION_MIN)}
+              Your Answer:&nbsp;&nbsp;
+              {getCharCountMsg(answerLetterCount, ANSWER_MIN)}
             </div>
           </h6>
           <textarea
-            aria-label="Question Input"
+            aria-label="Answer Input"
             className={local.inputField}
-            placeholder="What is your question?"
+            placeholder="What is your answer?"
             rows="3"
             cols="50"
-            minLength={QUESTION_MIN}
-            maxLength={QUESTION_MAX}
-            onChange={(e) => handleQuestionChange(e.target.value)}
+            minLength={ANSWER_MIN}
+            maxLength={ANSWER_MAX}
+            onChange={(e) => handleAnswerChange(e.target.value)}
             required
           />
           <h6>
@@ -114,8 +114,8 @@ const NewAnswer = ({
             For authentication only. You will not be emailed.
           </p>
           <div>
-            <button className={local.submit} aria-label="Submit Question" type="submit">Submit Question!</button>
-            <button className={local.cancel} aria-label="Cancel Question" type="button" onClick={() => setShowModal(false)}>Cancel</button>
+            <button className={local.submit} aria-label="Submit Answer" type="submit">Submit Answer!</button>
+            <button className={local.cancel} aria-label="Cancel Answer" type="button" onClick={() => setShowModal(false)}>Cancel</button>
           </div>
         </form>
       </div>
