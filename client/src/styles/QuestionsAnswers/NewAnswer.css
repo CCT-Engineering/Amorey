@@ -1,0 +1,39 @@
+.header {
+  margin-bottom: 5px;
+}
+
+.title {
+  margin-bottom: 5px;
+}
+
+.product, .productDark {
+  display: inline-block;
+  font-weight: 600;
+}
+
+.product {
+  color: #3C7883;
+}
+
+.productDark {
+  color: #548C93;
+}
+
+.submit {
+  margin-left: 1%;
+}
+
+.cancel {
+  margin-left: 5%;
+}
+
+.minChars {
+  display: inline-block;
+  font-size: smaller;
+  color: red;
+}
+
+.inputField {
+  resize: none;
+  columns: 600;
+}

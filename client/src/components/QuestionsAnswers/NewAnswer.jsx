@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import requests from '../../requests.js';
 import global from '../../styles/global.css';
-import local from '../../styles/QuestionsAnswers/NewQuestion.css';
+import local from '../../styles/QuestionsAnswers/NewAnswer.css';
 
-const NewQuestion = ({
-  current, setShowModal, getQuestions, darkMode,
+const NewAnswer = ({
+  current, setShowModal, getAnswers, darkMode,
 }) => {
   const QUESTION_MIN = 10;
   const QUESTION_MAX = 1000;
@@ -123,4 +123,4 @@ const NewQuestion = ({
   );
 };
 
-export default NewQuestion;
+export default NewAnswer;
