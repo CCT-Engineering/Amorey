@@ -109,6 +109,10 @@ const requests = {
 
   // pass in (new question object)
   postQuestion: (question, callback) => postData(question, `${url}qa/questions`, callback),
+
+  postAnswer: (answer, questionID, callback) => (
+    postData(answer, `${url}qa/${questionID}/questions`, callback)
+  ),
 };
 
 export default requests;
