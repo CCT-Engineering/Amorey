@@ -30,7 +30,7 @@ const NewReview = ({
     setBody(input);
   };
 
-  const numberOfPhotos = () => {
+  const handlePhotoSelection = () => {
     setPhotos([]);
     const { files } = event.target;
     if (files.length < 6) {
@@ -100,7 +100,7 @@ const NewReview = ({
           <Body letterCount={letterCount} updateLetterCount={updateLetterCount} />
           <Username updateInput={updateInput} setName={setName} />
           <Email updateInput={updateInput} setEmail={setEmail} />
-          <Photos numberOfPhotos={numberOfPhotos} darkMode={darkMode} />
+          <Photos handlePhotoSelection={handlePhotoSelection} darkMode={darkMode} />
           <div className={local.thumbnails}>{photos.map((photo, index) => <Thumbnail photo={photo} key={`${photo + index}`} />)}</div>
           <div>
             <button className={local.submit} aria-label="Submit Review" type="submit">Submit Review!</button>
