@@ -65,6 +65,7 @@ function Gallery({
 
   const handleBtnClick = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     const decrButtons = ['left', 'thumbUp'];
     const newPhotoIndex = photoIndex + (decrButtons.includes(e.target.name) ? -1 : 1);
     setPhotoIndex(newPhotoIndex);
@@ -95,47 +96,47 @@ function Gallery({
 
   const handleMainImgClick = (e) => {
     e.preventDefault();
-    if (e.target.ariaLabel?.match(/^main photo/i)) {
-      let newAttr;
-      if (expandView) {
-        if (zoomView) {
-          newAttr = {
-            transform: 'revert',
-            cursor: 'crosshair',
-            marginTop: `-${TOP_OFFSET}px`,
-            marginRight: 'revert',
-          };
-        } else {
-          // if in Expanded View, but not Zoom View
-          const { clientX, clientY } = e;
-          setOffset({ x: 0, y: TOP_OFFSET });
-          mousePos.current = { x: clientX, y: clientY };
-          newAttr = {
-            transform: `scale(${ZOOM})`,
-            cursor: 'zoom-out',
-          };
-        }
-        setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
-        setZoomView(!zoomView);
-      } else {
-        // if NOT in Expanded view
-        setExpandView(true);
+    console.log('CP #1');
+    let newAttr;
+    if (expandView) {
+      if (zoomView) {
         newAttr = {
-          backgroundImage: `url(${formatImg(photoUrl, null, windowHgt * 1.5, false)})`,
+          transform: 'revert',
+          cursor: 'crosshair',
+          marginTop: `-${TOP_OFFSET}px`,
+          marginRight: 'revert',
         };
-        if (photoIndex + 1 < photos.length) {
-          preloadHigherResImage(photoIndex + 1);
-        }
-        if (photoIndex > 0) {
-          preloadHigherResImage(photoIndex - 1);
-        }
-        setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
+      } else {
+        // if in Expanded View, but not Zoom View
+        const { clientX, clientY } = e;
+        setOffset({ x: 0, y: TOP_OFFSET });
+        mousePos.current = { x: clientX, y: clientY };
+        newAttr = {
+          transform: `scale(${ZOOM})`,
+          cursor: 'zoom-out',
+        };
       }
+      setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
+      setZoomView(!zoomView);
+    } else {
+      // if NOT in Expanded view
+      setExpandView(true);
+      newAttr = {
+        backgroundImage: `url(${formatImg(photoUrl, null, windowHgt * 1.5, false)})`,
+      };
+      if (photoIndex + 1 < photos.length) {
+        preloadHigherResImage(photoIndex + 1);
+      }
+      if (photoIndex > 0) {
+        preloadHigherResImage(photoIndex - 1);
+      }
+      setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
     }
   };
 
   const closeExpView = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     setExpandView(false);
     const newAttr = {
       transform: '',
@@ -205,29 +206,23 @@ function Gallery({
     }
   }, [photoUrl]);
 
-  let photoId = -1;
   const gallerySide = !photoUrl ? '' : (
     <div className={local.gallerySide}>
       {photoIndex > 0
         ? buildBtn(local.thbArrow, 'thumbUp', ['ArrowUp'], '˄')
         : <button type="button" tabIndex={0} className={local.thbArrow}>-</button>}
       <div className={local.galleryThumbs}>
-        {photos.map(
-          (photo) => {
-            photoId += 1;
-            return (
-              <Thumb
-                key={`${photo.thumbnail_url?.match(/(?<=photo-)(.+)(?=\?)/g)}-${photoIndex}`}
-                ref={thumbRefs.current[photoId]}
-                name={name}
-                id={photoId}
-                thumbUrl={photo.thumbnail_url}
-                photoIndex={photoIndex}
-                setPhotoIndex={setPhotoIndex}
-              />
-            );
-          },
-        )}
+        {photos.map((photo, i) => (
+          <Thumb
+            key={`${photo.thumbnail_url?.match(/(?<=photo-)(.+)(?=\?)/g)}-${photoIndex}`}
+            ref={thumbRefs.current[i]}
+            name={name}
+            id={i}
+            thumbUrl={photo.thumbnail_url}
+            photoIndex={photoIndex}
+            setPhotoIndex={setPhotoIndex}
+          />
+        ))}
       </div>
       {photoIndex < photoQty - 1
         ? buildBtn(local.thbArrow, 'thumbDn', ['ArrowDown'], '˅')
@@ -248,7 +243,7 @@ function Gallery({
       onMouseMove={handleMouseMove}
     >
       {photoUrl ? gallerySide : <p className={local.noPhoto}>Photo Unavailable</p>}
-      {photoIndex === 0 ? '' : buildBtn(local.left, 'left', ['ArrowLeft'], '⬅')}
+      {photoIndex === 0 ? '' : buildBtn(local.left, 'left', ['ArrowLeft'], '⮕')}
       {photoIndex === photoQty - 1 ? '' : buildBtn(local.right, 'right', ['ArrowRight'], '⮕')}
       {expandView
         ? (

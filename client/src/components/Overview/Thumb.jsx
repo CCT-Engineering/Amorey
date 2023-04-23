@@ -18,6 +18,7 @@ const Thumb = forwardRef(({
 
   const handleClick = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     setPhotoIndex(id);
   };
 
