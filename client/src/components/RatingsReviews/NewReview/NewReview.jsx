@@ -30,21 +30,6 @@ const NewReview = ({
     setBody(input);
   };
 
-  const handlePhotoSelection = () => {
-    setPhotos([]);
-    const { files } = event.target;
-    if (files.length < 6) {
-      const photoArray = [];
-      for (let i = 0; i < files.length; i += 1) {
-        photoArray.push(URL.createObjectURL(files[i]));
-      }
-      setPhotos(photoArray);
-    } else {
-      alert('Please limit photo uploads to 5 or less');
-    }
-    document.getElementById('uploadPhoto').val = null;
-  };
-
   const collectFormData = () => {
     event.preventDefault();
     if (rating) {
@@ -100,7 +85,7 @@ const NewReview = ({
           <Body letterCount={letterCount} updateLetterCount={updateLetterCount} />
           <Username updateInput={updateInput} setName={setName} />
           <Email updateInput={updateInput} setEmail={setEmail} />
-          <Photos handlePhotoSelection={handlePhotoSelection} darkMode={darkMode} />
+          <Photos setPhotos={setPhotos} darkMode={darkMode} />
           <div className={local.thumbnails}>{photos.map((photo, index) => <Thumbnail photo={photo} key={`${photo + index}`} />)}</div>
           <div>
             <button className={local.submit} aria-label="Submit Review" type="submit">Submit Review!</button>
