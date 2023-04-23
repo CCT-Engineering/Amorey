@@ -22,9 +22,6 @@ const RatingsReviews = forwardRef(({
   const updateReview = (review, rating) => {
     requests[rating](review, () => {
       getReviews();
-      // setOrder('newest');
-      // getReviews('newest');
-      // setSort([0, 0, 0, 0, 0]);
     });
   };
 

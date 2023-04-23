@@ -19,7 +19,7 @@ const AnswerEntry = ({ answer, updateQuestions, darkMode }) => {
     }
   };
 
-  console.log('answer:', answer);
+  // console.log('answer:', answer);
 
   return (
     <div className={local.answer}>

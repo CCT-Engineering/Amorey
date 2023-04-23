@@ -57,6 +57,7 @@ const Sorting = ({
             className={darkMode ? local.queryInputDark : local.queryInput}
             aria-label="Search Query"
             placeholder="Narrow your search"
+            value={query}
             onChange={updateQuery}
           />
         </label>
