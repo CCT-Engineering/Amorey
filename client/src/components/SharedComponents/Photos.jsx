@@ -1,5 +1,5 @@
 import React from 'react';
-import local from '../../../styles/RatingsReviews/NewReview/Photos.css';
+import global from '../../styles/global.css';
 
 const Photos = ({ setPhotos, darkMode }) => {
   const handlePhotoSelection = () => {
@@ -18,10 +18,10 @@ const Photos = ({ setPhotos, darkMode }) => {
   };
 
   return (
-    <label className={local.header} htmlFor="photos">
+    <label className={global.photoUploadHeader} htmlFor="photos">
       {'Upload Up To 5 Images (Optional) '}
       <input
-        className={darkMode ? local.uploadPhotoDark : local.uploadPhoto}
+        className={darkMode ? global.uploadPhotoDark : global.uploadPhoto}
         aria-label="Photo Upload"
         id="uploadPhoto"
         type="file"

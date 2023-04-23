@@ -212,3 +212,17 @@ div[role="button"] {
     overflow-x: auto;
   }
 }
+
+.photoUploadHeader {
+  margin-left: 1%;
+}
+
+.uploadPhoto, .uploadPhotoDark {
+  margin-top: 1%;
+  margin-left: 1%;
+  margin-bottom: 3%;
+}
+
+.uploadPhotoDark {
+  color: #B6D8C4;
+}

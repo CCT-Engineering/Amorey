@@ -6,7 +6,7 @@ import Summary from './Summary.jsx';
 import Body from './Body.jsx';
 import Username from './Username.jsx';
 import Email from './Email.jsx';
-import Photos from './Photos.jsx';
+import Photos from '../../SharedComponents/Photos.jsx';
 import Thumbnail from '../../SharedComponents/Thumbnail.jsx';
 import requests from '../../../requests.js';
 import global from '../../../styles/global.css';
