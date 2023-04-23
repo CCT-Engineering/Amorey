@@ -2,15 +2,12 @@ import React from 'react';
 import global from '../../styles/global.css';
 
 const Photos = ({ setPhotos, darkMode }) => {
-  const handlePhotoSelection = () => {
+  const handlePhotoSelection = (e) => {
     setPhotos([]);
-    const { files } = event.target;
+    const { files } = e.target;
     if (files.length < 6) {
-      const photoArray = [];
-      for (let i = 0; i < files.length; i += 1) {
-        photoArray.push(URL.createObjectURL(files[i]));
-      }
-      setPhotos(photoArray);
+      const photoArr = Array.from(files).map((file) => URL.createObjectURL(file));
+      setPhotos(photoArr);
     } else {
       alert('Please limit photo uploads to 5 or less');
     }

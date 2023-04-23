@@ -5,18 +5,21 @@ import Thumbnail from '../SharedComponents/Thumbnail.jsx';
 import local from '../../styles/QuestionsAnswers/AnswerEntry.css';
 
 const AnswerEntry = ({ answer, updateQuestions, darkMode }) => {
-  const unrated = !(localStorage.getItem(`A${answer.id}`) === 'true');
+  const answerID = answer.id || answer.answer_id;
+  const unrated = !(localStorage.getItem(`A${answerID}`) === 'true');
   const [canRateAnswer, setCanRateAnswer] = useState(unrated);
 
   const markAnswer = (action) => {
-    localStorage.setItem(`A${answer.id}`, 'true');
+    localStorage.setItem(`A${answerID}`, 'true');
     if (action === 'putReportAnswer') {
-      updateQuestions(answer.id, action);
+      updateQuestions(answerID, action);
     } else if (canRateAnswer) {
       setCanRateAnswer(false);
-      updateQuestions(answer.id, action);
+      updateQuestions(answerID, action);
     }
   };
+
+  console.log('answer:', answer);
 
   return (
     <div className={local.answer}>
@@ -26,7 +29,7 @@ const AnswerEntry = ({ answer, updateQuestions, darkMode }) => {
           {answer.body}
         </div>
         {answer.photos ? answer.photos.map((photoURL, i) => (
-          <Thumbnail photo={photoURL} key={`Answer Photo ${answer.id + i}`} />
+          <Thumbnail photo={photoURL} key={`Answer Photo ${answerID + i}`} />
         )) : null}
         <div className={local.footer}>
           <div className={local.answerBy}>

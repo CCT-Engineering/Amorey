@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Photos from '../SharedComponents/Photos.jsx';
+import Thumbnail from '../SharedComponents/Thumbnail.jsx';
 import requests from '../../requests.js';
 import global from '../../styles/global.css';
 import local from '../../styles/QuestionsAnswers/NewAnswer.css';
@@ -13,6 +15,7 @@ const NewAnswer = ({
   const [answer, setAnswer] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [photos, setPhotos] = useState([]);
   const [answerLetterCount, setAnswerLetterCount] = useState(0);
   const [nameLetterCount, setNameLetterCount] = useState(0);
 
@@ -33,6 +36,7 @@ const NewAnswer = ({
       body: answer,
       email,
       name,
+      photos,
     };
     setShowModal(false);
     const userAnswers = JSON.parse(localStorage.getItem('userAnswers')) || {};
@@ -118,6 +122,10 @@ const NewAnswer = ({
           <p className={local.note}>
             For authentication only. You will not be emailed.
           </p>
+          <Photos setPhotos={setPhotos} darkMode={darkMode} />
+          <div className={local.thumbnails}>
+            {photos.map((photo, i) => <Thumbnail photo={photo} key={`${photo + i}`} />)}
+          </div>
           <div className={local.buttons}>
             <button className={local.submit} aria-label="Submit Answer" type="submit">Submit Answer!</button>
             <button className={local.cancel} aria-label="Cancel Answer" type="button" onClick={() => setShowModal(false)}>Cancel</button>
