@@ -1,39 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import AnswersList from './AnswersList.jsx';
-import { buildHandleEnterKeyPress } from '../../util';
+import NewAnswer from './NewAnswer.jsx';
+import { buildHandleEnterKeyPress, areDatesWithinRange } from '../../util';
 import local from '../../styles/QuestionsAnswers/QuestionEntry.css';
+import requests from '../../requests.js';
 
-const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
+const QuestionEntry = ({
+  current, question, updateQuestions, darkMode,
+}) => {
   const unrated = !(localStorage.getItem(`Q${question.question_id}`) === 'true');
   const [renderLimit, setRenderLimit] = useState(2);
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState(question.answers ? Object.values(question.answers) : []);
+  const [userAnswers] = useState(
+    JSON.parse(localStorage.getItem('userAnswers')) || {},
+  );
   const [sortedAnswers, setSortedAnswers] = useState([]);
   const [canRateQuestion, setCanRateQuestion] = useState(unrated);
-  const [showMessage, setShowMessage] = useState(false);
-
-  const handleAddAnswer = () => {
-    setShowMessage(true);
-    setTimeout(() => {
-      setShowMessage(false);
-    }, 3000); // Message will be hidden after 3 seconds
-  };
+  const [showModal, setShowModal] = useState(false);
 
   const sortAnswers = (answerArr, sort = 'helpfulness') => (
     answerArr.sort((a, b) => {
-      if (sort === 'helpfulness') {
+      const aUserDate = userAnswers[a.body + a.answerer_name];
+      const bUserDate = userAnswers[b.body + b.answerer_name];
+      if (aUserDate && !bUserDate && areDatesWithinRange(aUserDate, a.date, 87000)) {
+        return -1;
+      }
+      if (bUserDate && !aUserDate && areDatesWithinRange(bUserDate, b.date, 87000)) {
+        return 1;
+      }
+      if (sort === 'helpfulness' && b.helpfulness !== a.helpfulness) {
         return b.helpfulness - a.helpfulness;
       }
       return new Date(b.date) - new Date(a.date);
     }).slice(0, renderLimit)
   );
 
-  useEffect(() => {
-    setAnswers(question.answers ? Object.values(question.answers) : []);
-  }, [question, renderLimit]);
+  const getAnswers = () => {
+    requests.getAnswers(question.question_id, (data) => {
+      setAnswers(data.results);
+    });
+  };
+
+  // useEffect(() => {
+  //   setAnswers(question.answers ? Object.values(question.answers) : []);
+  // }, []);
 
   useEffect(() => {
     setSortedAnswers(sortAnswers(answers).slice(0, renderLimit));
-  }, [answers]);
+  }, [answers, renderLimit]);
 
   const windowScroll = () => {
     const questionDiv = document.getElementById('question');
@@ -61,6 +75,10 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
       setCanRateQuestion(false);
       updateQuestions(question.question_id, action);
     }
+  };
+
+  const handleAddAnswer = () => {
+    setShowModal(true);
   };
 
   return (
@@ -103,7 +121,15 @@ const QuestionEntry = ({ question, updateQuestions, darkMode }) => {
             >
               Add Answer
             </button>
-            {showMessage && <span className={local.tempMessage}>Not yet implemented</span>}
+            {showModal && (
+              <NewAnswer
+                current={current}
+                question={question}
+                setShowModal={setShowModal}
+                getAnswers={getAnswers}
+                darkMode={darkMode}
+              />
+            )}
           </div>
         </div>
       </div>

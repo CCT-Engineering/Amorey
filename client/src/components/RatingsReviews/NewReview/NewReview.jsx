@@ -6,7 +6,7 @@ import Summary from './Summary.jsx';
 import Body from './Body.jsx';
 import Username from './Username.jsx';
 import Email from './Email.jsx';
-import Photos from './Photos.jsx';
+import Photos from '../../SharedComponents/Photos.jsx';
 import Thumbnail from '../../SharedComponents/Thumbnail.jsx';
 import requests from '../../../requests.js';
 import global from '../../../styles/global.css';
@@ -28,21 +28,6 @@ const NewReview = ({
   const updateLetterCount = (input) => {
     setLetterCount(50 - input.length);
     setBody(input);
-  };
-
-  const numberOfPhotos = () => {
-    setPhotos([]);
-    const { files } = event.target;
-    if (files.length < 6) {
-      const photoArray = [];
-      for (let i = 0; i < files.length; i += 1) {
-        photoArray.push(URL.createObjectURL(files[i]));
-      }
-      setPhotos(photoArray);
-    } else {
-      alert('Please limit photo uploads to 5 or less');
-    }
-    document.getElementById('uploadPhoto').val = null;
   };
 
   const collectFormData = () => {
@@ -100,7 +85,7 @@ const NewReview = ({
           <Body letterCount={letterCount} updateLetterCount={updateLetterCount} />
           <Username updateInput={updateInput} setName={setName} />
           <Email updateInput={updateInput} setEmail={setEmail} />
-          <Photos numberOfPhotos={numberOfPhotos} darkMode={darkMode} />
+          <Photos setPhotos={setPhotos} darkMode={darkMode} />
           <div className={local.thumbnails}>{photos.map((photo, index) => <Thumbnail photo={photo} key={`${photo + index}`} />)}</div>
           <div>
             <button className={local.submit} aria-label="Submit Review" type="submit">Submit Review!</button>

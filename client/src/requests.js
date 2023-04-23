@@ -62,6 +62,12 @@ const requests = {
       .then((res) => getData(res, callback));
   },
 
+  // pass in (question_id, callback)
+  getAnswers: (questionID, callback, pg = 1, cnt = 999) => {
+    fetch(`${url}qa/questions/${questionID}/answers/?page=${pg}&count=${cnt}`)
+      .then((res) => getData(res, callback));
+  },
+
   // pass in (review_id)
   putHelpful: (id, callback) => {
     fetch(`${url}reviews/${id}/helpful`, { method: 'PUT' })
@@ -109,6 +115,11 @@ const requests = {
 
   // pass in (new question object)
   postQuestion: (question, callback) => postData(question, `${url}qa/questions`, callback),
+
+  // pass in (new answer object, question_id)
+  postAnswer: (answer, questionID, callback) => (
+    postData(answer, `${url}qa/questions/${questionID}/answers`, callback)
+  ),
 };
 
 export default requests;

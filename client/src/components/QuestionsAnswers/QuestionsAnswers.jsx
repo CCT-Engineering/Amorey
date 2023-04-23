@@ -2,21 +2,8 @@ import React, { useState, useEffect } from 'react';
 import QuestionsList from './QuestionsList.jsx';
 import NewQuestion from './NewQuestion.jsx';
 import requests from '../../requests.js';
-import { buildHandleEnterKeyPress } from '../../util';
+import { buildHandleEnterKeyPress, areDatesWithinRange } from '../../util';
 import local from '../../styles/QuestionsAnswers/QuestionsAnswers.css';
-
-function areDatesWithinRange(dateString1, dateString2, range) {
-  // range is the maximum time in secs between dateString1 and dateString2
-  const date1 = new Date(dateString1);
-  const date2 = new Date(dateString2);
-
-  const timestamp1 = date1.getTime();
-  const timestamp2 = date2.getTime();
-
-  const difference = Math.abs(timestamp1 - timestamp2);
-
-  return difference <= range * 1000;
-}
 
 const QuestionsAnswers = ({
   current, questions, getQuestions, darkMode,
@@ -27,26 +14,15 @@ const QuestionsAnswers = ({
   );
   const [sortedQuestions, setSortedQuestions] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  console.log('userQuestions:', userQuestions);
-  console.log('sortedQuestions:', sortedQuestions);
 
   const sortQuestions = (questionArr, sort = 'helpfulness') => (
     questionArr.sort((a, b) => {
       const aUserDate = userQuestions[a.question_body + a.asker_name];
       const bUserDate = userQuestions[b.question_body + b.asker_name];
-      // console.log('a.question_body + a.asker_name:', a.question_body + a.asker_name);
-      if (aUserDate) {
-        console.log('TRUE!');
-        console.log('!bUserDate:', !bUserDate);
-        const dateCheck = areDatesWithinRange(aUserDate, a.question_date, 87000);
-        console.log('dateCheck:', dateCheck);
-      }
       if (aUserDate && !bUserDate && areDatesWithinRange(aUserDate, a.question_date, 87000)) {
-        console.log('CP #1');
         return -1;
       }
       if (bUserDate && !aUserDate && areDatesWithinRange(bUserDate, b.question_date, 87000)) {
-        console.log('CP #2');
         return 1;
       }
       if (sort === 'helpfulness' && b.question_helpfulness !== a.question_helpfulness) {
@@ -80,8 +56,8 @@ const QuestionsAnswers = ({
     setRenderLimit(Math.min(renderLimit + 2, questions.length));
   };
 
-  const updateQuestions = (review, rating) => {
-    requests[rating](review, () => getQuestions());
+  const updateQuestions = (id, action) => {
+    requests[action](id, () => getQuestions());
   };
 
   const handleAddQuestion = () => {
@@ -94,6 +70,7 @@ const QuestionsAnswers = ({
       {(sortedQuestions?.length || 0)
         ? (
           <QuestionsList
+            current={current}
             renderedQuestions={sortedQuestions.slice(0, renderLimit)}
             updateQuestions={updateQuestions}
             darkMode={darkMode}

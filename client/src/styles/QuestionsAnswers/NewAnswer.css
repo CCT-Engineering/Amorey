@@ -1,0 +1,62 @@
+.header {
+  margin-bottom: 5px;
+}
+
+.subtitle, .subtitleDark {
+  padding-bottom: 10px;
+  display: flex;
+  font-weight: 600;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.subtitle {
+  color: #3C7883;
+}
+
+.subtitleDark {
+  color: #548C93;
+}
+
+.question {
+  font-style: italic;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.submit {
+  margin-left: 1%;
+}
+
+.cancel {
+  margin-left: 5%;
+}
+
+.minChars {
+  display: inline-block;
+  font-size: smaller;
+  color: red;
+}
+
+.inputField {
+  resize: none;
+  columns: 600;
+  margin-left: 13px;
+}
+
+.buttons {
+  padding-top: 10px;
+}
+
+.note {
+  margin-left: 10px;
+}
+
+.input {
+  margin-left: 13px;
+}
+
+.thumbnails {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
