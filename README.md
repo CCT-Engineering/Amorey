@@ -10,7 +10,7 @@
 - [Team Members](#team-members)
 
 ## Description
-CCT Engineering was engaged by Amorey Clothing to modernize the front-end design of their ecommerce site, working with their existing back-end and digital visual assets via an API. This repo is a demo of our work completed for the client. Features demonstrated include an expandable image gallery with pan/zoom capability, light/dark mode toggling, carousel of items related to the current product to increase sales yield, adding user ability to add favorite products to a "Your Outfit" section for improved consumer engagement, and a product ratings and reviews section featuring product-specific characteristics based on aggregated user data such as size, fit, and comfort.
+CCT Engineering modernized the front-end design of an ecommerce site, working with an existing back-end and digital visual assets via an API. This repo is a demo of our work. Features demonstrated include an expandable image gallery with pan/zoom capability, light/dark mode toggling, carousel of items related to the current product, adding user ability to add favorite products to a "Your Outfit" section for improved consumer engagement, and a product ratings and reviews section featuring product-specific characteristics based on aggregated user data such as size, fit, and comfort.
 ## Key Technologies
 - [React](https://github.com/facebook/react/)
 - [Webpack](https://www.npmjs.com/package/webpack)
