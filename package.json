@@ -2,7 +2,6 @@
   "name": "atelier",
   "version": "1.0.0",
   "description": "Online shopping portal",
-  "main": "client/src/index.js",
   "scripts": {
     "start": "npm run client-dev & npm run server-dev & live-server --open=./client/dist/index.html; fg",
     "from-server": "npm run client-dev & npm run server-dev & open http://localhost:3300; fg",

@@ -7,7 +7,7 @@ import QuestionsAnswers from './QuestionsAnswers/QuestionsAnswers.jsx';
 import requests from '../requests.js';
 import calculateAverageStars from '../util/calculateStarAverage.js';
 import local from '../styles/App.css';
-import { setCookie, getCookie } from '../util';
+import { setCookie, getCookie } from '../util/index.js';
 
 const FAVS_COOKIE = 'amorey_favs';
 
