@@ -3,7 +3,7 @@ import local from '../../styles/RelatedOutfit.css';
 import global from '../../styles/global.css';
 
 const CompareTable = ({
-  handleToggle, current, rel1Info, CurMeta, rel1Meta,
+  handleToggle, current, rel1Info, curMeta, rel1Meta,
   toggleTable, darkMode,
 }) => {
   const calcRec = (meta) => {
@@ -62,9 +62,9 @@ const CompareTable = ({
           </div>
           <div className={local.tableBody}>
             <div>
-              {CurMeta.characteristics.Comfort
-                ? CurMeta.characteristics.Comfort.value.slice(0, 3) : <div>No data</div>}
-              {CurMeta.characteristics.Comfort ? '/5.0' : ''}
+              {curMeta.characteristics.Comfort
+                ? curMeta.characteristics.Comfort.value.slice(0, 3) : <div>No data</div>}
+              {curMeta.characteristics.Comfort ? '/5.0' : ''}
             </div>
             <div>Comfort</div>
             <div>
@@ -74,7 +74,7 @@ const CompareTable = ({
           </div>
           <div className={local.tableBody}>
             <div>
-              {CurMeta.characteristics.Quality.value.slice(0, 3)}
+              {curMeta.characteristics.Quality.value.slice(0, 3)}
               /5.0
             </div>
             <div>Quality</div>
@@ -85,7 +85,7 @@ const CompareTable = ({
           </div>
           <div className={local.tableBody}>
             <div>
-              {calcRec(CurMeta)}
+              {calcRec(curMeta)}
               %
             </div>
             <div>Recommended</div>

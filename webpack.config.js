@@ -8,6 +8,7 @@ module.exports = {
   entry: path.join(__dirname, 'client/src', 'main.jsx'),
   output: {
     path: path.resolve(__dirname, 'client/dist'),
+    publicPath: '/',
   },
   module: {
     rules: [

@@ -1,11 +1,11 @@
 .header {
-  margin-top: 50px;
+  margin-top: 30px;
   margin-bottom: 10px;
 }
 
 .mainBody {
   margin: auto;
-  width: 80%;
+  width: 90%;
 }
 
 .button, .buttonDark {

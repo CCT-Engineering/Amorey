@@ -1,9 +1,6 @@
 import React from 'react';
-import {
-  Outlet,
-  Form,
-  useNavigation,
-} from 'react-router-dom';
+import { Outlet, Form, useNavigation } from 'react-router-dom';
+import local from '../styles/root.css';
 
 export default function Root() {
   const navigation = useNavigation();
@@ -19,7 +16,7 @@ export default function Root() {
           <Form id="search-form" role="search">
             <input
               id="q"
-              className={searching ? 'loading' : ''}
+              className={searching ? 'local.loading' : ''}
               aria-label="Search contacts"
               placeholder="Search"
               type="search"
@@ -31,7 +28,7 @@ export default function Root() {
               hidden={!searching}
             />
             <div
-              className="sr-only"
+              className="local.sr-only"
               aria-live="polite"
             />
           </Form>

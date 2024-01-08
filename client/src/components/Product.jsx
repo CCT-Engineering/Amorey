@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useLoaderData } from 'react-router-dom';
 import Banner from './Banner/Banner.jsx';
 import Overview from './Overview/Overview.jsx';
 import RelatedOutfit from './RelatedOutfit/Index.jsx';
@@ -6,15 +7,22 @@ import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import QuestionsAnswers from './QuestionsAnswers/QuestionsAnswers.jsx';
 import requests from '../requests.js';
 import calculateAverageStars from '../util/calculateStarAverage.js';
-import local from '../styles/App.css';
+import local from '../styles/Product.css';
 import { setCookie, getCookie } from '../util/index.js';
 
 const FAVS_COOKIE = 'amorey_favs';
 
-function App() {
+export async function productLoader({ params }) {
+  const current = await requests.getProductInfo(params.productId);
+  console.log('current:', current);
+  return { current };
+}
+
+function Product() {
   const [favorites, setFavorites] = useState(getCookie(FAVS_COOKIE) || []);
+  const { current } = useLoaderData();
   // All states below are for the CURRENT product (the one displayed in Overview)
-  const [current, setCurrent] = useState({ features: [] });
+  // const [current, setCurrent] = useState({ features: [] });
   const [currentStyles, setCurrentStyles] = useState([]);
   const [metadata, setMetadata] = useState([]);
   const [stars, setStars] = useState(0);
@@ -37,7 +45,15 @@ function App() {
     });
   };
 
-  const getRelated = () => {
+  // on app load, get product data, then get styles and metadata
+  useEffect(() => {
+    requests.getStyles(current.id, (styleData) => {
+      setCurrentStyles(styleData.results);
+    });
+    requests.getMetadata(current.id, (metrics) => {
+      setMetadata(metrics);
+      setStars(calculateAverageStars(metrics.ratings));
+    });
     requests.getRelated(current.id, (data) => {
       const unique = [...new Set(data)];
       const temp = unique.filter((item) => {
@@ -45,38 +61,9 @@ function App() {
       });
       setRelatedArr(temp);
     });
-  };
-
-  const getStylesMetadata = (productID) => {
-    requests.getStyles(productID, (styleData) => {
-      setCurrentStyles(styleData.results);
-    });
-    requests.getMetadata(productID, (metrics) => {
-      setMetadata(metrics);
-      setStars(calculateAverageStars(metrics.ratings));
-    });
-  };
-
-  // on app load, get product data, then get styles and metadata
-  useEffect(() => {
-    requests.getProducts((products) => {
-      const productID = products[0].id;
-      requests.getProductInfo(productID, (info) => {
-        setCurrent(info);
-      });
-      getStylesMetadata(productID);
-    }, process.env.STARTING_PRODUCT_IDX ?? 1);
-  }, []);
-
-  // if current product changes, get related products, current reviews, questions, & metadata
-  useEffect(() => {
-    if (current.id) {
-      getStylesMetadata(current.id);
-      getRelated();
-      getReviews();
-      getQuestions();
-    }
-  }, [current.id]);
+    getReviews();
+    getQuestions();
+  }, [current]);
 
   // if favorites change, save favorites to cookie on client
   useEffect(() => {
@@ -100,15 +87,11 @@ function App() {
         current={current}
         favorites={favorites}
         setFavorites={setFavorites}
-        CurMeta={metadata}
-        setCurrent={setCurrent}
+        curMeta={metadata}
         currentStyles={currentStyles}
         stars={stars}
-        setCurStars={setStars}
         calculateAverageStars={calculateAverageStars}
-        setMetadata={setMetadata}
         darkMode={darkMode}
-        setCurrentStyles={setCurrentStyles}
         relateArr={relateArr}
       />
       <QuestionsAnswers
@@ -131,4 +114,4 @@ function App() {
   );
 }
 
-export default App;
+export default Product;

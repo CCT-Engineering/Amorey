@@ -5,7 +5,7 @@ import Img from '../SharedComponents/Img.jsx';
 import requests from '../../requests.js';
 
 const OutfitCard = ({
-  outfitPiece, index, favorites, setFavorites, view, darkMode, setCurrent,
+  outfitPiece, index, favorites, setFavorites, view, darkMode,
 }) => {
   const handleDelete = () => {
     event.preventDefault();
@@ -19,7 +19,7 @@ const OutfitCard = ({
   const handleChangeCurrent = (e) => {
     e.preventDefault();
     requests.getProductInfo(outfitPiece.id, (info) => {
-      setCurrent(info);
+      // setCurrent(info);
     });
   };
 

@@ -1,12 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './components/root.jsx';
 import ErrorPage from './components/error-page.jsx';
-import Product from './components/Product.jsx';
+import Product, { productLoader } from './components/Product.jsx';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +14,12 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Product />,
+        loader: productLoader,
+      },
+      {
+        path: 'products/:productId',
+        element: <Product />,
+        loader: productLoader,
       },
     ],
   },
