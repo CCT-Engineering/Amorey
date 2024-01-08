@@ -47,12 +47,12 @@
   z-index: 1;
 }
 
-.outfit {
+/* .outfit {
   display: flex;
   width: 100%;
   margin: auto;
   position: relative;
-}
+} */
 
 .outfitCard, .outfitCardDark {
   display: block;

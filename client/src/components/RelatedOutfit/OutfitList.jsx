@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import local from '../../styles/RelatedOutfit.css';
 import OutfitCard from './OutfitCard.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
@@ -6,33 +6,36 @@ import { buildHandleEnterKeyPress } from '../../util';
 const OutfitList = ({
   favorites, setFavorites, current, currentStyles, stars, darkMode, carouselWidth,
 }) => {
-  const [view, setView] = useState([]);
   const [viewStart, setViewStart] = useState(0);
-  const [viewEnd, setViewEnd] = useState(0);
 
-  useEffect(() => {
-    if (favorites) {
-      const build = [];
-      favorites.forEach((part) => {
-        build.push(part);
-      });
-      if (build.length > 4) {
-        const overflow = build.length - 4;
-        const calcStart = Math.floor(overflow / 2);
-        setViewStart(calcStart);
-        setViewEnd(calcStart + 4);
-        setView(build.slice(calcStart, calcStart + 4));
-      } else {
-        setView(build);
-        setViewStart(0);
-        setViewEnd(build.length);
-      }
-    }
-  }, [favorites]);
+  const CARD_WIDTH = 240; // must be manually set
+  const carouselWidthReduced = carouselWidth - CARD_WIDTH;
+  const cardQty = carouselWidthReduced > 0 ? Math.floor(carouselWidthReduced / CARD_WIDTH) : 0;
 
-  const addOutfit = () => {
+  // Note: viewEnd below is exclusive
+  const viewEnd = viewStart + cardQty > favorites.length
+    ? favorites.length
+    : viewStart + cardQty;
+  // NEXT TASK: IF AT END OF CARD LIST AND ONE IS ADDED, WE WANT TO EXTEND THE BEGINNING
+
+  const preClick = (event) => {
     event.preventDefault();
-    const copy = favorites.slice();
+    if (viewStart === 0) {
+      return;
+    }
+    const newViewStart = viewStart - 1;
+    setViewStart(newViewStart);
+  };
+
+  const nextClick = (event) => {
+    event.preventDefault();
+    if (viewStart < favorites.length - cardQty) {
+      setViewStart(viewStart + 1);
+    }
+  };
+
+  const addOutfit = (e) => {
+    e.preventDefault();
     const currentWPic = {
       id: current.id,
       name: current.name,
@@ -48,68 +51,62 @@ const OutfitList = ({
       }
     });
     if (dupCheck === false) {
-      copy.push(currentWPic);
-      setFavorites(copy);
+      const newFavorites = [...favorites];
+      newFavorites.push(currentWPic);
+      setFavorites(newFavorites);
     }
-  };
-  const preClick = (event) => {
-    event.preventDefault();
-    setViewStart(viewStart - 1);
-    setViewEnd(viewEnd - 1);
-    setView(favorites.slice(viewStart - 1, viewEnd - 1));
-  };
-  const nextClick = (event) => {
-    event.preventDefault();
-    setViewStart(viewStart + 1);
-    setViewEnd(viewEnd + 1);
-    setView(favorites.slice(viewStart + 1, viewEnd + 1));
   };
 
   return (
     <div className={local.carousel}>
-      <div className={local.outfit}>
-        <button type="button" onClick={addOutfit} className={darkMode ? local.addCardDark : local.addCard}>
-          <div className={local.hangerPic} />
-          <div className={local.addWords}>
-            <h4>
-              Add
-              {current.name}
-              To Outfit
-            </h4>
-          </div>
-        </button>
+      <button type="button" onClick={addOutfit} className={darkMode ? local.addCardDark : local.addCard}>
+        <div className={local.hangerPic} />
+        <div className={local.addWords}>
+          <h4>
+            Add&nbsp;
+            {current.name}
+            &nbsp;To Outfit
+          </h4>
+        </div>
+      </button>
+
+      {viewStart > 0 && (
         <div
-          role="button"
-          tabIndex={0}
           className={local.prevCard}
-          onClick={(e) => preClick(e)}
-          onKeyPress={buildHandleEnterKeyPress((e) => preClick(e))}
         >
-          {viewStart === 0 ? null : <div>&lt;</div>}
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={preClick}
+            onKeyPress={buildHandleEnterKeyPress(preClick)}
+          >
+            &lt;
+          </div>
         </div>
-        <div
-          role="button"
-          tabIndex={0}
-          className={local.nextCard}
-          onClick={(e) => nextClick(e)}
-          onKeyPress={buildHandleEnterKeyPress((e) => preClick(e))}
-        >
-          {viewEnd === favorites.length ? null : <div>&gt;</div>}
+      )}
+
+      {cardQty > 0 && favorites.slice(viewStart, viewEnd).map((favorite, i) => (
+        <OutfitCard
+          key={`${current.id + favorite + i}`}
+          favorite={favorite}
+          favorites={favorites}
+          setFavorites={setFavorites}
+          darkMode={darkMode}
+        />
+      ))}
+
+      {viewEnd < favorites.length && favorites.length > cardQty && (
+        <div className={local.nextCard}>
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={nextClick}
+            onKeyPress={buildHandleEnterKeyPress(nextClick)}
+          >
+            &gt;
+          </div>
         </div>
-        {
-          view.map((outfitPiece, index) => (
-            <OutfitCard
-              key={`${current.id + outfitPiece + index}`}
-              outfitPiece={outfitPiece}
-              index={index}
-              favorites={favorites}
-              setFavorites={setFavorites}
-              view={view}
-              darkMode={darkMode}
-            />
-          ))
-        }
-      </div>
+      )}
     </div>
   );
 };

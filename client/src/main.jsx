@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, redirect } from 'react-router-dom';
 import Root from './components/root.jsx';
 import ErrorPage from './components/error-page.jsx';
 import Product, { productLoader } from './components/Product.jsx';
@@ -13,8 +13,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Product />,
-        loader: productLoader,
+        loader: () => redirect('/products/40350'),
       },
       {
         path: 'products/:productId',
