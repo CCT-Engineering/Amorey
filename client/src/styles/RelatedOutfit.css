@@ -1,29 +1,24 @@
-.RelatedOutfit {
+.relatedOutfit {
   box-sizing: border-box;
   font-family: "Tahoma", sans-serif;
   margin: auto;
   padding: 0;
   font-size: 0.8rem;
-  /* width: 1183px; */
-  width: 80%;
+  width: 90%;
 }
 
 .carousel {
-  width: 1183px;
-  margin: 0;
-  min-height: 370px;
-}
-
-.related {
   display: flex;
-  width: 100%;
-  margin: auto;
+  flex-wrap: nowrap;
   position: relative;
+  width: fit-content;
+  margin: auto;
+  min-height: 370px;
 }
 
 .relatedCard, .relatedCardDark {
   display: block;
-  margin: 1% 2% 1% 0;
+  margin: 1em;
   position: relative;
   min-width: 210px;
   height: 350px;
@@ -52,17 +47,16 @@
   z-index: 1;
 }
 
-.outfit {
+/* .outfit {
   display: flex;
   width: 100%;
   margin: auto;
   position: relative;
-}
+} */
 
 .outfitCard, .outfitCardDark {
   display: block;
-  margin: 1% 2% 1% 0;
-  box-shadow: 10px 5px 5px grey;
+  margin: 1em;
   position: relative;
   min-width: 210px;
   height: 350px;
@@ -71,6 +65,7 @@
 
 .outfitCard {
   border: solid 1px black;
+  box-shadow: 10px 5px 5px grey;
   background: rgb(148, 215, 204);
 }
 
@@ -211,33 +206,43 @@
   columns: 3;
 }
 
-.prevRel {
+.prevCard {
   display: flex;
   position: absolute;
   flex-direction: row;
-  /* justify-content: center; */
-  /* centers verically */
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: grey;
   align-items: center;
   height: 100%;
   left: 20px;
-  font-size: 3rem;
+  font-size: 2em;
+  font-weight: bolder;
   z-index: 2;
+  pointer-events: none;
 }
 
-.nextRel {
+.nextCard {
   display: flex;
   position: absolute;
   flex-direction: row;
   align-items: center;
-  /* position of div itself relative to container it is inside. flex position of stuff inside the div; */
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: grey;
   height: 100%;
-  right: 30px;
-  font-size: 3rem;
+  right: 15px;
+  font-size: 2em;
+  font-weight: bolder;
   z-index: 2;
+  pointer-events: none;
+}
+
+.nextCard > div, .prevCard > div {
+  background-color:rgba(245, 245, 245, 0.7);
+  padding: 0 0.3em;
+  border-radius: 50%;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 4px 4px rgba(150, 150, 150, 0.4);
+  pointer-events: initial;
 }
 
 .prevOut {

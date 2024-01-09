@@ -2,7 +2,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import App from '../../client/src/components/App.jsx';
+import App from '../../client/src/components/Product.jsx';
 
 describe('Render App Page', () => {
   const setup = () => {

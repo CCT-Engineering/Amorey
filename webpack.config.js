@@ -5,9 +5,10 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: process.env.WEBPACK_MODE,
-  entry: path.join(__dirname, 'client/src', 'index.js'),
+  entry: path.join(__dirname, 'client/src', 'main.jsx'),
   output: {
     path: path.resolve(__dirname, 'client/dist'),
+    publicPath: '/',
   },
   module: {
     rules: [

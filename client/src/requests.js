@@ -1,7 +1,7 @@
-const url = window.location.href.includes('amazonaws') ? window.location.href : 'http://localhost:3300/';
+const url = `${window.location.href.includes('amazonaws') ? window.location.href : 'http://localhost:3300/'}api/`;
 
 // HELPER FUNCTIONS
-const getData = (res, callback) => (
+const getData = (res, callback = () => {}) => (
   res.json()
     .then((data) => callback(data))
     .catch((err) => console.error(err))
@@ -27,9 +27,9 @@ const requests = {
   },
 
   // pass in (product_id, callback)
-  getProductInfo: (id, callback) => {
-    fetch(`${url}products/${id}`)
-      .then((res) => getData(res, callback));
+  getProductInfo: (id) => {
+    return fetch(`${url}products/${id}`)
+      .then((res) => res.json());
   },
 
   // pass in (product_id, callback)

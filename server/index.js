@@ -26,10 +26,11 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(favicon(path.join(__dirname, 'favicon.ico')));
 
 // ROUTES
-app.all('/*', (req, res) => {
+app.all('/api/*', (req, res) => {
+  const reqPath = req.url.replace('/api', '');
   axios({
     method: req.method,
-    url: path.join(process.env.API_URL, req.url), // req.url will include query (?) and params (:)
+    url: path.join(process.env.API_URL, reqPath), // req.url will include query (?) and params (:)
     data: req.body,
     headers: {
       'User-Agent': 'request', // this might not be necessary?
@@ -44,6 +45,11 @@ app.all('/*', (req, res) => {
         res.sendStatus(404);
       }
     });
+});
+
+// Serve the React Application
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 });
 
 // PORT AND SERVER LISTEN

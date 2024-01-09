@@ -1,155 +1,87 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable react/no-array-index-key */
+import React, { useState, memo, useEffect } from 'react';
 import local from '../../styles/RelatedOutfit.css';
-import global from '../../styles/global.css';
 import RelatedCard from './RelatedCard.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
 
 const RelatedList = ({
-  current, CurMeta, setCurrent, setCurStars, calculateAverageStars,
-  setMetadata, darkMode, setCurrentStyles, relateArr,
+  current, curMeta, calculateAverageStars, darkMode, relateArr, carouselWidth,
 }) => {
   const [viewStart, setViewStart] = useState(0);
-  const [viewEnd, setViewEnd] = useState(0);
-  const [cards, setCards] = useState({
-    0: null, 1: null, 2: null, 3: null, 4: null,
-  });
 
-  useEffect(() => {
-    const temp1 = document.getElementsByClassName('related-card');
-    const temp2 = document.getElementsByClassName('table-content');
-    const temp3 = document.getElementsByClassName('stars');
-    for (let i = 0; i < temp1.length; i += 1) {
-      if (darkMode) {
-        temp1[i]?.classList?.replace(local.relatedCard, local.relatedCardDark);
-        temp2[i]?.classList?.replace(local.tableContent, local.tableContentDark);
-        temp3[i]?.classList?.replace(global.stars, global.starsDark);
-      } else {
-        temp1[i]?.classList?.replace(local.relatedCardDark, local.relatedCard);
-        temp2[i]?.classList?.replace(local.tableContentDark, local.tableContent);
-        temp3[i]?.classList?.replace(global.starsDark, global.stars);
-      }
-    }
-  }, [darkMode, cards]);
+  const CARD_WIDTH = 240; // must be manually set
+  const cardQty = carouselWidth > 0 ? Math.floor(carouselWidth / CARD_WIDTH) : 0;
 
-  const updateTheme = () => {
-    const tempCard3 = document.getElementsByClassName('table-content');
-    for (let i = 0; i < tempCard3.length; i += 1) {
-      if (darkMode) {
-        tempCard3[i]?.classList?.replace(local.tableContent, local.tableContentDark);
-      } else if (!darkMode) {
-        tempCard3[i]?.classList?.replace(local.tableContentDark, local.tableContent);
-      }
-    }
-  };
-
-  const build = (relateOneId, index) => {
-    const temp = cards;
-    temp[index] = (
-      (
-        <RelatedCard
-          key={`${index + current.id}`}
-          relateOneId={relateOneId}
-          current={current}
-          CurMeta={CurMeta}
-          setCurrent={setCurrent}
-          setCurStars={setCurStars}
-          calculateAverageStars={calculateAverageStars}
-          setMetadata={setMetadata}
-          setCurrentStyles={setCurrentStyles}
-          darkMode={darkMode}
-          setCards={setCards}
-          updateTheme={updateTheme}
-        />
-      )
-    );
-    setCards(temp);
-  };
-
-  const buildOne = (relatedOne) => (
-    (
-      <RelatedCard
-        key={`${current.id + relatedOne}`}
-        relateOneId={relatedOne}
-        current={current}
-        CurMeta={CurMeta}
-        setCurrent={setCurrent}
-        setCurStars={setCurStars}
-        calculateAverageStars={calculateAverageStars}
-        setMetadata={setMetadata}
-        darkMode={darkMode}
-        setCurrentStyles={setCurrentStyles}
-        setCards={setCards}
-      />
-    )
-  );
-
-  useEffect(() => {
-    if (relateArr.length > 5) {
-      const overflow = relateArr.length - 5;
-      const calcStart = Math.floor(overflow / 2);
-      setViewStart(calcStart);
-      setViewEnd(calcStart + 5);
-      const copy = relateArr.slice(calcStart, calcStart + 5);
-      copy.map((id, index) => build(id, index));
-    } else {
-      setViewStart(0);
-      setViewEnd(relateArr.length);
-      relateArr.map((id, index) => build(id, index));
-    }
-  }, [relateArr]);
+  // Note: viewEnd below is exclusive
+  const viewEnd = viewStart + cardQty > relateArr.length
+    ? relateArr.length
+    : viewStart + cardQty;
+  // NEXT TASK: IF AT END OF CARD LIST AND ONE IS ADDED, WE WANT TO EXTEND THE BEGINNING
 
   const preClick = (event) => {
     event.preventDefault();
-    const newCards = {
-      0: null, 1: cards[0], 2: cards[1], 3: cards[2], 4: cards[3],
-    };
-    newCards[0] = buildOne(relateArr[viewStart - 1]);
-    setViewStart(viewStart - 1);
-    setViewEnd(viewEnd - 1);
-    setCards(newCards);
+    if (viewStart === 0) {
+      return;
+    }
+    const newViewStart = viewStart - 1;
+    setViewStart(newViewStart);
   };
 
   const nextClick = (event) => {
     event.preventDefault();
-    const newCards = {
-      0: cards[1], 1: cards[2], 2: cards[3], 3: cards[4], 4: null,
-    };
-    newCards[4] = buildOne(relateArr[viewEnd]);
-    setViewStart(viewStart + 1);
-    setViewEnd(viewEnd + 1);
-    setCards(newCards);
+    if (viewStart < relateArr.length - cardQty) {
+      setViewStart(viewStart + 1);
+    }
   };
+
+  useEffect(() => {
+    setViewStart(0);
+  }, [current]);
 
   return (
     <div className={local.carousel}>
-      <div className={local.related}>
+      {viewStart > 0 && (
         <div
-          role="button"
-          tabIndex={0}
-          className={local.prevRel}
-          onClick={(e) => preClick(e)}
-          onKeyPress={buildHandleEnterKeyPress((e) => preClick(e))}
+          className={local.prevCard}
         >
-          {viewStart === 0 ? null : <div>&lt;</div>}
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={preClick}
+            onKeyPress={buildHandleEnterKeyPress(preClick)}
+          >
+            &lt;
+          </div>
         </div>
+      )}
 
-        <div
-          role="button"
-          tabIndex={0}
-          className={local.nextRel}
-          onClick={(e) => nextClick(e)}
-          onKeyPress={buildHandleEnterKeyPress((e) => preClick(e))}
-        >
-          {viewEnd < relateArr.length && relateArr.length > 5 ? <div>&gt;</div> : null}
+      {cardQty > 0 && relateArr.slice(viewStart, viewEnd).map((relateOneId) => (
+        <MemoizedRelatedCard
+          key={relateOneId}
+          current={current}
+          relateOneId={relateOneId}
+          curMeta={curMeta}
+          calculateAverageStars={calculateAverageStars}
+          darkMode={darkMode}
+        />
+      ))}
+
+      {viewEnd < relateArr.length && relateArr.length > cardQty && (
+        <div className={local.nextCard}>
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={nextClick}
+            onKeyPress={buildHandleEnterKeyPress(nextClick)}
+          >
+            &gt;
+          </div>
         </div>
-        {cards[0]}
-        {cards[1]}
-        {cards[2]}
-        {cards[3]}
-        {cards[4]}
-      </div>
+      )}
     </div>
   );
 };
+
+const MemoizedRelatedCard = memo(RelatedCard, () => true);
 
 export default RelatedList;
