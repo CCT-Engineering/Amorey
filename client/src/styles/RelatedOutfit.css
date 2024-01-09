@@ -218,6 +218,7 @@
   font-size: 2em;
   font-weight: bolder;
   z-index: 2;
+  pointer-events: none;
 }
 
 .nextCard {
@@ -232,6 +233,7 @@
   font-size: 2em;
   font-weight: bolder;
   z-index: 2;
+  pointer-events: none;
 }
 
 .nextCard > div, .prevCard > div {
@@ -240,6 +242,7 @@
   border-radius: 50%;
   backdrop-filter: blur(4px);
   box-shadow: 0 0 4px 4px rgba(150, 150, 150, 0.4);
+  pointer-events: initial;
 }
 
 .prevOut {

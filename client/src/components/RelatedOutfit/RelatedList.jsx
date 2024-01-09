@@ -1,10 +1,8 @@
 /* eslint-disable react/no-array-index-key */
-import React, { useState } from 'react';
+import React, { useState, memo, useEffect } from 'react';
 import local from '../../styles/RelatedOutfit.css';
 import RelatedCard from './RelatedCard.jsx';
 import { buildHandleEnterKeyPress } from '../../util';
-
-export const cardClassStr = 'card-container';
 
 const RelatedList = ({
   current, curMeta, calculateAverageStars, darkMode, relateArr, carouselWidth,
@@ -36,6 +34,10 @@ const RelatedList = ({
     }
   };
 
+  useEffect(() => {
+    setViewStart(0);
+  }, [current]);
+
   return (
     <div className={local.carousel}>
       {viewStart > 0 && (
@@ -53,9 +55,9 @@ const RelatedList = ({
         </div>
       )}
 
-      {cardQty > 0 && relateArr.slice(viewStart, viewEnd).map((relateOneId, i) => (
-        <RelatedCard
-          key={`${relateOneId}-${i}`}
+      {cardQty > 0 && relateArr.slice(viewStart, viewEnd).map((relateOneId) => (
+        <MemoizedRelatedCard
+          key={relateOneId}
           current={current}
           relateOneId={relateOneId}
           curMeta={curMeta}
@@ -79,5 +81,7 @@ const RelatedList = ({
     </div>
   );
 };
+
+const MemoizedRelatedCard = memo(RelatedCard, () => true);
 
 export default RelatedList;
