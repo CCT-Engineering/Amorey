@@ -1,6 +1,6 @@
-const url = `${window.location.href.includes('amazonaws') ? window.location.href : 'http://localhost:3300/'}api/`;
+const url = `${window.location.href.includes('amazonaws') ? window.location.origin : 'http://localhost:3300'}/api/`;
 
-// HELPER FUNCTIONS
+// HELPER FUNCTIONS~
 const getData = (res, callback = () => {}) => (
   res.json()
     .then((data) => callback(data))
