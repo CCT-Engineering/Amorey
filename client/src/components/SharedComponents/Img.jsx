@@ -6,7 +6,6 @@ import { buildHandleEnterKeyPress, formatImg } from '../../util';
 const Img = ({
   src, w, h, alt = 'image', className, onClick = () => {}, onKeyPress = buildHandleEnterKeyPress(onClick),
 }) => {
-  // console.log('src inside Img:', src)
   const newImgUrl = formatImg(src, w, h);
   /*
   WARNING: img tags should not be used as interactive elements.

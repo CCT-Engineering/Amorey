@@ -96,7 +96,6 @@ function Gallery({
 
   const handleMainImgClick = (e) => {
     e.preventDefault();
-    console.log('CP #1');
     let newAttr;
     if (expandView) {
       if (zoomView) {
