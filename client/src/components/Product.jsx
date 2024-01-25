@@ -14,6 +14,7 @@ const FAVS_COOKIE = 'amorey_favs';
 
 export async function productLoader({ params }) {
   const current = await requests.getProductInfo(params.productId);
+  document.title = current?.name ? `Amorey: ${current.name}` : document.title;
   console.log('current:', current);
   return { current };
 }
