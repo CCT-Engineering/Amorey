@@ -16,7 +16,7 @@ export async function productLoader({ params }) {
   const current = await requests.getProductInfo(params.productId);
   document.title = current?.name ? `Amorey: ${current.name}` : document.title;
   console.log('current:', current);
-  window.gtag('event', 'page view');
+  // window.gtag('event', 'page view');
   return { current };
 }
 
