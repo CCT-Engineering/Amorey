@@ -13,12 +13,13 @@ export default function Root() {
 
   useEffect(() => {
     console.log('document.title:', document.title)
-    console.log('location.href:', location.href)
-    window.gtag('event', 'page_view', {
-      page_location: location.href,
+    const pageUpdates = {
+      page_location: window.location.href,
       page_path: location.pathname + location.search,
       page_title: document.title,
-    });
+    }
+    console.log('pageUpdates:', pageUpdates)
+    window.gtag('event', 'page_view', pageUpdates);
   }, [location]);
 
   return (
