@@ -8,17 +8,16 @@ export default function Root() {
   const searching = navigation.location
     && new URLSearchParams(navigation.location.search).has('q');
 
-  console.log('Root mounted')
+  // console.log('Root mounted')
   const location = useLocation();
 
   useEffect(() => {
-    console.log('document.title:', document.title)
     const pageUpdates = {
       page_location: window.location.href,
       page_path: location.pathname + location.search,
       page_title: document.title,
     }
-    console.log('pageUpdates:', pageUpdates)
+    // console.log('pageUpdates:', pageUpdates)
     window.gtag('event', 'page_view', pageUpdates);
   }, [location]);
 
