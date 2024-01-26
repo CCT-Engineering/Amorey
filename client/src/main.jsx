@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider, redirect } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, redirect, useLocation } from 'react-router-dom';
 import Root from './components/root.jsx';
 import ErrorPage from './components/error-page.jsx';
 import Product, { productLoader } from './components/Product.jsx';
@@ -24,8 +24,31 @@ const router = createBrowserRouter([
   },
 ]);
 
+const TrackPageView = () => {
+  const location = useLocation();
+
+  React.useEffect(() => {
+    console.log('document.title:', document.title)
+      window.gtag('event', 'page_view', {
+        page_location: location.href,
+        page_path: location.pathname + location.search,
+        page_title: document.title,
+      });
+  }, [location]);
+
+  return null;
+};
+
+const App = () => {
+  return (
+    <RouterProvider router={router}>
+      <TrackPageView />
+    </RouterProvider>
+  );
+};
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App />
   </React.StrictMode>,
 );
