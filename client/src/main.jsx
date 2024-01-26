@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider, redirect, useLocation } from 'react-router-dom';
 import Root from './components/root.jsx';
@@ -25,9 +25,10 @@ const router = createBrowserRouter([
 ]);
 
 const TrackPageView = () => {
+  console.log('TrackPageView mounted')
   const location = useLocation();
 
-  React.useEffect(() => {
+  useEffect(() => {
     console.log('document.title:', document.title)
       window.gtag('event', 'page_view', {
         page_location: location.href,
