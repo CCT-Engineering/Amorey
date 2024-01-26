@@ -1,5 +1,5 @@
-import React from 'react';
-import { Outlet, Form, useNavigation } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Outlet, Form, useNavigation, useLocation } from 'react-router-dom';
 import local from '../styles/root.css';
 
 export default function Root() {
@@ -7,6 +7,19 @@ export default function Root() {
 
   const searching = navigation.location
     && new URLSearchParams(navigation.location.search).has('q');
+
+  console.log('Root mounted')
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log('document.title:', document.title)
+    console.log('location.href:', location.href)
+    window.gtag('event', 'page_view', {
+      page_location: location.href,
+      page_path: location.pathname + location.search,
+      page_title: document.title,
+    });
+  }, [location]);
 
   return (
     <>
