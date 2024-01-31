@@ -16,7 +16,7 @@ function Gallery({
   const MAIN_PHOTO_WID = Math.round(Math.max(windowWidth * 0.8 - 250, 300));
   const MAIN_PHOTO_HGT = 530;
   // TOP_OFFSET is photo offset from top of window.
-  const TOP_OFFSET = 135;
+  const TOP_OFFSET = 100;
   const ZOOM = 2.5;
 
   const photoDescPrefix = 'Main photo';
@@ -33,7 +33,7 @@ function Gallery({
   const mousePos = useRef({ x: 0, y: 0 }); // absolute position of cursor
 
   const thumbRefs = useRef([]);
-  thumbRefs.current = photos.map((photo, i) => thumbRefs.current[i] ?? createRef());
+  thumbRefs.current = photos.map((_, i) => thumbRefs.current[i] ?? createRef());
 
   const preloadHigherResImage = (highResPhotoIdx = photoIndex) => {
     const highResPhotoUrl = photos[highResPhotoIdx].url;
