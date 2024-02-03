@@ -8,6 +8,7 @@ const RelatedList = ({
   current, curMeta, calculateAverageStars, darkMode, relateArr, carouselWidth,
 }) => {
   const [viewStart, setViewStart] = useState(0);
+  console.log('RelatedList rendered. darkMode:', darkMode)
 
   const CARD_WIDTH = 240; // must be manually set
   const cardQty = carouselWidth > 0 ? Math.floor(carouselWidth / CARD_WIDTH) : 0;
@@ -18,8 +19,8 @@ const RelatedList = ({
     : viewStart + cardQty;
   // NEXT TASK: IF AT END OF CARD LIST AND ONE IS ADDED, WE WANT TO EXTEND THE BEGINNING
 
-  const preClick = (event) => {
-    event.preventDefault();
+  const preClick = (e) => {
+    e.preventDefault();
     if (viewStart === 0) {
       return;
     }
@@ -27,8 +28,8 @@ const RelatedList = ({
     setViewStart(newViewStart);
   };
 
-  const nextClick = (event) => {
-    event.preventDefault();
+  const nextClick = (e) => {
+    e.preventDefault();
     if (viewStart < relateArr.length - cardQty) {
       setViewStart(viewStart + 1);
     }
@@ -82,6 +83,11 @@ const RelatedList = ({
   );
 };
 
-const MemoizedRelatedCard = memo(RelatedCard, () => true);
+const MemoizedRelatedCard = memo(
+  RelatedCard,
+  (prevProps, nextProps) => (
+    Object.entries(prevProps).every(([k, v]) => v == nextProps[k])
+  )
+);
 
 export default RelatedList;

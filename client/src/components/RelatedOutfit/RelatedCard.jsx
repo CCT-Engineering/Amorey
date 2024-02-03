@@ -14,8 +14,10 @@ const RelatedCard = ({
   const [toggleTable, setToggleTable] = useState(false);
   const [rel1Meta, setRel1Meta] = useState(0);
   const [relStar, setRelStar] = useState(5);
+  console.log('RelatedCard rerendered!')
 
   useEffect(() => {
+    console.log('useEffect in RelatedCard fired!')
     async function fetchData() {
       setInfo(await requests.getProductInfo(relateOneId));
       requests.getStyles(relateOneId, ({ results }) => {
