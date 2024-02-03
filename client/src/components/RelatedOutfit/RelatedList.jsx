@@ -8,7 +8,6 @@ const RelatedList = ({
   current, curMeta, calculateAverageStars, darkMode, relateArr, carouselWidth,
 }) => {
   const [viewStart, setViewStart] = useState(0);
-  console.log('RelatedList rendered. darkMode:', darkMode)
 
   const CARD_WIDTH = 240; // must be manually set
   const cardQty = carouselWidth > 0 ? Math.floor(carouselWidth / CARD_WIDTH) : 0;
