@@ -149,14 +149,14 @@ div[role="button"] {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .logo {
   background-image: url('../assets/Amorey.png');
   background-repeat: no-repeat;
   background-size: cover;
-  height: 75px;
+  height: 60px;
   aspect-ratio: 3.5;
 }
 

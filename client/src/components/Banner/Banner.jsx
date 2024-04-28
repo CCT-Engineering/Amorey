@@ -20,12 +20,12 @@ const Banner = ({ darkMode, setDarkMode }) => {
         alt="AMOREY"
         name="logo"
       />
-      <div className={local.searchBar}>
+      {/* <div className={local.searchBar}>
         <label htmlFor="searchBar">
           <input className={darkMode ? local.searchInputDark : local.searchInput} name="searchBar" aria-label="Search Bar" />
         </label>
         🔍
-      </div>
+      </div> */}
     </div>
   );
 };

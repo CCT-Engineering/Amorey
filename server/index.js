@@ -29,11 +29,10 @@ app.use(favicon(path.join(__dirname, 'favicon.ico')));
 
 // ROUTES
 app.all('/api/*', (req, res) => {
-  console.log('/api/* Endpoint HIT!');
-  const reqPath = req.url.replace('/api', '');
+  const reqPath = req.url.replace('/api/', '');
   axios({
     method: req.method,
-    url: path.join(process.env.API_URL, reqPath), // req.url will include query (?) and params (:)
+    url: `${process.env.API_URL}${reqPath}`, // req.url will include query (?) and params (:)
     data: req.body,
     headers: {
       'User-Agent': 'request', // this might not be necessary?

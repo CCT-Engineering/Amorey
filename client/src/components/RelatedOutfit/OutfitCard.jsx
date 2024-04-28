@@ -7,8 +7,8 @@ import Img from '../SharedComponents/Img.jsx';
 const OutfitCard = ({
   favorite, favorites, setFavorites, darkMode,
 }) => {
-  const handleDelete = () => {
-    event.preventDefault();
+  const handleDelete = (e) => {
+    e.preventDefault();
     setFavorites(favorites.filter((fav) => fav !== favorite));
   };
   const delButton = <button type="button" className={local.action} onClick={handleDelete}>X</button>;
