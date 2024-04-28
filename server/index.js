@@ -22,11 +22,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(compression());
 
 // STATIC SERVICE OF ASSETS
+console.log('__dirname:', __dirname);
+console.log(path.join(__dirname, '../client/dist'));
 app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(favicon(path.join(__dirname, 'favicon.ico')));
 
 // ROUTES
 app.all('/api/*', (req, res) => {
+  console.log('/api/* Endpoint HIT!');
   const reqPath = req.url.replace('/api', '');
   axios({
     method: req.method,
@@ -49,6 +52,7 @@ app.all('/api/*', (req, res) => {
 
 // Serve the React Application
 app.get('*', (req, res) => {
+  console.log('* Endpoint HIT!');
   res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
 });
 
