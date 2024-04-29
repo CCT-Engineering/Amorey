@@ -1,3 +1,17 @@
+.galleryLoading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  height: 510px;
+  margin-right: 25px;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0px;
+  min-width: 220px;
+}
+
 .gallery {
   display: flex;
   flex-direction: column;
@@ -18,6 +32,18 @@
 
 .gallery:hover {
   cursor: zoom-in;
+}
+
+.galleryExpLoading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  margin-top: -100px;
+  overflow: hidden;
 }
 
 .galleryExp {

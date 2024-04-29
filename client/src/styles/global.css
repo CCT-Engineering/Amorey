@@ -226,3 +226,18 @@ div[role="button"] {
 .uploadPhotoDark {
   color: #B6D8C4;
 }
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(to right, black, black 50%, #555 72%, #555 78%, black 100%);
+  background-size: 200% 100%;
+  animation: cubic-bezier(0.55, 0, 0.45, 1) gradientShift 1.8s infinite;
+}
