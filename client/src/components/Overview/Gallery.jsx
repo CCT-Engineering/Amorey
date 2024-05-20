@@ -27,10 +27,10 @@ function Gallery({
   const photoQty = photos.reduce((acc, photo) => acc + (photo.url ? 1 : 0), 0);
 
   const [expandView, setExpandView] = useState(false);
-  const expandViewRef = useRef(expandView);
-  useEffect(() => {
-    expandViewRef.current = expandView;
-  }, [expandView]);
+  // const expandViewRef = useRef(expandView);
+  // useEffect(() => {
+  //   expandViewRef.current = expandView;
+  // }, [expandView]);
 
   const [zoomView, setZoomView] = useState(false);
   const [mainPhotoClass, setMainPhotoClass] = useState(`${local.galleryLoading} ${global.skeleton}`);
@@ -43,63 +43,70 @@ function Gallery({
   const thumbRefs = useRef([]);
   thumbRefs.current = photos.map((_, i) => thumbRefs.current[i] ?? createRef());
 
-  const preloadHigherResImage = (imgObj, highResPhotoIdx = photoIndex) => {
-    const photoUrl = photos[highResPhotoIdx].url;
-    // eslint-disable-next-line no-param-reassign
-    imgObj.src = formatImg(photoUrl, null, windowHgt * 1.5, false);
+  const formatHighResImgSrcStr = (photoIdx) => (
+    formatImg(photos[photoIdx].url, null, windowHgt * 1.5, false)
+  );
+  const formatLowResImgSrcStr = (photoIdx) => (
+    formatImg(photos[photoIdx].url, MAIN_PHOTO_WID, MAIN_PHOTO_HGT)
+  );
+
+  const getNextImgObj = (isViewExpanded) => {
+    return (isViewExpanded ? highResImage : lowerResImage).current;
   };
 
-  const changeMainPhotoClassToGallery = (isViewExpanded = false) => {
-    const imgObj = (isViewExpanded ? highResImage : lowerResImage).current;
-    console.log('\timgObj:', imgObj);
+  const changeMainPhotoClassStyle = (isViewExpanded) => {
+    const imgObj = getNextImgObj(isViewExpanded);
     if (imgObj.src && imgObj.complete) { // main product photo is loaded
-      console.log('PHOTO LOADED - SET CLASS TO GALLERY');
       const newAttr = { backgroundImage: `url(${imgObj.src})` };
       setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
       setMainPhotoClass(isViewExpanded ? local.galleryExp : local.gallery);
       return true; // means image is loaded
     }
-    console.log('PHOTO NOT LOADED - SET CLASS TO SKELETON');
     setMainPhotoStyle({});
     setMainPhotoClass(`${local[isViewExpanded ? 'galleryExpLoading' : 'galleryLoading']} ${global.skeleton}`);
     return false; // means image still loading
   };
 
-  useEffect(() => {
-    // this callback is only for initializing and preloading images,
-    // and setting gallery class/styles when photoIndex changes in non-expanded view.
-    lowerResImage.current = new Image();
-    highResImage.current = new Image();
-    changeMainPhotoClassToGallery(expandView);
-    // preload the lowerResImage to create a trigger to preload the higher res
-    // once the lowerResImage is finished loading.
-    if (photos[photoIndex]?.url) {
-      console.log('LOADING LOW RES IMG');
-      lowerResImage.current.src = formatImg(photos[photoIndex].url, MAIN_PHOTO_WID, MAIN_PHOTO_HGT);
+  const loadAdjHighResImgs = (photoIdx) => {
+    if (photoIdx + 1 < photos.length) {
+      (new Image()).src = formatHighResImgSrcStr(photoIdx + 1);
+    }
+    if (photoIdx > 0) {
+      (new Image()).src = formatHighResImgSrcStr(photoIdx - 1);
+    }
+  };
 
-      lowerResImage.current.onload = () => {
-        setTimeout(() => {
-          console.log('LOW RES MAIN IMG LOADED');
-          console.log('expandView:', expandViewRef.current);
-          if (expandViewRef.current) {
-            // switched images within expanded view or just opened expanded view
-            // if just opened, handleMainImgClick handles gallery styling
-            // if switching, handleArrowBtnClick handles gallery styling
-            console.log('IN EXPANDED VIEW');
-            preloadHigherResImage(highResImage.current);
-            if (photoIndex + 1 < photos.length) {
-              preloadHigherResImage(new Image(), photoIndex + 1);
-            }
-            if (photoIndex > 0) {
-              preloadHigherResImage(new Image(), photoIndex - 1);
-            }
-          } else {
-            // NOT in expanded view
-            changeMainPhotoClassToGallery(false);
-            preloadHigherResImage(highResImage.current);
-          }
-        }, 4000);
-      };
+  const changePhotoInNonExpMode = () => {
+    lowerResImage.current.src = formatLowResImgSrcStr(photoIndex);
+
+    changeMainPhotoClassStyle(false);
+
+    lowerResImage.current.onload = () => {
+      changeMainPhotoClassStyle(false);
+      highResImage.current.src = formatHighResImgSrcStr(photoIndex);
+      loadAdjHighResImgs(photoIndex);
+    };
+  };
+
+  const changePhotoInExpMode = () => {
+    highResImage.current.src = formatHighResImgSrcStr(photoIndex);
+
+    changeMainPhotoClassStyle(true);
+
+    highResImage.current.onload = () => {
+      changeMainPhotoClassStyle(true);
+      lowerResImage.current.src = formatLowResImgSrcStr(photoIndex);
+      loadAdjHighResImgs(photoIndex);
+    };
+  };
+
+  useEffect(() => {
+    if (photos[photoIndex]?.url) {
+      if (expandView) {
+        changePhotoInExpMode();
+      } else {
+        changePhotoInNonExpMode();
+      }
     } else {
       setMainPhotoStyle({
         background: 'whitesmoke',
@@ -107,14 +114,21 @@ function Gallery({
         cursor: 'not-allowed',
       });
     }
-  }, [photos, photoIndex, windowHgt]);
+    return () => {
+      // Cancel any ongoing image loading or state updates
+      lowerResImage.current.onload = null;
+      highResImage.current.onload = null;
+    };
+  }, [photos, photoIndex]);
 
   const handleArrowBtnClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
     const decrButtons = ['left', 'thumbUp'];
     const newPhotoIndex = photoIndex + (decrButtons.includes(e.target.name) ? -1 : 1);
+
     setPhotoIndex(newPhotoIndex);
+
     // scroll matching (w/ main image) thumb into view
     thumbRefs.current[newPhotoIndex].current.scrollIntoView({
       behavior: 'smooth',
@@ -124,7 +138,7 @@ function Gallery({
   };
 
   function buildArrowBtn(className, btnName, onKeyDownBindings, content) {
-    const newBtn = (
+    return (
       <button
         type="button"
         tabIndex={0}
@@ -137,11 +151,9 @@ function Gallery({
         {content}
       </button>
     );
-    return newBtn;
   }
 
   const handleMainImgClick = (e) => {
-    console.log('invoked handleMainImgClick');
     e.preventDefault();
     let newAttr;
     if (expandView) {
@@ -154,9 +166,8 @@ function Gallery({
         };
       } else {
         // if in Expanded View, but not Zoom View
-        const { clientX, clientY } = e;
         setOffset({ x: 0, y: TOP_OFFSET });
-        mousePos.current = { x: clientX, y: clientY };
+        mousePos.current = { x: e.clientX, y: e.clientY };
         newAttr = {
           transform: `scale(${ZOOM})`,
           cursor: 'zoom-out',
@@ -168,11 +179,9 @@ function Gallery({
       // if NOT in Expanded view
       setExpandView(true);
 
-      if (!changeMainPhotoClassToGallery(true)) {
-        console.log('CHECKPOINT');
+      if (!changeMainPhotoClassStyle(true)) {
         highResImage.current.onload = () => {
-          console.log('~~~~~~~~~~~~~~~~~~~HIGH RES IMG LOADED');
-          changeMainPhotoClassToGallery(true);
+          changeMainPhotoClassStyle(true);
         };
       }
     }
@@ -182,7 +191,7 @@ function Gallery({
     e.preventDefault();
     e.stopPropagation();
     setExpandView(false);
-    changeMainPhotoClassToGallery();
+    changeMainPhotoClassStyle(false);
     const newAttr = {
       transform: '',
       cursor: '',
@@ -257,13 +266,18 @@ function Gallery({
     </div>
   );
 
+  const setPointerEvents = () => {
+    const imgObj = getNextImgObj(expandView);
+    return imgObj.src && imgObj.complete ? 'auto' : 'none';
+  };
+
   return (
     <div
       name="mainImg"
       role="button"
       tabIndex={0}
       className={mainPhotoClass}
-      style={mainPhotoStyle}
+      style={{ ...mainPhotoStyle, pointerEvents: setPointerEvents() }}
       aria-label={photoDesc}
       onClick={photoQty ? handleMainImgClick : () => {}}
       onKeyPress={photoQty ? buildHandleEnterKeyPress(handleMainImgClick) : () => {}}

@@ -237,7 +237,8 @@ div[role="button"] {
 }
 
 .skeleton {
-  background: linear-gradient(to right, black, black 50%, #555 72%, #555 78%, black 100%);
+  background: linear-gradient(to right, #222, #222 50%, #555 72%, #555 78%, #222 100%);
   background-size: 200% 100%;
-  animation: cubic-bezier(0.55, 0, 0.45, 1) gradientShift 1.8s infinite;
+  /* animation: cubic-bezier(0.55, 0, 0.45, 1) gradientShift 1.8s infinite; */
+  animation: ease-in-out gradientShift 1.5s infinite;
 }
