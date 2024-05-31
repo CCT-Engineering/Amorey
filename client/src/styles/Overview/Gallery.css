@@ -1,3 +1,17 @@
+.galleryLoading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  height: 510px;
+  margin-right: 25px;
+  flex-shrink: 1;
+  flex-grow: 1;
+  flex-basis: 0px;
+  min-width: 220px;
+}
+
 .gallery {
   display: flex;
   flex-direction: column;
@@ -20,6 +34,18 @@
   cursor: zoom-in;
 }
 
+.galleryExpLoading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  margin-top: -100px;
+  overflow: hidden;
+}
+
 .galleryExp {
   display: flex;
   flex-direction: column;
@@ -28,7 +54,7 @@
   z-index: 10;
   width: 100%;
   height: 100%;
-  margin-top: -135px;
+  margin-top: -100px;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -73,13 +99,18 @@
   margin: 2px 0px;
   border: 0;
   background: black;
-  font-size: 0.6rem;
-  font-weight: normal;
+  font-size: 0.8rem;
+  font-weight: bolder;
   opacity: 0.7;
   width: 45px;
-  color: black;
-  text-shadow: 0px 0px 2.5px white;
-  -webkit-text-stroke: 2px whitesmoke;
+  color: white;
+  /* text-shadow: 0px 0px 2px white; */
+  /* -webkit-text-stroke: 2px whitesmoke; */
+  transition: transform 0.3s ease;
+}
+
+.thbArrow {
+  transform: scale(1.2); /* Scale up by 1.2 times on hover */
 }
 
 .left, .right {
@@ -90,11 +121,21 @@
   position: absolute;
   top: 0;
   font-size: 1.5rem;
+  font-weight: bolder;
   opacity: 0.7;
   height: 100%;
-  color: black;
-  text-shadow: 0px 0px 2.5px white;
-  -webkit-text-stroke: 2px whitesmoke;
+  color: white;
+  text-shadow: 0px 0px 2.5px black;
+  /* -webkit-text-stroke: 2px whitesmoke; */
+  transition: transform 0.3s ease;
+}
+
+.left:hover {
+  transform: scale(1.2) rotate(180deg); /* Scale up by 1.2 times on hover */
+}
+
+.right:hover {
+  transform: scale(1.2); /* Scale up by 1.2 times on hover */
 }
 
 .left {

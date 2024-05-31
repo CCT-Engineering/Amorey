@@ -24,11 +24,9 @@ function Cart({ currentStyle, darkMode }) {
     if (curSize && curQty) {
       alert('Item Added!');
     } else if (curSize) {
-      // console.log('Please select a quantity');
       // const dropdown = document.getElementById('Quantity');
       // select dropdown
     } else {
-      // console.log('Please select a size');
       // const dropdown = document.getElementById('Size');
       // select dropdown
     }

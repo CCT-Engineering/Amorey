@@ -149,14 +149,14 @@ div[role="button"] {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .logo {
   background-image: url('../assets/Amorey.png');
   background-repeat: no-repeat;
   background-size: cover;
-  height: 75px;
+  height: 60px;
   aspect-ratio: 3.5;
 }
 
@@ -225,4 +225,20 @@ div[role="button"] {
 
 .uploadPhotoDark {
   color: #B6D8C4;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 200%;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(to right, #222, #222 50%, #555 72%, #555 78%, #222 100%);
+  background-size: 200% 100%;
+  /* animation: cubic-bezier(0.55, 0, 0.45, 1) gradientShift 1.8s infinite; */
+  animation: ease-in-out gradientShift 1.5s infinite;
 }

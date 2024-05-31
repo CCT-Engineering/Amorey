@@ -2,6 +2,7 @@ import React, {
   useState, useRef, createRef, useEffect,
 } from 'react';
 import local from '../../styles/Overview/Gallery.css';
+import global from '../../styles/global.css';
 import Thumb from './Thumb.jsx';
 import Social from './Social.jsx';
 import { buildHandleEnterKeyPress, buildHandleKeyDown, formatImg } from '../../util';
@@ -16,16 +17,23 @@ function Gallery({
   const MAIN_PHOTO_WID = Math.round(Math.max(windowWidth * 0.8 - 250, 300));
   const MAIN_PHOTO_HGT = 530;
   // TOP_OFFSET is photo offset from top of window.
-  const TOP_OFFSET = 135;
+  const TOP_OFFSET = 100;
   const ZOOM = 2.5;
+  const lowerResImage = useRef(new Image());
+  const highResImage = useRef(new Image());
 
   const photoDescPrefix = 'Main photo';
   const photoDesc = `${photoDescPrefix} ${photoIndex} of ${name} style`;
   const photoQty = photos.reduce((acc, photo) => acc + (photo.url ? 1 : 0), 0);
 
   const [expandView, setExpandView] = useState(false);
+  // const expandViewRef = useRef(expandView);
+  // useEffect(() => {
+  //   expandViewRef.current = expandView;
+  // }, [expandView]);
+
   const [zoomView, setZoomView] = useState(false);
-  const photoUrl = photos[photoIndex] ? photos[photoIndex].url : '';
+  const [mainPhotoClass, setMainPhotoClass] = useState(`${local.galleryLoading} ${global.skeleton}`);
   const [mainPhotoStyle, setMainPhotoStyle] = useState({});
 
   // States and Ref below are for expanded view zoom feature
@@ -33,42 +41,94 @@ function Gallery({
   const mousePos = useRef({ x: 0, y: 0 }); // absolute position of cursor
 
   const thumbRefs = useRef([]);
-  thumbRefs.current = photos.map((photo, i) => thumbRefs.current[i] ?? createRef());
+  thumbRefs.current = photos.map((_, i) => thumbRefs.current[i] ?? createRef());
 
-  const preloadHigherResImage = (highResPhotoIdx = photoIndex) => {
-    const highResPhotoUrl = photos[highResPhotoIdx].url;
-    const preloadImage = new Image();
-    preloadImage.src = formatImg(highResPhotoUrl, null, windowHgt * 1.5, false);
+  const formatHighResImgSrcStr = (photoIdx) => (
+    formatImg(photos[photoIdx].url, null, windowHgt * 1.5, false)
+  );
+  const formatLowResImgSrcStr = (photoIdx) => (
+    formatImg(photos[photoIdx].url, MAIN_PHOTO_WID, MAIN_PHOTO_HGT)
+  );
+
+  const getNextImgObj = (isViewExpanded) => {
+    return (isViewExpanded ? highResImage : lowerResImage).current;
+  };
+
+  const changeMainPhotoClassStyle = (isViewExpanded) => {
+    const imgObj = getNextImgObj(isViewExpanded);
+    if (imgObj.src && imgObj.complete) { // main product photo is loaded
+      const newAttr = { backgroundImage: `url(${imgObj.src})` };
+      setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
+      setMainPhotoClass(isViewExpanded ? local.galleryExp : local.gallery);
+      return true; // means image is loaded
+    }
+    setMainPhotoStyle({});
+    setMainPhotoClass(`${local[isViewExpanded ? 'galleryExpLoading' : 'galleryLoading']} ${global.skeleton}`);
+    return false; // means image still loading
+  };
+
+  const loadAdjHighResImgs = (photoIdx) => {
+    if (photoIdx + 1 < photos.length) {
+      (new Image()).src = formatHighResImgSrcStr(photoIdx + 1);
+    }
+    if (photoIdx > 0) {
+      (new Image()).src = formatHighResImgSrcStr(photoIdx - 1);
+    }
+  };
+
+  const changePhotoInNonExpMode = () => {
+    lowerResImage.current.src = formatLowResImgSrcStr(photoIndex);
+
+    changeMainPhotoClassStyle(false);
+
+    lowerResImage.current.onload = () => {
+      changeMainPhotoClassStyle(false);
+      highResImage.current.src = formatHighResImgSrcStr(photoIndex);
+      loadAdjHighResImgs(photoIndex);
+    };
+  };
+
+  const changePhotoInExpMode = () => {
+    highResImage.current.src = formatHighResImgSrcStr(photoIndex);
+
+    changeMainPhotoClassStyle(true);
+
+    highResImage.current.onload = () => {
+      changeMainPhotoClassStyle(true);
+      lowerResImage.current.src = formatLowResImgSrcStr(photoIndex);
+      loadAdjHighResImgs(photoIndex);
+    };
   };
 
   useEffect(() => {
-    // preload the lowerResImage to create a trigger to preload the higher res
-    // once the lowerResImage is finished loading.
-    if (photoUrl) {
-      const lowerResImage = new Image();
-      lowerResImage.src = formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT);
-      lowerResImage.onload = () => {
-        if (expandView) {
-          if (photoIndex + 1 < photos.length) {
-            preloadHigherResImage(photoIndex + 1);
-            setTimeout(() => preloadHigherResImage(), 800);
-          }
-          if (photoIndex > 0) {
-            preloadHigherResImage(photoIndex - 1);
-          }
-        } else {
-          setTimeout(() => preloadHigherResImage(), 800);
-        }
-      };
+    if (photos[photoIndex]?.url) {
+      if (expandView) {
+        changePhotoInExpMode();
+      } else {
+        changePhotoInNonExpMode();
+      }
+    } else {
+      setMainPhotoStyle({
+        background: 'whitesmoke',
+        border: '1px solid #111',
+        cursor: 'not-allowed',
+      });
     }
-  }, [photoUrl, windowHgt]);
+    return () => {
+      // Cancel any ongoing image loading or state updates
+      lowerResImage.current.onload = null;
+      highResImage.current.onload = null;
+    };
+  }, [photos, photoIndex]);
 
-  const handleBtnClick = (e) => {
+  const handleArrowBtnClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
     const decrButtons = ['left', 'thumbUp'];
     const newPhotoIndex = photoIndex + (decrButtons.includes(e.target.name) ? -1 : 1);
+
     setPhotoIndex(newPhotoIndex);
+
     // scroll matching (w/ main image) thumb into view
     thumbRefs.current[newPhotoIndex].current.scrollIntoView({
       behavior: 'smooth',
@@ -77,26 +137,24 @@ function Gallery({
     });
   };
 
-  function buildBtn(className, btnName, onKeyDownBindings, content) {
-    const newBtn = (
+  function buildArrowBtn(className, btnName, onKeyDownBindings, content) {
+    return (
       <button
         type="button"
         tabIndex={0}
         className={className}
         name={btnName}
-        onClick={handleBtnClick}
-        onKeyPress={buildHandleEnterKeyPress(handleBtnClick)}
-        onKeyDown={buildHandleKeyDown(handleBtnClick, onKeyDownBindings)}
+        onClick={handleArrowBtnClick}
+        onKeyPress={buildHandleEnterKeyPress(handleArrowBtnClick)}
+        onKeyDown={buildHandleKeyDown(handleArrowBtnClick, onKeyDownBindings)}
       >
         {content}
       </button>
     );
-    return newBtn;
   }
 
   const handleMainImgClick = (e) => {
     e.preventDefault();
-    console.log('CP #1');
     let newAttr;
     if (expandView) {
       if (zoomView) {
@@ -108,9 +166,8 @@ function Gallery({
         };
       } else {
         // if in Expanded View, but not Zoom View
-        const { clientX, clientY } = e;
         setOffset({ x: 0, y: TOP_OFFSET });
-        mousePos.current = { x: clientX, y: clientY };
+        mousePos.current = { x: e.clientX, y: e.clientY };
         newAttr = {
           transform: `scale(${ZOOM})`,
           cursor: 'zoom-out',
@@ -121,16 +178,12 @@ function Gallery({
     } else {
       // if NOT in Expanded view
       setExpandView(true);
-      newAttr = {
-        backgroundImage: `url(${formatImg(photoUrl, null, windowHgt * 1.5, false)})`,
-      };
-      if (photoIndex + 1 < photos.length) {
-        preloadHigherResImage(photoIndex + 1);
+
+      if (!changeMainPhotoClassStyle(true)) {
+        highResImage.current.onload = () => {
+          changeMainPhotoClassStyle(true);
+        };
       }
-      if (photoIndex > 0) {
-        preloadHigherResImage(photoIndex - 1);
-      }
-      setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
     }
   };
 
@@ -138,12 +191,13 @@ function Gallery({
     e.preventDefault();
     e.stopPropagation();
     setExpandView(false);
+    changeMainPhotoClassStyle(false);
     const newAttr = {
       transform: '',
       cursor: '',
       marginTop: '',
       marginRight: '',
-      backgroundImage: `url(${formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT)})`,
+      backgroundImage: `url(${lowerResImage.current.src})`,
     };
     setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
   };
@@ -188,28 +242,10 @@ function Gallery({
     setMainPhotoStyle((prevStyle) => ({ ...prevStyle, ...newAttr }));
   }, [offset]);
 
-  useEffect(() => {
-    if (!photoUrl) {
-      setMainPhotoStyle({
-        background: 'whitesmoke',
-        border: '1px solid #111',
-        cursor: 'not-allowed',
-      });
-    } else if (expandView) {
-      setMainPhotoStyle({
-        backgroundImage: `url(${formatImg(photoUrl, null, windowHgt * 1.5, false)})`,
-      });
-    } else {
-      setMainPhotoStyle({
-        backgroundImage: `url(${formatImg(photoUrl, MAIN_PHOTO_WID, MAIN_PHOTO_HGT)})`,
-      });
-    }
-  }, [photoUrl]);
-
-  const gallerySide = !photoUrl ? '' : (
+  const gallerySide = !photos[photoIndex]?.url ? '' : (
     <div className={local.gallerySide}>
       {photoIndex > 0
-        ? buildBtn(local.thbArrow, 'thumbUp', ['ArrowUp'], '˄')
+        ? buildArrowBtn(local.thbArrow, 'thumbUp', ['ArrowUp'], '˄')
         : <button type="button" tabIndex={0} className={local.thbArrow}>-</button>}
       <div className={local.galleryThumbs}>
         {photos.map((photo, i) => (
@@ -225,26 +261,31 @@ function Gallery({
         ))}
       </div>
       {photoIndex < photoQty - 1
-        ? buildBtn(local.thbArrow, 'thumbDn', ['ArrowDown'], '˅')
+        ? buildArrowBtn(local.thbArrow, 'thumbDn', ['ArrowDown'], '˅')
         : <button type="button" tabIndex={0} className={local.thbArrow}>-</button>}
     </div>
   );
+
+  const setPointerEvents = () => {
+    const imgObj = getNextImgObj(expandView);
+    return imgObj.src && imgObj.complete ? 'auto' : 'none';
+  };
 
   return (
     <div
       name="mainImg"
       role="button"
       tabIndex={0}
-      className={expandView ? local.galleryExp : local.gallery}
-      style={mainPhotoStyle}
+      className={mainPhotoClass}
+      style={{ ...mainPhotoStyle, pointerEvents: setPointerEvents() }}
       aria-label={photoDesc}
       onClick={photoQty ? handleMainImgClick : () => {}}
       onKeyPress={photoQty ? buildHandleEnterKeyPress(handleMainImgClick) : () => {}}
       onMouseMove={handleMouseMove}
     >
-      {photoUrl ? gallerySide : <p className={local.noPhoto}>Photo Unavailable</p>}
-      {photoIndex === 0 ? '' : buildBtn(local.left, 'left', ['ArrowLeft'], '⮕')}
-      {photoIndex === photoQty - 1 ? '' : buildBtn(local.right, 'right', ['ArrowRight'], '⮕')}
+      {photos[photoIndex]?.url ? gallerySide : <p className={local.noPhoto}>Photo Unavailable</p>}
+      {photoIndex === 0 ? '' : buildArrowBtn(local.left, 'left', ['ArrowLeft'], '⮕')}
+      {photoIndex === photoQty - 1 ? '' : buildArrowBtn(local.right, 'right', ['ArrowRight'], '⮕')}
       {expandView
         ? (
           <button

@@ -1,0 +1,15 @@
+.body, .bodyDark {
+  padding: 20px;
+}
+
+.body {
+  /* background: linear-gradient(white, #eff 200px, #9cc); */
+  background: #eff;
+  color: #0a362e;
+}
+
+.bodyDark {
+  /* background: linear-gradient(black, #133a4a 200px, #163051); */
+  background: #133a4a;
+  color: #B6D8C4;
+}

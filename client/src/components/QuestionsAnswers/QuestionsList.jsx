@@ -5,7 +5,6 @@ import local from '../../styles/QuestionsAnswers/QuestionsList.css';
 const QuestionsList = ({
   current, renderedQuestions, updateQuestions, darkMode,
 }) => {
-  // console.log('renderedQuestions:', renderedQuestions);
   return (
     <div className={local.questionsList}>
       {renderedQuestions.map((questionItem) => (
